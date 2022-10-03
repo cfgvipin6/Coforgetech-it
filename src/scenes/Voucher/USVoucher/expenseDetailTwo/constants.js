@@ -1,0 +1,5 @@
+export const TYPE_ERROR = "Type can not be blank!"
+export const DESCRIPTION_ERROR = "Description can not be blank!"
+export const CURRENCY_ERROR = "Currency can not be blank!"
+export const PAY_TYPE_ERROR = "Pay type can not be blank!"
+export const AMOUNT_ERROR = "Amount can not be blank!"

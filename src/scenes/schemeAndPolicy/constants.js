@@ -1,0 +1,2 @@
+export const COUNTRY_DATA = [{title : "India"}, {title : "USA"}, {title : "Asia Pacific"}, {title : "Europe"}, {title : "Japan"}, {title : "CSS"}, {title : "ESRI India"},
+{title : "Canada"}, {title : "Spain"}, {title : "Global Scheme and Policies"}, {title : "WHISHWORKS"}, {title : "Middle East"}]

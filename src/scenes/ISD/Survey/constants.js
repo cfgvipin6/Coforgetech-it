@@ -1,0 +1,9 @@
+export const SURVEY_SUBMIT_MSG = 'You have successfully submitted your response for Employee Engagement Survey. Thank you for your feedback.';
+export const BACK_ONE = 'Prev Screen';
+export const BACK_TWO = 'Dashboard Screen';
+export const DONE_FEEDBACK_MSG = 'You have already submitted your response for Employee Engagement Survey. Thank you for your feedback.';
+export const INVALID_USER_MSG = 'You are not eligible for Employee Engagement Survey.';
+export const SELECT_QUESTION_MSG = 'Please select at least one option.';
+export const PREVIOUS_TEXT = 'PREVIOUS';
+export const NEXT_TEXT = 'NEXT';
+export const SUBMIT_TEXT = 'SUBMIT';

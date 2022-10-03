@@ -1,0 +1,5 @@
+export const ADDRESS_INFO_ERROR = "address_info_error"
+export const ADDRESS_INFO_LIST = "address_info_list"
+export const ADDRESS_LOADING = "address_loading"
+export const ADDRESS_RESET = "address_reset"
+export const RESET_ADDRESS= "reset_address"

@@ -1,0 +1,27 @@
+export const STORE_TRAVEL_ACTION = 'store_travel_action';
+export const STORE_TRAVEL_PENDING = "store_travel_pending";
+export const TRAVEL_LOADING = 'travel_loading';
+export const STORE_TRAVEL_HISTORY = "store_travel_history";
+export const STORE_TRAVEL_HISTORY_ERROR = "store_travel_history_error";
+export const TRAVEL_ACTION_LOADING = "travel_action_loading";
+export const TRAVEL_ACTION_DATA = "travel_action_data";
+export const TRAVEL_ERROR_FROM_SERVER = "travel_error_from_server";
+export const RESET_TRAVEL_HOME="reset_travel_home";
+export const STORE_ERROR="store_error";
+export const NO_DATA="no_data";
+export const TRAVEL_ERROR="travel_error";
+export const RESET="reset";
+export const ACTION_SUCCESS="action_success";
+export const VISIT_TYPE_TEXT = 'Visit Type';
+export const COST_CENTER_TEXT = "Cost Center";
+export const PROJECT_TEXT = "Project";
+export const BILLABLE_TEXT = "Billable";
+export const ADVANCE_TEXT = "Advance";
+
+export const DOCUMENT_NUMBER = "Document#"
+export const EMPLOYEE_NAME = "Employee"
+export const DEPARTURE_DATE = "Departure Date";
+export const RETURN_DATE = "Return Date";
+export const VISIT_TYPE = "Visit Type"
+export const TOUR_TYPE = "Tour Type"
+export const ITINERARY = "Itinerary"

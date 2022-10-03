@@ -1,0 +1,23 @@
+export const LEAVE_LOADING='leave_loading';
+export const STORE_LEAVE_DATA='store_leave_data';
+export const STORE_LEAVE_HISTORY = "store_leave_history";
+export const STORE_LEAVE_HISTORY_ERROR = "store_leave_history_error";
+export const LEAVE_ERROR='leave_error';
+export const RESET_LEAVE='reset_leave';
+export const LEAVE_NAME = "Leave Name";
+export const STORE_SUPERVISOR = "store_supervisors_for_leave";
+export const RESET_SUPERVISOR = "reset_supervisor";
+export const RESET_LEAVE_ACTION="reset_leave_action";
+export const STORE_LEAVE_SUBMIT_DATA="store_leave_submit_data";
+export const APPROVE="APPROVED";
+export const APPROVE_BTN="APPROVE";
+export const REJECT="REJECTED";
+export const REJECT_BTN="REJECT";
+export const SUBMIT_TO="Submit To : ";
+export const WHITE_COLOR="#fff";
+export const REJ = "Reject";
+export const SEND_BACK = "Send Back";
+export const NO_LEAVES_FOUND = "No leaves to approve.";
+
+export const LEAVE_HISTORY_TEXT = "LEAVE HISTORY RECORD ";
+export const REVERSAL_HISTORY_TEXT = "REVERSAL HISTORY RECORD ";

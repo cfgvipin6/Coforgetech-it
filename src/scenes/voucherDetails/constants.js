@@ -1,0 +1,25 @@
+export const DOCUMENT_NUMBER_TEXT = "Document#"
+export const EMPLOYEE_TEXT = "Employee"
+export const TOTAL_AMOUNT_TEXT = "Total Amount"
+export const COMPANY_CODE_TEXT = "Company Code"
+export const COST_CENTER_TEXT = "Cost Center"
+export const PROJECT_TEXT = "Project"
+export const REMARKS_TEXT = "Remarks"
+export const DOCUMENT_DATE_TEXT = "Document Date"
+export const VOUCHER_TYPE_TEXT = "Voucher Type"
+export const SLOW_RESPONSE = "We are currently experiencing technical difficulties with our application. Our team is actively working to fix the issue. We hope to have this resolved soon. \n\nThank you for your patience."
+export const VOUCHER_LOADING='voucher_loading';
+export const RESET_VOUCHER='reset_voucher';
+export const VOUCHER_ERROR='voucher_error';
+export const STORE_VOUCHER='store_voucher';
+export const SUBMIT_ACTION_SUCCESS = "us_submit_success";
+export const MODIFY_DOCUMENT_ERROR_MSG1 = "The SM is in the process of modifying the document ";
+export const MODIFY_DOCUMENT_ERROR_MSG2 = ". Please try later!!";
+export const US_SUBMIT_ERROR_MSG = "Please provide your approval opinion!!";
+export const US_ESCALATE_ERROR_MSG = "You cannot escalate while the approval status is set!!";
+export const TOTAL_BUDGET="Total Budget";
+export const CONSUMED_BUDGET= "Consumed Budget"
+export const QUARTER_TEXT="Quarter"
+export const REMAINING_BUDGET="Remaining Budget"
+export const BU_TEXT="BU"
+

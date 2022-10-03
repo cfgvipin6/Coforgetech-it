@@ -1,0 +1,462 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoginScreen snapShot Login Screen rendered correctly. 1`] = `
+<View
+  onLayout={[Function]}
+  style={
+    Array [
+      Object {
+        "backgroundColor": "#c0dfed",
+        "flex": 1,
+      },
+      Object {
+        "paddingBottom": 0,
+      },
+    ]
+  }
+>
+  <View
+    style={
+      Object {
+        "flex": 1,
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "backgroundColor": "#f5faff",
+          "flex": 0,
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "backgroundColor": "white",
+            "flexDirection": "row",
+            "height": 125.71428571428571,
+            "justifyContent": "space-between",
+            "width": 750,
+          }
+        }
+      >
+        <Image
+          source={
+            Object {
+              "testUri": "../../../src/assets/iniitian.png",
+            }
+          }
+          style={
+            Object {
+              "height": 125.71428571428571,
+              "marginLeft": 9.428571428571429,
+              "marginRight": 9.428571428571429,
+              "resizeMode": "contain",
+              "width": 125.71428571428571,
+            }
+          }
+        />
+        <Image
+          source={
+            Object {
+              "testUri": "../../../src/assets/logo.png",
+            }
+          }
+          style={
+            Object {
+              "height": 125.71428571428571,
+              "marginLeft": 9.428571428571429,
+              "marginRight": 9.428571428571429,
+              "resizeMode": "contain",
+              "width": 125.71428571428571,
+            }
+          }
+        />
+      </View>
+      <Text />
+    </View>
+    <RCTScrollView
+      contentContainerStyle={
+        Object {
+          "flex": 1,
+        }
+      }
+      keyboardShouldPersistTaps="never"
+    >
+      <View>
+        <View
+          style={
+            Object {
+              "backgroundColor": "#d5e6f5",
+              "flex": 4,
+              "justifyContent": "flex-end",
+            }
+          }
+        >
+          <View
+            accessibilityIgnoresInvertColors={true}
+            style={
+              Object {
+                "height": "100%",
+                "justifyContent": "space-between",
+                "width": "100%",
+              }
+            }
+          >
+            <Image
+              source={
+                Object {
+                  "testUri": "../../../src/assets/bg02.jpg",
+                }
+              }
+              style={
+                Array [
+                  Object {
+                    "bottom": 0,
+                    "left": 0,
+                    "position": "absolute",
+                    "right": 0,
+                    "top": 0,
+                  },
+                  Object {
+                    "height": "100%",
+                    "width": "100%",
+                  },
+                  undefined,
+                ]
+              }
+            />
+            <View>
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#14046b",
+                      "fontWeight": "bold",
+                      "paddingTop": 20,
+                      "textAlign": "center",
+                      "textShadowColor": "#779bbd",
+                      "textShadowOffset": Object {
+                        "height": 2,
+                        "width": 4,
+                      },
+                      "textShadowRadius": 1,
+                    },
+                    Object {
+                      "fontSize": 35,
+                    },
+                  ]
+                }
+              >
+                 
+                Engage with the Emerging
+                 
+              </Text>
+            </View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "#dce6fa",
+                    "flexDirection": "column",
+                    "marginLeft": 20,
+                    "marginRight": 20,
+                    "paddingBottom": 10,
+                    "paddingLeft": 20,
+                    "paddingRight": 20,
+                    "paddingTop": 10,
+                  },
+                  Object {
+                    "borderTopLeftRadius": 30,
+                    "borderTopRightRadius": 30,
+                  },
+                ]
+              }
+            >
+              <View
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#FFFFFF",
+                    "borderBottomColor": "#F5FCFF",
+                    "borderBottomWidth": 1,
+                    "borderRadius": 30,
+                    "elevation": 6,
+                    "flexDirection": "row",
+                    "height": 50,
+                    "marginLeft": 16,
+                  }
+                }
+              >
+                <Image
+                  resizeMode="contain"
+                  source={
+                    Object {
+                      "testUri": "../../../src/assets/person.png",
+                    }
+                  }
+                  style={
+                    Object {
+                      "height": 31.428571428571427,
+                      "justifyContent": "center",
+                      "marginLeft": 15,
+                      "width": 31.428571428571427,
+                    }
+                  }
+                />
+                <TextInput
+                autoCapitalize="none"
+                autoCorrect={false}
+                autoCompleteType={false}
+                  allowFontScaling={true}
+                  color="#000"
+                  keyboardType="numeric"
+                  maxLength={8}
+                  onChangeText={[Function]}
+                  onFocus={[Function]}
+                  onSubmitEditing={[Function]}
+                  placeholder="Login ID"
+                  rejectResponderTermination={true}
+                  returnKeyType="next"
+                  style={
+                    Object {
+                      "borderBottomColor": "#FFFFFF",
+                      "flex": 1,
+                      "height": 45,
+                      "marginLeft": 16,
+                    }
+                  }
+                  testID="username"
+                  underlineColorAndroid="transparent"
+                  value={null}
+                />
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          style={
+            Object {
+              "backgroundColor": "green",
+              "flex": 3,
+            }
+          }
+        >
+          <View
+            accessibilityIgnoresInvertColors={true}
+            style={
+              Object {
+                "height": "100%",
+                "width": "100%",
+              }
+            }
+          >
+            <Image
+              source={
+                Object {
+                  "testUri": "../../../src/assets/bg01.jpg",
+                }
+              }
+              style={
+                Array [
+                  Object {
+                    "bottom": 0,
+                    "left": 0,
+                    "position": "absolute",
+                    "right": 0,
+                    "top": 0,
+                  },
+                  Object {
+                    "height": "100%",
+                    "width": "100%",
+                  },
+                  undefined,
+                ]
+              }
+            />
+            <View
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "#dce6fa",
+                    "flexDirection": "column",
+                    "marginLeft": 20,
+                    "marginRight": 20,
+                    "paddingBottom": 10,
+                    "paddingLeft": 20,
+                    "paddingRight": 20,
+                    "paddingTop": 10,
+                  },
+                  Object {
+                    "borderBottomLeftRadius": 30,
+                    "borderBottomRightRadius": 30,
+                  },
+                ]
+              }
+            >
+              <View
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#FFFFFF",
+                    "borderBottomColor": "#F5FCFF",
+                    "borderBottomWidth": 1,
+                    "borderRadius": 30,
+                    "elevation": 6,
+                    "flexDirection": "row",
+                    "height": 50,
+                    "marginLeft": 16,
+                  }
+                }
+              >
+                <Image
+                  resizeMode="contain"
+                  source={
+                    Object {
+                      "testUri": "../../../src/assets/locked.png",
+                    }
+                  }
+                  style={
+                    Object {
+                      "height": 31.428571428571427,
+                      "justifyContent": "center",
+                      "marginLeft": 15,
+                      "width": 31.428571428571427,
+                    }
+                  }
+                />
+                <TextInput
+                autoCapitalize="none"
+                autoCorrect={false}
+                autoCompleteType={false}
+                  allowFontScaling={true}
+                  color="#000"
+                  maxLength={50}
+                  onChangeText={[Function]}
+                  onFocus={[Function]}
+                  placeholder="Password"
+                  rejectResponderTermination={true}
+                  secureTextEntry={true}
+                  style={
+                    Object {
+                      "borderBottomColor": "#FFFFFF",
+                      "flex": 1,
+                      "height": 45,
+                      "marginLeft": 16,
+                    }
+                  }
+                  testID="password"
+                  underlineColorAndroid="transparent"
+                  value={null}
+                />
+              </View>
+            </View>
+            <View
+              style={
+                Object {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                }
+              }
+            >
+              <View
+                accessible={true}
+                clickable={true}
+                isTVSelectable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#db8607",
+                    "borderRadius": 30,
+                    "elevation": 6,
+                    "flex": 1,
+                    "justifyContent": "center",
+                    "marginHorizontal": 20,
+                    "marginVertical": 15,
+                    "opacity": 1,
+                    "padding": 10,
+                  }
+                }
+              >
+                <Text
+                  style={
+                    Object {
+                      "color": "black",
+                      "fontSize": 16,
+                      "fontWeight": "bold",
+                    }
+                  }
+                >
+                  Back
+                </Text>
+              </View>
+              <View
+                accessible={true}
+                clickable={true}
+                isTVSelectable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#db8607",
+                    "borderRadius": 30,
+                    "elevation": 6,
+                    "flex": 1,
+                    "justifyContent": "center",
+                    "marginHorizontal": 20,
+                    "marginVertical": 15,
+                    "opacity": 1,
+                    "padding": 10,
+                  }
+                }
+                testID="loginButton"
+              >
+                <Text
+                  style={
+                    Object {
+                      "color": "black",
+                      "fontSize": 16,
+                      "fontWeight": "bold",
+                    }
+                  }
+                >
+                  Sign In
+                </Text>
+              </View>
+            </View>
+          </View>
+        </View>
+        <Text
+          style={
+            Object {
+              "color": "blue",
+              "flexDirection": "row-reverse",
+              "marginBottom": 0,
+              "padding": 5,
+              "position": "absolute",
+            }
+          }
+        >
+          App Ver : undefined
+        </Text>
+      </View>
+    </RCTScrollView>
+  </View>
+</View>
+`;

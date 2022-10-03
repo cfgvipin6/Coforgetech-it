@@ -1,0 +1,1 @@
+export const SLOW_RESPONSE = "Sorry you dont have any vouchers pending for approval"

@@ -1,0 +1,5 @@
+export const COMMUNICATION_HEADING = "Communication Information"
+export const COMM_PENDING = "comm_pending"
+export const STORE_COMMUNICATION_ACTION = "store_communication_result"
+export const STORE_PENDING_ERROR = "store_comm_exception"
+export const RESET_COMM_STORE = "reset_comm_store"

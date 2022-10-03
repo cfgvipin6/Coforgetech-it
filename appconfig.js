@@ -1,0 +1,32 @@
+export const WHITE_COLOR = 'white';
+export const BLACK_COLOR = 'black';
+export const FIELD_BORDER_COLOR = 'rgb(204, 205, 207)';
+export const LOGIN_HEADER_COLOR = '#e0e0e0';
+export const LOGIN_FIELDS_BACKGROUND_COLOR = '#EC8722';
+export const LOGIN_ICON_BACKGROUND_COLOR = '#85929E';
+export const BLUE_TEXT_COLOR = 'rgb(0,0,255)';
+export const BLUE_BORDER_COLOR = 'rgb(222, 222, 255)';
+export const GUN_METAL_COLOR = 'rgb(84,88,90)';
+export const VALID_BORDER_COLOR = '#21ac0b';
+export const INVALID_BORDER_COLOR = '#e90b0b';
+export const CARD_BACKGROUND_COLOR = '#D7E3F3';
+export const CARD_BACKGROUND_BORDER_COLOR = '#000cb8';
+export const INVALID_BUTTON_COLOR = '#e90b0b';
+export const BLACK_LIGHT_BG = 'rgba(0,0,0,0.7)';
+export const LIST_BORDER_COLOUR = 'rgb(203,203,203)';
+export const ACTIVITY_INDICATOR_COLOR = '#0000ff';
+export const WORK_DAY_COLOR = '#ebffe1';
+export const FULL_DAY_LEAVE_COLOR = '#fcd0fc';
+export const HOLIDAY_COLOR = '#ffd8be';
+export const HALF_DAY_LEAVE_COLOR = '#c4c4fa';
+export const WEEKLY_OFF_COLOR = 'lightgrey';
+export const BLUISH_COLOR = '#0060af';
+export const DARK_BLUISH_COLOR = '#016596';
+export const APP_BORDER_COLOR = '#C0C0C0';
+export const APP_ORANGE = '#f68a23';
+export const APP_SKY = '#e8f0fe';
+
+// export const VALID_BUTTON_COLOR = "rgb(37,179,163)";
+// export const VALID_BUTTON_COLOR = '#85929E';
+
+export const VALID_BUTTON_COLOR = '#F6FAFD';

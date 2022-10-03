@@ -1,0 +1,23 @@
+export const PROJECT_REQUIRED = "Please choose a valid project code.";
+export const EXPENSE_REQUIRED = "Please select expense details.";
+export const BILL_REQUIRED = "Bill number required.";
+export const CASH_MEMO_REQUIRED = "Cash Memo number required.";
+export const PLACES_VISITED_REQUIRED = "Places visited required.";
+export const BILL_MATCHED = "Bill number can not be same as previous ones.";
+export const AMOUNT_REQUIRED = "Amount required.";
+export const AMOUNT_NOT_VALID = "Amount should be numeric and greater than zero."
+export const BAL_NOT_SUFFICIENT = "Your balance amount is not sufficient."
+export const TRAVEL_MODE = "Please select travel mode."
+export const ZERO_COST = "Cost should be greater than zero."
+export const DAY_DIFF = "At least 3 continuous leave/holidays should be present in the Journey Period."
+export const PERSON_DIFF = "Sum of Major Persons & Minor Persons is not equivalent to selected persons."
+export const PARTICULAR_REQUIRED = "Particulars required.";
+export const PHONE_REQUIRED = "Phone number required.";
+export const PURPOSE_REQUIRED = "Please select purpose.";
+export const SUBMIT_TO_TYPES = ["Supervisor", "FSO"]
+export const MOBILE_INSTRUCTIONS = "Mobile phone reimbursement can be claimed only once for a month and for one mobile no. only";
+export const PETROL_INSTRUCTIONS = "NOTE : Please submit the petrol claim for bills pertaining to current financial year only";
+export const DRIVER_INSTRUCTIONS = "I hereby declare that I have paid the salary to my driver as per claim details given below.";
+export const DATE_DIFF_MESSAGE = "Journey start date cannot be greater than or equal to journey end date";
+export const REIMBURSE_OPTIONS = [{ label: "Reimb(With Bills)", value: 0 },
+{ label: "Reimb(Without Bills-TAXABLE)", value: 1 },];

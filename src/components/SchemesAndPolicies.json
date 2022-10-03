@@ -1,0 +1,492 @@
+[
+  {
+    "title": "India",
+    "hasChild":true,
+    "items": [
+      {
+        "title": "Schemes",
+        "data":[
+          {
+            "title": "Basket of Benefits",
+            "fileId": "1223454"
+          },
+          {
+            "title": "Company Leased Accomodation Scheme"
+          },
+          {
+            "title": "Company Provided Car Scheme - Guidelines for Regulation of Old Scheme"
+          },
+          {
+            "title": "Company Provided Car Scheme"
+          },
+          {
+            "title": "Flexi Basket Scheme"
+          },
+          {
+            "title": "Gratuity Scheme"
+          },
+          {
+            "title": "Group Personal Accident Insurance Scheme"
+          },
+          {
+            "title": "Gym Facility Scheme"
+          },
+          {
+            "title": "Higher Education Scheme&Program for Coforge Imperia"
+          },
+          {
+            "title": "Higher Education Sponsorship Scheme"
+          },
+          {
+            "title": "Mediclaim Scheme 2020"
+          },
+          {
+            "title": "Mediclaim Scheme-Mediclaim Individual Policy Document (For Additional Nomination)"
+          },
+          {
+            "title": "Overseas Mediclaim Insurance Scheme"
+          },
+          {
+            "title": "Sabbatical Scheme"
+          },
+          {
+            "title": "Special Dating Holiday Scheme"
+          },
+          {
+            "title": "Superannuation Scheme"
+          }
+        ]
+      },
+      {
+        "title": "Policies",
+        "data":[
+          {
+            "title": "Airport Support Allowance Policy"
+          },
+          {
+            "title": "Anti-Corruption and Bribery Policy"
+          },
+          {
+            "title": "Cradle Policy"
+          },
+          {
+            "title": "Creche Policy"
+          },
+          {
+            "title": "Disciplinary Action Policy"
+          },
+          {
+            "title": "Family Travel Policy"
+          },
+          {
+            "title": "Guidelines for Long Term Transfer to US on L1 or H1B Visa"
+          },
+          {
+            "title": "India Business Tour Policy"
+          },
+          {
+            "title": "Job Rotation Policy"
+          },
+          {
+            "title": "Leave and Holiday Policy"
+          },
+          {
+            "title": "Leave Travel Allowance Policy"
+          },
+          {
+            "title": "Life Insurance Policy"
+          },
+          {
+            "title": "Local Conveyance Policy"
+          },
+          {
+            "title": "Night Shift Allowance Policy"
+          },
+          {
+            "title": "Notice Period Policy"
+          },
+          {
+            "title": "Overseas Business Tour Policy"
+          },
+          {
+            "title": "Policy Against Sexual Harassment at Workplace"
+          },
+          {
+            "title": "Relocation and Transfer Allowance Policy"
+          },
+          {
+            "title": "Rewards and Recognition Policy"
+          },
+          {
+            "title": "Short Term Policy for US on L1 Visa"
+          },
+          {
+            "title": "Skills Certification Policy"
+          },
+          {
+            "title": "Special Skill Allowance - CIMS"
+          },
+          {
+            "title": "Special Skill Allowance"
+          },
+          {
+            "title": "Work From Home FAQs"
+          },
+          {
+            "title": "Work From Home Policy"
+          }
+        ]
+      },
+      {
+        "title": "Forms"
+      }
+    ]
+  },
+  {
+    "title": "USA",
+    "hasChild":true,
+    "items": [
+      {
+        "title": "Induction"
+      },
+      {
+        "title": "Personnel Manual"
+      },
+      {
+        "title": "Policies and Benefits Information"
+      },
+      {
+        "title": "Affirmative Action Plan for NIIT (USA), INC."
+      }
+    ]
+  },
+  {
+    "title": "Asia Pacific",
+    "hasChild":true,
+    "items": [
+      {
+        "title": "Australia",
+        "items": [
+          {
+            "title": "Induction"
+          },
+          {
+            "title": "Schemes"
+          },
+          {
+            "title": "Policies"
+          }
+        ]
+      },
+      {
+        "title": "HongKong",
+        "items": [
+          {
+            "title": "Induction"
+          },
+          {
+            "title": "Schemes"
+          },
+          {
+            "title": "Policies"
+          }
+        ]
+      },
+      {
+        "title": "Singapore",
+        "items": [
+          {
+            "title": "Induction"
+          },
+          {
+            "title": "Schemes"
+          },
+          {
+            "title": "Policies"
+          },
+          {
+            "title": "Forms"
+          }
+        ]
+      },
+      {
+        "title": "Thailand",
+        "items": [
+          {
+            "title": "Induction"
+          },
+          {
+            "title": "Schemes"
+          },
+          {
+            "title": "Policies"
+          },
+          {
+            "title": "Forms"
+          }
+        ]
+      },
+      {
+        "title": "Philippines",
+        "items": [
+          {
+            "title": "Introduction"
+          },
+          {
+            "title": "Policies"
+          },
+          {
+            "title": "Annexures & Forms"
+          },
+          {
+            "title": "Holiday List"
+          },
+          {
+            "title": "Code of Conduct"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Europe",
+    "hasChild":true,
+    "items": [
+      {
+        "title": "UK",
+        "items": [
+          {
+            "title": "Induction"
+          },
+          {
+            "title": "Policies & Schemes"
+          },
+          {
+            "title": "Joining Process"
+          },
+          {
+            "title": "General forms"
+          },
+          {
+            "title": "Advertiesement"
+          },
+          {
+            "title": "Transfer form"
+          },
+          {
+            "title": "Certificate of sponsorship"
+          },
+          {
+            "title": "Rules Guide"
+          }
+        ]
+      },
+      {
+        "title": "Germany",
+        "items": [
+          {
+            "title": "Policies and Schemes"
+          }
+        ]
+      },
+      {
+        "title": "Belgium",
+        "items": [
+          {
+            "title": "Belgium Induction Booklet"
+          },
+          {
+            "title": "Joining Process"
+          },
+          {
+            "title": "Joining Forms"
+          },
+          {
+            "title": "Other Forms"
+          },
+          {
+            "title": "Policies & Schemes"
+          },
+          {
+            "title": "Business Visa Guidelines"
+          },
+          {
+            "title": "Transfer Process and Form"
+          },
+          {
+            "title": "Frequently Asked Questions"
+          }
+        ]
+      },
+      {
+        "title": "Netherlands",
+        "items": [
+          {
+            "title": "Induction"
+          },
+          {
+            "title": "Policies & Schemes"
+          },
+          {
+            "title": "Joining process and Forms"
+          },
+          {
+            "title": "Medical Insurance"
+          }
+        ]
+      },
+      {
+        "title": "Switzerland",
+        "items": [
+          {
+            "title": "Policies & Schemes"
+          }
+        ]
+      },
+      {
+        "title": "Ireland",
+        "items": [
+          {
+            "title": "Policies & Schemes"
+          }
+        ]
+      },
+      {
+        "title": "France",
+        "items": [
+          {
+            "title": "Policies & Schemes"
+          }
+        ]
+      },
+      {
+        "title": "Poland",
+        "items": [
+          {
+            "title": "Schemes and Policies"
+          },
+          {
+            "title": "Policies"
+          },
+          {
+            "title": "Annexures & Forms"
+          },
+          {
+            "title": "Holiday List"
+          },
+          {
+            "title": "Code of Conduct"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Japan",
+    "hasChild":true,
+    "items": [
+      {
+        "title": "Induction"
+      },
+      {
+        "title": "Schemes & Formats"
+      },
+      {
+        "title": "Rule Book"
+      },
+      {
+        "title": "Policies"
+      }
+    ]
+  },
+  {
+    "title": "CSS",
+    "hasChild":true,
+    "items": [
+      {
+        "title": "Schemes"
+      },
+      {
+        "title": "Policies"
+      }
+    ]
+  },
+  {
+    "title": "ESRI India",
+    "hasChild":true,
+    "items": [
+      {
+        "title": "Schemes"
+      },
+      {
+        "title": "Policies"
+      }
+    ]
+  },
+  {
+    "title": "Canada",
+    "hasChild":true,
+    "items": [
+      {
+        "title": "Policies"
+      },
+      {
+        "title": "Personnel Manual"
+      }
+    ]
+  },
+  {
+    "title": "Spain",
+    "hasChild":true,
+    "items": [
+      {
+        "title": "Schemes & Policies"
+      }
+    ]
+  },
+  {
+    "title": "Global Schemes & Policies",
+    "hasChild":true,
+    "items": [
+      {
+        "title": "Variable Compensation Policy"
+      },
+      {
+        "title": "Whistle blower Policy"
+      },
+      {
+        "title": "Each One Get One Scheme"
+      },
+      {
+        "title": "Sales Incentive Policy"
+      },
+      {
+        "title": "Social Media Policy"
+      },
+      {
+        "title": "Class of travel policy for SVPs and above"
+      }
+    ]
+  },
+  {
+    "title": "WISH WORKS",
+    "hasChild":true,
+    "items": [
+      {
+        "title": "Schemes and Policies"
+      },
+      {
+        "title": "Holiday Calendar"
+      }
+    ]
+  },
+  {
+    "title": "Middle East",
+    "hasChild":true,
+    "items": [
+      {
+        "title": "Schemes and Policies"
+      }
+    ]
+  }
+]
