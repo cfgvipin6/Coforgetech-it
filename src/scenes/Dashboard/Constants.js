@@ -13,6 +13,7 @@ export const RESET_ERRORS = 'reset_errors';
 export const YOU_DONT_HAVE_ERROR_TEXT = "You don't have any pending ";
 export const RESOURCE_REQUEST_ERROR_TEXT = 'Resource Request!!';
 export const LOCAL_CONVEYANCE_VOUCHER_ERROR_TEXT = 'Local Conveyance Voucher!!';
+export const TIMESHEET_APPROVAL_ERROR_TEXT = 'Timesheet Approval !!';
 export const CASH_VOUCHER_ERROR_TEXT = 'Cash Voucher!!';
 export const DOMESTIC_TRAVEL_ERROR_TEXT = 'Domestic Travel Request!!';
 export const INTERNATIONAL_TRAVEL_ERROR_TEXT = 'International Travel Request!!';

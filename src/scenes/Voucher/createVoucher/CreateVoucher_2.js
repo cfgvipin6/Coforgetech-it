@@ -3577,6 +3577,7 @@ class CreateVoucher_2 extends Component {
             dateValue: record.SMemoDate,
             destDateValue: record.MemoDate2,
             startTimeValue: record.FromTime,
+            numPeople:record.People,
             destTimeValue: record.ToTime,
             fromInput: record.LCVFrom,
             toInput: record.LCVTo,

@@ -158,7 +158,7 @@ class DashboardView extends Component {
     this.props.getPendingCounts(this.props.loginData, isPullToRefreshActive);
   }
   sectionItemClick(item) {
-    console.log("item", item);
+    console.log("items", item);
     writeLog("Clicked on " + item.Type + " of " + "DashboardView");
     if (item.Type === "Resource Request") {
       if (item.Count == 0) {
@@ -174,7 +174,8 @@ class DashboardView extends Component {
           pageTitle: globalConstants.RR_TITLE,
         });
       }
-    } else if (item.Type === "Local Conveyance Voucher") {
+    } 
+    else if (item.Type === "Local Conveyance Voucher") {
       if (item.Count == 0) {
         countErrorMessage =
           constants.YOU_DONT_HAVE_ERROR_TEXT +
@@ -188,7 +189,24 @@ class DashboardView extends Component {
           pageTitle: globalConstants.LCV_TITLE,
         });
       }
-    } else if (item.Type === "Cash Voucher") {
+    } 
+    // timesheet approval
+    else if (item.Type === "Timesheet Approval") {
+      if (item.Count == 0) {
+        countErrorMessage =
+          constants.YOU_DONT_HAVE_ERROR_TEXT +
+          constants.TIMESHEET_APPROVAL_ERROR_TEXT;
+        alert(countErrorMessage);
+      } else {
+        serviceType = "Timesheet Approval";
+        this.props.navigation.navigate("TimeSheetApproval", {
+          loginApiResponse: this.state.userDetails,
+          serviceType: serviceType,
+          pageTitle: globalConstants.TIMESHEET_APPROVALS,
+        });
+      }
+    } 
+    else if (item.Type === "Cash Voucher") {
       if (item.Count == 0) {
         countErrorMessage =
           constants.YOU_DONT_HAVE_ERROR_TEXT +
