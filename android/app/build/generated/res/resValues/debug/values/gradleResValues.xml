@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Automatically generated file. DO NOT MODIFY -->
+
+    <!-- Values from build type: debug -->
+    <string name="CODE_PUSH_APK_BUILD_TIME" translatable="false">"1665141021483"</string>
+
+    <integer name="react_native_dev_server_port">8081</integer>
+    <integer name="react_native_inspector_proxy_port">8081</integer>
+    <!-- Values from default config. -->
+    <string name="AD_LOG_OUT_BASE_URL" translatable="false">"https://iengageauthdev."</string>
+    <string name="ANDROID_URI" translatable="false">"https://install.appcenter.ms/users/coforge/apps/iengagedev-1/distribution_groups/coforge"</string>
+    <string name="APP_ID" translatable="false">"com.iniitian_mobile.DEV"</string>
+    <string name="APP_NAME" translatable="false">"iEngageDev"</string>
+    <string name="BASE_URL" translatable="false">"https://iengagedev.coforge.com/"</string>
+    <string name="CAREER_BASE_URL" translatable="false">"https://iengagedev.coforge.com/"</string>
+    <string name="ENV" translatable="false">"DEV"</string>
+    <string name="IOS_URI" translatable="false">"https://install.appcenter.ms/users/coforge/apps/iengagedev/distribution_groups/coforge"</string>
+    <string name="app_id_new" translatable="false">"com.iniitian_mobile.DEV"</string>
+    <string name="app_name" translatable="false">iEngageDev</string>
+    <string name="build_config_package" translatable="false">com.iniitian_mobile</string>
+
+</resources>

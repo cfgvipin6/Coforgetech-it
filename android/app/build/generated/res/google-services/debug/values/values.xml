@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">438850051778-heji86ih0ifj3lkeusht4mh3q9mh9dds.apps.googleusercontent.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">438850051778</string>
+    <string name="google_api_key" translatable="false">AIzaSyBizDF--zQOqmZ_6U4a9KOz3cgSMLqCubg</string>
+    <string name="google_app_id" translatable="false">1:438850051778:android:a08a78af142422b635e55b</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyBizDF--zQOqmZ_6U4a9KOz3cgSMLqCubg</string>
+    <string name="google_storage_bucket" translatable="false">iengage-b12f2.appspot.com</string>
+    <string name="project_id" translatable="false">iengage-b12f2</string>
+</resources>

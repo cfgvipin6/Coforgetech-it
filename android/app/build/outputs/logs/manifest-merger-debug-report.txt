@@ -1,0 +1,1160 @@
+-- Merging decision tree log ---
+permission#com.iniitian_mobile.DEV.permission.C2D_MESSAGE
+INJECTED from /Users/erp/Desktop/dev/iengage_app/android/app/src/main/AndroidManifest.xml:14:5-16:47
+	android:name
+		INJECTED from /Users/erp/Desktop/dev/iengage_app/android/app/src/main/AndroidManifest.xml
+uses-permission#com.iniitian_mobile.DEV.permission.C2D_MESSAGE
+INJECTED from /Users/erp/Desktop/dev/iengage_app/android/app/src/main/AndroidManifest.xml:17:5-79
+	android:name
+		INJECTED from /Users/erp/Desktop/dev/iengage_app/android/app/src/main/AndroidManifest.xml
+application
+INJECTED from /Users/erp/Desktop/dev/iengage_app/android/app/src/main/AndroidManifest.xml:26:5-67:19
+INJECTED from /Users/erp/Desktop/dev/iengage_app/android/app/src/main/AndroidManifest.xml:26:5-67:19
+MERGED from /Users/erp/Desktop/dev/iengage_app/android/app/src/main/AndroidManifest.xml:26:5-67:19
+MERGED from /Users/erp/Desktop/dev/iengage_app/android/app/src/main/AndroidManifest.xml:26:5-67:19
+MERGED from [:react-native-splash-screen] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-splash-screen/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:11:5-12:19
+MERGED from [:react-native-splash-screen] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-splash-screen/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:11:5-12:19
+MERGED from [:@react-native-community_datetimepicker] /Users/erp/Desktop/dev/iengage_app/node_modules/@react-native-community/datetimepicker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:11:5-20
+MERGED from [:@react-native-community_datetimepicker] /Users/erp/Desktop/dev/iengage_app/node_modules/@react-native-community/datetimepicker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:11:5-20
+MERGED from [:@react-native-firebase_messaging] /Users/erp/Desktop/dev/iengage_app/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:15:5-43:19
+MERGED from [:@react-native-firebase_messaging] /Users/erp/Desktop/dev/iengage_app/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:15:5-43:19
+MERGED from [:react-native-code-push] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-code-push/android/app/build/intermediates/library_manifest/debug/AndroidManifest.xml:13:5-15:19
+MERGED from [:react-native-code-push] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-code-push/android/app/build/intermediates/library_manifest/debug/AndroidManifest.xml:13:5-15:19
+MERGED from [:react-native-device-info] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-device-info/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:11:5-20:19
+MERGED from [:react-native-device-info] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-device-info/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:11:5-20:19
+MERGED from [:react-native-file-viewer] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-file-viewer/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:11:5-21:19
+MERGED from [:react-native-file-viewer] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-file-viewer/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:11:5-21:19
+MERGED from [:react-native-image-picker] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-image-picker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:9:5-19:19
+MERGED from [:react-native-image-picker] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-image-picker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:9:5-19:19
+MERGED from [:react-native-webview] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-webview/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:11:5-21:19
+MERGED from [:react-native-webview] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-webview/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:11:5-21:19
+MERGED from [:rn-fetch-blob] /Users/erp/Desktop/dev/iengage_app/node_modules/rn-fetch-blob/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:35:5-45:19
+MERGED from [:rn-fetch-blob] /Users/erp/Desktop/dev/iengage_app/node_modules/rn-fetch-blob/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:35:5-45:19
+MERGED from [com.facebook.react:react-native:0.60.6] /Users/erp/.gradle/caches/transforms-2/files-2.1/3f62ded54db7bb51f744cee181b0fb52/jetified-react-native-0.60.6/AndroidManifest.xml:11:5-20
+MERGED from [com.facebook.react:react-native:0.60.6] /Users/erp/.gradle/caches/transforms-2/files-2.1/3f62ded54db7bb51f744cee181b0fb52/jetified-react-native-0.60.6/AndroidManifest.xml:11:5-20
+MERGED from [com.google.firebase:firebase-core:18.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/cf87128fa4b6a52743592ccfdff445a3/jetified-firebase-core-18.0.2/AndroidManifest.xml:7:5-20
+MERGED from [com.google.firebase:firebase-core:18.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/cf87128fa4b6a52743592ccfdff445a3/jetified-firebase-core-18.0.2/AndroidManifest.xml:7:5-20
+MERGED from [com.google.firebase:firebase-messaging:21.0.1] /Users/erp/.gradle/caches/transforms-2/files-2.1/e6aeccb10d90bd3d15843afaf86f6315/jetified-firebase-messaging-21.0.1/AndroidManifest.xml:22:5-43:19
+MERGED from [com.google.firebase:firebase-messaging:21.0.1] /Users/erp/.gradle/caches/transforms-2/files-2.1/e6aeccb10d90bd3d15843afaf86f6315/jetified-firebase-messaging-21.0.1/AndroidManifest.xml:22:5-43:19
+MERGED from [com.google.android.play:core:1.7.3] /Users/erp/.gradle/caches/transforms-2/files-2.1/540b9ead92b37da49399804f1955c067/jetified-core-1.7.3/AndroidManifest.xml:10:3-17:17
+MERGED from [com.google.android.play:core:1.7.3] /Users/erp/.gradle/caches/transforms-2/files-2.1/540b9ead92b37da49399804f1955c067/jetified-core-1.7.3/AndroidManifest.xml:10:3-17:17
+MERGED from [com.google.android.material:material:1.1.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/c33606034d780d4913aad3a58db3e506/material-1.1.0/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.material:material:1.1.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/c33606034d780d4913aad3a58db3e506/material-1.1.0/AndroidManifest.xml:22:5-20
+MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] /Users/erp/.gradle/caches/transforms-2/files-2.1/6e9ac5cb1388ce9aa6843d078c47ccbe/constraintlayout-2.0.4/AndroidManifest.xml:9:5-20
+MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] /Users/erp/.gradle/caches/transforms-2/files-2.1/6e9ac5cb1388ce9aa6843d078c47ccbe/constraintlayout-2.0.4/AndroidManifest.xml:9:5-20
+MERGED from [com.scottyab:rootbeer-lib:0.0.6] /Users/erp/.gradle/caches/transforms-2/files-2.1/8666a40001100cdcfe1ce6b0ad2b20a6/jetified-rootbeer-lib-0.0.6/AndroidManifest.xml:11:5-20
+MERGED from [com.scottyab:rootbeer-lib:0.0.6] /Users/erp/.gradle/caches/transforms-2/files-2.1/8666a40001100cdcfe1ce6b0ad2b20a6/jetified-rootbeer-lib-0.0.6/AndroidManifest.xml:11:5-20
+MERGED from [:react-native-send-intent] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-send-intent/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:11:5-25:19
+MERGED from [:react-native-send-intent] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-send-intent/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:11:5-25:19
+MERGED from [com.google.firebase:firebase-datatransport:17.0.10] /Users/erp/.gradle/caches/transforms-2/files-2.1/a0dba8646c9ab41fdd49cc467147eb05/jetified-firebase-datatransport-17.0.10/AndroidManifest.xml:24:5-32:19
+MERGED from [com.google.firebase:firebase-datatransport:17.0.10] /Users/erp/.gradle/caches/transforms-2/files-2.1/a0dba8646c9ab41fdd49cc467147eb05/jetified-firebase-datatransport-17.0.10/AndroidManifest.xml:24:5-32:19
+MERGED from [com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/erp/.gradle/caches/transforms-2/files-2.1/e98721d92a542c39e001ed7a622345bf/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:28:5-36:19
+MERGED from [com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/erp/.gradle/caches/transforms-2/files-2.1/e98721d92a542c39e001ed7a622345bf/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:28:5-36:19
+MERGED from [com.google.android.datatransport:transport-runtime:2.2.5] /Users/erp/.gradle/caches/transforms-2/files-2.1/bef2256cfc2972bb48363074146f729f/jetified-transport-runtime-2.2.5/AndroidManifest.xml:25:5-39:19
+MERGED from [com.google.android.datatransport:transport-runtime:2.2.5] /Users/erp/.gradle/caches/transforms-2/files-2.1/bef2256cfc2972bb48363074146f729f/jetified-transport-runtime-2.2.5/AndroidManifest.xml:25:5-39:19
+MERGED from [com.facebook.soloader:soloader:0.6.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/b84dce7d5b51e5fee82e17f4155962f0/jetified-soloader-0.6.0/AndroidManifest.xml:11:5-20
+MERGED from [com.facebook.soloader:soloader:0.6.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/b84dce7d5b51e5fee82e17f4155962f0/jetified-soloader-0.6.0/AndroidManifest.xml:11:5-20
+MERGED from [com.github.franmontiel:PersistentCookieJar:v1.0.1] /Users/erp/.gradle/caches/transforms-2/files-2.1/bfcbcc7fcc064890a6663c872b890408/jetified-PersistentCookieJar-v1.0.1/AndroidManifest.xml:12:5-20
+MERGED from [com.github.franmontiel:PersistentCookieJar:v1.0.1] /Users/erp/.gradle/caches/transforms-2/files-2.1/bfcbcc7fcc064890a6663c872b890408/jetified-PersistentCookieJar-v1.0.1/AndroidManifest.xml:12:5-20
+MERGED from [com.google.firebase:firebase-analytics:18.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/d005fa1cbfea251e3709399e6ac50781/jetified-firebase-analytics-18.0.2/AndroidManifest.xml:7:5-20
+MERGED from [com.google.firebase:firebase-analytics:18.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/d005fa1cbfea251e3709399e6ac50781/jetified-firebase-analytics-18.0.2/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-vision:17.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/0a20b27ae333086a9c00c041c7c0e2ab/jetified-play-services-vision-17.0.2/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-vision:17.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/0a20b27ae333086a9c00c041c7c0e2ab/jetified-play-services-vision-17.0.2/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-auth:19.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/57bfcd77bf7c9d985d013ce7ccc8f04d/jetified-play-services-auth-19.0.0/AndroidManifest.xml:22:5-38:19
+MERGED from [com.google.android.gms:play-services-auth:19.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/57bfcd77bf7c9d985d013ce7ccc8f04d/jetified-play-services-auth-19.0.0/AndroidManifest.xml:22:5-38:19
+MERGED from [com.google.android.gms:play-services-location:17.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/12f662ace90688e61f77c1e0be47d9c5/jetified-play-services-location-17.0.0/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-location:17.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/12f662ace90688e61f77c1e0be47d9c5/jetified-play-services-location-17.0.0/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-iid:17.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/bae85756b86e59c37f10cd9d5b8a514e/jetified-play-services-iid-17.0.0/AndroidManifest.xml:26:5-20
+MERGED from [com.google.android.gms:play-services-iid:17.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/bae85756b86e59c37f10cd9d5b8a514e/jetified-play-services-iid-17.0.0/AndroidManifest.xml:26:5-20
+MERGED from [com.google.android.gms:play-services-vision-common:17.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/2d0788252ce07090aedee90c862c36a6/jetified-play-services-vision-common-17.0.2/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-vision-common:17.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/2d0788252ce07090aedee90c862c36a6/jetified-play-services-vision-common-17.0.2/AndroidManifest.xml:7:5-20
+MERGED from [com.google.firebase:firebase-iid:21.0.1] /Users/erp/.gradle/caches/transforms-2/files-2.1/bd5de6bb015d3720918a69a6f61593d2/jetified-firebase-iid-21.0.1/AndroidManifest.xml:28:5-45:19
+MERGED from [com.google.firebase:firebase-iid:21.0.1] /Users/erp/.gradle/caches/transforms-2/files-2.1/bd5de6bb015d3720918a69a6f61593d2/jetified-firebase-iid-21.0.1/AndroidManifest.xml:28:5-45:19
+MERGED from [com.google.android.gms:play-services-measurement-api:18.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/ad65f92872ee1541dc3d4653b293a283/jetified-play-services-measurement-api-18.0.2/AndroidManifest.xml:26:5-34:19
+MERGED from [com.google.android.gms:play-services-measurement-api:18.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/ad65f92872ee1541dc3d4653b293a283/jetified-play-services-measurement-api-18.0.2/AndroidManifest.xml:26:5-34:19
+MERGED from [com.google.firebase:firebase-installations:16.3.5] /Users/erp/.gradle/caches/transforms-2/files-2.1/7b49c4f3f382f7fcc545b60616e6b9c7/jetified-firebase-installations-16.3.5/AndroidManifest.xml:14:5-22:19
+MERGED from [com.google.firebase:firebase-installations:16.3.5] /Users/erp/.gradle/caches/transforms-2/files-2.1/7b49c4f3f382f7fcc545b60616e6b9c7/jetified-firebase-installations-16.3.5/AndroidManifest.xml:14:5-22:19
+MERGED from [com.google.firebase:firebase-common:19.5.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/f2bedf782a4f021c3fbfb3cc40045ab2/jetified-firebase-common-19.5.0/AndroidManifest.xml:25:5-47:19
+MERGED from [com.google.firebase:firebase-common:19.5.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/f2bedf782a4f021c3fbfb3cc40045ab2/jetified-firebase-common-19.5.0/AndroidManifest.xml:25:5-47:19
+MERGED from [com.google.android.gms:play-services-clearcut:16.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/73ab4f8440aa8a9604ee821ddbe89d85/jetified-play-services-clearcut-16.0.0/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-clearcut:16.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/73ab4f8440aa8a9604ee821ddbe89d85/jetified-play-services-clearcut-16.0.0/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-phenotype:16.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/7e92d5d4f675374302dc065feefaf820/jetified-play-services-phenotype-16.0.0/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-phenotype:16.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/7e92d5d4f675374302dc065feefaf820/jetified-play-services-phenotype-16.0.0/AndroidManifest.xml:22:5-20
+MERGED from [com.google.firebase:firebase-iid-interop:17.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/e2af52c74c368231243ab8a525c13924/jetified-firebase-iid-interop-17.0.0/AndroidManifest.xml:7:5-8:19
+MERGED from [com.google.firebase:firebase-iid-interop:17.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/e2af52c74c368231243ab8a525c13924/jetified-firebase-iid-interop-17.0.0/AndroidManifest.xml:7:5-8:19
+MERGED from [com.google.android.gms:play-services-base:17.1.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/dc7f0a6e79d79f38fc09bbfa618c914e/jetified-play-services-base-17.1.0/AndroidManifest.xml:22:5-27:19
+MERGED from [com.google.android.gms:play-services-base:17.1.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/dc7f0a6e79d79f38fc09bbfa618c914e/jetified-play-services-base-17.1.0/AndroidManifest.xml:22:5-27:19
+MERGED from [com.google.android.gms:play-services-tasks:17.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/712df1658cdff61c8d78ea44f92f333b/jetified-play-services-tasks-17.0.0/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-tasks:17.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/712df1658cdff61c8d78ea44f92f333b/jetified-play-services-tasks-17.0.0/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-places-placereport:17.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/95796b9801995eb16fe47dc6d9ca0eaa/jetified-play-services-places-placereport-17.0.0/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-places-placereport:17.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/95796b9801995eb16fe47dc6d9ca0eaa/jetified-play-services-places-placereport-17.0.0/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-measurement:18.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/9e719e888e659f9de0ddf911427a5604/jetified-play-services-measurement-18.0.2/AndroidManifest.xml:28:5-44:19
+MERGED from [com.google.android.gms:play-services-measurement:18.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/9e719e888e659f9de0ddf911427a5604/jetified-play-services-measurement-18.0.2/AndroidManifest.xml:28:5-44:19
+MERGED from [com.google.android.gms:play-services-measurement-sdk:18.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/3a7fc8f1aec6e513cbdd1fa203bd8d09/jetified-play-services-measurement-sdk-18.0.2/AndroidManifest.xml:22:5-23:19
+MERGED from [com.google.android.gms:play-services-measurement-sdk:18.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/3a7fc8f1aec6e513cbdd1fa203bd8d09/jetified-play-services-measurement-sdk-18.0.2/AndroidManifest.xml:22:5-23:19
+MERGED from [com.google.android.gms:play-services-measurement-impl:18.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/e139c7bc3862ad15dcb0fc52916d31b6/jetified-play-services-measurement-impl-18.0.2/AndroidManifest.xml:28:5-29:19
+MERGED from [com.google.android.gms:play-services-measurement-impl:18.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/e139c7bc3862ad15dcb0fc52916d31b6/jetified-play-services-measurement-impl-18.0.2/AndroidManifest.xml:28:5-29:19
+MERGED from [com.google.android.gms:play-services-stats:17.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/87047edfeb6054637c37bf2250129bf3/jetified-play-services-stats-17.0.0/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-stats:17.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/87047edfeb6054637c37bf2250129bf3/jetified-play-services-stats-17.0.0/AndroidManifest.xml:7:5-20
+MERGED from [com.google.firebase:firebase-measurement-connector:18.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/4477c296fe41f220b9017f23c0a2b751/jetified-firebase-measurement-connector-18.0.0/AndroidManifest.xml:22:5-23:19
+MERGED from [com.google.firebase:firebase-measurement-connector:18.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/4477c296fe41f220b9017f23c0a2b751/jetified-firebase-measurement-connector-18.0.0/AndroidManifest.xml:22:5-23:19
+MERGED from [com.google.android.gms:play-services-ads-identifier:17.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/49b2cf790c65405ba36a211274079969/jetified-play-services-ads-identifier-17.0.0/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-ads-identifier:17.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/49b2cf790c65405ba36a211274079969/jetified-play-services-ads-identifier-17.0.0/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-measurement-base:18.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/ab8a293833e3d9ec2799598838b4c30f/jetified-play-services-measurement-base-18.0.2/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-measurement-base:18.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/ab8a293833e3d9ec2799598838b4c30f/jetified-play-services-measurement-base-18.0.2/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-basement:17.1.1] /Users/erp/.gradle/caches/transforms-2/files-2.1/11ec236308490d9839fea05c0ed171a6/jetified-play-services-basement-17.1.1/AndroidManifest.xml:22:5-26:19
+MERGED from [com.google.android.gms:play-services-basement:17.1.1] /Users/erp/.gradle/caches/transforms-2/files-2.1/11ec236308490d9839fea05c0ed171a6/jetified-play-services-basement-17.1.1/AndroidManifest.xml:22:5-26:19
+MERGED from [androidx.core:core:1.3.1] /Users/erp/.gradle/caches/transforms-2/files-2.1/c53b1439b867a0cdca03bf1fb96ebc56/core-1.3.1/AndroidManifest.xml:24:5-89
+MERGED from [androidx.core:core:1.3.1] /Users/erp/.gradle/caches/transforms-2/files-2.1/c53b1439b867a0cdca03bf1fb96ebc56/core-1.3.1/AndroidManifest.xml:24:5-89
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/1664b12dd02235d15f6e4fe41add08ee/versionedparcelable-1.1.0/AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/1664b12dd02235d15f6e4fe41add08ee/versionedparcelable-1.1.0/AndroidManifest.xml:24:5-25:19
+	android:requestLegacyExternalStorage
+		ADDED from /Users/erp/Desktop/dev/iengage_app/android/app/src/main/AndroidManifest.xml:34:9-52
+	android:appComponentFactory
+		ADDED from [androidx.core:core:1.3.1] /Users/erp/.gradle/caches/transforms-2/files-2.1/c53b1439b867a0cdca03bf1fb96ebc56/core-1.3.1/AndroidManifest.xml:24:18-86
+	android:supportsRtl
+		ADDED from /Users/erp/Desktop/dev/iengage_app/android/app/src/main/AndroidManifest.xml:33:9-35
+	android:label
+		INJECTED from /Users/erp/Desktop/dev/iengage_app/android/app/src/main/AndroidManifest.xml
+		ADDED from /Users/erp/Desktop/dev/iengage_app/android/app/src/main/AndroidManifest.xml:30:9-36
+		REJECTED from [:react-native-splash-screen] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-splash-screen/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:11:18-50
+		REJECTED from [:rn-fetch-blob] /Users/erp/Desktop/dev/iengage_app/node_modules/rn-fetch-blob/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:35:18-50
+	android:roundIcon
+		ADDED from /Users/erp/Desktop/dev/iengage_app/android/app/src/main/AndroidManifest.xml:32:9-48
+	tools:ignore
+		ADDED from /Users/erp/Desktop/dev/iengage_app/android/app/src/debug/AndroidManifest.xml:7:39-78
+	android:allowBackup
+		ADDED from /Users/erp/Desktop/dev/iengage_app/android/app/src/main/AndroidManifest.xml:28:9-36
+	tools:targetApi
+		ADDED from /Users/erp/Desktop/dev/iengage_app/android/app/src/debug/AndroidManifest.xml:7:18-38
+	android:icon
+		INJECTED from /Users/erp/Desktop/dev/iengage_app/android/app/src/main/AndroidManifest.xml
+		ADDED from /Users/erp/Desktop/dev/iengage_app/android/app/src/main/AndroidManifest.xml:29:9-34
+	android:theme
+		ADDED from /Users/erp/Desktop/dev/iengage_app/android/app/src/main/AndroidManifest.xml:35:9-40
+	android:networkSecurityConfig
+		ADDED from /Users/erp/Desktop/dev/iengage_app/android/app/src/main/AndroidManifest.xml:31:9-69
+	tools:replace
+		ADDED from /Users/erp/Desktop/dev/iengage_app/android/app/src/main/AndroidManifest.xml:36:9-58
+	android:name
+		ADDED from /Users/erp/Desktop/dev/iengage_app/android/app/src/main/AndroidManifest.xml:27:9-40
+provider#com.vinzscam.reactnativefileviewer.FileProvider
+INJECTED from /Users/erp/Desktop/dev/iengage_app/android/app/src/main/AndroidManifest.xml:39:9-47:20
+MERGED from [:react-native-file-viewer] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-file-viewer/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:12:9-20:20
+MERGED from [:react-native-file-viewer] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-file-viewer/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:12:9-20:20
+	android:authorities
+		INJECTED from /Users/erp/Desktop/dev/iengage_app/android/app/src/main/AndroidManifest.xml
+activity#com.iniitian_mobile.MainActivity
+INJECTED from /Users/erp/Desktop/dev/iengage_app/android/app/src/main/AndroidManifest.xml:49:9-62:20
+	android:label
+		INJECTED from /Users/erp/Desktop/dev/iengage_app/android/app/src/main/AndroidManifest.xml
+manifest
+ADDED from /Users/erp/Desktop/dev/iengage_app/android/app/src/main/AndroidManifest.xml:2:1-69:12
+INJECTED from /Users/erp/Desktop/dev/iengage_app/android/app/src/main/AndroidManifest.xml:2:1-69:12
+INJECTED from /Users/erp/Desktop/dev/iengage_app/android/app/src/main/AndroidManifest.xml:2:1-69:12
+INJECTED from /Users/erp/Desktop/dev/iengage_app/android/app/src/main/AndroidManifest.xml:2:1-69:12
+MERGED from /Users/erp/Desktop/dev/iengage_app/android/app/src/main/AndroidManifest.xml:2:1-69:12
+MERGED from [:react-native-splash-screen] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-splash-screen/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-14:12
+MERGED from [:react-native-camera] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-camera/android/build/intermediates/library_manifest/generalDebug/AndroidManifest.xml:2:1-18:12
+MERGED from [:react-native-config] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-config/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
+MERGED from [:@react-native-community_async-storage] /Users/erp/Desktop/dev/iengage_app/node_modules/@react-native-community/async-storage/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-9:12
+MERGED from [:@react-native-community_datetimepicker] /Users/erp/Desktop/dev/iengage_app/node_modules/@react-native-community/datetimepicker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-13:12
+MERGED from [:@react-native-community_geolocation] /Users/erp/Desktop/dev/iengage_app/node_modules/@react-native-community/geolocation/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-9:12
+MERGED from [:@react-native-community_netinfo] /Users/erp/Desktop/dev/iengage_app/node_modules/@react-native-community/netinfo/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-12:12
+MERGED from [:@react-native-community_picker] /Users/erp/Desktop/dev/iengage_app/node_modules/@react-native-community/picker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-9:12
+MERGED from [:@react-native-firebase_messaging] /Users/erp/Desktop/dev/iengage_app/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-45:12
+MERGED from [:@react-native-firebase_app] /Users/erp/Desktop/dev/iengage_app/node_modules/@react-native-firebase/app/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
+MERGED from [:appcenter] /Users/erp/Desktop/dev/iengage_app/node_modules/appcenter/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
+MERGED from [:appcenter-analytics] /Users/erp/Desktop/dev/iengage_app/node_modules/appcenter-analytics/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
+MERGED from [:appcenter-crashes] /Users/erp/Desktop/dev/iengage_app/node_modules/appcenter-crashes/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
+MERGED from [:jail-monkey] /Users/erp/Desktop/dev/iengage_app/node_modules/jail-monkey/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
+MERGED from [:react-native-aes-crypto] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-aes-crypto/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
+MERGED from [:react-native-android-location-enabler] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-android-location-enabler/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
+MERGED from [:react-native-code-push] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-code-push/android/app/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-17:12
+MERGED from [:react-native-device-info] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-device-info/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-22:12
+MERGED from [:react-native-document-picker] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-document-picker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-9:12
+MERGED from [:react-native-exit-app] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-exit-app/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
+MERGED from [:react-native-file-viewer] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-file-viewer/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-23:12
+MERGED from [:react-native-fs] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-fs/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-13:12
+MERGED from [:react-native-gesture-handler] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-gesture-handler/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
+MERGED from [:react-native-image-picker] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-image-picker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-21:12
+MERGED from [:react-native-pdf] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-pdf/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-9:12
+MERGED from [:react-native-permissions] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-permissions/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-9:12
+MERGED from [:react-native-push-notification] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-push-notification/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
+MERGED from [:react-native-reanimated] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-reanimated/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
+MERGED from [:react-native-screens] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-screens/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
+MERGED from [:react-native-ssl-pinning] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-ssl-pinning/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
+MERGED from [:react-native-vector-icons] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-vector-icons/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
+MERGED from [:react-native-webview] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-webview/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-23:12
+MERGED from [:rn-fetch-blob] /Users/erp/Desktop/dev/iengage_app/node_modules/rn-fetch-blob/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-47:12
+MERGED from [com.facebook.react:react-native:0.60.6] /Users/erp/.gradle/caches/transforms-2/files-2.1/3f62ded54db7bb51f744cee181b0fb52/jetified-react-native-0.60.6/AndroidManifest.xml:2:1-13:12
+MERGED from [org.webkit:android-jsc:r245459] /Users/erp/.gradle/caches/transforms-2/files-2.1/16a8ee35fa85f97de24ba7dd59a8c99a/jetified-android-jsc-r245459/AndroidManifest.xml:2:1-11:12
+MERGED from [com.google.firebase:firebase-core:18.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/cf87128fa4b6a52743592ccfdff445a3/jetified-firebase-core-18.0.2/AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.firebase:firebase-messaging:21.0.1] /Users/erp/.gradle/caches/transforms-2/files-2.1/e6aeccb10d90bd3d15843afaf86f6315/jetified-firebase-messaging-21.0.1/AndroidManifest.xml:17:1-45:12
+MERGED from [eu.dkaratzas:android-inapp-update:1.0.5] /Users/erp/.gradle/caches/transforms-2/files-2.1/1a681a57c58bd35710da9fb21d8598e4/jetified-android-inapp-update-1.0.5/AndroidManifest.xml:2:1-11:12
+MERGED from [com.google.android.play:core:1.7.3] /Users/erp/.gradle/caches/transforms-2/files-2.1/540b9ead92b37da49399804f1955c067/jetified-core-1.7.3/AndroidManifest.xml:2:1-19:12
+MERGED from [com.google.android.material:material:1.1.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/c33606034d780d4913aad3a58db3e506/material-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] /Users/erp/.gradle/caches/transforms-2/files-2.1/6e9ac5cb1388ce9aa6843d078c47ccbe/constraintlayout-2.0.4/AndroidManifest.xml:2:1-11:12
+MERGED from [com.scottyab:rootbeer-lib:0.0.6] /Users/erp/.gradle/caches/transforms-2/files-2.1/8666a40001100cdcfe1ce6b0ad2b20a6/jetified-rootbeer-lib-0.0.6/AndroidManifest.xml:2:1-13:12
+MERGED from [androidx.appcompat:appcompat:1.2.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/db9fb6504508a64eed62fc0fedb3b880/appcompat-1.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [:react-native-image-resizer] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-image-resizer/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
+MERGED from [:react-native-linear-gradient] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-linear-gradient/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
+MERGED from [:react-native-send-intent] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-send-intent/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-27:12
+MERGED from [com.google.firebase:firebase-datatransport:17.0.10] /Users/erp/.gradle/caches/transforms-2/files-2.1/a0dba8646c9ab41fdd49cc467147eb05/jetified-firebase-datatransport-17.0.10/AndroidManifest.xml:15:1-34:12
+MERGED from [com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/erp/.gradle/caches/transforms-2/files-2.1/e98721d92a542c39e001ed7a622345bf/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:15:1-38:12
+MERGED from [com.google.android.datatransport:transport-runtime:2.2.5] /Users/erp/.gradle/caches/transforms-2/files-2.1/bef2256cfc2972bb48363074146f729f/jetified-transport-runtime-2.2.5/AndroidManifest.xml:15:1-41:12
+MERGED from [com.facebook.fresco:fresco:2.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/d0ac34ffcaf56c8129b884969c31a243/jetified-fresco-2.0.0/AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:imagepipeline-okhttp3:2.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/208a75511e117640e399a13f9296da50/jetified-imagepipeline-okhttp3-2.0.0/AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:drawee:2.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/171429b0479c6236552869c91446367f/jetified-drawee-2.0.0/AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:nativeimagefilters:2.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/8d4958b2fa02269ecadc71acdbd7585a/jetified-nativeimagefilters-2.0.0/AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:imagepipeline:2.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/8c80410ad80f7e9701cc29c02130f5a4/jetified-imagepipeline-2.0.0/AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:nativeimagetranscoder:2.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/5ae1c0854bb0887bed62ee5a6c552fb4/jetified-nativeimagetranscoder-2.0.0/AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:imagepipeline-base:2.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/edfef975a68850d6c095f8c79f8ed9eb/jetified-imagepipeline-base-2.0.0/AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.soloader:soloader:0.6.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/b84dce7d5b51e5fee82e17f4155962f0/jetified-soloader-0.6.0/AndroidManifest.xml:2:1-13:12
+MERGED from [com.github.franmontiel:PersistentCookieJar:v1.0.1] /Users/erp/.gradle/caches/transforms-2/files-2.1/bfcbcc7fcc064890a6663c872b890408/jetified-PersistentCookieJar-v1.0.1/AndroidManifest.xml:2:1-14:12
+MERGED from [com.google.firebase:firebase-analytics:18.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/d005fa1cbfea251e3709399e6ac50781/jetified-firebase-analytics-18.0.2/AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.gms:play-services-vision:17.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/0a20b27ae333086a9c00c041c7c0e2ab/jetified-play-services-vision-17.0.2/AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.gms:play-services-auth:19.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/57bfcd77bf7c9d985d013ce7ccc8f04d/jetified-play-services-auth-19.0.0/AndroidManifest.xml:17:1-40:12
+MERGED from [com.google.android.gms:play-services-location:17.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/12f662ace90688e61f77c1e0be47d9c5/jetified-play-services-location-17.0.0/AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.gms:play-services-iid:17.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/bae85756b86e59c37f10cd9d5b8a514e/jetified-play-services-iid-17.0.0/AndroidManifest.xml:17:1-28:12
+MERGED from [com.google.android.gms:play-services-vision-common:17.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/2d0788252ce07090aedee90c862c36a6/jetified-play-services-vision-common-17.0.2/AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.firebase:firebase-iid:21.0.1] /Users/erp/.gradle/caches/transforms-2/files-2.1/bd5de6bb015d3720918a69a6f61593d2/jetified-firebase-iid-21.0.1/AndroidManifest.xml:17:1-47:12
+MERGED from [com.google.android.gms:play-services-measurement-api:18.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/ad65f92872ee1541dc3d4653b293a283/jetified-play-services-measurement-api-18.0.2/AndroidManifest.xml:17:1-36:12
+MERGED from [com.google.firebase:firebase-installations:16.3.5] /Users/erp/.gradle/caches/transforms-2/files-2.1/7b49c4f3f382f7fcc545b60616e6b9c7/jetified-firebase-installations-16.3.5/AndroidManifest.xml:2:1-24:12
+MERGED from [com.google.firebase:firebase-common:19.5.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/f2bedf782a4f021c3fbfb3cc40045ab2/jetified-firebase-common-19.5.0/AndroidManifest.xml:15:1-49:12
+MERGED from [com.google.android.gms:play-services-auth-api-phone:17.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/e60cbff71690a0ab51850944c1fc1bfb/jetified-play-services-auth-api-phone-17.0.0/AndroidManifest.xml:2:1-7:12
+MERGED from [com.google.android.gms:play-services-auth-base:17.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/cb51e68015694062c9f718383729e993/jetified-play-services-auth-base-17.0.0/AndroidManifest.xml:2:1-7:12
+MERGED from [com.google.android.gms:play-services-clearcut:16.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/73ab4f8440aa8a9604ee821ddbe89d85/jetified-play-services-clearcut-16.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.gms:play-services-flags:16.0.1] /Users/erp/.gradle/caches/transforms-2/files-2.1/52982fd645eb6a19e0c8674b8881168e/jetified-play-services-flags-16.0.1/AndroidManifest.xml:17:1-22:12
+MERGED from [com.google.android.gms:play-services-phenotype:16.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/7e92d5d4f675374302dc065feefaf820/jetified-play-services-phenotype-16.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.firebase:firebase-iid-interop:17.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/e2af52c74c368231243ab8a525c13924/jetified-firebase-iid-interop-17.0.0/AndroidManifest.xml:2:1-10:12
+MERGED from [com.google.android.gms:play-services-base:17.1.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/dc7f0a6e79d79f38fc09bbfa618c914e/jetified-play-services-base-17.1.0/AndroidManifest.xml:17:1-29:12
+MERGED from [com.google.android.gms:play-services-cloud-messaging:16.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/ec374bb595e8736409912e7ac9f6ce93/jetified-play-services-cloud-messaging-16.0.0/AndroidManifest.xml:2:1-13:12
+MERGED from [com.google.firebase:firebase-installations-interop:16.0.1] /Users/erp/.gradle/caches/transforms-2/files-2.1/c2105195443215d87837293a9118b45a/jetified-firebase-installations-interop-16.0.1/AndroidManifest.xml:15:1-23:12
+MERGED from [com.google.android.gms:play-services-tasks:17.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/712df1658cdff61c8d78ea44f92f333b/jetified-play-services-tasks-17.0.0/AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.gms:play-services-places-placereport:17.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/95796b9801995eb16fe47dc6d9ca0eaa/jetified-play-services-places-placereport-17.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.gms:play-services-measurement:18.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/9e719e888e659f9de0ddf911427a5604/jetified-play-services-measurement-18.0.2/AndroidManifest.xml:17:1-46:12
+MERGED from [com.google.android.gms:play-services-measurement-sdk:18.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/3a7fc8f1aec6e513cbdd1fa203bd8d09/jetified-play-services-measurement-sdk-18.0.2/AndroidManifest.xml:17:1-25:12
+MERGED from [com.google.android.gms:play-services-measurement-impl:18.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/e139c7bc3862ad15dcb0fc52916d31b6/jetified-play-services-measurement-impl-18.0.2/AndroidManifest.xml:17:1-31:12
+MERGED from [com.google.android.gms:play-services-stats:17.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/87047edfeb6054637c37bf2250129bf3/jetified-play-services-stats-17.0.0/AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.firebase:firebase-measurement-connector:18.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/4477c296fe41f220b9017f23c0a2b751/jetified-firebase-measurement-connector-18.0.0/AndroidManifest.xml:17:1-25:12
+MERGED from [com.google.android.gms:play-services-ads-identifier:17.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/49b2cf790c65405ba36a211274079969/jetified-play-services-ads-identifier-17.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.gms:play-services-measurement-sdk-api:18.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/8c7670a791aaa6a7c7b7f3cc556967ff/jetified-play-services-measurement-sdk-api-18.0.2/AndroidManifest.xml:17:1-27:12
+MERGED from [com.google.android.gms:play-services-measurement-base:18.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/ab8a293833e3d9ec2799598838b4c30f/jetified-play-services-measurement-base-18.0.2/AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.gms:play-services-basement:17.1.1] /Users/erp/.gradle/caches/transforms-2/files-2.1/11ec236308490d9839fea05c0ed171a6/jetified-play-services-basement-17.1.1/AndroidManifest.xml:17:1-28:12
+MERGED from [androidx.exifinterface:exifinterface:1.1.0-rc01] /Users/erp/.gradle/caches/transforms-2/files-2.1/c5bfe11f74002cf7c6567fd7f4133427/exifinterface-1.1.0-rc01/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.cardview:cardview:1.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/684d4bcbfe7d13f857630d1714522e8a/cardview-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.github.barteksc:android-pdf-viewer:3.1.0-beta.1] /Users/erp/.gradle/caches/transforms-2/files-2.1/619e4b314acc318f9ab63ed95ccedb29/jetified-android-pdf-viewer-3.1.0-beta.1/AndroidManifest.xml:2:1-11:12
+MERGED from [com.github.barteksc:pdfium-android:1.9.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/7d79475fb42b540d503187bf83574877/jetified-pdfium-android-1.9.0/AndroidManifest.xml:2:1-11:12
+MERGED from [androidx.legacy:legacy-support-v4:1.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/36e8435e2f3c429adb7ad851171f0d04/legacy-support-v4-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/265e6d688d7a8da74f80697adff12978/legacy-support-core-ui-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/17624df4bebbfdde9190176e33f8b347/coordinatorlayout-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.transition:transition:1.2.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/07236c5ad976a13b130b0aaccc4c775a/transition-1.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.appcompat:appcompat-resources:1.2.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/44b50ec55f5988753f8a79a69fd0334c/jetified-appcompat-resources-1.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/ed5c359cbe25a743d3dc8f26e70983e6/vectordrawable-animated-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/6b17609a97e89370c5405f93833c857a/vectordrawable-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.viewpager2:viewpager2:1.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/57878c7a99d8f9524165caa0cc187075/jetified-viewpager2-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/16a1a9647baddd8715bb2277d6bd74e2/drawerlayout-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.fragment:fragment:1.2.1] /Users/erp/.gradle/caches/transforms-2/files-2.1/b2022e1e6ac4a49e27b4c01452994b47/fragment-1.2.1/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/0b671c7c5efbbe9207ee707e5e7f18b4/swiperefreshlayout-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.media:media:1.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/b7a99168afd50e72ed2f364d2065a1ac/media-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/fb7861c9a3177fb8280df41de68f938e/legacy-support-core-utils-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.recyclerview:recyclerview:1.1.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/ed794f06c3c3dc4dc369986c43e4758e/recyclerview-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/c6986fc73286fd3cc985adcbce6f409f/viewpager-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/a25527d7d17b3d32dc91c6edc14d030b/slidingpanelayout-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.customview:customview:1.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/f937f94723c7f78e0dccdcc41b860d4a/customview-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.loader:loader:1.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/e8faeab5105ed6a1e552e14e92bf07d0/loader-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.activity:activity:1.1.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/9d014d619d92fcb9e30306c03ed8739b/jetified-activity-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/e22de34c01e9cc4fd4f5acf75df98200/asynclayoutinflater-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.core:core:1.3.1] /Users/erp/.gradle/caches/transforms-2/files-2.1/c53b1439b867a0cdca03bf1fb96ebc56/core-1.3.1/AndroidManifest.xml:17:1-26:12
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.2.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/5217c7cb6691fa0e4b4bb761e8e65f46/lifecycle-runtime-2.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/4417020ca59293e8f58e50548d3f148a/cursoradapter-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/1664b12dd02235d15f6e4fe41add08ee/versionedparcelable-1.1.0/AndroidManifest.xml:17:1-27:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.2.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/9ad0d3d6ec1d2e90a4a6c743b3679b2b/jetified-lifecycle-viewmodel-savedstate-2.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/f81c0079acb09c5c21ec698015b78e47/lifecycle-livedata-2.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.2.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/fbfbc281350c2df3f19fb91412e7a884/lifecycle-livedata-core-2.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.savedstate:savedstate:1.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/9d21fe9cac8e05182943f36530f5c9e3/jetified-savedstate-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.arch.core:core-runtime:2.1.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/7c6e524712c81b143d6077aaa9d213f0/core-runtime-2.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.2.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/c1025294588d76a61c7e6ba9ac38d9ba/lifecycle-viewmodel-2.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/6e19518d17e83ea38dc2d95fd1091e5a/interpolator-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.documentfile:documentfile:1.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/42fe1741f3e0aca31a378b4f26cbbf61/documentfile-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/c89dded747e014f5db5e1b6173218a5d/localbroadcastmanager-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.print:print:1.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/070416e60b3b8e6fa20985025441823b/print-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.google.firebase:firebase-components:16.1.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/438584abbda936f517551e5f3863c2d6/jetified-firebase-components-16.1.0/AndroidManifest.xml:15:1-23:12
+MERGED from [com.google.firebase:firebase-encoders-json:17.1.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/1676c40da2368cc02d81822266a52854/jetified-firebase-encoders-json-17.1.0/AndroidManifest.xml:15:1-23:12
+MERGED from [com.google.android.datatransport:transport-api:2.2.1] /Users/erp/.gradle/caches/transforms-2/files-2.1/a70c30787a8a2a346e33a7eaf1b5d768/jetified-transport-api-2.2.1/AndroidManifest.xml:15:1-22:12
+MERGED from [com.microsoft.appcenter.reactnative:appcenter-react-native:4.4.3] /Users/erp/.gradle/caches/transforms-2/files-2.1/b9788a1a26fdfe0b43a70c3564584ea0/jetified-appcenter-react-native-4.4.3/AndroidManifest.xml:2:1-11:12
+MERGED from [com.microsoft.appcenter:appcenter-analytics:4.4.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/85243e6e849a51be7055319579c20bd7/jetified-appcenter-analytics-4.4.2/AndroidManifest.xml:6:1-15:12
+MERGED from [com.microsoft.appcenter:appcenter-crashes:4.4.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/229fd84be4b6aa5fc90d8b38296488d5/jetified-appcenter-crashes-4.4.2/AndroidManifest.xml:6:1-15:12
+MERGED from [com.microsoft.appcenter:appcenter:4.4.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/e2108db46ba19c5f6456f38e45b2939d/jetified-appcenter-4.4.2/AndroidManifest.xml:6:1-18:12
+MERGED from [me.leolin:ShortcutBadger:1.1.22] /Users/erp/.gradle/caches/transforms-2/files-2.1/6e12edebbf2856f637f4f81681c50060/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:2:1-52:12
+MERGED from [com.facebook.fresco:fbcore:2.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/022907a159096af81fac12e722a4148f/jetified-fbcore-2.0.0/AndroidManifest.xml:2:1-9:12
+INJECTED from /Users/erp/Desktop/dev/iengage_app/android/app/src/debug/AndroidManifest.xml:2:1-8:12
+INJECTED from /Users/erp/Desktop/dev/iengage_app/android/app/src/debug/AndroidManifest.xml:2:1-8:12
+INJECTED from /Users/erp/Desktop/dev/iengage_app/android/app/src/debug/AndroidManifest.xml:2:1-8:12
+	package
+		ADDED from /Users/erp/Desktop/dev/iengage_app/android/app/src/main/AndroidManifest.xml:4:5-34
+		INJECTED from /Users/erp/Desktop/dev/iengage_app/android/app/src/main/AndroidManifest.xml
+		ADDED from /Users/erp/Desktop/dev/iengage_app/android/app/src/main/AndroidManifest.xml:4:5-34
+		INJECTED from /Users/erp/Desktop/dev/iengage_app/android/app/src/debug/AndroidManifest.xml
+	android:versionName
+		INJECTED from /Users/erp/Desktop/dev/iengage_app/android/app/src/main/AndroidManifest.xml
+		ADDED from /Users/erp/Desktop/dev/iengage_app/android/app/src/main/AndroidManifest.xml:2:1-69:12
+		INJECTED from /Users/erp/Desktop/dev/iengage_app/android/app/src/debug/AndroidManifest.xml
+	xmlns:tools
+		ADDED from /Users/erp/Desktop/dev/iengage_app/android/app/src/main/AndroidManifest.xml:3:5-51
+	android:versionCode
+		INJECTED from /Users/erp/Desktop/dev/iengage_app/android/app/src/main/AndroidManifest.xml
+		ADDED from /Users/erp/Desktop/dev/iengage_app/android/app/src/main/AndroidManifest.xml:2:1-69:12
+		INJECTED from /Users/erp/Desktop/dev/iengage_app/android/app/src/debug/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/erp/Desktop/dev/iengage_app/android/app/src/main/AndroidManifest.xml:2:11-69
+uses-permission#android.permission.CAMERA
+ADDED from /Users/erp/Desktop/dev/iengage_app/android/app/src/main/AndroidManifest.xml:6:5-65
+MERGED from [:react-native-camera] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-camera/android/build/intermediates/library_manifest/generalDebug/AndroidManifest.xml:9:5-65
+MERGED from [:react-native-camera] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-camera/android/build/intermediates/library_manifest/generalDebug/AndroidManifest.xml:9:5-65
+	android:name
+		ADDED from /Users/erp/Desktop/dev/iengage_app/android/app/src/main/AndroidManifest.xml:6:22-62
+uses-permission#android.permission.INTERNET
+ADDED from /Users/erp/Desktop/dev/iengage_app/android/app/src/main/AndroidManifest.xml:7:5-67
+MERGED from [:@react-native-firebase_messaging] /Users/erp/Desktop/dev/iengage_app/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:11:5-67
+MERGED from [:@react-native-firebase_messaging] /Users/erp/Desktop/dev/iengage_app/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:11:5-67
+MERGED from [:react-native-code-push] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-code-push/android/app/build/intermediates/library_manifest/debug/AndroidManifest.xml:11:5-67
+MERGED from [:react-native-code-push] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-code-push/android/app/build/intermediates/library_manifest/debug/AndroidManifest.xml:11:5-67
+MERGED from [:rn-fetch-blob] /Users/erp/Desktop/dev/iengage_app/node_modules/rn-fetch-blob/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:15:5-67
+MERGED from [:rn-fetch-blob] /Users/erp/Desktop/dev/iengage_app/node_modules/rn-fetch-blob/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:15:5-67
+MERGED from [com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/erp/.gradle/caches/transforms-2/files-2.1/e98721d92a542c39e001ed7a622345bf/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:26:5-67
+MERGED from [com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/erp/.gradle/caches/transforms-2/files-2.1/e98721d92a542c39e001ed7a622345bf/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:26:5-67
+MERGED from [com.google.android.gms:play-services-iid:17.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/bae85756b86e59c37f10cd9d5b8a514e/jetified-play-services-iid-17.0.0/AndroidManifest.xml:24:5-67
+MERGED from [com.google.android.gms:play-services-iid:17.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/bae85756b86e59c37f10cd9d5b8a514e/jetified-play-services-iid-17.0.0/AndroidManifest.xml:24:5-67
+MERGED from [com.google.firebase:firebase-iid:21.0.1] /Users/erp/.gradle/caches/transforms-2/files-2.1/bd5de6bb015d3720918a69a6f61593d2/jetified-firebase-iid-21.0.1/AndroidManifest.xml:23:5-67
+MERGED from [com.google.firebase:firebase-iid:21.0.1] /Users/erp/.gradle/caches/transforms-2/files-2.1/bd5de6bb015d3720918a69a6f61593d2/jetified-firebase-iid-21.0.1/AndroidManifest.xml:23:5-67
+MERGED from [com.google.android.gms:play-services-measurement-api:18.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/ad65f92872ee1541dc3d4653b293a283/jetified-play-services-measurement-api-18.0.2/AndroidManifest.xml:22:5-67
+MERGED from [com.google.android.gms:play-services-measurement-api:18.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/ad65f92872ee1541dc3d4653b293a283/jetified-play-services-measurement-api-18.0.2/AndroidManifest.xml:22:5-67
+MERGED from [com.google.firebase:firebase-installations:16.3.5] /Users/erp/.gradle/caches/transforms-2/files-2.1/7b49c4f3f382f7fcc545b60616e6b9c7/jetified-firebase-installations-16.3.5/AndroidManifest.xml:11:5-67
+MERGED from [com.google.firebase:firebase-installations:16.3.5] /Users/erp/.gradle/caches/transforms-2/files-2.1/7b49c4f3f382f7fcc545b60616e6b9c7/jetified-firebase-installations-16.3.5/AndroidManifest.xml:11:5-67
+MERGED from [com.google.android.gms:play-services-cloud-messaging:16.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/ec374bb595e8736409912e7ac9f6ce93/jetified-play-services-cloud-messaging-16.0.0/AndroidManifest.xml:8:5-67
+MERGED from [com.google.android.gms:play-services-cloud-messaging:16.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/ec374bb595e8736409912e7ac9f6ce93/jetified-play-services-cloud-messaging-16.0.0/AndroidManifest.xml:8:5-67
+MERGED from [com.google.android.gms:play-services-measurement:18.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/9e719e888e659f9de0ddf911427a5604/jetified-play-services-measurement-18.0.2/AndroidManifest.xml:23:5-67
+MERGED from [com.google.android.gms:play-services-measurement:18.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/9e719e888e659f9de0ddf911427a5604/jetified-play-services-measurement-18.0.2/AndroidManifest.xml:23:5-67
+MERGED from [com.google.android.gms:play-services-measurement-impl:18.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/e139c7bc3862ad15dcb0fc52916d31b6/jetified-play-services-measurement-impl-18.0.2/AndroidManifest.xml:23:5-67
+MERGED from [com.google.android.gms:play-services-measurement-impl:18.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/e139c7bc3862ad15dcb0fc52916d31b6/jetified-play-services-measurement-impl-18.0.2/AndroidManifest.xml:23:5-67
+MERGED from [com.google.android.gms:play-services-measurement-sdk-api:18.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/8c7670a791aaa6a7c7b7f3cc556967ff/jetified-play-services-measurement-sdk-api-18.0.2/AndroidManifest.xml:23:5-67
+MERGED from [com.google.android.gms:play-services-measurement-sdk-api:18.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/8c7670a791aaa6a7c7b7f3cc556967ff/jetified-play-services-measurement-sdk-api-18.0.2/AndroidManifest.xml:23:5-67
+MERGED from [com.microsoft.appcenter:appcenter:4.4.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/e2108db46ba19c5f6456f38e45b2939d/jetified-appcenter-4.4.2/AndroidManifest.xml:15:5-67
+MERGED from [com.microsoft.appcenter:appcenter:4.4.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/e2108db46ba19c5f6456f38e45b2939d/jetified-appcenter-4.4.2/AndroidManifest.xml:15:5-67
+	android:name
+		ADDED from /Users/erp/Desktop/dev/iengage_app/android/app/src/main/AndroidManifest.xml:7:22-64
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from /Users/erp/Desktop/dev/iengage_app/android/app/src/main/AndroidManifest.xml:8:5-79
+MERGED from [:@react-native-community_netinfo] /Users/erp/Desktop/dev/iengage_app/node_modules/@react-native-community/netinfo/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:9:5-79
+MERGED from [:@react-native-community_netinfo] /Users/erp/Desktop/dev/iengage_app/node_modules/@react-native-community/netinfo/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:9:5-79
+MERGED from [:@react-native-firebase_messaging] /Users/erp/Desktop/dev/iengage_app/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:13:5-79
+MERGED from [:@react-native-firebase_messaging] /Users/erp/Desktop/dev/iengage_app/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:13:5-79
+MERGED from [:rn-fetch-blob] /Users/erp/Desktop/dev/iengage_app/node_modules/rn-fetch-blob/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:27:5-79
+MERGED from [:rn-fetch-blob] /Users/erp/Desktop/dev/iengage_app/node_modules/rn-fetch-blob/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:27:5-79
+MERGED from [com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/erp/.gradle/caches/transforms-2/files-2.1/e98721d92a542c39e001ed7a622345bf/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:25:5-79
+MERGED from [com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/erp/.gradle/caches/transforms-2/files-2.1/e98721d92a542c39e001ed7a622345bf/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:25:5-79
+MERGED from [com.google.android.datatransport:transport-runtime:2.2.5] /Users/erp/.gradle/caches/transforms-2/files-2.1/bef2256cfc2972bb48363074146f729f/jetified-transport-runtime-2.2.5/AndroidManifest.xml:22:5-79
+MERGED from [com.google.android.datatransport:transport-runtime:2.2.5] /Users/erp/.gradle/caches/transforms-2/files-2.1/bef2256cfc2972bb48363074146f729f/jetified-transport-runtime-2.2.5/AndroidManifest.xml:22:5-79
+MERGED from [com.google.firebase:firebase-iid:21.0.1] /Users/erp/.gradle/caches/transforms-2/files-2.1/bd5de6bb015d3720918a69a6f61593d2/jetified-firebase-iid-21.0.1/AndroidManifest.xml:22:5-79
+MERGED from [com.google.firebase:firebase-iid:21.0.1] /Users/erp/.gradle/caches/transforms-2/files-2.1/bd5de6bb015d3720918a69a6f61593d2/jetified-firebase-iid-21.0.1/AndroidManifest.xml:22:5-79
+MERGED from [com.google.android.gms:play-services-measurement-api:18.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/ad65f92872ee1541dc3d4653b293a283/jetified-play-services-measurement-api-18.0.2/AndroidManifest.xml:23:5-79
+MERGED from [com.google.android.gms:play-services-measurement-api:18.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/ad65f92872ee1541dc3d4653b293a283/jetified-play-services-measurement-api-18.0.2/AndroidManifest.xml:23:5-79
+MERGED from [com.google.firebase:firebase-installations:16.3.5] /Users/erp/.gradle/caches/transforms-2/files-2.1/7b49c4f3f382f7fcc545b60616e6b9c7/jetified-firebase-installations-16.3.5/AndroidManifest.xml:10:5-79
+MERGED from [com.google.firebase:firebase-installations:16.3.5] /Users/erp/.gradle/caches/transforms-2/files-2.1/7b49c4f3f382f7fcc545b60616e6b9c7/jetified-firebase-installations-16.3.5/AndroidManifest.xml:10:5-79
+MERGED from [com.google.android.gms:play-services-cloud-messaging:16.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/ec374bb595e8736409912e7ac9f6ce93/jetified-play-services-cloud-messaging-16.0.0/AndroidManifest.xml:7:5-79
+MERGED from [com.google.android.gms:play-services-cloud-messaging:16.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/ec374bb595e8736409912e7ac9f6ce93/jetified-play-services-cloud-messaging-16.0.0/AndroidManifest.xml:7:5-79
+MERGED from [com.google.android.gms:play-services-measurement:18.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/9e719e888e659f9de0ddf911427a5604/jetified-play-services-measurement-18.0.2/AndroidManifest.xml:24:5-79
+MERGED from [com.google.android.gms:play-services-measurement:18.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/9e719e888e659f9de0ddf911427a5604/jetified-play-services-measurement-18.0.2/AndroidManifest.xml:24:5-79
+MERGED from [com.google.android.gms:play-services-measurement-impl:18.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/e139c7bc3862ad15dcb0fc52916d31b6/jetified-play-services-measurement-impl-18.0.2/AndroidManifest.xml:24:5-79
+MERGED from [com.google.android.gms:play-services-measurement-impl:18.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/e139c7bc3862ad15dcb0fc52916d31b6/jetified-play-services-measurement-impl-18.0.2/AndroidManifest.xml:24:5-79
+MERGED from [com.google.android.gms:play-services-measurement-sdk-api:18.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/8c7670a791aaa6a7c7b7f3cc556967ff/jetified-play-services-measurement-sdk-api-18.0.2/AndroidManifest.xml:24:5-79
+MERGED from [com.google.android.gms:play-services-measurement-sdk-api:18.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/8c7670a791aaa6a7c7b7f3cc556967ff/jetified-play-services-measurement-sdk-api-18.0.2/AndroidManifest.xml:24:5-79
+MERGED from [com.microsoft.appcenter:appcenter:4.4.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/e2108db46ba19c5f6456f38e45b2939d/jetified-appcenter-4.4.2/AndroidManifest.xml:16:5-79
+MERGED from [com.microsoft.appcenter:appcenter:4.4.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/e2108db46ba19c5f6456f38e45b2939d/jetified-appcenter-4.4.2/AndroidManifest.xml:16:5-79
+	android:name
+		ADDED from /Users/erp/Desktop/dev/iengage_app/android/app/src/main/AndroidManifest.xml:8:22-76
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from /Users/erp/Desktop/dev/iengage_app/android/app/src/main/AndroidManifest.xml:9:5-80
+	android:name
+		ADDED from /Users/erp/Desktop/dev/iengage_app/android/app/src/main/AndroidManifest.xml:9:22-77
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from /Users/erp/Desktop/dev/iengage_app/android/app/src/main/AndroidManifest.xml:10:5-81
+MERGED from [:react-native-fs] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-fs/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:11:5-81
+MERGED from [:react-native-fs] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-fs/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:11:5-81
+MERGED from [:rn-fetch-blob] /Users/erp/Desktop/dev/iengage_app/node_modules/rn-fetch-blob/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:33:5-81
+MERGED from [:rn-fetch-blob] /Users/erp/Desktop/dev/iengage_app/node_modules/rn-fetch-blob/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:33:5-81
+	android:name
+		ADDED from /Users/erp/Desktop/dev/iengage_app/android/app/src/main/AndroidManifest.xml:10:22-78
+uses-permission#android.permission.DOWNLOAD_WITHOUT_NOTIFICATION
+ADDED from /Users/erp/Desktop/dev/iengage_app/android/app/src/main/AndroidManifest.xml:11:5-88
+	android:name
+		ADDED from /Users/erp/Desktop/dev/iengage_app/android/app/src/main/AndroidManifest.xml:11:22-85
+uses-permission#android.permission.ACCESS_FINE_LOCATION
+ADDED from /Users/erp/Desktop/dev/iengage_app/android/app/src/main/AndroidManifest.xml:12:5-79
+	android:name
+		ADDED from /Users/erp/Desktop/dev/iengage_app/android/app/src/main/AndroidManifest.xml:12:22-76
+uses-permission#android.permission.WAKE_LOCK
+ADDED from /Users/erp/Desktop/dev/iengage_app/android/app/src/main/AndroidManifest.xml:13:5-68
+MERGED from [:@react-native-firebase_messaging] /Users/erp/Desktop/dev/iengage_app/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:12:5-68
+MERGED from [:@react-native-firebase_messaging] /Users/erp/Desktop/dev/iengage_app/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:12:5-68
+MERGED from [:rn-fetch-blob] /Users/erp/Desktop/dev/iengage_app/node_modules/rn-fetch-blob/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:21:5-68
+MERGED from [:rn-fetch-blob] /Users/erp/Desktop/dev/iengage_app/node_modules/rn-fetch-blob/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:21:5-68
+MERGED from [com.google.firebase:firebase-iid:21.0.1] /Users/erp/.gradle/caches/transforms-2/files-2.1/bd5de6bb015d3720918a69a6f61593d2/jetified-firebase-iid-21.0.1/AndroidManifest.xml:24:5-68
+MERGED from [com.google.firebase:firebase-iid:21.0.1] /Users/erp/.gradle/caches/transforms-2/files-2.1/bd5de6bb015d3720918a69a6f61593d2/jetified-firebase-iid-21.0.1/AndroidManifest.xml:24:5-68
+MERGED from [com.google.android.gms:play-services-measurement-api:18.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/ad65f92872ee1541dc3d4653b293a283/jetified-play-services-measurement-api-18.0.2/AndroidManifest.xml:24:5-68
+MERGED from [com.google.android.gms:play-services-measurement-api:18.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/ad65f92872ee1541dc3d4653b293a283/jetified-play-services-measurement-api-18.0.2/AndroidManifest.xml:24:5-68
+MERGED from [com.google.android.gms:play-services-cloud-messaging:16.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/ec374bb595e8736409912e7ac9f6ce93/jetified-play-services-cloud-messaging-16.0.0/AndroidManifest.xml:9:5-68
+MERGED from [com.google.android.gms:play-services-cloud-messaging:16.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/ec374bb595e8736409912e7ac9f6ce93/jetified-play-services-cloud-messaging-16.0.0/AndroidManifest.xml:9:5-68
+MERGED from [com.google.android.gms:play-services-measurement:18.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/9e719e888e659f9de0ddf911427a5604/jetified-play-services-measurement-18.0.2/AndroidManifest.xml:25:5-68
+MERGED from [com.google.android.gms:play-services-measurement:18.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/9e719e888e659f9de0ddf911427a5604/jetified-play-services-measurement-18.0.2/AndroidManifest.xml:25:5-68
+MERGED from [com.google.android.gms:play-services-measurement-impl:18.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/e139c7bc3862ad15dcb0fc52916d31b6/jetified-play-services-measurement-impl-18.0.2/AndroidManifest.xml:25:5-68
+MERGED from [com.google.android.gms:play-services-measurement-impl:18.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/e139c7bc3862ad15dcb0fc52916d31b6/jetified-play-services-measurement-impl-18.0.2/AndroidManifest.xml:25:5-68
+MERGED from [com.google.android.gms:play-services-measurement-sdk-api:18.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/8c7670a791aaa6a7c7b7f3cc556967ff/jetified-play-services-measurement-sdk-api-18.0.2/AndroidManifest.xml:25:5-68
+MERGED from [com.google.android.gms:play-services-measurement-sdk-api:18.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/8c7670a791aaa6a7c7b7f3cc556967ff/jetified-play-services-measurement-sdk-api-18.0.2/AndroidManifest.xml:25:5-68
+	android:name
+		ADDED from /Users/erp/Desktop/dev/iengage_app/android/app/src/main/AndroidManifest.xml:13:22-65
+uses-permission#android.permission.VIBRATE
+ADDED from /Users/erp/Desktop/dev/iengage_app/android/app/src/main/AndroidManifest.xml:18:5-66
+	android:name
+		ADDED from /Users/erp/Desktop/dev/iengage_app/android/app/src/main/AndroidManifest.xml:18:22-63
+uses-permission#android.permission.RECEIVE_BOOT_COMPLETED
+ADDED from /Users/erp/Desktop/dev/iengage_app/android/app/src/main/AndroidManifest.xml:19:5-80
+	android:name
+		ADDED from /Users/erp/Desktop/dev/iengage_app/android/app/src/main/AndroidManifest.xml:19:22-78
+uses-feature#android.hardware.location.gps
+ADDED from /Users/erp/Desktop/dev/iengage_app/android/app/src/main/AndroidManifest.xml:21:5-66
+	android:name
+		ADDED from /Users/erp/Desktop/dev/iengage_app/android/app/src/main/AndroidManifest.xml:21:19-63
+uses-feature#android.hardware.location.network
+ADDED from /Users/erp/Desktop/dev/iengage_app/android/app/src/main/AndroidManifest.xml:22:5-70
+	android:name
+		ADDED from /Users/erp/Desktop/dev/iengage_app/android/app/src/main/AndroidManifest.xml:22:19-67
+uses-permission#android.permission.REQUEST_DELETE_PACKAGES
+ADDED from /Users/erp/Desktop/dev/iengage_app/android/app/src/main/AndroidManifest.xml:24:5-82
+	android:name
+		ADDED from /Users/erp/Desktop/dev/iengage_app/android/app/src/main/AndroidManifest.xml:24:22-79
+uses-sdk
+INJECTED from /Users/erp/Desktop/dev/iengage_app/android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/erp/Desktop/dev/iengage_app/android/app/src/main/AndroidManifest.xml
+INJECTED from /Users/erp/Desktop/dev/iengage_app/android/app/src/main/AndroidManifest.xml
+MERGED from [:react-native-splash-screen] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-splash-screen/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-splash-screen] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-splash-screen/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-camera] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-camera/android/build/intermediates/library_manifest/generalDebug/AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-camera] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-camera/android/build/intermediates/library_manifest/generalDebug/AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-config] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-config/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-config] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-config/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:@react-native-community_async-storage] /Users/erp/Desktop/dev/iengage_app/node_modules/@react-native-community/async-storage/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:@react-native-community_async-storage] /Users/erp/Desktop/dev/iengage_app/node_modules/@react-native-community/async-storage/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:@react-native-community_datetimepicker] /Users/erp/Desktop/dev/iengage_app/node_modules/@react-native-community/datetimepicker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:@react-native-community_datetimepicker] /Users/erp/Desktop/dev/iengage_app/node_modules/@react-native-community/datetimepicker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:@react-native-community_geolocation] /Users/erp/Desktop/dev/iengage_app/node_modules/@react-native-community/geolocation/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:@react-native-community_geolocation] /Users/erp/Desktop/dev/iengage_app/node_modules/@react-native-community/geolocation/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:@react-native-community_netinfo] /Users/erp/Desktop/dev/iengage_app/node_modules/@react-native-community/netinfo/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:@react-native-community_netinfo] /Users/erp/Desktop/dev/iengage_app/node_modules/@react-native-community/netinfo/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:@react-native-community_picker] /Users/erp/Desktop/dev/iengage_app/node_modules/@react-native-community/picker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:@react-native-community_picker] /Users/erp/Desktop/dev/iengage_app/node_modules/@react-native-community/picker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:@react-native-firebase_messaging] /Users/erp/Desktop/dev/iengage_app/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:@react-native-firebase_messaging] /Users/erp/Desktop/dev/iengage_app/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:@react-native-firebase_app] /Users/erp/Desktop/dev/iengage_app/node_modules/@react-native-firebase/app/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:@react-native-firebase_app] /Users/erp/Desktop/dev/iengage_app/node_modules/@react-native-firebase/app/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:appcenter] /Users/erp/Desktop/dev/iengage_app/node_modules/appcenter/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:appcenter] /Users/erp/Desktop/dev/iengage_app/node_modules/appcenter/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:appcenter-analytics] /Users/erp/Desktop/dev/iengage_app/node_modules/appcenter-analytics/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:appcenter-analytics] /Users/erp/Desktop/dev/iengage_app/node_modules/appcenter-analytics/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:appcenter-crashes] /Users/erp/Desktop/dev/iengage_app/node_modules/appcenter-crashes/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:appcenter-crashes] /Users/erp/Desktop/dev/iengage_app/node_modules/appcenter-crashes/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:jail-monkey] /Users/erp/Desktop/dev/iengage_app/node_modules/jail-monkey/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:jail-monkey] /Users/erp/Desktop/dev/iengage_app/node_modules/jail-monkey/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-aes-crypto] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-aes-crypto/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-aes-crypto] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-aes-crypto/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-android-location-enabler] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-android-location-enabler/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-android-location-enabler] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-android-location-enabler/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-code-push] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-code-push/android/app/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-code-push] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-code-push/android/app/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-device-info] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-device-info/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-device-info] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-device-info/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-document-picker] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-document-picker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-document-picker] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-document-picker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-exit-app] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-exit-app/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-exit-app] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-exit-app/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-file-viewer] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-file-viewer/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-file-viewer] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-file-viewer/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-fs] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-fs/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-fs] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-fs/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-gesture-handler] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-gesture-handler/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-gesture-handler] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-gesture-handler/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-image-picker] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-image-picker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-image-picker] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-image-picker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-pdf] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-pdf/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-pdf] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-pdf/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-permissions] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-permissions/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-permissions] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-permissions/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-push-notification] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-push-notification/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-push-notification] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-push-notification/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-reanimated] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-reanimated/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-reanimated] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-reanimated/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-screens] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-screens/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-screens] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-screens/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-ssl-pinning] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-ssl-pinning/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-ssl-pinning] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-ssl-pinning/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-vector-icons] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-vector-icons/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-vector-icons] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-vector-icons/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-webview] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-webview/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-webview] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-webview/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:rn-fetch-blob] /Users/erp/Desktop/dev/iengage_app/node_modules/rn-fetch-blob/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:rn-fetch-blob] /Users/erp/Desktop/dev/iengage_app/node_modules/rn-fetch-blob/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [com.facebook.react:react-native:0.60.6] /Users/erp/.gradle/caches/transforms-2/files-2.1/3f62ded54db7bb51f744cee181b0fb52/jetified-react-native-0.60.6/AndroidManifest.xml:7:5-9:41
+MERGED from [com.facebook.react:react-native:0.60.6] /Users/erp/.gradle/caches/transforms-2/files-2.1/3f62ded54db7bb51f744cee181b0fb52/jetified-react-native-0.60.6/AndroidManifest.xml:7:5-9:41
+MERGED from [org.webkit:android-jsc:r245459] /Users/erp/.gradle/caches/transforms-2/files-2.1/16a8ee35fa85f97de24ba7dd59a8c99a/jetified-android-jsc-r245459/AndroidManifest.xml:7:5-9:41
+MERGED from [org.webkit:android-jsc:r245459] /Users/erp/.gradle/caches/transforms-2/files-2.1/16a8ee35fa85f97de24ba7dd59a8c99a/jetified-android-jsc-r245459/AndroidManifest.xml:7:5-9:41
+MERGED from [com.google.firebase:firebase-core:18.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/cf87128fa4b6a52743592ccfdff445a3/jetified-firebase-core-18.0.2/AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-core:18.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/cf87128fa4b6a52743592ccfdff445a3/jetified-firebase-core-18.0.2/AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-messaging:21.0.1] /Users/erp/.gradle/caches/transforms-2/files-2.1/e6aeccb10d90bd3d15843afaf86f6315/jetified-firebase-messaging-21.0.1/AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-messaging:21.0.1] /Users/erp/.gradle/caches/transforms-2/files-2.1/e6aeccb10d90bd3d15843afaf86f6315/jetified-firebase-messaging-21.0.1/AndroidManifest.xml:20:5-44
+MERGED from [eu.dkaratzas:android-inapp-update:1.0.5] /Users/erp/.gradle/caches/transforms-2/files-2.1/1a681a57c58bd35710da9fb21d8598e4/jetified-android-inapp-update-1.0.5/AndroidManifest.xml:7:5-9:41
+MERGED from [eu.dkaratzas:android-inapp-update:1.0.5] /Users/erp/.gradle/caches/transforms-2/files-2.1/1a681a57c58bd35710da9fb21d8598e4/jetified-android-inapp-update-1.0.5/AndroidManifest.xml:7:5-9:41
+MERGED from [com.google.android.play:core:1.7.3] /Users/erp/.gradle/caches/transforms-2/files-2.1/540b9ead92b37da49399804f1955c067/jetified-core-1.7.3/AndroidManifest.xml:4:3-70
+MERGED from [com.google.android.play:core:1.7.3] /Users/erp/.gradle/caches/transforms-2/files-2.1/540b9ead92b37da49399804f1955c067/jetified-core-1.7.3/AndroidManifest.xml:4:3-70
+MERGED from [com.google.android.material:material:1.1.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/c33606034d780d4913aad3a58db3e506/material-1.1.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.material:material:1.1.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/c33606034d780d4913aad3a58db3e506/material-1.1.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] /Users/erp/.gradle/caches/transforms-2/files-2.1/6e9ac5cb1388ce9aa6843d078c47ccbe/constraintlayout-2.0.4/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] /Users/erp/.gradle/caches/transforms-2/files-2.1/6e9ac5cb1388ce9aa6843d078c47ccbe/constraintlayout-2.0.4/AndroidManifest.xml:5:5-7:41
+MERGED from [com.scottyab:rootbeer-lib:0.0.6] /Users/erp/.gradle/caches/transforms-2/files-2.1/8666a40001100cdcfe1ce6b0ad2b20a6/jetified-rootbeer-lib-0.0.6/AndroidManifest.xml:7:5-9:41
+MERGED from [com.scottyab:rootbeer-lib:0.0.6] /Users/erp/.gradle/caches/transforms-2/files-2.1/8666a40001100cdcfe1ce6b0ad2b20a6/jetified-rootbeer-lib-0.0.6/AndroidManifest.xml:7:5-9:41
+MERGED from [androidx.appcompat:appcompat:1.2.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/db9fb6504508a64eed62fc0fedb3b880/appcompat-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat:1.2.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/db9fb6504508a64eed62fc0fedb3b880/appcompat-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [:react-native-image-resizer] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-image-resizer/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-image-resizer] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-image-resizer/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-linear-gradient] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-linear-gradient/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-linear-gradient] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-linear-gradient/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-send-intent] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-send-intent/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-send-intent] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-send-intent/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [com.google.firebase:firebase-datatransport:17.0.10] /Users/erp/.gradle/caches/transforms-2/files-2.1/a0dba8646c9ab41fdd49cc467147eb05/jetified-firebase-datatransport-17.0.10/AndroidManifest.xml:19:5-21:41
+MERGED from [com.google.firebase:firebase-datatransport:17.0.10] /Users/erp/.gradle/caches/transforms-2/files-2.1/a0dba8646c9ab41fdd49cc467147eb05/jetified-firebase-datatransport-17.0.10/AndroidManifest.xml:19:5-21:41
+MERGED from [com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/erp/.gradle/caches/transforms-2/files-2.1/e98721d92a542c39e001ed7a622345bf/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:19:5-21:41
+MERGED from [com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/erp/.gradle/caches/transforms-2/files-2.1/e98721d92a542c39e001ed7a622345bf/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:19:5-21:41
+MERGED from [com.google.android.datatransport:transport-runtime:2.2.5] /Users/erp/.gradle/caches/transforms-2/files-2.1/bef2256cfc2972bb48363074146f729f/jetified-transport-runtime-2.2.5/AndroidManifest.xml:18:5-20:41
+MERGED from [com.google.android.datatransport:transport-runtime:2.2.5] /Users/erp/.gradle/caches/transforms-2/files-2.1/bef2256cfc2972bb48363074146f729f/jetified-transport-runtime-2.2.5/AndroidManifest.xml:18:5-20:41
+MERGED from [com.facebook.fresco:fresco:2.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/d0ac34ffcaf56c8129b884969c31a243/jetified-fresco-2.0.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:fresco:2.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/d0ac34ffcaf56c8129b884969c31a243/jetified-fresco-2.0.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline-okhttp3:2.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/208a75511e117640e399a13f9296da50/jetified-imagepipeline-okhttp3-2.0.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline-okhttp3:2.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/208a75511e117640e399a13f9296da50/jetified-imagepipeline-okhttp3-2.0.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:drawee:2.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/171429b0479c6236552869c91446367f/jetified-drawee-2.0.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:drawee:2.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/171429b0479c6236552869c91446367f/jetified-drawee-2.0.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:nativeimagefilters:2.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/8d4958b2fa02269ecadc71acdbd7585a/jetified-nativeimagefilters-2.0.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:nativeimagefilters:2.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/8d4958b2fa02269ecadc71acdbd7585a/jetified-nativeimagefilters-2.0.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline:2.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/8c80410ad80f7e9701cc29c02130f5a4/jetified-imagepipeline-2.0.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline:2.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/8c80410ad80f7e9701cc29c02130f5a4/jetified-imagepipeline-2.0.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:nativeimagetranscoder:2.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/5ae1c0854bb0887bed62ee5a6c552fb4/jetified-nativeimagetranscoder-2.0.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:nativeimagetranscoder:2.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/5ae1c0854bb0887bed62ee5a6c552fb4/jetified-nativeimagetranscoder-2.0.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline-base:2.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/edfef975a68850d6c095f8c79f8ed9eb/jetified-imagepipeline-base-2.0.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline-base:2.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/edfef975a68850d6c095f8c79f8ed9eb/jetified-imagepipeline-base-2.0.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.soloader:soloader:0.6.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/b84dce7d5b51e5fee82e17f4155962f0/jetified-soloader-0.6.0/AndroidManifest.xml:7:5-9:41
+MERGED from [com.facebook.soloader:soloader:0.6.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/b84dce7d5b51e5fee82e17f4155962f0/jetified-soloader-0.6.0/AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.franmontiel:PersistentCookieJar:v1.0.1] /Users/erp/.gradle/caches/transforms-2/files-2.1/bfcbcc7fcc064890a6663c872b890408/jetified-PersistentCookieJar-v1.0.1/AndroidManifest.xml:8:5-10:41
+MERGED from [com.github.franmontiel:PersistentCookieJar:v1.0.1] /Users/erp/.gradle/caches/transforms-2/files-2.1/bfcbcc7fcc064890a6663c872b890408/jetified-PersistentCookieJar-v1.0.1/AndroidManifest.xml:8:5-10:41
+MERGED from [com.google.firebase:firebase-analytics:18.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/d005fa1cbfea251e3709399e6ac50781/jetified-firebase-analytics-18.0.2/AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-analytics:18.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/d005fa1cbfea251e3709399e6ac50781/jetified-firebase-analytics-18.0.2/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-vision:17.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/0a20b27ae333086a9c00c041c7c0e2ab/jetified-play-services-vision-17.0.2/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-vision:17.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/0a20b27ae333086a9c00c041c7c0e2ab/jetified-play-services-vision-17.0.2/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-auth:19.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/57bfcd77bf7c9d985d013ce7ccc8f04d/jetified-play-services-auth-19.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-auth:19.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/57bfcd77bf7c9d985d013ce7ccc8f04d/jetified-play-services-auth-19.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-location:17.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/12f662ace90688e61f77c1e0be47d9c5/jetified-play-services-location-17.0.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-location:17.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/12f662ace90688e61f77c1e0be47d9c5/jetified-play-services-location-17.0.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-iid:17.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/bae85756b86e59c37f10cd9d5b8a514e/jetified-play-services-iid-17.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-iid:17.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/bae85756b86e59c37f10cd9d5b8a514e/jetified-play-services-iid-17.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-vision-common:17.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/2d0788252ce07090aedee90c862c36a6/jetified-play-services-vision-common-17.0.2/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-vision-common:17.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/2d0788252ce07090aedee90c862c36a6/jetified-play-services-vision-common-17.0.2/AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-iid:21.0.1] /Users/erp/.gradle/caches/transforms-2/files-2.1/bd5de6bb015d3720918a69a6f61593d2/jetified-firebase-iid-21.0.1/AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-iid:21.0.1] /Users/erp/.gradle/caches/transforms-2/files-2.1/bd5de6bb015d3720918a69a6f61593d2/jetified-firebase-iid-21.0.1/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-measurement-api:18.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/ad65f92872ee1541dc3d4653b293a283/jetified-play-services-measurement-api-18.0.2/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-measurement-api:18.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/ad65f92872ee1541dc3d4653b293a283/jetified-play-services-measurement-api-18.0.2/AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-installations:16.3.5] /Users/erp/.gradle/caches/transforms-2/files-2.1/7b49c4f3f382f7fcc545b60616e6b9c7/jetified-firebase-installations-16.3.5/AndroidManifest.xml:6:5-8:41
+MERGED from [com.google.firebase:firebase-installations:16.3.5] /Users/erp/.gradle/caches/transforms-2/files-2.1/7b49c4f3f382f7fcc545b60616e6b9c7/jetified-firebase-installations-16.3.5/AndroidManifest.xml:6:5-8:41
+MERGED from [com.google.firebase:firebase-common:19.5.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/f2bedf782a4f021c3fbfb3cc40045ab2/jetified-firebase-common-19.5.0/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.firebase:firebase-common:19.5.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/f2bedf782a4f021c3fbfb3cc40045ab2/jetified-firebase-common-19.5.0/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.gms:play-services-auth-api-phone:17.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/e60cbff71690a0ab51850944c1fc1bfb/jetified-play-services-auth-api-phone-17.0.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-auth-api-phone:17.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/e60cbff71690a0ab51850944c1fc1bfb/jetified-play-services-auth-api-phone-17.0.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-auth-base:17.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/cb51e68015694062c9f718383729e993/jetified-play-services-auth-base-17.0.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-auth-base:17.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/cb51e68015694062c9f718383729e993/jetified-play-services-auth-base-17.0.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-clearcut:16.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/73ab4f8440aa8a9604ee821ddbe89d85/jetified-play-services-clearcut-16.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-clearcut:16.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/73ab4f8440aa8a9604ee821ddbe89d85/jetified-play-services-clearcut-16.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-flags:16.0.1] /Users/erp/.gradle/caches/transforms-2/files-2.1/52982fd645eb6a19e0c8674b8881168e/jetified-play-services-flags-16.0.1/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-flags:16.0.1] /Users/erp/.gradle/caches/transforms-2/files-2.1/52982fd645eb6a19e0c8674b8881168e/jetified-play-services-flags-16.0.1/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-phenotype:16.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/7e92d5d4f675374302dc065feefaf820/jetified-play-services-phenotype-16.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-phenotype:16.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/7e92d5d4f675374302dc065feefaf820/jetified-play-services-phenotype-16.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-iid-interop:17.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/e2af52c74c368231243ab8a525c13924/jetified-firebase-iid-interop-17.0.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-iid-interop:17.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/e2af52c74c368231243ab8a525c13924/jetified-firebase-iid-interop-17.0.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-base:17.1.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/dc7f0a6e79d79f38fc09bbfa618c914e/jetified-play-services-base-17.1.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-base:17.1.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/dc7f0a6e79d79f38fc09bbfa618c914e/jetified-play-services-base-17.1.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-cloud-messaging:16.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/ec374bb595e8736409912e7ac9f6ce93/jetified-play-services-cloud-messaging-16.0.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-cloud-messaging:16.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/ec374bb595e8736409912e7ac9f6ce93/jetified-play-services-cloud-messaging-16.0.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-installations-interop:16.0.1] /Users/erp/.gradle/caches/transforms-2/files-2.1/c2105195443215d87837293a9118b45a/jetified-firebase-installations-interop-16.0.1/AndroidManifest.xml:19:5-21:41
+MERGED from [com.google.firebase:firebase-installations-interop:16.0.1] /Users/erp/.gradle/caches/transforms-2/files-2.1/c2105195443215d87837293a9118b45a/jetified-firebase-installations-interop-16.0.1/AndroidManifest.xml:19:5-21:41
+MERGED from [com.google.android.gms:play-services-tasks:17.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/712df1658cdff61c8d78ea44f92f333b/jetified-play-services-tasks-17.0.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-tasks:17.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/712df1658cdff61c8d78ea44f92f333b/jetified-play-services-tasks-17.0.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-places-placereport:17.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/95796b9801995eb16fe47dc6d9ca0eaa/jetified-play-services-places-placereport-17.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-places-placereport:17.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/95796b9801995eb16fe47dc6d9ca0eaa/jetified-play-services-places-placereport-17.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-measurement:18.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/9e719e888e659f9de0ddf911427a5604/jetified-play-services-measurement-18.0.2/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-measurement:18.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/9e719e888e659f9de0ddf911427a5604/jetified-play-services-measurement-18.0.2/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-measurement-sdk:18.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/3a7fc8f1aec6e513cbdd1fa203bd8d09/jetified-play-services-measurement-sdk-18.0.2/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-measurement-sdk:18.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/3a7fc8f1aec6e513cbdd1fa203bd8d09/jetified-play-services-measurement-sdk-18.0.2/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-measurement-impl:18.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/e139c7bc3862ad15dcb0fc52916d31b6/jetified-play-services-measurement-impl-18.0.2/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-measurement-impl:18.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/e139c7bc3862ad15dcb0fc52916d31b6/jetified-play-services-measurement-impl-18.0.2/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-stats:17.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/87047edfeb6054637c37bf2250129bf3/jetified-play-services-stats-17.0.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-stats:17.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/87047edfeb6054637c37bf2250129bf3/jetified-play-services-stats-17.0.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-measurement-connector:18.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/4477c296fe41f220b9017f23c0a2b751/jetified-firebase-measurement-connector-18.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-measurement-connector:18.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/4477c296fe41f220b9017f23c0a2b751/jetified-firebase-measurement-connector-18.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-ads-identifier:17.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/49b2cf790c65405ba36a211274079969/jetified-play-services-ads-identifier-17.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-ads-identifier:17.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/49b2cf790c65405ba36a211274079969/jetified-play-services-ads-identifier-17.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-measurement-sdk-api:18.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/8c7670a791aaa6a7c7b7f3cc556967ff/jetified-play-services-measurement-sdk-api-18.0.2/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-measurement-sdk-api:18.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/8c7670a791aaa6a7c7b7f3cc556967ff/jetified-play-services-measurement-sdk-api-18.0.2/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-measurement-base:18.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/ab8a293833e3d9ec2799598838b4c30f/jetified-play-services-measurement-base-18.0.2/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-measurement-base:18.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/ab8a293833e3d9ec2799598838b4c30f/jetified-play-services-measurement-base-18.0.2/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-basement:17.1.1] /Users/erp/.gradle/caches/transforms-2/files-2.1/11ec236308490d9839fea05c0ed171a6/jetified-play-services-basement-17.1.1/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-basement:17.1.1] /Users/erp/.gradle/caches/transforms-2/files-2.1/11ec236308490d9839fea05c0ed171a6/jetified-play-services-basement-17.1.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.exifinterface:exifinterface:1.1.0-rc01] /Users/erp/.gradle/caches/transforms-2/files-2.1/c5bfe11f74002cf7c6567fd7f4133427/exifinterface-1.1.0-rc01/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.exifinterface:exifinterface:1.1.0-rc01] /Users/erp/.gradle/caches/transforms-2/files-2.1/c5bfe11f74002cf7c6567fd7f4133427/exifinterface-1.1.0-rc01/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.cardview:cardview:1.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/684d4bcbfe7d13f857630d1714522e8a/cardview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cardview:cardview:1.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/684d4bcbfe7d13f857630d1714522e8a/cardview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.github.barteksc:android-pdf-viewer:3.1.0-beta.1] /Users/erp/.gradle/caches/transforms-2/files-2.1/619e4b314acc318f9ab63ed95ccedb29/jetified-android-pdf-viewer-3.1.0-beta.1/AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.barteksc:android-pdf-viewer:3.1.0-beta.1] /Users/erp/.gradle/caches/transforms-2/files-2.1/619e4b314acc318f9ab63ed95ccedb29/jetified-android-pdf-viewer-3.1.0-beta.1/AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.barteksc:pdfium-android:1.9.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/7d79475fb42b540d503187bf83574877/jetified-pdfium-android-1.9.0/AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.barteksc:pdfium-android:1.9.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/7d79475fb42b540d503187bf83574877/jetified-pdfium-android-1.9.0/AndroidManifest.xml:7:5-9:41
+MERGED from [androidx.legacy:legacy-support-v4:1.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/36e8435e2f3c429adb7ad851171f0d04/legacy-support-v4-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-v4:1.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/36e8435e2f3c429adb7ad851171f0d04/legacy-support-v4-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/265e6d688d7a8da74f80697adff12978/legacy-support-core-ui-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/265e6d688d7a8da74f80697adff12978/legacy-support-core-ui-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/17624df4bebbfdde9190176e33f8b347/coordinatorlayout-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/17624df4bebbfdde9190176e33f8b347/coordinatorlayout-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.transition:transition:1.2.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/07236c5ad976a13b130b0aaccc4c775a/transition-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.transition:transition:1.2.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/07236c5ad976a13b130b0aaccc4c775a/transition-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat-resources:1.2.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/44b50ec55f5988753f8a79a69fd0334c/jetified-appcompat-resources-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat-resources:1.2.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/44b50ec55f5988753f8a79a69fd0334c/jetified-appcompat-resources-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/ed5c359cbe25a743d3dc8f26e70983e6/vectordrawable-animated-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/ed5c359cbe25a743d3dc8f26e70983e6/vectordrawable-animated-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/6b17609a97e89370c5405f93833c857a/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/6b17609a97e89370c5405f93833c857a/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.viewpager2:viewpager2:1.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/57878c7a99d8f9524165caa0cc187075/jetified-viewpager2-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.viewpager2:viewpager2:1.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/57878c7a99d8f9524165caa0cc187075/jetified-viewpager2-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/16a1a9647baddd8715bb2277d6bd74e2/drawerlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/16a1a9647baddd8715bb2277d6bd74e2/drawerlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.fragment:fragment:1.2.1] /Users/erp/.gradle/caches/transforms-2/files-2.1/b2022e1e6ac4a49e27b4c01452994b47/fragment-1.2.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment:1.2.1] /Users/erp/.gradle/caches/transforms-2/files-2.1/b2022e1e6ac4a49e27b4c01452994b47/fragment-1.2.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/0b671c7c5efbbe9207ee707e5e7f18b4/swiperefreshlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/0b671c7c5efbbe9207ee707e5e7f18b4/swiperefreshlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.media:media:1.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/b7a99168afd50e72ed2f364d2065a1ac/media-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.media:media:1.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/b7a99168afd50e72ed2f364d2065a1ac/media-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/fb7861c9a3177fb8280df41de68f938e/legacy-support-core-utils-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/fb7861c9a3177fb8280df41de68f938e/legacy-support-core-utils-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.recyclerview:recyclerview:1.1.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/ed794f06c3c3dc4dc369986c43e4758e/recyclerview-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.recyclerview:recyclerview:1.1.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/ed794f06c3c3dc4dc369986c43e4758e/recyclerview-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/c6986fc73286fd3cc985adcbce6f409f/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/c6986fc73286fd3cc985adcbce6f409f/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/a25527d7d17b3d32dc91c6edc14d030b/slidingpanelayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/a25527d7d17b3d32dc91c6edc14d030b/slidingpanelayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/f937f94723c7f78e0dccdcc41b860d4a/customview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/f937f94723c7f78e0dccdcc41b860d4a/customview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/e8faeab5105ed6a1e552e14e92bf07d0/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/e8faeab5105ed6a1e552e14e92bf07d0/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity:1.1.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/9d014d619d92fcb9e30306c03ed8739b/jetified-activity-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.activity:activity:1.1.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/9d014d619d92fcb9e30306c03ed8739b/jetified-activity-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/e22de34c01e9cc4fd4f5acf75df98200/asynclayoutinflater-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/e22de34c01e9cc4fd4f5acf75df98200/asynclayoutinflater-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.3.1] /Users/erp/.gradle/caches/transforms-2/files-2.1/c53b1439b867a0cdca03bf1fb96ebc56/core-1.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core:1.3.1] /Users/erp/.gradle/caches/transforms-2/files-2.1/c53b1439b867a0cdca03bf1fb96ebc56/core-1.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.2.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/5217c7cb6691fa0e4b4bb761e8e65f46/lifecycle-runtime-2.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.2.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/5217c7cb6691fa0e4b4bb761e8e65f46/lifecycle-runtime-2.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/4417020ca59293e8f58e50548d3f148a/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/4417020ca59293e8f58e50548d3f148a/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/1664b12dd02235d15f6e4fe41add08ee/versionedparcelable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/1664b12dd02235d15f6e4fe41add08ee/versionedparcelable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.2.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/9ad0d3d6ec1d2e90a4a6c743b3679b2b/jetified-lifecycle-viewmodel-savedstate-2.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.2.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/9ad0d3d6ec1d2e90a4a6c743b3679b2b/jetified-lifecycle-viewmodel-savedstate-2.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/f81c0079acb09c5c21ec698015b78e47/lifecycle-livedata-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/f81c0079acb09c5c21ec698015b78e47/lifecycle-livedata-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.2.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/fbfbc281350c2df3f19fb91412e7a884/lifecycle-livedata-core-2.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.2.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/fbfbc281350c2df3f19fb91412e7a884/lifecycle-livedata-core-2.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.savedstate:savedstate:1.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/9d21fe9cac8e05182943f36530f5c9e3/jetified-savedstate-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.savedstate:savedstate:1.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/9d21fe9cac8e05182943f36530f5c9e3/jetified-savedstate-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.arch.core:core-runtime:2.1.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/7c6e524712c81b143d6077aaa9d213f0/core-runtime-2.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.arch.core:core-runtime:2.1.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/7c6e524712c81b143d6077aaa9d213f0/core-runtime-2.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.2.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/c1025294588d76a61c7e6ba9ac38d9ba/lifecycle-viewmodel-2.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.2.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/c1025294588d76a61c7e6ba9ac38d9ba/lifecycle-viewmodel-2.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/6e19518d17e83ea38dc2d95fd1091e5a/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/6e19518d17e83ea38dc2d95fd1091e5a/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.documentfile:documentfile:1.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/42fe1741f3e0aca31a378b4f26cbbf61/documentfile-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.documentfile:documentfile:1.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/42fe1741f3e0aca31a378b4f26cbbf61/documentfile-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/c89dded747e014f5db5e1b6173218a5d/localbroadcastmanager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/c89dded747e014f5db5e1b6173218a5d/localbroadcastmanager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/070416e60b3b8e6fa20985025441823b/print-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/070416e60b3b8e6fa20985025441823b/print-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-components:16.1.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/438584abbda936f517551e5f3863c2d6/jetified-firebase-components-16.1.0/AndroidManifest.xml:19:5-21:41
+MERGED from [com.google.firebase:firebase-components:16.1.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/438584abbda936f517551e5f3863c2d6/jetified-firebase-components-16.1.0/AndroidManifest.xml:19:5-21:41
+MERGED from [com.google.firebase:firebase-encoders-json:17.1.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/1676c40da2368cc02d81822266a52854/jetified-firebase-encoders-json-17.1.0/AndroidManifest.xml:19:5-21:41
+MERGED from [com.google.firebase:firebase-encoders-json:17.1.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/1676c40da2368cc02d81822266a52854/jetified-firebase-encoders-json-17.1.0/AndroidManifest.xml:19:5-21:41
+MERGED from [com.google.android.datatransport:transport-api:2.2.1] /Users/erp/.gradle/caches/transforms-2/files-2.1/a70c30787a8a2a346e33a7eaf1b5d768/jetified-transport-api-2.2.1/AndroidManifest.xml:18:5-20:41
+MERGED from [com.google.android.datatransport:transport-api:2.2.1] /Users/erp/.gradle/caches/transforms-2/files-2.1/a70c30787a8a2a346e33a7eaf1b5d768/jetified-transport-api-2.2.1/AndroidManifest.xml:18:5-20:41
+MERGED from [com.microsoft.appcenter.reactnative:appcenter-react-native:4.4.3] /Users/erp/.gradle/caches/transforms-2/files-2.1/b9788a1a26fdfe0b43a70c3564584ea0/jetified-appcenter-react-native-4.4.3/AndroidManifest.xml:7:5-9:41
+MERGED from [com.microsoft.appcenter.reactnative:appcenter-react-native:4.4.3] /Users/erp/.gradle/caches/transforms-2/files-2.1/b9788a1a26fdfe0b43a70c3564584ea0/jetified-appcenter-react-native-4.4.3/AndroidManifest.xml:7:5-9:41
+MERGED from [com.microsoft.appcenter:appcenter-analytics:4.4.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/85243e6e849a51be7055319579c20bd7/jetified-appcenter-analytics-4.4.2/AndroidManifest.xml:11:5-13:41
+MERGED from [com.microsoft.appcenter:appcenter-analytics:4.4.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/85243e6e849a51be7055319579c20bd7/jetified-appcenter-analytics-4.4.2/AndroidManifest.xml:11:5-13:41
+MERGED from [com.microsoft.appcenter:appcenter-crashes:4.4.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/229fd84be4b6aa5fc90d8b38296488d5/jetified-appcenter-crashes-4.4.2/AndroidManifest.xml:11:5-13:41
+MERGED from [com.microsoft.appcenter:appcenter-crashes:4.4.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/229fd84be4b6aa5fc90d8b38296488d5/jetified-appcenter-crashes-4.4.2/AndroidManifest.xml:11:5-13:41
+MERGED from [com.microsoft.appcenter:appcenter:4.4.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/e2108db46ba19c5f6456f38e45b2939d/jetified-appcenter-4.4.2/AndroidManifest.xml:11:5-13:41
+MERGED from [com.microsoft.appcenter:appcenter:4.4.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/e2108db46ba19c5f6456f38e45b2939d/jetified-appcenter-4.4.2/AndroidManifest.xml:11:5-13:41
+MERGED from [me.leolin:ShortcutBadger:1.1.22] /Users/erp/.gradle/caches/transforms-2/files-2.1/6e12edebbf2856f637f4f81681c50060/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:7:5-9:41
+MERGED from [me.leolin:ShortcutBadger:1.1.22] /Users/erp/.gradle/caches/transforms-2/files-2.1/6e12edebbf2856f637f4f81681c50060/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:7:5-9:41
+MERGED from [com.facebook.fresco:fbcore:2.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/022907a159096af81fac12e722a4148f/jetified-fbcore-2.0.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:fbcore:2.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/022907a159096af81fac12e722a4148f/jetified-fbcore-2.0.0/AndroidManifest.xml:5:5-7:41
+INJECTED from /Users/erp/Desktop/dev/iengage_app/android/app/src/debug/AndroidManifest.xml
+INJECTED from /Users/erp/Desktop/dev/iengage_app/android/app/src/debug/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /Users/erp/Desktop/dev/iengage_app/android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/erp/Desktop/dev/iengage_app/android/app/src/debug/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/erp/Desktop/dev/iengage_app/android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/erp/Desktop/dev/iengage_app/android/app/src/debug/AndroidManifest.xml
+uses-permission#android.permission.SYSTEM_ALERT_WINDOW
+ADDED from /Users/erp/Desktop/dev/iengage_app/android/app/src/debug/AndroidManifest.xml:5:5-77
+	android:name
+		ADDED from /Users/erp/Desktop/dev/iengage_app/android/app/src/debug/AndroidManifest.xml:5:22-75
+activity#com.iniitian_mobile.SecureActivity
+ADDED from /Users/erp/Desktop/dev/iengage_app/android/app/src/main/AndroidManifest.xml:37:9-61
+	android:name
+		ADDED from /Users/erp/Desktop/dev/iengage_app/android/app/src/main/AndroidManifest.xml:37:19-49
+activity#com.facebook.react.devsupport.DevSettingsActivity
+ADDED from /Users/erp/Desktop/dev/iengage_app/android/app/src/main/AndroidManifest.xml:63:9-86
+MERGED from [:react-native-code-push] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-code-push/android/app/build/intermediates/library_manifest/debug/AndroidManifest.xml:14:9-86
+MERGED from [:react-native-code-push] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-code-push/android/app/build/intermediates/library_manifest/debug/AndroidManifest.xml:14:9-86
+	android:name
+		ADDED from /Users/erp/Desktop/dev/iengage_app/android/app/src/main/AndroidManifest.xml:63:19-83
+meta-data#com.google.firebase.messaging.default_notification_icon
+ADDED from /Users/erp/Desktop/dev/iengage_app/android/app/src/main/AndroidManifest.xml:64:9-66:54
+	android:resource
+		ADDED from /Users/erp/Desktop/dev/iengage_app/android/app/src/main/AndroidManifest.xml:66:13-51
+	android:name
+		ADDED from /Users/erp/Desktop/dev/iengage_app/android/app/src/main/AndroidManifest.xml:65:13-83
+uses-feature#android.hardware.camera
+ADDED from [:react-native-camera] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-camera/android/build/intermediates/library_manifest/generalDebug/AndroidManifest.xml:11:5-13:36
+	android:required
+		ADDED from [:react-native-camera] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-camera/android/build/intermediates/library_manifest/generalDebug/AndroidManifest.xml:13:9-33
+	android:name
+		ADDED from [:react-native-camera] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-camera/android/build/intermediates/library_manifest/generalDebug/AndroidManifest.xml:12:9-47
+uses-feature#android.hardware.camera.autofocus
+ADDED from [:react-native-camera] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-camera/android/build/intermediates/library_manifest/generalDebug/AndroidManifest.xml:14:5-16:36
+	android:required
+		ADDED from [:react-native-camera] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-camera/android/build/intermediates/library_manifest/generalDebug/AndroidManifest.xml:16:9-33
+	android:name
+		ADDED from [:react-native-camera] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-camera/android/build/intermediates/library_manifest/generalDebug/AndroidManifest.xml:15:9-57
+uses-permission#android.permission.ACCESS_WIFI_STATE
+ADDED from [:@react-native-community_netinfo] /Users/erp/Desktop/dev/iengage_app/node_modules/@react-native-community/netinfo/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:10:5-76
+MERGED from [:rn-fetch-blob] /Users/erp/Desktop/dev/iengage_app/node_modules/rn-fetch-blob/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:30:5-76
+MERGED from [:rn-fetch-blob] /Users/erp/Desktop/dev/iengage_app/node_modules/rn-fetch-blob/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:30:5-76
+	android:name
+		ADDED from [:@react-native-community_netinfo] /Users/erp/Desktop/dev/iengage_app/node_modules/@react-native-community/netinfo/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:10:22-73
+service#io.invertase.firebase.messaging.ReactNativeFirebaseMessagingHeadlessService
+ADDED from [:@react-native-firebase_messaging] /Users/erp/Desktop/dev/iengage_app/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:16:9-111
+	android:name
+		ADDED from [:@react-native-firebase_messaging] /Users/erp/Desktop/dev/iengage_app/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:16:18-108
+service#io.invertase.firebase.messaging.ReactNativeFirebaseMessagingService
+ADDED from [:@react-native-firebase_messaging] /Users/erp/Desktop/dev/iengage_app/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:17:9-23:19
+	android:exported
+		ADDED from [:@react-native-firebase_messaging] /Users/erp/Desktop/dev/iengage_app/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:19:13-37
+	android:name
+		ADDED from [:@react-native-firebase_messaging] /Users/erp/Desktop/dev/iengage_app/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:18:13-95
+intent-filter#action:name:com.google.firebase.MESSAGING_EVENT
+ADDED from [:@react-native-firebase_messaging] /Users/erp/Desktop/dev/iengage_app/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:20:13-22:29
+action#com.google.firebase.MESSAGING_EVENT
+ADDED from [:@react-native-firebase_messaging] /Users/erp/Desktop/dev/iengage_app/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:21:17-78
+	android:name
+		ADDED from [:@react-native-firebase_messaging] /Users/erp/Desktop/dev/iengage_app/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:21:25-75
+receiver#io.invertase.firebase.messaging.ReactNativeFirebaseMessagingReceiver
+ADDED from [:@react-native-firebase_messaging] /Users/erp/Desktop/dev/iengage_app/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:25:9-32:20
+	android:exported
+		ADDED from [:@react-native-firebase_messaging] /Users/erp/Desktop/dev/iengage_app/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:27:13-36
+	android:permission
+		ADDED from [:@react-native-firebase_messaging] /Users/erp/Desktop/dev/iengage_app/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:28:13-73
+	android:name
+		ADDED from [:@react-native-firebase_messaging] /Users/erp/Desktop/dev/iengage_app/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:26:13-96
+intent-filter#action:name:com.google.android.c2dm.intent.RECEIVE
+ADDED from [:@react-native-firebase_messaging] /Users/erp/Desktop/dev/iengage_app/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:29:13-31:29
+action#com.google.android.c2dm.intent.RECEIVE
+ADDED from [:@react-native-firebase_messaging] /Users/erp/Desktop/dev/iengage_app/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:30:17-81
+	android:name
+		ADDED from [:@react-native-firebase_messaging] /Users/erp/Desktop/dev/iengage_app/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:30:25-78
+meta-data#firebase_messaging_auto_init_enabled
+ADDED from [:@react-native-firebase_messaging] /Users/erp/Desktop/dev/iengage_app/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:34:9-36:36
+	android:value
+		ADDED from [:@react-native-firebase_messaging] /Users/erp/Desktop/dev/iengage_app/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:36:13-33
+	android:name
+		ADDED from [:@react-native-firebase_messaging] /Users/erp/Desktop/dev/iengage_app/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:35:13-64
+meta-data#com.google.firebase.messaging.default_notification_channel_id
+ADDED from [:@react-native-firebase_messaging] /Users/erp/Desktop/dev/iengage_app/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:37:9-39:32
+	android:value
+		ADDED from [:@react-native-firebase_messaging] /Users/erp/Desktop/dev/iengage_app/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:39:13-29
+	android:name
+		ADDED from [:@react-native-firebase_messaging] /Users/erp/Desktop/dev/iengage_app/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:38:13-89
+meta-data#com.google.firebase.messaging.default_notification_color
+ADDED from [:@react-native-firebase_messaging] /Users/erp/Desktop/dev/iengage_app/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:40:9-42:47
+	android:resource
+		ADDED from [:@react-native-firebase_messaging] /Users/erp/Desktop/dev/iengage_app/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:42:13-44
+	android:name
+		ADDED from [:@react-native-firebase_messaging] /Users/erp/Desktop/dev/iengage_app/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:41:13-84
+receiver#com.learnium.RNDeviceInfo.RNDeviceReceiver
+ADDED from [:react-native-device-info] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-device-info/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:12:9-19:20
+	android:enabled
+		ADDED from [:react-native-device-info] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-device-info/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:14:13-35
+	android:exported
+		ADDED from [:react-native-device-info] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-device-info/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:15:13-36
+	android:name
+		ADDED from [:react-native-device-info] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-device-info/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:13:13-70
+intent-filter#action:name:com.android.vending.INSTALL_REFERRER
+ADDED from [:react-native-device-info] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-device-info/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:16:13-18:29
+action#com.android.vending.INSTALL_REFERRER
+ADDED from [:react-native-device-info] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-device-info/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:17:17-79
+	android:name
+		ADDED from [:react-native-device-info] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-device-info/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:17:25-76
+meta-data#android.support.FILE_PROVIDER_PATHS
+MERGED from [:react-native-file-viewer] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-file-viewer/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:17:13-19:70
+MERGED from [:react-native-file-viewer] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-file-viewer/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:17:13-19:70
+provider#com.imagepicker.FileProvider
+ADDED from [:react-native-image-picker] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-image-picker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:10:9-18:20
+	android:grantUriPermissions
+		ADDED from [:react-native-image-picker] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-image-picker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:14:13-47
+	android:authorities
+		ADDED from [:react-native-image-picker] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-image-picker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:12:13-60
+	android:exported
+		ADDED from [:react-native-image-picker] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-image-picker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:13:13-37
+	android:name
+		ADDED from [:react-native-image-picker] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-image-picker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:11:13-56
+provider#com.reactnativecommunity.webview.RNCWebViewFileProvider
+ADDED from [:react-native-webview] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-webview/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:12:9-20:20
+	android:grantUriPermissions
+		ADDED from [:react-native-webview] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-webview/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:16:13-47
+	android:authorities
+		ADDED from [:react-native-webview] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-webview/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:14:13-64
+	android:exported
+		ADDED from [:react-native-webview] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-webview/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:15:13-37
+	android:name
+		ADDED from [:react-native-webview] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-webview/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:13:13-83
+uses-permission#com.android.vending.CHECK_LICENSE
+ADDED from [:rn-fetch-blob] /Users/erp/Desktop/dev/iengage_app/node_modules/rn-fetch-blob/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:12:5-73
+	android:name
+		ADDED from [:rn-fetch-blob] /Users/erp/Desktop/dev/iengage_app/node_modules/rn-fetch-blob/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:12:22-70
+provider#com.RNFetchBlob.Utils.FileProvider
+ADDED from [:rn-fetch-blob] /Users/erp/Desktop/dev/iengage_app/node_modules/rn-fetch-blob/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:36:9-44:20
+	android:grantUriPermissions
+		ADDED from [:rn-fetch-blob] /Users/erp/Desktop/dev/iengage_app/node_modules/rn-fetch-blob/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:40:13-47
+	android:authorities
+		ADDED from [:rn-fetch-blob] /Users/erp/Desktop/dev/iengage_app/node_modules/rn-fetch-blob/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:38:13-60
+	android:exported
+		ADDED from [:rn-fetch-blob] /Users/erp/Desktop/dev/iengage_app/node_modules/rn-fetch-blob/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:39:13-37
+	android:name
+		ADDED from [:rn-fetch-blob] /Users/erp/Desktop/dev/iengage_app/node_modules/rn-fetch-blob/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:37:13-62
+service#com.google.firebase.messaging.FirebaseMessagingService
+ADDED from [com.google.firebase:firebase-messaging:21.0.1] /Users/erp/.gradle/caches/transforms-2/files-2.1/e6aeccb10d90bd3d15843afaf86f6315/jetified-firebase-messaging-21.0.1/AndroidManifest.xml:28:9-35:19
+	android:exported
+		ADDED from [com.google.firebase:firebase-messaging:21.0.1] /Users/erp/.gradle/caches/transforms-2/files-2.1/e6aeccb10d90bd3d15843afaf86f6315/jetified-firebase-messaging-21.0.1/AndroidManifest.xml:31:13-37
+	android:directBootAware
+		ADDED from [com.google.firebase:firebase-messaging:21.0.1] /Users/erp/.gradle/caches/transforms-2/files-2.1/e6aeccb10d90bd3d15843afaf86f6315/jetified-firebase-messaging-21.0.1/AndroidManifest.xml:30:13-43
+	android:name
+		ADDED from [com.google.firebase:firebase-messaging:21.0.1] /Users/erp/.gradle/caches/transforms-2/files-2.1/e6aeccb10d90bd3d15843afaf86f6315/jetified-firebase-messaging-21.0.1/AndroidManifest.xml:29:13-82
+service#com.google.firebase.components.ComponentDiscoveryService
+ADDED from [com.google.firebase:firebase-messaging:21.0.1] /Users/erp/.gradle/caches/transforms-2/files-2.1/e6aeccb10d90bd3d15843afaf86f6315/jetified-firebase-messaging-21.0.1/AndroidManifest.xml:36:9-42:19
+MERGED from [com.google.firebase:firebase-datatransport:17.0.10] /Users/erp/.gradle/caches/transforms-2/files-2.1/a0dba8646c9ab41fdd49cc467147eb05/jetified-firebase-datatransport-17.0.10/AndroidManifest.xml:25:9-31:19
+MERGED from [com.google.firebase:firebase-datatransport:17.0.10] /Users/erp/.gradle/caches/transforms-2/files-2.1/a0dba8646c9ab41fdd49cc467147eb05/jetified-firebase-datatransport-17.0.10/AndroidManifest.xml:25:9-31:19
+MERGED from [com.google.firebase:firebase-iid:21.0.1] /Users/erp/.gradle/caches/transforms-2/files-2.1/bd5de6bb015d3720918a69a6f61593d2/jetified-firebase-iid-21.0.1/AndroidManifest.xml:29:9-35:19
+MERGED from [com.google.firebase:firebase-iid:21.0.1] /Users/erp/.gradle/caches/transforms-2/files-2.1/bd5de6bb015d3720918a69a6f61593d2/jetified-firebase-iid-21.0.1/AndroidManifest.xml:29:9-35:19
+MERGED from [com.google.android.gms:play-services-measurement-api:18.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/ad65f92872ee1541dc3d4653b293a283/jetified-play-services-measurement-api-18.0.2/AndroidManifest.xml:27:9-33:19
+MERGED from [com.google.android.gms:play-services-measurement-api:18.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/ad65f92872ee1541dc3d4653b293a283/jetified-play-services-measurement-api-18.0.2/AndroidManifest.xml:27:9-33:19
+MERGED from [com.google.firebase:firebase-installations:16.3.5] /Users/erp/.gradle/caches/transforms-2/files-2.1/7b49c4f3f382f7fcc545b60616e6b9c7/jetified-firebase-installations-16.3.5/AndroidManifest.xml:15:9-21:19
+MERGED from [com.google.firebase:firebase-installations:16.3.5] /Users/erp/.gradle/caches/transforms-2/files-2.1/7b49c4f3f382f7fcc545b60616e6b9c7/jetified-firebase-installations-16.3.5/AndroidManifest.xml:15:9-21:19
+MERGED from [com.google.firebase:firebase-common:19.5.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/f2bedf782a4f021c3fbfb3cc40045ab2/jetified-firebase-common-19.5.0/AndroidManifest.xml:33:9-46:19
+MERGED from [com.google.firebase:firebase-common:19.5.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/f2bedf782a4f021c3fbfb3cc40045ab2/jetified-firebase-common-19.5.0/AndroidManifest.xml:33:9-46:19
+	android:exported
+		ADDED from [com.google.firebase:firebase-messaging:21.0.1] /Users/erp/.gradle/caches/transforms-2/files-2.1/e6aeccb10d90bd3d15843afaf86f6315/jetified-firebase-messaging-21.0.1/AndroidManifest.xml:38:13-37
+	tools:targetApi
+		ADDED from [com.google.firebase:firebase-common:19.5.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/f2bedf782a4f021c3fbfb3cc40045ab2/jetified-firebase-common-19.5.0/AndroidManifest.xml:37:13-32
+	android:directBootAware
+		ADDED from [com.google.firebase:firebase-common:19.5.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/f2bedf782a4f021c3fbfb3cc40045ab2/jetified-firebase-common-19.5.0/AndroidManifest.xml:35:13-43
+	android:name
+		ADDED from [com.google.firebase:firebase-messaging:21.0.1] /Users/erp/.gradle/caches/transforms-2/files-2.1/e6aeccb10d90bd3d15843afaf86f6315/jetified-firebase-messaging-21.0.1/AndroidManifest.xml:37:13-84
+meta-data#com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingRegistrar
+ADDED from [com.google.firebase:firebase-messaging:21.0.1] /Users/erp/.gradle/caches/transforms-2/files-2.1/e6aeccb10d90bd3d15843afaf86f6315/jetified-firebase-messaging-21.0.1/AndroidManifest.xml:39:13-41:85
+	android:value
+		ADDED from [com.google.firebase:firebase-messaging:21.0.1] /Users/erp/.gradle/caches/transforms-2/files-2.1/e6aeccb10d90bd3d15843afaf86f6315/jetified-firebase-messaging-21.0.1/AndroidManifest.xml:41:17-82
+	android:name
+		ADDED from [com.google.firebase:firebase-messaging:21.0.1] /Users/erp/.gradle/caches/transforms-2/files-2.1/e6aeccb10d90bd3d15843afaf86f6315/jetified-firebase-messaging-21.0.1/AndroidManifest.xml:40:17-119
+uses-permission#android.permission.FOREGROUND_SERVICE
+ADDED from [com.google.android.play:core:1.7.3] /Users/erp/.gradle/caches/transforms-2/files-2.1/540b9ead92b37da49399804f1955c067/jetified-core-1.7.3/AndroidManifest.xml:8:3-74
+	android:name
+		ADDED from [com.google.android.play:core:1.7.3] /Users/erp/.gradle/caches/transforms-2/files-2.1/540b9ead92b37da49399804f1955c067/jetified-core-1.7.3/AndroidManifest.xml:8:20-72
+activity#com.google.android.play.core.missingsplits.PlayCoreMissingSplitsActivity
+ADDED from [com.google.android.play:core:1.7.3] /Users/erp/.gradle/caches/transforms-2/files-2.1/540b9ead92b37da49399804f1955c067/jetified-core-1.7.3/AndroidManifest.xml:12:5-271
+	android:process
+		ADDED from [com.google.android.play:core:1.7.3] /Users/erp/.gradle/caches/transforms-2/files-2.1/540b9ead92b37da49399804f1955c067/jetified-core-1.7.3/AndroidManifest.xml:12:152-203
+	android:enabled
+		ADDED from [com.google.android.play:core:1.7.3] /Users/erp/.gradle/caches/transforms-2/files-2.1/540b9ead92b37da49399804f1955c067/jetified-core-1.7.3/AndroidManifest.xml:12:103-126
+	android:stateNotNeeded
+		ADDED from [com.google.android.play:core:1.7.3] /Users/erp/.gradle/caches/transforms-2/files-2.1/540b9ead92b37da49399804f1955c067/jetified-core-1.7.3/AndroidManifest.xml:12:240-269
+	android:launchMode
+		ADDED from [com.google.android.play:core:1.7.3] /Users/erp/.gradle/caches/transforms-2/files-2.1/540b9ead92b37da49399804f1955c067/jetified-core-1.7.3/AndroidManifest.xml:12:204-239
+	android:exported
+		ADDED from [com.google.android.play:core:1.7.3] /Users/erp/.gradle/caches/transforms-2/files-2.1/540b9ead92b37da49399804f1955c067/jetified-core-1.7.3/AndroidManifest.xml:12:127-151
+	android:name
+		ADDED from [com.google.android.play:core:1.7.3] /Users/erp/.gradle/caches/transforms-2/files-2.1/540b9ead92b37da49399804f1955c067/jetified-core-1.7.3/AndroidManifest.xml:12:15-102
+activity#com.google.android.play.core.common.PlayCoreDialogWrapperActivity
+ADDED from [com.google.android.play:core:1.7.3] /Users/erp/.gradle/caches/transforms-2/files-2.1/540b9ead92b37da49399804f1955c067/jetified-core-1.7.3/AndroidManifest.xml:13:5-226
+	android:enabled
+		ADDED from [com.google.android.play:core:1.7.3] /Users/erp/.gradle/caches/transforms-2/files-2.1/540b9ead92b37da49399804f1955c067/jetified-core-1.7.3/AndroidManifest.xml:13:96-119
+	android:stateNotNeeded
+		ADDED from [com.google.android.play:core:1.7.3] /Users/erp/.gradle/caches/transforms-2/files-2.1/540b9ead92b37da49399804f1955c067/jetified-core-1.7.3/AndroidManifest.xml:13:145-174
+	android:exported
+		ADDED from [com.google.android.play:core:1.7.3] /Users/erp/.gradle/caches/transforms-2/files-2.1/540b9ead92b37da49399804f1955c067/jetified-core-1.7.3/AndroidManifest.xml:13:120-144
+	android:theme
+		ADDED from [com.google.android.play:core:1.7.3] /Users/erp/.gradle/caches/transforms-2/files-2.1/540b9ead92b37da49399804f1955c067/jetified-core-1.7.3/AndroidManifest.xml:13:175-224
+	android:name
+		ADDED from [com.google.android.play:core:1.7.3] /Users/erp/.gradle/caches/transforms-2/files-2.1/540b9ead92b37da49399804f1955c067/jetified-core-1.7.3/AndroidManifest.xml:13:15-95
+service#com.google.android.play.core.assetpacks.AssetPackExtractionService
+ADDED from [com.google.android.play:core:1.7.3] /Users/erp/.gradle/caches/transforms-2/files-2.1/540b9ead92b37da49399804f1955c067/jetified-core-1.7.3/AndroidManifest.xml:16:5-145
+	android:enabled
+		ADDED from [com.google.android.play:core:1.7.3] /Users/erp/.gradle/caches/transforms-2/files-2.1/540b9ead92b37da49399804f1955c067/jetified-core-1.7.3/AndroidManifest.xml:16:96-119
+	android:exported
+		ADDED from [com.google.android.play:core:1.7.3] /Users/erp/.gradle/caches/transforms-2/files-2.1/540b9ead92b37da49399804f1955c067/jetified-core-1.7.3/AndroidManifest.xml:16:120-143
+	android:name
+		ADDED from [com.google.android.play:core:1.7.3] /Users/erp/.gradle/caches/transforms-2/files-2.1/540b9ead92b37da49399804f1955c067/jetified-core-1.7.3/AndroidManifest.xml:16:14-95
+service#com.burnweb.rnsendintent.RNSendIntentModule
+ADDED from [:react-native-send-intent] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-send-intent/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:12:9-14:39
+	android:exported
+		ADDED from [:react-native-send-intent] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-send-intent/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:14:13-36
+	android:name
+		ADDED from [:react-native-send-intent] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-send-intent/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:13:13-71
+provider#com.burnweb.rnsendintent.FileProvider
+ADDED from [:react-native-send-intent] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-send-intent/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:16:9-24:20
+	android:grantUriPermissions
+		ADDED from [:react-native-send-intent] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-send-intent/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:20:13-47
+	android:authorities
+		ADDED from [:react-native-send-intent] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-send-intent/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:18:13-64
+	android:exported
+		ADDED from [:react-native-send-intent] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-send-intent/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:19:13-37
+	android:name
+		ADDED from [:react-native-send-intent] /Users/erp/Desktop/dev/iengage_app/node_modules/react-native-send-intent/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:17:13-65
+meta-data#com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar
+ADDED from [com.google.firebase:firebase-datatransport:17.0.10] /Users/erp/.gradle/caches/transforms-2/files-2.1/a0dba8646c9ab41fdd49cc467147eb05/jetified-firebase-datatransport-17.0.10/AndroidManifest.xml:28:13-30:85
+	android:value
+		ADDED from [com.google.firebase:firebase-datatransport:17.0.10] /Users/erp/.gradle/caches/transforms-2/files-2.1/a0dba8646c9ab41fdd49cc467147eb05/jetified-firebase-datatransport-17.0.10/AndroidManifest.xml:30:17-82
+	android:name
+		ADDED from [com.google.firebase:firebase-datatransport:17.0.10] /Users/erp/.gradle/caches/transforms-2/files-2.1/a0dba8646c9ab41fdd49cc467147eb05/jetified-firebase-datatransport-17.0.10/AndroidManifest.xml:29:17-115
+service#com.google.android.datatransport.runtime.backends.TransportBackendDiscovery
+ADDED from [com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/erp/.gradle/caches/transforms-2/files-2.1/e98721d92a542c39e001ed7a622345bf/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:29:9-35:19
+MERGED from [com.google.android.datatransport:transport-runtime:2.2.5] /Users/erp/.gradle/caches/transforms-2/files-2.1/bef2256cfc2972bb48363074146f729f/jetified-transport-runtime-2.2.5/AndroidManifest.xml:36:9-38:40
+MERGED from [com.google.android.datatransport:transport-runtime:2.2.5] /Users/erp/.gradle/caches/transforms-2/files-2.1/bef2256cfc2972bb48363074146f729f/jetified-transport-runtime-2.2.5/AndroidManifest.xml:36:9-38:40
+	android:exported
+		ADDED from [com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/erp/.gradle/caches/transforms-2/files-2.1/e98721d92a542c39e001ed7a622345bf/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:31:13-37
+	android:name
+		ADDED from [com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/erp/.gradle/caches/transforms-2/files-2.1/e98721d92a542c39e001ed7a622345bf/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:30:13-103
+meta-data#backend:com.google.android.datatransport.cct.CctBackendFactory
+ADDED from [com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/erp/.gradle/caches/transforms-2/files-2.1/e98721d92a542c39e001ed7a622345bf/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:32:13-34:39
+	android:value
+		ADDED from [com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/erp/.gradle/caches/transforms-2/files-2.1/e98721d92a542c39e001ed7a622345bf/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:34:17-36
+	android:name
+		ADDED from [com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/erp/.gradle/caches/transforms-2/files-2.1/e98721d92a542c39e001ed7a622345bf/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:33:17-94
+service#com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService
+ADDED from [com.google.android.datatransport:transport-runtime:2.2.5] /Users/erp/.gradle/caches/transforms-2/files-2.1/bef2256cfc2972bb48363074146f729f/jetified-transport-runtime-2.2.5/AndroidManifest.xml:26:9-30:19
+	android:exported
+		ADDED from [com.google.android.datatransport:transport-runtime:2.2.5] /Users/erp/.gradle/caches/transforms-2/files-2.1/bef2256cfc2972bb48363074146f729f/jetified-transport-runtime-2.2.5/AndroidManifest.xml:28:13-37
+	android:permission
+		ADDED from [com.google.android.datatransport:transport-runtime:2.2.5] /Users/erp/.gradle/caches/transforms-2/files-2.1/bef2256cfc2972bb48363074146f729f/jetified-transport-runtime-2.2.5/AndroidManifest.xml:29:13-69
+	android:name
+		ADDED from [com.google.android.datatransport:transport-runtime:2.2.5] /Users/erp/.gradle/caches/transforms-2/files-2.1/bef2256cfc2972bb48363074146f729f/jetified-transport-runtime-2.2.5/AndroidManifest.xml:27:13-117
+receiver#com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver
+ADDED from [com.google.android.datatransport:transport-runtime:2.2.5] /Users/erp/.gradle/caches/transforms-2/files-2.1/bef2256cfc2972bb48363074146f729f/jetified-transport-runtime-2.2.5/AndroidManifest.xml:32:9-34:40
+	android:exported
+		ADDED from [com.google.android.datatransport:transport-runtime:2.2.5] /Users/erp/.gradle/caches/transforms-2/files-2.1/bef2256cfc2972bb48363074146f729f/jetified-transport-runtime-2.2.5/AndroidManifest.xml:34:13-37
+	android:name
+		ADDED from [com.google.android.datatransport:transport-runtime:2.2.5] /Users/erp/.gradle/caches/transforms-2/files-2.1/bef2256cfc2972bb48363074146f729f/jetified-transport-runtime-2.2.5/AndroidManifest.xml:33:13-132
+activity#com.google.android.gms.auth.api.signin.internal.SignInHubActivity
+ADDED from [com.google.android.gms:play-services-auth:19.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/57bfcd77bf7c9d985d013ce7ccc8f04d/jetified-play-services-auth-19.0.0/AndroidManifest.xml:23:9-27:75
+	android:excludeFromRecents
+		ADDED from [com.google.android.gms:play-services-auth:19.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/57bfcd77bf7c9d985d013ce7ccc8f04d/jetified-play-services-auth-19.0.0/AndroidManifest.xml:25:13-46
+	android:exported
+		ADDED from [com.google.android.gms:play-services-auth:19.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/57bfcd77bf7c9d985d013ce7ccc8f04d/jetified-play-services-auth-19.0.0/AndroidManifest.xml:26:13-37
+	android:theme
+		ADDED from [com.google.android.gms:play-services-auth:19.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/57bfcd77bf7c9d985d013ce7ccc8f04d/jetified-play-services-auth-19.0.0/AndroidManifest.xml:27:13-72
+	android:name
+		ADDED from [com.google.android.gms:play-services-auth:19.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/57bfcd77bf7c9d985d013ce7ccc8f04d/jetified-play-services-auth-19.0.0/AndroidManifest.xml:24:13-93
+service#com.google.android.gms.auth.api.signin.RevocationBoundService
+ADDED from [com.google.android.gms:play-services-auth:19.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/57bfcd77bf7c9d985d013ce7ccc8f04d/jetified-play-services-auth-19.0.0/AndroidManifest.xml:33:9-37:51
+	android:exported
+		ADDED from [com.google.android.gms:play-services-auth:19.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/57bfcd77bf7c9d985d013ce7ccc8f04d/jetified-play-services-auth-19.0.0/AndroidManifest.xml:35:13-36
+	android:visibleToInstantApps
+		ADDED from [com.google.android.gms:play-services-auth:19.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/57bfcd77bf7c9d985d013ce7ccc8f04d/jetified-play-services-auth-19.0.0/AndroidManifest.xml:37:13-48
+	android:permission
+		ADDED from [com.google.android.gms:play-services-auth:19.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/57bfcd77bf7c9d985d013ce7ccc8f04d/jetified-play-services-auth-19.0.0/AndroidManifest.xml:36:13-107
+	android:name
+		ADDED from [com.google.android.gms:play-services-auth:19.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/57bfcd77bf7c9d985d013ce7ccc8f04d/jetified-play-services-auth-19.0.0/AndroidManifest.xml:34:13-89
+uses-permission#com.google.android.c2dm.permission.RECEIVE
+ADDED from [com.google.android.gms:play-services-iid:17.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/bae85756b86e59c37f10cd9d5b8a514e/jetified-play-services-iid-17.0.0/AndroidManifest.xml:23:5-82
+MERGED from [com.google.firebase:firebase-iid:21.0.1] /Users/erp/.gradle/caches/transforms-2/files-2.1/bd5de6bb015d3720918a69a6f61593d2/jetified-firebase-iid-21.0.1/AndroidManifest.xml:26:5-82
+MERGED from [com.google.firebase:firebase-iid:21.0.1] /Users/erp/.gradle/caches/transforms-2/files-2.1/bd5de6bb015d3720918a69a6f61593d2/jetified-firebase-iid-21.0.1/AndroidManifest.xml:26:5-82
+MERGED from [com.google.android.gms:play-services-cloud-messaging:16.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/ec374bb595e8736409912e7ac9f6ce93/jetified-play-services-cloud-messaging-16.0.0/AndroidManifest.xml:11:5-82
+MERGED from [com.google.android.gms:play-services-cloud-messaging:16.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/ec374bb595e8736409912e7ac9f6ce93/jetified-play-services-cloud-messaging-16.0.0/AndroidManifest.xml:11:5-82
+	android:name
+		ADDED from [com.google.android.gms:play-services-iid:17.0.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/bae85756b86e59c37f10cd9d5b8a514e/jetified-play-services-iid-17.0.0/AndroidManifest.xml:23:22-79
+meta-data#com.google.firebase.components:com.google.firebase.iid.Registrar
+ADDED from [com.google.firebase:firebase-iid:21.0.1] /Users/erp/.gradle/caches/transforms-2/files-2.1/bd5de6bb015d3720918a69a6f61593d2/jetified-firebase-iid-21.0.1/AndroidManifest.xml:32:13-34:85
+	android:value
+		ADDED from [com.google.firebase:firebase-iid:21.0.1] /Users/erp/.gradle/caches/transforms-2/files-2.1/bd5de6bb015d3720918a69a6f61593d2/jetified-firebase-iid-21.0.1/AndroidManifest.xml:34:17-82
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:21.0.1] /Users/erp/.gradle/caches/transforms-2/files-2.1/bd5de6bb015d3720918a69a6f61593d2/jetified-firebase-iid-21.0.1/AndroidManifest.xml:33:17-96
+receiver#com.google.firebase.iid.FirebaseInstanceIdReceiver
+ADDED from [com.google.firebase:firebase-iid:21.0.1] /Users/erp/.gradle/caches/transforms-2/files-2.1/bd5de6bb015d3720918a69a6f61593d2/jetified-firebase-iid-21.0.1/AndroidManifest.xml:37:9-44:20
+	android:exported
+		ADDED from [com.google.firebase:firebase-iid:21.0.1] /Users/erp/.gradle/caches/transforms-2/files-2.1/bd5de6bb015d3720918a69a6f61593d2/jetified-firebase-iid-21.0.1/AndroidManifest.xml:39:13-36
+	android:permission
+		ADDED from [com.google.firebase:firebase-iid:21.0.1] /Users/erp/.gradle/caches/transforms-2/files-2.1/bd5de6bb015d3720918a69a6f61593d2/jetified-firebase-iid-21.0.1/AndroidManifest.xml:40:13-73
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:21.0.1] /Users/erp/.gradle/caches/transforms-2/files-2.1/bd5de6bb015d3720918a69a6f61593d2/jetified-firebase-iid-21.0.1/AndroidManifest.xml:38:13-78
+meta-data#com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar
+ADDED from [com.google.android.gms:play-services-measurement-api:18.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/ad65f92872ee1541dc3d4653b293a283/jetified-play-services-measurement-api-18.0.2/AndroidManifest.xml:30:13-32:85
+	android:value
+		ADDED from [com.google.android.gms:play-services-measurement-api:18.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/ad65f92872ee1541dc3d4653b293a283/jetified-play-services-measurement-api-18.0.2/AndroidManifest.xml:32:17-82
+	android:name
+		ADDED from [com.google.android.gms:play-services-measurement-api:18.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/ad65f92872ee1541dc3d4653b293a283/jetified-play-services-measurement-api-18.0.2/AndroidManifest.xml:31:17-139
+meta-data#com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar
+ADDED from [com.google.firebase:firebase-installations:16.3.5] /Users/erp/.gradle/caches/transforms-2/files-2.1/7b49c4f3f382f7fcc545b60616e6b9c7/jetified-firebase-installations-16.3.5/AndroidManifest.xml:18:13-20:85
+	android:value
+		ADDED from [com.google.firebase:firebase-installations:16.3.5] /Users/erp/.gradle/caches/transforms-2/files-2.1/7b49c4f3f382f7fcc545b60616e6b9c7/jetified-firebase-installations-16.3.5/AndroidManifest.xml:20:17-82
+	android:name
+		ADDED from [com.google.firebase:firebase-installations:16.3.5] /Users/erp/.gradle/caches/transforms-2/files-2.1/7b49c4f3f382f7fcc545b60616e6b9c7/jetified-firebase-installations-16.3.5/AndroidManifest.xml:19:17-127
+provider#com.google.firebase.provider.FirebaseInitProvider
+ADDED from [com.google.firebase:firebase-common:19.5.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/f2bedf782a4f021c3fbfb3cc40045ab2/jetified-firebase-common-19.5.0/AndroidManifest.xml:26:9-31:39
+	android:authorities
+		ADDED from [com.google.firebase:firebase-common:19.5.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/f2bedf782a4f021c3fbfb3cc40045ab2/jetified-firebase-common-19.5.0/AndroidManifest.xml:28:13-72
+	android:exported
+		ADDED from [com.google.firebase:firebase-common:19.5.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/f2bedf782a4f021c3fbfb3cc40045ab2/jetified-firebase-common-19.5.0/AndroidManifest.xml:30:13-37
+	android:directBootAware
+		ADDED from [com.google.firebase:firebase-common:19.5.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/f2bedf782a4f021c3fbfb3cc40045ab2/jetified-firebase-common-19.5.0/AndroidManifest.xml:29:13-43
+	android:initOrder
+		ADDED from [com.google.firebase:firebase-common:19.5.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/f2bedf782a4f021c3fbfb3cc40045ab2/jetified-firebase-common-19.5.0/AndroidManifest.xml:31:13-36
+	android:name
+		ADDED from [com.google.firebase:firebase-common:19.5.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/f2bedf782a4f021c3fbfb3cc40045ab2/jetified-firebase-common-19.5.0/AndroidManifest.xml:27:13-77
+meta-data#com.google.firebase.components:com.google.firebase.dynamicloading.DynamicLoadingRegistrar
+ADDED from [com.google.firebase:firebase-common:19.5.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/f2bedf782a4f021c3fbfb3cc40045ab2/jetified-firebase-common-19.5.0/AndroidManifest.xml:43:13-45:85
+	android:value
+		ADDED from [com.google.firebase:firebase-common:19.5.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/f2bedf782a4f021c3fbfb3cc40045ab2/jetified-firebase-common-19.5.0/AndroidManifest.xml:45:17-82
+	android:name
+		ADDED from [com.google.firebase:firebase-common:19.5.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/f2bedf782a4f021c3fbfb3cc40045ab2/jetified-firebase-common-19.5.0/AndroidManifest.xml:44:17-121
+activity#com.google.android.gms.common.api.GoogleApiActivity
+ADDED from [com.google.android.gms:play-services-base:17.1.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/dc7f0a6e79d79f38fc09bbfa618c914e/jetified-play-services-base-17.1.0/AndroidManifest.xml:23:9-26:75
+	android:exported
+		ADDED from [com.google.android.gms:play-services-base:17.1.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/dc7f0a6e79d79f38fc09bbfa618c914e/jetified-play-services-base-17.1.0/AndroidManifest.xml:25:13-37
+	android:theme
+		ADDED from [com.google.android.gms:play-services-base:17.1.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/dc7f0a6e79d79f38fc09bbfa618c914e/jetified-play-services-base-17.1.0/AndroidManifest.xml:26:13-72
+	android:name
+		ADDED from [com.google.android.gms:play-services-base:17.1.0] /Users/erp/.gradle/caches/transforms-2/files-2.1/dc7f0a6e79d79f38fc09bbfa618c914e/jetified-play-services-base-17.1.0/AndroidManifest.xml:24:13-79
+uses-permission#com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE
+ADDED from [com.google.android.gms:play-services-measurement:18.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/9e719e888e659f9de0ddf911427a5604/jetified-play-services-measurement-18.0.2/AndroidManifest.xml:26:5-110
+MERGED from [com.google.android.gms:play-services-measurement-impl:18.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/e139c7bc3862ad15dcb0fc52916d31b6/jetified-play-services-measurement-impl-18.0.2/AndroidManifest.xml:26:5-110
+MERGED from [com.google.android.gms:play-services-measurement-impl:18.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/e139c7bc3862ad15dcb0fc52916d31b6/jetified-play-services-measurement-impl-18.0.2/AndroidManifest.xml:26:5-110
+	android:name
+		ADDED from [com.google.android.gms:play-services-measurement:18.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/9e719e888e659f9de0ddf911427a5604/jetified-play-services-measurement-18.0.2/AndroidManifest.xml:26:22-107
+receiver#com.google.android.gms.measurement.AppMeasurementReceiver
+ADDED from [com.google.android.gms:play-services-measurement:18.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/9e719e888e659f9de0ddf911427a5604/jetified-play-services-measurement-18.0.2/AndroidManifest.xml:29:9-33:20
+	android:enabled
+		ADDED from [com.google.android.gms:play-services-measurement:18.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/9e719e888e659f9de0ddf911427a5604/jetified-play-services-measurement-18.0.2/AndroidManifest.xml:31:13-35
+	android:exported
+		ADDED from [com.google.android.gms:play-services-measurement:18.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/9e719e888e659f9de0ddf911427a5604/jetified-play-services-measurement-18.0.2/AndroidManifest.xml:32:13-37
+	android:name
+		ADDED from [com.google.android.gms:play-services-measurement:18.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/9e719e888e659f9de0ddf911427a5604/jetified-play-services-measurement-18.0.2/AndroidManifest.xml:30:13-85
+service#com.google.android.gms.measurement.AppMeasurementService
+ADDED from [com.google.android.gms:play-services-measurement:18.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/9e719e888e659f9de0ddf911427a5604/jetified-play-services-measurement-18.0.2/AndroidManifest.xml:35:9-38:40
+	android:enabled
+		ADDED from [com.google.android.gms:play-services-measurement:18.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/9e719e888e659f9de0ddf911427a5604/jetified-play-services-measurement-18.0.2/AndroidManifest.xml:37:13-35
+	android:exported
+		ADDED from [com.google.android.gms:play-services-measurement:18.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/9e719e888e659f9de0ddf911427a5604/jetified-play-services-measurement-18.0.2/AndroidManifest.xml:38:13-37
+	android:name
+		ADDED from [com.google.android.gms:play-services-measurement:18.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/9e719e888e659f9de0ddf911427a5604/jetified-play-services-measurement-18.0.2/AndroidManifest.xml:36:13-84
+service#com.google.android.gms.measurement.AppMeasurementJobService
+ADDED from [com.google.android.gms:play-services-measurement:18.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/9e719e888e659f9de0ddf911427a5604/jetified-play-services-measurement-18.0.2/AndroidManifest.xml:39:9-43:72
+	android:enabled
+		ADDED from [com.google.android.gms:play-services-measurement:18.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/9e719e888e659f9de0ddf911427a5604/jetified-play-services-measurement-18.0.2/AndroidManifest.xml:41:13-35
+	android:exported
+		ADDED from [com.google.android.gms:play-services-measurement:18.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/9e719e888e659f9de0ddf911427a5604/jetified-play-services-measurement-18.0.2/AndroidManifest.xml:42:13-37
+	android:permission
+		ADDED from [com.google.android.gms:play-services-measurement:18.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/9e719e888e659f9de0ddf911427a5604/jetified-play-services-measurement-18.0.2/AndroidManifest.xml:43:13-69
+	android:name
+		ADDED from [com.google.android.gms:play-services-measurement:18.0.2] /Users/erp/.gradle/caches/transforms-2/files-2.1/9e719e888e659f9de0ddf911427a5604/jetified-play-services-measurement-18.0.2/AndroidManifest.xml:40:13-87
+meta-data#com.google.android.gms.version
+ADDED from [com.google.android.gms:play-services-basement:17.1.1] /Users/erp/.gradle/caches/transforms-2/files-2.1/11ec236308490d9839fea05c0ed171a6/jetified-play-services-basement-17.1.1/AndroidManifest.xml:23:9-25:69
+	android:value
+		ADDED from [com.google.android.gms:play-services-basement:17.1.1] /Users/erp/.gradle/caches/transforms-2/files-2.1/11ec236308490d9839fea05c0ed171a6/jetified-play-services-basement-17.1.1/AndroidManifest.xml:25:13-66
+	android:name
+		ADDED from [com.google.android.gms:play-services-basement:17.1.1] /Users/erp/.gradle/caches/transforms-2/files-2.1/11ec236308490d9839fea05c0ed171a6/jetified-play-services-basement-17.1.1/AndroidManifest.xml:24:13-58
+uses-permission#com.sec.android.provider.badge.permission.READ
+ADDED from [me.leolin:ShortcutBadger:1.1.22] /Users/erp/.gradle/caches/transforms-2/files-2.1/6e12edebbf2856f637f4f81681c50060/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:19:5-86
+	android:name
+		ADDED from [me.leolin:ShortcutBadger:1.1.22] /Users/erp/.gradle/caches/transforms-2/files-2.1/6e12edebbf2856f637f4f81681c50060/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:19:22-83
+uses-permission#com.sec.android.provider.badge.permission.WRITE
+ADDED from [me.leolin:ShortcutBadger:1.1.22] /Users/erp/.gradle/caches/transforms-2/files-2.1/6e12edebbf2856f637f4f81681c50060/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:20:5-87
+	android:name
+		ADDED from [me.leolin:ShortcutBadger:1.1.22] /Users/erp/.gradle/caches/transforms-2/files-2.1/6e12edebbf2856f637f4f81681c50060/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:20:22-84
+uses-permission#com.htc.launcher.permission.READ_SETTINGS
+ADDED from [me.leolin:ShortcutBadger:1.1.22] /Users/erp/.gradle/caches/transforms-2/files-2.1/6e12edebbf2856f637f4f81681c50060/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:23:5-81
+	android:name
+		ADDED from [me.leolin:ShortcutBadger:1.1.22] /Users/erp/.gradle/caches/transforms-2/files-2.1/6e12edebbf2856f637f4f81681c50060/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:23:22-78
+uses-permission#com.htc.launcher.permission.UPDATE_SHORTCUT
+ADDED from [me.leolin:ShortcutBadger:1.1.22] /Users/erp/.gradle/caches/transforms-2/files-2.1/6e12edebbf2856f637f4f81681c50060/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:24:5-83
+	android:name
+		ADDED from [me.leolin:ShortcutBadger:1.1.22] /Users/erp/.gradle/caches/transforms-2/files-2.1/6e12edebbf2856f637f4f81681c50060/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:24:22-80
+uses-permission#com.sonyericsson.home.permission.BROADCAST_BADGE
+ADDED from [me.leolin:ShortcutBadger:1.1.22] /Users/erp/.gradle/caches/transforms-2/files-2.1/6e12edebbf2856f637f4f81681c50060/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:27:5-88
+	android:name
+		ADDED from [me.leolin:ShortcutBadger:1.1.22] /Users/erp/.gradle/caches/transforms-2/files-2.1/6e12edebbf2856f637f4f81681c50060/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:27:22-85
+uses-permission#com.sonymobile.home.permission.PROVIDER_INSERT_BADGE
+ADDED from [me.leolin:ShortcutBadger:1.1.22] /Users/erp/.gradle/caches/transforms-2/files-2.1/6e12edebbf2856f637f4f81681c50060/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:28:5-92
+	android:name
+		ADDED from [me.leolin:ShortcutBadger:1.1.22] /Users/erp/.gradle/caches/transforms-2/files-2.1/6e12edebbf2856f637f4f81681c50060/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:28:22-89
+uses-permission#com.anddoes.launcher.permission.UPDATE_COUNT
+ADDED from [me.leolin:ShortcutBadger:1.1.22] /Users/erp/.gradle/caches/transforms-2/files-2.1/6e12edebbf2856f637f4f81681c50060/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:31:5-84
+	android:name
+		ADDED from [me.leolin:ShortcutBadger:1.1.22] /Users/erp/.gradle/caches/transforms-2/files-2.1/6e12edebbf2856f637f4f81681c50060/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:31:22-81
+uses-permission#com.majeur.launcher.permission.UPDATE_BADGE
+ADDED from [me.leolin:ShortcutBadger:1.1.22] /Users/erp/.gradle/caches/transforms-2/files-2.1/6e12edebbf2856f637f4f81681c50060/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:34:5-83
+	android:name
+		ADDED from [me.leolin:ShortcutBadger:1.1.22] /Users/erp/.gradle/caches/transforms-2/files-2.1/6e12edebbf2856f637f4f81681c50060/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:34:22-80
+uses-permission#com.huawei.android.launcher.permission.CHANGE_BADGE
+ADDED from [me.leolin:ShortcutBadger:1.1.22] /Users/erp/.gradle/caches/transforms-2/files-2.1/6e12edebbf2856f637f4f81681c50060/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:37:5-91
+	android:name
+		ADDED from [me.leolin:ShortcutBadger:1.1.22] /Users/erp/.gradle/caches/transforms-2/files-2.1/6e12edebbf2856f637f4f81681c50060/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:37:22-88
+uses-permission#com.huawei.android.launcher.permission.READ_SETTINGS
+ADDED from [me.leolin:ShortcutBadger:1.1.22] /Users/erp/.gradle/caches/transforms-2/files-2.1/6e12edebbf2856f637f4f81681c50060/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:38:5-92
+	android:name
+		ADDED from [me.leolin:ShortcutBadger:1.1.22] /Users/erp/.gradle/caches/transforms-2/files-2.1/6e12edebbf2856f637f4f81681c50060/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:38:22-89
+uses-permission#com.huawei.android.launcher.permission.WRITE_SETTINGS
+ADDED from [me.leolin:ShortcutBadger:1.1.22] /Users/erp/.gradle/caches/transforms-2/files-2.1/6e12edebbf2856f637f4f81681c50060/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:39:5-93
+	android:name
+		ADDED from [me.leolin:ShortcutBadger:1.1.22] /Users/erp/.gradle/caches/transforms-2/files-2.1/6e12edebbf2856f637f4f81681c50060/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:39:22-90
+uses-permission#android.permission.READ_APP_BADGE
+ADDED from [me.leolin:ShortcutBadger:1.1.22] /Users/erp/.gradle/caches/transforms-2/files-2.1/6e12edebbf2856f637f4f81681c50060/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:42:5-73
+	android:name
+		ADDED from [me.leolin:ShortcutBadger:1.1.22] /Users/erp/.gradle/caches/transforms-2/files-2.1/6e12edebbf2856f637f4f81681c50060/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:42:22-70
+uses-permission#com.oppo.launcher.permission.READ_SETTINGS
+ADDED from [me.leolin:ShortcutBadger:1.1.22] /Users/erp/.gradle/caches/transforms-2/files-2.1/6e12edebbf2856f637f4f81681c50060/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:45:5-82
+	android:name
+		ADDED from [me.leolin:ShortcutBadger:1.1.22] /Users/erp/.gradle/caches/transforms-2/files-2.1/6e12edebbf2856f637f4f81681c50060/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:45:22-79
+uses-permission#com.oppo.launcher.permission.WRITE_SETTINGS
+ADDED from [me.leolin:ShortcutBadger:1.1.22] /Users/erp/.gradle/caches/transforms-2/files-2.1/6e12edebbf2856f637f4f81681c50060/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:46:5-83
+	android:name
+		ADDED from [me.leolin:ShortcutBadger:1.1.22] /Users/erp/.gradle/caches/transforms-2/files-2.1/6e12edebbf2856f637f4f81681c50060/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:46:22-80
+uses-permission#me.everything.badger.permission.BADGE_COUNT_READ
+ADDED from [me.leolin:ShortcutBadger:1.1.22] /Users/erp/.gradle/caches/transforms-2/files-2.1/6e12edebbf2856f637f4f81681c50060/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:49:5-88
+	android:name
+		ADDED from [me.leolin:ShortcutBadger:1.1.22] /Users/erp/.gradle/caches/transforms-2/files-2.1/6e12edebbf2856f637f4f81681c50060/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:49:22-85
+uses-permission#me.everything.badger.permission.BADGE_COUNT_WRITE
+ADDED from [me.leolin:ShortcutBadger:1.1.22] /Users/erp/.gradle/caches/transforms-2/files-2.1/6e12edebbf2856f637f4f81681c50060/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:50:5-89
+	android:name
+		ADDED from [me.leolin:ShortcutBadger:1.1.22] /Users/erp/.gradle/caches/transforms-2/files-2.1/6e12edebbf2856f637f4f81681c50060/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:50:22-86

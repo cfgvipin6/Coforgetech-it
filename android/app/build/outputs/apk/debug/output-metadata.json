@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "artifactType": {
+    "type": "APK",
+    "kind": "Directory"
+  },
+  "applicationId": "com.iniitian_mobile.DEV",
+  "variantName": "debug",
+  "elements": [
+    {
+      "type": "SINGLE",
+      "filters": [],
+      "properties": [],
+      "versionCode": 1,
+      "versionName": "99.99.98",
+      "enabled": true,
+      "outputFile": "app-debug.apk"
+    }
+  ]
+}
