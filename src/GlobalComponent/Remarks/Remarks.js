@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { View, TextInput, Text } from "react-native";
 import { styles } from "./styles";
-import { Props } from "react-native-image-pan-zoom/built/image-zoom/image-zoom.type";
 
 export const Remarks = (props) => {
   return (
