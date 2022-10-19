@@ -1,33 +1,42 @@
-import React, { useState, useEffect } from 'react';
-import { ImageBackground, StyleSheet, Text, View, TouchableOpacity, ProgressBarAndroidComponent, Alert } from 'react-native';
-import { moderateScale } from '../../../components/fontScaling.js';
-import { LabelText } from '../../../GlobalComponent/LabelText/LabelText.js';
-import { sectionTitle, calculateFinancialYear } from '../createVoucher/cvUtility.js';
-import { LabelEditText } from '../../../GlobalComponent/LabelEditText/LabelEditText.js';
-import { DatePicker } from '../../../GlobalComponent/DatePicker/DatePicker.js';
-import CustomButton from '../../../components/customButton.js';
-let appConfig = require('../../../../appconfig');
-import moment from 'moment';
-import { Dropdown } from '../../../GlobalComponent/DropDown/DropDown.js';
-import { showToast } from '../../../GlobalComponent/Toast.js';
-import Autocomplete from 'react-native-autocomplete-input';
-let constants = require('./constants');
-let globalConstants = require('../../../GlobalConstants');
-import { searchSupervisors } from './utils.js';
+import React, { useState, useEffect } from "react";
+import {
+  ImageBackground,
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  ProgressBarAndroidComponent,
+  Alert,
+} from "react-native";
+import { moderateScale } from "../../../components/fontScaling.js";
+import { LabelText } from "../../../GlobalComponent/LabelText/LabelText.js";
+import {
+  sectionTitle,
+  calculateFinancialYear,
+} from "../createVoucher/cvUtility.js";
+import { LabelEditText } from "../../../GlobalComponent/LabelEditText/LabelEditText.js";
+import { DatePicker } from "../../../GlobalComponent/DatePicker/DatePicker.js";
+import CustomButton from "../../../components/customButton.js";
+let appConfig = require("../../../../appconfig");
+import { Dropdown } from "../../../GlobalComponent/DropDown/DropDown.js";
+import Autocomplete from "react-native-autocomplete-input";
+let constants = require("./constants");
+let globalConstants = require("../../../GlobalConstants");
+import { searchSupervisors } from "./utils.js";
 export const SubmitTo = (props) => {
-  console.log('Document number :', props.documentNumber);
+  console.log("Document number :", props.documentNumber);
   this.submitToRef = React.createRef();
-  const [submitToValue, submitTo] = useState('');
+  const [submitToValue, submitTo] = useState("");
   const [autoSearchSupervisorDataArray, setSupervisorDataArray] = useState([]);
-  const [supervisorSearchValue, setSupervisorSearchVal] = useState('');
+  const [supervisorSearchValue, setSupervisorSearchVal] = useState("");
   const [autoCompleteSupervisorHideResult, setHideResult] = useState(false);
-  const [remarksInput, onRemarksChanged] = useState('');
+  const [remarksInput, onRemarksChanged] = useState("");
   const onSubmitToSelection = (i, value) => {
-    console.log('submit to value', value);
+    console.log("submit to value", value);
     submitTo(value);
   };
   const renderAutoCompleteSupervisorResult = (item, i) => {
-    console.log('Item found ', item);
+    console.log("Item found ", item);
     return (
       <View>
         <TouchableOpacity
@@ -39,24 +48,28 @@ export const SubmitTo = (props) => {
         >
           <Text>{item.Key}</Text>
         </TouchableOpacity>
-        <View style={{ height: 1, backgroundColor: 'white' }} />
+        <View style={{ height: 1, backgroundColor: "white" }} />
       </View>
     );
   };
   const submitAction = () => {
-    console.log('Submit to value : ', submitToValue);
+    console.log("Submit to value : ", submitToValue);
     props.submitDetails(submitToValue, remarksInput);
   };
   const deleteAction = () => {
-    Alert.alert('Delete Document!', 'Are you sure you want to delete this Voucher?', [
-      {
-        text: 'Yes',
-        onPress: () => {
-          props.deleteVoucher();
+    Alert.alert(
+      "Delete Document!",
+      "Are you sure you want to delete this Voucher?",
+      [
+        {
+          text: "Yes",
+          onPress: () => {
+            props.deleteVoucher();
+          },
         },
-      },
-      { text: 'No', onPress: () => {} },
-    ]);
+        { text: "No", onPress: () => {} },
+      ]
+    );
   };
   const onAutoCompleteSupervisorChangeText = async (text) => {
     if (text.length > 1) {
@@ -65,21 +78,21 @@ export const SubmitTo = (props) => {
         setSupervisorSearchVal(text);
         let searchVal = await searchSupervisors(text, props.documentNumber);
         setSupervisorDataArray(searchVal);
-        console.log('Searched supervisor is: ', searchVal);
+        console.log("Searched supervisor is: ", searchVal);
       } catch (error) {
-        console.log('Error in searching supervisor is : ', error);
+        console.log("Error in searching supervisor is : ", error);
       }
     } else {
-      setSupervisorSearchVal('');
+      setSupervisorSearchVal("");
       setSupervisorDataArray([]);
       // props.setProjectData(undefined);
     }
   };
   const submitToSupervisorView = () => {
-    if (submitToValue === 'Supervisor') {
+    if (submitToValue === "Supervisor") {
       return (
         <Autocomplete
-          placeholder={'Search Supervisors..'}
+          placeholder={"Search Supervisors.."}
           data={autoSearchSupervisorDataArray}
           defaultValue={supervisorSearchValue}
           containerStyle={styles.autocompleteStyle}
@@ -88,19 +101,23 @@ export const SubmitTo = (props) => {
           selectTextOnFocus={true}
           hideResults={autoCompleteSupervisorHideResult}
           onChangeText={(text) => onAutoCompleteSupervisorChangeText(text)}
-          renderItem={({ item, i }) => renderAutoCompleteSupervisorResult(item, i)}
+          renderItem={({ item, i }) =>
+            renderAutoCompleteSupervisorResult(item, i)
+          }
         />
       );
-    } else {return null;}
+    } else {
+      return null;
+    }
   };
   const fsoView = () => {
     return (
       <LabelEditText
-        heading={'Forward To :'}
+        heading={"Forward To :"}
         isEditable={false}
         myNumberOfLines={2}
         isMultiline={true}
-        myValue={'FSO'}
+        myValue={"FSO"}
         isSmallFont={true}
       />
     );
@@ -108,28 +125,28 @@ export const SubmitTo = (props) => {
   useEffect(() => {
     let documentNumber = props.documentNumber;
     if (
-      documentNumber.includes('MBL') ||
-      documentNumber.includes('PET') ||
-      documentNumber.includes('DRV') ||
-      documentNumber.includes('MED') ||
-      documentNumber.includes('LTA')
+      documentNumber.includes("MBL") ||
+      documentNumber.includes("PET") ||
+      documentNumber.includes("DRV") ||
+      documentNumber.includes("MED") ||
+      documentNumber.includes("LTA")
     ) {
       if (this.submitToRef.current !== null) {
         this.submitToRef.current.select(1);
       }
-      submitTo('FSO');
+      submitTo("FSO");
     }
   }, [props.documentNumber]);
   return (
     <View style={styles.userInfoView}>
       <ImageBackground style={styles.cardBackground} resizeMode="cover">
-        {sectionTitle('Forward To')}
+        {sectionTitle("Forward To")}
         <View style={styles.cardStyle}>
-          {props.documentNumber.includes('MBL') ||
-          props.documentNumber.includes('DRV') ||
-          props.documentNumber.includes('PET') ||
-          props.documentNumber.includes('MED') ||
-          props.documentNumber.includes('LTA') ? (
+          {props.documentNumber.includes("MBL") ||
+          props.documentNumber.includes("DRV") ||
+          props.documentNumber.includes("PET") ||
+          props.documentNumber.includes("MED") ||
+          props.documentNumber.includes("LTA") ? (
             fsoView()
           ) : (
             <View>
@@ -137,7 +154,9 @@ export const SubmitTo = (props) => {
                 title={globalConstants.SUBMIT_TO_TEXT}
                 forwardedRef={this.submitToRef}
                 dropDownData={constants.SUBMIT_TO_TYPES}
-                dropDownCallBack={(index, value) => onSubmitToSelection(index, value)}
+                dropDownCallBack={(index, value) =>
+                  onSubmitToSelection(index, value)
+                }
               />
               {submitToSupervisorView()}
             </View>
@@ -152,13 +171,21 @@ export const SubmitTo = (props) => {
             myValue={remarksInput}
             isSmallFont={true}
           />
-          <View style={{ flexDirection: 'row', alignSelf: 'flex-end' }}>
+          <View style={{ flexDirection: "row", alignSelf: "flex-end" }}>
             <View style={styles.addItemButtonView}>
-              <CustomButton label={globalConstants.SUBMIT_TEXT} positive={true} performAction={() => submitAction()} />
+              <CustomButton
+                label={globalConstants.SUBMIT_TEXT}
+                positive={true}
+                performAction={() => submitAction()}
+              />
             </View>
             <View style={styles.addItemButtonView}>
-              {!props.documentNumber.includes('LTA') ? (
-                <CustomButton label={globalConstants.DELETE_TEXT} positive={false} performAction={() => deleteAction()} />
+              {!props.documentNumber.includes("LTA") ? (
+                <CustomButton
+                  label={globalConstants.DELETE_TEXT}
+                  positive={false}
+                  performAction={() => deleteAction()}
+                />
               ) : null}
             </View>
           </View>
@@ -178,7 +205,7 @@ const styles = StyleSheet.create({
     borderColor: appConfig.FIELD_BORDER_COLOR,
     borderRadius: 5,
     shadowOffset: { width: 10, height: 10 },
-    shadowColor: 'black',
+    shadowColor: "black",
   },
   cardStyle: {
     flex: 0,
@@ -190,17 +217,17 @@ const styles = StyleSheet.create({
     marginTop: moderateScale(2),
   },
   autocompleteInputStyle: {
-    borderColor: 'grey',
+    borderColor: "grey",
     borderWidth: 1,
   },
   autocompleteListStyle: {
-    position: 'relative',
+    position: "relative",
     backgroundColor: appConfig.CARD_BACKGROUND_COLOR,
   },
   addItemButtonView: {
-    width: '25%',
+    width: "25%",
     flex: 0,
-    alignSelf: 'flex-end',
+    alignSelf: "flex-end",
     marginTop: moderateScale(6),
   },
 });

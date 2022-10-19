@@ -41,7 +41,6 @@ import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scrollview"
 import UserMessage from "../../../components/userMessage";
 import helper from "../../../utilities/helper";
 import { writeLog } from "../../../utilities/logger";
-import Autocomplete from "react-native-autocomplete-input";
 import { DialogButtons } from "../../../GlobalComponent/DialogButtons/DialogButtons";
 import { FlatList } from "react-native-gesture-handler";
 import { HistoryView } from "../../../GlobalComponent/HistoryView/HistoryView";
@@ -830,7 +829,6 @@ export class CreateRequestScreen extends Component {
     this.setState({
       managerOnLeaveIndex: index,
       isMgrOnLeaveValue: index === 1 ? "Y" : "N",
-      
     });
     console.log("manager on leave answer selected is :", index);
   };
@@ -1191,18 +1189,17 @@ export class CreateRequestScreen extends Component {
     // 	return alert("Please select valid Requester!!")
     // } else
     console.log("Mobile number : ", this.state.newMobileNumber);
-    console.log("Mobile length : ", this.state.newMobileNumber.length); 
+    console.log("Mobile length : ", this.state.newMobileNumber.length);
     if (
       this.state.newMobileNumber.length < 10 ||
-      this.state.newMobileNumber.length > 15  
-     
+      this.state.newMobileNumber.length > 15
     ) {
       return alert("Valid Mobile number is mandatory.");
     }
-     if(/[*%#:&\s]/.test(this.state.newMobileNumber)){
-        return alert("Valid Mobile number is mandatory.");
-       }
-   
+    if (/[*%#:&\s]/.test(this.state.newMobileNumber)) {
+      return alert("Valid Mobile number is mandatory.");
+    }
+
     if (this.state.serviceTypeIndex === -1) {
       return alert("Please select Request Type!!");
     } else {
@@ -1251,9 +1248,11 @@ export class CreateRequestScreen extends Component {
             }
             if (
               this.state.isdDefaultDataArray.ManagerName == "" &&
-              this.state.isMgrOnLeaveValue == "N" 
+              this.state.isMgrOnLeaveValue == "N"
             ) {
-              return alert("Your manager is not defined in HR records. Please contact your HR for manager mapping.");
+              return alert(
+                "Your manager is not defined in HR records. Please contact your HR for manager mapping."
+              );
             } else if (myDescriptionInput.length < 25) {
               return alert("Description can't be lesser than 25 characters.");
             } else if (myDescriptionInput.length > 4000) {
