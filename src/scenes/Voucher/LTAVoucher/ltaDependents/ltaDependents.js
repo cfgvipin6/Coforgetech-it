@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FlatList, Text, TouchableOpacity, View } from "react-native";
-import { Checkbox } from "react-native-paper";
+import { CheckBox } from "react-native-elements";
 import { Dropdown } from "../../../../GlobalComponent/DropDown/DropDown";
 import { sectionTitle } from "../../createVoucher/cvUtility";
 let appConfig = require("../../../../../appconfig");
@@ -71,9 +71,10 @@ const LTADependents = (props) => {
     >
       {sectionTitle("Dependents undertaking the journey")}
       {props.dependents.map((item, index) => {
-        console.log("Item found in render is :", item);
+        console.log("Item found in render is : ===", item);
         return (
           <View
+            key={`${item.ID}_${item.Name}_${index}`}
             style={{
               flexDirection: "row",
               alignItems: "center",
@@ -82,14 +83,22 @@ const LTADependents = (props) => {
               flex: 1,
             }}
           >
-            <Checkbox.Android
+            <CheckBox
+              iconType="material-community"
+              checkedIcon="checkbox-marked"
+              uncheckedIcon="checkbox-blank-outline"
               disabled={disable ? true : false}
-              color={appConfig.DARK_BLUISH_COLOR}
-              uncheckedColor="grey"
-              status={item.IsChecked ? "checked" : "unchecked"}
+              checkedColor={appConfig.DARK_BLUISH_COLOR}
+              uncheckedColor="gray"
+              title={item.Name}
+              textStyle={{ fontWeight: "400" }}
+              containerStyle={{
+                backgroundColor: "transparent",
+                borderWidth: 0,
+              }}
+              checked={item.IsChecked}
               onPress={() => toggleChecked(item, index)}
             />
-            <Text>{item.Name}</Text>
           </View>
         );
       })}

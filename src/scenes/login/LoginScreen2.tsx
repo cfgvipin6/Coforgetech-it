@@ -8,12 +8,11 @@ import {
   Text,
   TouchableOpacity,
   View,
+  TextInput
 } from "react-native";
 import { SafeAreaView } from "react-native";
-import { TextInput } from "react-native-paper";
 import SplashScreen from "react-native-splash-screen";
 import { useDispatch, useSelector } from "react-redux";
-import OrangeBar from "../../components/orangeBar";
 import UserMessage from "../../components/userMessage";
 import images from "../../images";
 import GlobalData from "../../utilities/globalData";
