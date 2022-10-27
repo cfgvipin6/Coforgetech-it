@@ -318,7 +318,7 @@ export class CDSDetails extends Component {
       let dropDownRef = React.createRef();
       refsArray.push(dropDownRef);
       return (
-        <View style={{flexDirection: 'row', paddingBottom:4, opacity:(this.state.checkBoxFinalArray.length != 0 && this.state.checkBoxFinalArray[i].imageType === 'unchecked') ? 0.4 : 1}}>
+        <View  key ={i} style={{flexDirection: 'row', paddingBottom:4, opacity:(this.state.checkBoxFinalArray.length != 0 && this.state.checkBoxFinalArray[i].imageType === 'unchecked') ? 0.4 : 1}}>
         <View>
           <TouchableOpacity
           style ={{marginTop:16}}

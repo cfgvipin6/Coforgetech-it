@@ -1,7 +1,6 @@
 import { createAppContainer } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
-import { createDrawerNavigator } from "react-navigation-drawer";
-import { Dimensions } from "react-native";
+// import { Dimensions } from "react-native";
 import LoginScreen from "./src/scenes/login";
 import HomeScreen from "./src/scenes/home";
 import SupervisorSelectionScreen from "./src/scenes/supervisorSelection";
@@ -54,7 +53,7 @@ import CreateGenericVouchers from "./src/scenes/Voucher/createGenericVoucher/ind
 import CreateLtaVoucher from "./src/scenes/Voucher/LTAVoucher/index";
 import CreateUSVoucherScreen from "./src/scenes/Voucher/USVoucher";
 import SchemeAndPolicyScreen from "./src/scenes/schemeAndPolicy/index";
-import { SideMenu } from "./src/components/SideMenu";
+// import { SideMenu } from "./src/components/SideMenu";
 import SchemsDetails from "./src/scenes/schemeAndPolicy/SchemsDetails";
 import schemePDFView from "./src/scenes/schemeAndPolicy/schemePDFView";
 import TimesheetDashboardScreen from "./src/scenes/timesheet/timesheetDashboard";
@@ -70,40 +69,7 @@ import IdCardScreen from "./src/scenes/IDCard/IdCardScreen";
 import SurveyITDesk from "./src/scenes/ISD/Survey";
 import HrassistMyrequest from "./src/scenes/hrassist/hrassistmyrequest";
 import HRAssistCreate from "./src/scenes/hrassist/hrassistcreate";
-const WIDTH = Dimensions.get("window").width;
-const drawerConfig = {
-  contentComponent: SideMenu,
-  drawerWidth: WIDTH * 0.8,
-  drawerPosition: "right",
-};
 
-// const SchemePolicyDrawer = createDrawerNavigator({
-//       SchemePolicyStack : createStackNavigator({
-//         Schemes:{
-//           screen:SchemeAndPolicyScreen,
-//           navigationOptions :{
-//             header: null
-//           }
-//         }
-//       })
-// },drawerConfig
-// )
-const FamilyStack = createStackNavigator({
-  Family: {
-    screen: FamilyScreen,
-    navigationOptions: {
-      header: null,
-    },
-  },
-});
-const HolidayStack = createStackNavigator({
-  Leave: {
-    screen: HolidayScreen,
-    navigationOptions: {
-      header: null,
-    },
-  },
-});
 const LeaveStack = createStackNavigator({
   Leave: {
     screen: LeaveScreen,
@@ -319,13 +285,13 @@ const AppNavigator = createStackNavigator(
       },
     },
     FamilyRoute: {
-      screen: FamilyStack,
+      screen: FamilyScreen,
       navigationOptions: {
         header: null,
       },
     },
     HolidayRoute: {
-      screen: HolidayStack,
+      screen: HolidayScreen,
       navigationOptions: {
         header: null,
       },

@@ -72,11 +72,7 @@ export const GridDataViewAttendance = [
     navOptionThumb: images.timeCardIcon,
     screenToNavigate: "TimesheetDashboard",
   },
-  // {
-  //   key: "ID Card",
-  //   navOptionThumb: images.timeCardIcon,
-  //   screenToNavigate: "IdCard",
-  // },
+
   {
     key: "HR Assist",
     navOptionThumb: images.timeCardIcon,
