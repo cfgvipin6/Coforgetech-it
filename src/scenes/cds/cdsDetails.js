@@ -306,7 +306,8 @@ export class CDSDetails extends Component {
     let statusValueRadioArray = [];
     refsArray = [];
     checkBoxArray = [];
-    return this.props.cdsLineItemData.map((data, i) => {    //might be restriction to reset data
+    return this.props.cdsLineItemData.map((data, i) => {  
+      console.log("data ===",data)  //might be restriction to reset data
       //(data.IsItemApproved === "Y") ? 'checked' :
       if (data.IsItemApproved === 'Y') {
       checkBoxArray.push({'imageType': 'checked', Sno: data.ItemSno});
@@ -318,7 +319,7 @@ export class CDSDetails extends Component {
       let dropDownRef = React.createRef();
       refsArray.push(dropDownRef);
       return (
-        <View  key ={i} style={{flexDirection: 'row', paddingBottom:4, opacity:(this.state.checkBoxFinalArray.length != 0 && this.state.checkBoxFinalArray[i].imageType === 'unchecked') ? 0.4 : 1}}>
+        <View  key ={data.ItemSno} style={{flexDirection: 'row', paddingBottom:4, opacity:(this.state.checkBoxFinalArray.length != 0 && this.state.checkBoxFinalArray[i].imageType === 'unchecked') ? 0.4 : 1}}>
         <View>
           <TouchableOpacity
           style ={{marginTop:16}}

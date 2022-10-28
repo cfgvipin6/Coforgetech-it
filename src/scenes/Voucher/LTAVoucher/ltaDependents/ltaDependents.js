@@ -58,7 +58,7 @@ const LTADependents = (props) => {
 			{props.dependents.map((item, index) => {
 				console.log('Item found in render is :', item);
 				return (
-					<View key ={index}style={{ flexDirection: 'row', alignItems: 'center', borderWidth: 0.5, borderColor: 'grey', flex: 1 }}>
+					<View key ={Math.floor(Math.random() * 1000)}style={{ flexDirection: 'row', alignItems: 'center', borderWidth: 0.5, borderColor: 'grey', flex: 1 }}>
 						<Checkbox.Android disabled={disable ? true : false} color= {appConfig.DARK_BLUISH_COLOR} uncheckedColor="grey" status={item.IsChecked ? 'checked' : 'unchecked'} onPress={() => toggleChecked(item, index)} />
 						<Text>{item.Name}</Text>
 					</View>
