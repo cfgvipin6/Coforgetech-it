@@ -1,6 +1,5 @@
 import { createAppContainer } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
-// import { Dimensions } from "react-native";
 import LoginScreen from "./src/scenes/login";
 import HomeScreen from "./src/scenes/home";
 import SupervisorSelectionScreen from "./src/scenes/supervisorSelection";

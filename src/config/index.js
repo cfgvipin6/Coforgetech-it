@@ -1,4 +1,4 @@
-import env from 'react-native-config';
+import env from "react-native-config";
 
 const config = {
   api: {
@@ -7,11 +7,10 @@ const config = {
     adLogOut: env.AD_LOG_OUT_BASE_URL,
   },
 };
+
 const API_HOST = config.api.host;
 const API_CAREER_HOST = config.api.host;
-export {
-  API_HOST,
-  API_CAREER_HOST,
-};
-export default config
-;
+
+export { API_HOST, API_CAREER_HOST };
+
+export default config;
