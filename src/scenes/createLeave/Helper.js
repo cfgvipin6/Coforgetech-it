@@ -7,6 +7,7 @@ import {
   Modal,
   FlatList,
   SafeAreaView,
+  Platform,
 } from "react-native";
 import React, { Component } from "react";
 import ModalDropdown from "react-native-modal-dropdown";
@@ -267,10 +268,14 @@ export const filePicker = async (fileCallBack) => {
         DocumentPicker.types.plainText,
         DocumentPicker.types.zip,
       ],
+      readContent: true,
     });
-    let data = RNFetchBlob.fs
-      .readStream(res.uri, "base64", 4095)
-      .then((ifStream) => {
+    console.log("res ===", res);
+    let data = "";
+    if (res?.uri) {
+      let uri =
+        Platform.OS === "ios" ? res.uri.replace("file:///", "/") : res.uri;
+      RNFetchBlob.fs.readStream(uri, "base64", 4095).then((ifStream) => {
         ifStream.open();
         ifStream.onData((chunk) => {
           data += chunk;
@@ -280,9 +285,11 @@ export const filePicker = async (fileCallBack) => {
         });
         ifStream.onEnd(() => {
           let dataToSave = data.replace("[object Object]", "");
+          // console.log("base64url === ", dataToSave);
           fileCallBack(dataToSave, res.name);
         });
       });
+    }
   } catch (err) {
     console.log("Error in file picking is :", err);
     if (DocumentPicker.isCancel(err)) {
@@ -291,6 +298,7 @@ export const filePicker = async (fileCallBack) => {
     }
   }
 };
+
 export const Attachment = (parent) => {
   return (
     <View style={styles.halfHolder}>

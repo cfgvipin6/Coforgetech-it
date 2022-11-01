@@ -504,7 +504,7 @@ class CreateLeave extends Component {
     this.setState({ supervisorRemarks: supervisorRemarks });
   };
   fileCallBack = (fileData, file_Name) => {
-    console.log("File data in attacment : ", fileData);
+    // console.log("File data in attachment : ", fileData);
     writeLog(
       "Clicked on " +
         "fileCallBack" +
