@@ -4,10 +4,8 @@ import { connect } from 'react-redux';
 import { loginActionCreator, modalAction, loginAction } from '../login/LoginAction';
 import SplashScreen from 'react-native-splash-screen';
 import { getUserName,getLoginType} from './AuthUtility';
-import DialogModal from '../../components/dialogBox';
 import ActivityIndicatorView from '../../GlobalComponent/myActivityIndicator';
 import RNExitApp from 'react-native-exit-app';
-import DeviceInfo from 'react-native-device-info';
 import { checkVersion } from './AuthActionCreator';
 import { writeLog } from '../../utilities/logger';
 import env from 'react-native-config';
@@ -18,7 +16,7 @@ import properties from '../../resource/properties';
 import { styles } from '../Dashboard/styles';
 import UserMessage from '../../components/userMessage';
 import { isAppInstalled } from 'react-native-send-intent';
-import { DEVICE_VERSION } from '../../components/Device-info';
+import { DEVICE_VERSION } from '../../components/DeviceInfoFile';
 let SendIntentAndroid = require('react-native-send-intent');
 
 class AuthScreen extends Component {

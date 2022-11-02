@@ -46,7 +46,7 @@ import { localNotificationService } from "../../GlobalComponent/pushNotification
 import images from "../../images";
 import LinearGradient from "react-native-linear-gradient";
 import { AppStyle } from "../commonStyle";
-import { DEVICE_ID, DEVICE_VERSION } from "../../components/Device-info";
+import { DEVICE_ID, DEVICE_VERSION } from "../../components/DeviceInfoFile";
 const GH = 120;
 let constants = require("./Constants");
 let isAlert;

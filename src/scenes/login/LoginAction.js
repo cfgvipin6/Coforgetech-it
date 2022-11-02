@@ -5,7 +5,7 @@ import { NO_INTERNET, UNDEFINED_ERROR } from '../../GlobalConstants';
 import { pendingActionCreator } from '../Dashboard/PendingAction';
 import { setUserName, setPassword } from '../auth/AuthUtility';
 import properties from '../../resource/properties';
-import { DEVICE_VERSION } from '../../components/Device-info';
+import { DEVICE_VERSION,DEVICE_NAME,DEVICE_OS,DEVICE_OS_VERSION, DEVICE_MODEL } from '../../components/DeviceInfoFile';
 export const loginAction = data => {
   return {
     type: LOGIN_ACTION,
@@ -37,10 +37,10 @@ export const loginActionCreator = (newEmployeeId, passWord,clearDataCallBack,das
       try {
       dispatch(loading(true));
       let loginUrl = properties.loginNewUrl2;
-      let deviceName = await DeviceInfo.getDeviceName();
-      let deviceModel =  await DeviceInfo.getBrand();
-      let deviceOs = await DeviceInfo.getSystemName();
-      let osVersion = await DeviceInfo.getSystemVersion();
+      let deviceName = await DEVICE_NAME;
+      let deviceModel =  await DEVICE_MODEL;
+      let deviceOs = await DEVICE_OS;
+      let osVersion = await DEVICE_OS_VERSION;
       let form = new FormData();
       form.append('EmpCode', newEmployeeId);
       form.append('Password', passWord);

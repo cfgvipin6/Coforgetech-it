@@ -25,7 +25,7 @@ import properties from "../../resource/properties";
 import ActivityIndicatorView from "../../../src/GlobalComponent/myActivityIndicator";
 import { AD_LOGIN, APP_LOGIN, HEADINGS } from "./constants";
 import HeaderView from "../../GlobalComponent/Header";
-import { DEVICE_VERSION } from "../../components/Device-info";
+import { DEVICE_VERSION } from "../../components/DeviceInfoFile";
 let globalData = new GlobalData();
 let newEmployeeLength = 0;
 let newEmployeeId = null;

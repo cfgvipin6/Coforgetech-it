@@ -21,7 +21,7 @@ import { writeLog, readIniitianLog } from '../../utilities/logger';
 import properties from '../../resource/properties';
 import { SafeAreaView } from 'react-navigation';
 import images from '../../images';
-import { DEVICE_VERSION } from '../../components/Device-info';
+import { DEVICE_VERSION } from '../../components/DeviceInfoFile';
 const bg_01 = require('../../assets/bg01.jpg');
 let constant = require('./constants');
 let focusSubscription;

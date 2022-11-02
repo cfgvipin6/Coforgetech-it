@@ -3,7 +3,7 @@ import { NO_INTERNET, UNDEFINED_MESSAGE } from '../../GlobalConstants';
 import properties from '../../resource/properties';
 import { fetchPOSTMethod, fetchGETMethod } from '../../utilities/fetchService';
 import { AD_ERROR, AD_RESPONSE, AD_LOADING, CLEAR_USER_DATA, REMOVE_LOADER } from './constants';
-import { DEVICE_MODEL, DEVICE_NAME,DEVICE_OS,DEVICE_OS_VERSION } from '../../components/Device-info';
+import { DEVICE_MODEL, DEVICE_NAME,DEVICE_OS,DEVICE_OS_VERSION } from '../../components/DeviceInfoFile';
 const storeAdError = errorData => {
   return {
     type: AD_ERROR,

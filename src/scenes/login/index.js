@@ -41,7 +41,7 @@ import images from "../../images";
 import HeaderView from "../../GlobalComponent/Header";
 import { AppStyle } from "../commonStyle";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
-import { DEVICE_VERSION } from "../../components/Device-info";
+import { DEVICE_VERSION } from "../../components/DeviceInfoFile";
 const lockIcon = require("../../assets/locked.png");
 const personIcon = require("../../assets/person.png");
 const bg_02 = require("../../assets/bg02.jpg");

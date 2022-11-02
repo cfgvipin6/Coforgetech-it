@@ -7,7 +7,7 @@ import SplashScreen from 'react-native-splash-screen';
 import {setEncryptionKey} from './AuthUtility';
 import moment from 'moment';
 import { writeLog } from '../../utilities/logger';
-import { DEVICE_VERSION } from '../../components/Device-info';
+import { DEVICE_VERSION } from '../../components/DeviceInfoFile';
 const loading = data => {
     return {
       type: AUTH_LOADING,
@@ -61,7 +61,7 @@ export const checkVersion = (callBack) => {
             let versionMatched = false;
             let versionMatchedName = '';
             response.forEach(element => {
-              if ((element.Version === DEVICE_VERSION)){
+              if (element.Version === DEVICE_VERSION){
                  versionMatched = true;
                  versionMatchedName = element.Version;
                  setEncryptionKey(response[response.length - 1].Version);// in last version key there is encryption key

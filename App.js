@@ -25,7 +25,7 @@ import JailMonkey from 'jail-monkey';
 import UserMessage from './src/components/userMessage';
 import * as permissions from 'react-native-permissions';
 import { request, PERMISSIONS } from 'react-native-permissions';
-import { DEVICE_VERSION } from './src/components/Device-info';
+import { DEVICE_VERSION } from './src/components/DeviceInfoFile';
 
 var RNFS = require('react-native-fs');
 let rooted;
