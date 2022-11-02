@@ -14,7 +14,6 @@ import {
 import ActivityIndicatorView from '../../GlobalComponent/myActivityIndicator';
 import { TEMP_URI } from '../auth/constants';
 import { connect } from 'react-redux';
-import DeviceInfo from 'react-native-device-info';
 import { loginWithAdAction, againLoginWithAdAction, clearData, removeLoader } from './WebViewAction';
 import { loginAction } from '../login/LoginAction';
 import { setUserName, setToken, setSknToken, getUserName } from '../auth/AuthUtility';
@@ -24,6 +23,7 @@ import { pendingActionCreator } from '../Dashboard/PendingAction';
 import { Image } from 'react-native-elements';
 import { writeLog } from '../../utilities/logger';
 import {showToast} from '../../GlobalComponent/Toast';
+import { DEVICE_VERSION } from '../../components/DeviceInfoFile';
 const backgroundImage = require('../../assets/iniitian_splash.png');
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
@@ -82,7 +82,7 @@ class MyWebView extends Component {
         this.state.TKN,
         this.state.SKN,
         user,
-        DeviceInfo.getVersion(),
+        DEVICE_VERSION,
         this.goForward
       );
     });
@@ -103,7 +103,7 @@ class MyWebView extends Component {
         this.props.loginWithAd(
           this.state.TKN,
           this.state.SKN,
-          DeviceInfo.getVersion(),
+         DEVICE_VERSION,
           this.goForward
         );
       });
@@ -159,7 +159,7 @@ class MyWebView extends Component {
       this.state.TKN,
       this.state.SKN,
       user,
-      DeviceInfo.getVersion(),
+      DEVICE_VERSION,
       this.goForward
     );
   }

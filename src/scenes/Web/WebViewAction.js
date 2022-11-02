@@ -3,7 +3,7 @@ import { NO_INTERNET, UNDEFINED_MESSAGE } from '../../GlobalConstants';
 import properties from '../../resource/properties';
 import { fetchPOSTMethod, fetchGETMethod } from '../../utilities/fetchService';
 import { AD_ERROR, AD_RESPONSE, AD_LOADING, CLEAR_USER_DATA, REMOVE_LOADER } from './constants';
-import DeviceInfo from 'react-native-device-info';
+import { DEVICE_MODEL, DEVICE_NAME,DEVICE_OS,DEVICE_OS_VERSION } from '../../components/DeviceInfoFile';
 const storeAdError = errorData => {
   return {
     type: AD_ERROR,
@@ -37,10 +37,10 @@ export const loginWithAdAction = (adToken, skn, version, forwardCallBack) => {
     let isNetwork = await netInfo();
     if (isNetwork) {
       try {
-        let deviceName = await DeviceInfo.getDeviceName();
-        let deviceModel =  await DeviceInfo.getBrand();
-        let deviceOs = await DeviceInfo.getSystemName();
-        let osVersion = await DeviceInfo.getSystemVersion();
+        let deviceName = await DEVICE_NAME;
+        let deviceModel =  await DEVICE_MODEL;
+        let deviceOs = await DEVICE_OS;
+        let osVersion = await DEVICE_OS_VERSION;
         let formData = new FormData();
         formData.append('AuthToken', adToken);
         formData.append('SknToken', skn);
@@ -80,10 +80,11 @@ export const againLoginWithAdAction = (adToken, skn, user, version, forwardCallB
     let isNetwork = await netInfo();
     if (isNetwork) {
       try {
-        let deviceName = await DeviceInfo.getDeviceName();
-        let deviceModel =  await DeviceInfo.getBrand();
-        let deviceOs = await DeviceInfo.getSystemName();
-        let osVersion = await DeviceInfo.getSystemVersion();
+       let deviceName = await DEVICE_NAME;
+        let deviceModel =  await DEVICE_MODEL;
+        let deviceOs = await DEVICE_OS;
+        let osVersion = await DEVICE_OS_VERSION;
+
         let formData = new FormData();
         formData.append('AuthToken', adToken);
         formData.append('SknToken', skn);

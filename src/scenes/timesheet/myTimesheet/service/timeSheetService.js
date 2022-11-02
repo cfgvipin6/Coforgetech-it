@@ -3,7 +3,6 @@ import { netInfo } from '../../../../utilities/NetworkInfo';
 import { NO_INTERNET, UNDEFINED_ERROR, UNDEFINED_MESSAGE } from '../../../../GlobalConstants';
 import properties from '../../../../resource/properties';
 import { AppStore } from '../../../../../AppStore';
-import DeviceInfo from 'react-native-device-info';
 import { prepareTimeSheetApprove } from '../timesheetUtils';
 
 export const getInputControls = async(loginData,data,successCallBack,errorCallBack,type,saveSubmitType) => {
