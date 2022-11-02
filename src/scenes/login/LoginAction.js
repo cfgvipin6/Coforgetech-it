@@ -5,8 +5,7 @@ import { NO_INTERNET, UNDEFINED_ERROR } from '../../GlobalConstants';
 import { pendingActionCreator } from '../Dashboard/PendingAction';
 import { setUserName, setPassword } from '../auth/AuthUtility';
 import properties from '../../resource/properties';
-import DeviceInfo from 'react-native-device-info';
-import { Platform } from 'react-native';
+import { DEVICE_VERSION } from '../../components/Device-info';
 export const loginAction = data => {
   return {
     type: LOGIN_ACTION,
@@ -46,7 +45,7 @@ export const loginActionCreator = (newEmployeeId, passWord,clearDataCallBack,das
       form.append('EmpCode', newEmployeeId);
       form.append('Password', passWord);
       form.append('SMCode', newEmployeeId);
-      form.append('Version', DeviceInfo.getVersion());
+      form.append('Version', DEVICE_VERSION);
       form.append('DeviceName', deviceName);
       form.append('DeviceModel',deviceModel);
       form.append('DeviceOS', deviceOs + ',' + osVersion);

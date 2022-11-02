@@ -34,7 +34,6 @@ import { AppStore } from "../../../AppStore";
 import { enableLocation } from "../attendance/AttendanceUtils";
 import { LOCATION_NOT_FOUND, OUT_OF_CAMPUS, WELCOME } from "./Constants";
 import Header from "../../GlobalComponent/Header";
-import DeviceInfo from "react-native-device-info";
 import { writeLog } from "../../utilities/logger";
 import properties from "../../resource/properties";
 import UserMessage from "../../components/userMessage";
@@ -47,6 +46,7 @@ import { localNotificationService } from "../../GlobalComponent/pushNotification
 import images from "../../images";
 import LinearGradient from "react-native-linear-gradient";
 import { AppStyle } from "../commonStyle";
+import { DEVICE_ID, DEVICE_VERSION } from "../../components/Device-info";
 const GH = 120;
 let constants = require("./Constants");
 let isAlert;
@@ -117,7 +117,7 @@ class DashboardNew2 extends Component {
       console.log("[App] onRegister : ", token);
       let data = {};
       data.registration_token = token;
-      data.device_id = DeviceInfo.getDeviceId();
+      data.device_id = DEVICE_ID;
       console.log("Data to send on server is  :", data);
     }
 
@@ -539,7 +539,7 @@ class DashboardNew2 extends Component {
       >
         <Header props={this.props} />
         <Text style={styles.versionTextStyle}>
-          {"App Ver : " + DeviceInfo.getVersion()}
+          {"App Ver : " + DEVICE_VERSION}
         </Text>
         <LinearGradient
           colors={["#053E6D", "#0569B9"]}

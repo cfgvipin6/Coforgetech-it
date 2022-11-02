@@ -23,9 +23,10 @@ import {
 } from './src/utilities/logger';
 import JailMonkey from 'jail-monkey';
 import UserMessage from './src/components/userMessage';
-import DeviceInfo from 'react-native-device-info';
 import * as permissions from 'react-native-permissions';
 import { request, PERMISSIONS } from 'react-native-permissions';
+import { DEVICE_VERSION } from './src/components/Device-info';
+
 var RNFS = require('react-native-fs');
 let rooted;
 var path =
@@ -236,9 +237,9 @@ class App extends Component {
     if (
       Platform.OS === 'android' &&
       this.state.forceUpdate == true &&
-      ((DeviceInfo.getVersion() == '20.6.1' &&
-        DeviceInfo.getVersion() == '20.7.1') ||
-        DeviceInfo.getVersion() == '20.8.1')
+      ((DEVICE_VERSION == '20.6.1' &&
+        DEVICE_VERSION == '20.7.1') ||
+        DEVICE_VERSION == '20.8.1')
     ) {
       return this.showVersionUpdatePopup();
     }

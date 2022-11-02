@@ -3,11 +3,11 @@ import { fetchPOSTMethod } from '../../utilities/fetchService';
 import { netInfo } from '../../utilities/NetworkInfo';
 import { NO_INTERNET, UNDEFINED_ERROR } from '../../GlobalConstants';
 import properties from '../../resource/properties';
-import DeviceInfo from 'react-native-device-info';
 import SplashScreen from 'react-native-splash-screen';
 import {setEncryptionKey} from './AuthUtility';
 import moment from 'moment';
 import { writeLog } from '../../utilities/logger';
+import { DEVICE_VERSION } from '../../components/Device-info';
 const loading = data => {
     return {
       type: AUTH_LOADING,
@@ -61,7 +61,7 @@ export const checkVersion = (callBack) => {
             let versionMatched = false;
             let versionMatchedName = '';
             response.forEach(element => {
-              if ((element.Version === DeviceInfo.getVersion())){
+              if ((element.Version === DEVICE_VERSION)){
                  versionMatched = true;
                  versionMatchedName = element.Version;
                  setEncryptionKey(response[response.length - 1].Version);// in last version key there is encryption key

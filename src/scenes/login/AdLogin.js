@@ -21,6 +21,7 @@ import { writeLog, readIniitianLog } from '../../utilities/logger';
 import properties from '../../resource/properties';
 import { SafeAreaView } from 'react-navigation';
 import images from '../../images';
+import { DEVICE_VERSION } from '../../components/Device-info';
 const bg_01 = require('../../assets/bg01.jpg');
 let constant = require('./constants');
 let focusSubscription;
@@ -85,7 +86,7 @@ class AdLoginScreen extends Component {
               </TouchableOpacity>
             </View>
           </ImageBackground>
-          <Text style={style.versionTextStyle}>{'App Ver : ' + DeviceInfo.getVersion()}</Text>
+          <Text style={style.versionTextStyle}>{'App Ver : ' + DEVICE_VERSION}</Text>
         </View>
       </SafeAreaView>
     );

@@ -18,6 +18,7 @@ import properties from '../../resource/properties';
 import { styles } from '../Dashboard/styles';
 import UserMessage from '../../components/userMessage';
 import { isAppInstalled } from 'react-native-send-intent';
+import { DEVICE_VERSION } from '../../components/Device-info';
 let SendIntentAndroid = require('react-native-send-intent');
 
 class AuthScreen extends Component {
@@ -75,7 +76,7 @@ class AuthScreen extends Component {
     let URI = Platform.OS === 'android' ? env.ANDROID_URI : iOS_URI;
     if (
       this.props.appVersion.Version &&
-      this.props.appVersion.Version !== DeviceInfo.getVersion()
+      this.props.appVersion.Version !== DEVICE_VERSION
     ) {
       Linking.canOpenURL(URI).then(supported => {
         // console.log("Supported ", supported, URI)

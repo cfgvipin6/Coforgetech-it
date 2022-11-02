@@ -13,7 +13,6 @@ import {
 } from "react-native";
 import { connect } from "react-redux";
 import { Keyboard } from "react-native";
-import DeviceInfo from "react-native-device-info";
 // import { ScrollView } from "react-native-gesture-handler"
 import { DismissKeyboardView } from "../../components/DismissKeyboardView";
 import {
@@ -42,6 +41,7 @@ import images from "../../images";
 import HeaderView from "../../GlobalComponent/Header";
 import { AppStyle } from "../commonStyle";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+import { DEVICE_VERSION } from "../../components/Device-info";
 const lockIcon = require("../../assets/locked.png");
 const personIcon = require("../../assets/person.png");
 const bg_02 = require("../../assets/bg02.jpg");
@@ -203,7 +203,7 @@ class LoginScreen extends Component {
       (this.props.loginData.StatusCode &&
         this.props.loginData.StatusCode === 405) ||
       (this.props.appVersion.Version &&
-        this.props.appVersion.Version !== DeviceInfo.getVersion())
+        this.props.appVersion.Version !== DEVICE_VERSION)
     ) {
       if (msg.includes("install")) {
         this.props.navigation.replace("WebRoute", {
@@ -236,7 +236,7 @@ class LoginScreen extends Component {
           {this.state.visibility && this.showErrorView()}
           <HeaderView isLoginScreen={true} props={this.props} />
           <Text style={styles.versionTextStyle}>
-            {"App Ver : " + DeviceInfo.getVersion()}
+            {"App Ver : " + DEVICE_VERSION}
           </Text>
           <ActivityIndicatorView loader={this.props.loginLoading} />
           <View style={style.middleView2}>
