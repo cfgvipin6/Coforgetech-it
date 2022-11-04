@@ -3,36 +3,30 @@ import {
   View,
   Text,
   ImageBackground,
-  TouchableHighlight,
   FlatList,
-  ActivityIndicator,
   Modal,
   TouchableOpacity,
   Image,
-  TextInput,
   RefreshControl,
   BackHandler,
   Dimensions,
   ScrollView,
   KeyboardAvoidingView,
-  StyleSheet,
   LayoutAnimation,
   UIManager,
   Platform /* Added */,
   Alert,
 } from "react-native";
 import SlidingUpPanel from "rn-sliding-up-panel";
-import { Card } from "react-native-elements";
 import { SearchBar } from "react-native-elements";
 import { globalFontStyle } from "../../components/globalFontStyle.js";
-import { moderateScale, verticalScale } from "../../components/fontScaling.js";
-import { fetchGETMethod, fetchPOSTMethod } from "../../utilities/fetchService";
+import { moderateScale } from "../../components/fontScaling.js";
+import { fetchPOSTMethod } from "../../utilities/fetchService";
 import { netInfo } from "../../utilities/NetworkInfo";
 import SubHeader from "../../GlobalComponent/SubHeader";
 import style from "./style.js";
 import properties from "../../resource/properties";
 import UserMessage from "../../components/userMessage";
-import CustomButton from "../../components/customButton";
 import ActivityIndicatorView from "../../GlobalComponent/myActivityIndicator";
 import DialogModal from "../../components/dialogBox";
 let globalConstants = require("../../GlobalConstants");
@@ -41,11 +35,11 @@ let appConfig = require("../../../appconfig");
 const { height } = Dimensions.get("window");
 import { connect } from "react-redux";
 import { writeLog } from "../../utilities/logger";
-import LinearGradient from "react-native-linear-gradient";
 import images from "../../images.js";
 import BoxContainer from "../../components/boxContainer.js/index.js";
 import Seperator from "../../components/Seperator.js";
 import { fetchVDHBalance } from "./utils.js";
+import { HomeInfo } from "./homeInfo";
 class HomeScreen extends Component {
   constructor(props) {
     super(props);
@@ -553,7 +547,6 @@ class HomeScreen extends Component {
     // console.log("pressed", item)
   }
   successCallBack = (item, response) => {
-    console.log("Service Response : ", response);
     this.setState({ isIndicatorVisible: false }, async () => {
       this.props.navigation.navigate("VoucherDetail", {
         voucherInfo: item,
@@ -643,125 +636,26 @@ class HomeScreen extends Component {
     }
 
     return (
-      <View>
-        <View style={{ flexDirection: "row" }}>
-          <Text
-            style={[
-              globalFontStyle.imageBackgroundLayout,
-              style.displayItemsTextOne,
-            ]}
-          >
-            {"Company Code"}
-          </Text>
-          <Text
-            style={[
-              globalFontStyle.imageBackgroundLayout,
-              style.displayItemsTextTwo,
-            ]}
-          >
-            {item.CompanyCode.trim() + " : " + item.CompanyName.trim()}
-          </Text>
-        </View>
-        <View style={{ flexDirection: "row" }}>
-          <Text
-            style={[
-              globalFontStyle.imageBackgroundLayout,
-              style.displayItemsTextOne,
-            ]}
-          >
-            {"Cost Center"}
-          </Text>
-          <Text
-            style={[
-              globalFontStyle.imageBackgroundLayout,
-              style.displayItemsTextTwo,
-            ]}
-          >
-            {item.CostCenterCode.trim() + " : " + item.CostCenterDesc.trim()}
-          </Text>
-        </View>
-        {projectFlag ? (
-          <View style={{ flexDirection: "row" }}>
-            <Text
-              style={[
-                globalFontStyle.imageBackgroundLayout,
-                style.displayItemsTextOne,
-              ]}
-            >
-              {"Project"}
-            </Text>
-            <Text
-              style={[
-                globalFontStyle.imageBackgroundLayout,
-                style.displayItemsTextTwo,
-              ]}
-            >
-              {projectValue}
-            </Text>
-          </View>
-        ) : null}
-        {remarksFlag ? (
-          <View style={{ flexDirection: "row" }}>
-            <Text
-              style={[
-                globalFontStyle.imageBackgroundLayout,
-                style.displayItemsTextOne,
-              ]}
-            >
-              {"Remarks"}
-            </Text>
-            <Text
-              style={[
-                globalFontStyle.imageBackgroundLayout,
-                style.displayItemsTextTwo,
-              ]}
-            >
-              {remarksValue}
-            </Text>
-          </View>
-        ) : null}
-        <View style={{ flexDirection: "row" }}>
-          <Text
-            style={[
-              globalFontStyle.imageBackgroundLayout,
-              style.displayItemsTextOne,
-            ]}
-          >
-            {"Document Date"}
-          </Text>
-          <Text
-            style={[
-              globalFontStyle.imageBackgroundLayout,
-              style.displayItemsTextTwo,
-            ]}
-          >
-            {date}
-          </Text>
-        </View>
-        <View style={{ flexDirection: "row" }}>
-          <Text
-            style={[
-              globalFontStyle.imageBackgroundLayout,
-              style.displayItemsTextOne,
-            ]}
-          >
-            {"Voucher Type"}
-          </Text>
-          <Text
-            style={[
-              globalFontStyle.imageBackgroundLayout,
-              style.displayItemsTextTwo,
-            ]}
-          >
-            {item.VoucherType}
-          </Text>
-        </View>
-      </View>
+      <React.Fragment>
+        <HomeInfo
+          label="Company Code"
+          value={item.CompanyCode.trim() + " : " + item.CompanyName.trim()}
+        />
+        <HomeInfo
+          label="Cost Center"
+          value={
+            item.CostCenterCode.trim() + " : " + item.CostCenterDesc.trim()
+          }
+        />
+        {projectFlag ? <HomeInfo label="Project" value={projectValue} /> : null}
+        {remarksFlag ? <HomeInfo label="Remarks" value={remarksValue} /> : null}
+        <HomeInfo label="Document Date" value={date} />
+        <HomeInfo label="Voucher Type" value={item.VoucherType} />
+      </React.Fragment>
     );
   }
 
   renderSubView(item) {
-    // alert(JSON.stringify(item))
     let roleFlag = false;
     let roleValue = "";
     let customerflag = false;
@@ -789,9 +683,7 @@ class HomeScreen extends Component {
     ) {
       geographyValue = item.Geography;
     }
-
     // for position
-
     if (item.in_position == 1) {
       resourceCategory = "New";
     } else if (item.in_position == 2) {
@@ -812,122 +704,21 @@ class HomeScreen extends Component {
     }
     return (
       <View>
-        <View style={{ flexDirection: "row" }}>
-          {roleFlag ? (
-            <Text
-              style={[
-                globalFontStyle.imageBackgroundLayout,
-                style.displayItemsTextOne,
-              ]}
-            >
-              {constant.ROLE}{" "}
-            </Text>
-          ) : null}
-          {roleFlag ? (
-            <Text
-              style={[
-                globalFontStyle.imageBackgroundLayout,
-                style.displayItemsTextTwo,
-              ]}
-            >
-              {roleValue}
-            </Text>
-          ) : null}
-        </View>
-        <View style={{ flexDirection: "row" }}>
-          <Text
-            style={[
-              globalFontStyle.imageBackgroundLayout,
-              style.displayItemsTextOne,
-            ]}
-          >
-            {constant.POSITION}
-          </Text>
-          <Text
-            style={[
-              globalFontStyle.imageBackgroundLayout,
-              style.displayItemsTextTwo,
-            ]}
-          >
-            {resourceCategory + "(" + requestPosition + ")"}
-          </Text>
-        </View>
-        <View style={{ flexDirection: "row" }}>
-          <Text
-            style={[
-              globalFontStyle.imageBackgroundLayout,
-              style.displayItemsTextOne,
-            ]}
-          >
-            {constant.GEOGRAPHY}
-          </Text>
-          <Text
-            style={[
-              globalFontStyle.imageBackgroundLayout,
-              style.displayItemsTextTwo,
-            ]}
-          >
-            {geographyValue}
-          </Text>
-        </View>
-        <View style={{ flexDirection: "row" }}>
-          <Text
-            style={[
-              globalFontStyle.imageBackgroundLayout,
-              style.displayItemsTextOne,
-            ]}
-          >
-            {constant.PROJECT_DESC}
-          </Text>
-          <Text
-            style={[
-              globalFontStyle.imageBackgroundLayout,
-              style.displayItemsTextTwo,
-            ]}
-          >
-            {item.vc_projectdesc}
-          </Text>
-        </View>
-        <View style={{ flexDirection: "row" }}>
-          <Text
-            style={[
-              globalFontStyle.imageBackgroundLayout,
-              style.displayItemsTextOne,
-            ]}
-          >
-            {constant.NO_RESOURCE}
-          </Text>
-          <Text
-            style={[
-              globalFontStyle.imageBackgroundLayout,
-              style.displayItemsTextTwo,
-            ]}
-          >
-            {item.in_number}
-          </Text>
-        </View>
-        <View style={{ flexDirection: "row" }}>
-          {customerflag ? (
-            <Text
-              style={[
-                globalFontStyle.imageBackgroundLayout,
-                style.displayItemsTextOne,
-              ]}
-            >
-              {constant.CUSTOMER}
-            </Text>
-          ) : null}
-          {customerflag ? (
-            <Text
-              style={[
-                globalFontStyle.imageBackgroundLayout,
-                style.displayItemsTextTwo,
-              ]}
-            >
-              {customerValue}
-            </Text>
-          ) : null}
-        </View>
+        <HomeInfo
+          label={roleFlag ? constant.ROLE : ""}
+          value={roleFlag ? roleValue : ""}
+        />
+        <HomeInfo
+          label={constant.POSITION}
+          value={`${resourceCategory} (${requestPosition}`}
+        />
+        <HomeInfo label={constant.GEOGRAPHY} value={geographyValue} />
+        <HomeInfo label={constant.PROJECT_DESC} value={item.vc_projectdesc} />
+        <HomeInfo label={constant.NO_RESOURCE} value={item.in_number} />
+        <HomeInfo
+          label={customerflag ? constant.CUSTOMER : ""}
+          value={customerflag ? customerValue : ""}
+        />
       </View>
     );
   }
@@ -1018,61 +809,15 @@ class HomeScreen extends Component {
   renderVoucherRequest(item, index) {
     return (
       <BoxContainer>
-        <View style={{ flexDirection: "row" }}>
-          <Text
-            style={[
-              globalFontStyle.imageBackgroundLayout,
-              style.displayItemsTextOne,
-            ]}
-          >
-            {"Document#"}{" "}
-          </Text>
-          <Text
-            style={[
-              globalFontStyle.imageBackgroundLayout,
-              style.displayItemsTextTwo,
-            ]}
-          >
-            {item.DocumentNo.trim()}{" "}
-          </Text>
-        </View>
-        <View style={{ flexDirection: "row" }}>
-          <Text
-            style={[
-              globalFontStyle.imageBackgroundLayout,
-              style.displayItemsTextOne,
-            ]}
-          >
-            {"Employee"}{" "}
-          </Text>
-          <Text
-            style={[
-              globalFontStyle.imageBackgroundLayout,
-              style.displayItemsTextTwo,
-            ]}
-          >
-            {item.EmpCode.trim() + " : " + item.EmpName.trim()}{" "}
-          </Text>
-        </View>
-        <View style={{ flexDirection: "row" }}>
-          <Text
-            style={[
-              globalFontStyle.imageBackgroundLayout,
-              style.displayItemsTextOne,
-            ]}
-          >
-            {"Total Amount"}{" "}
-          </Text>
-          <Text
-            style={[
-              globalFontStyle.imageBackgroundLayout,
-              style.displayItemsTextTwo,
-            ]}
-          >
-            {parseFloat(item.TotalAmount).toFixed(2)}
-          </Text>
-        </View>
-
+        <HomeInfo label={"Document"} value={item.DocumentNo.trim()} />
+        <HomeInfo
+          label={"Employee"}
+          value={item.EmpCode.trim() + " : " + item.EmpName.trim()}
+        />
+        <HomeInfo
+          label={"Total Amount"}
+          value={parseFloat(item.TotalAmount).toFixed(2)}
+        />
         <View>
           {this.state.active_index === index ? (
             this.renderVoucherSubView(item)
@@ -1119,78 +864,10 @@ class HomeScreen extends Component {
   renderPendingRequest(item, index) {
     return (
       <BoxContainer>
-        <View style={{ flexDirection: "row" }}>
-          <Text
-            style={[
-              globalFontStyle.imageBackgroundLayout,
-              style.displayItemsTextTwo,
-            ]}
-          >
-            {"Req#"}{" "}
-          </Text>
-          <Text
-            style={[
-              globalFontStyle.imageBackgroundLayout,
-              style.displayItemsTextTwo,
-            ]}
-          >
-            {item.in_requestid}{" "}
-          </Text>
-        </View>
-        <View style={{ flexDirection: "row" }}>
-          <Text
-            style={[
-              globalFontStyle.imageBackgroundLayout,
-              style.displayItemsTextTwo,
-            ]}
-          >
-            {constant.REQUESTER_NAME}{" "}
-          </Text>
-          <Text
-            style={[
-              globalFontStyle.imageBackgroundLayout,
-              style.displayItemsTextTwo,
-            ]}
-          >
-            {item.vc_name}{" "}
-          </Text>
-        </View>
-        <View style={{ flexDirection: "row" }}>
-          <Text
-            style={[
-              globalFontStyle.imageBackgroundLayout,
-              style.displayItemsTextTwo,
-            ]}
-          >
-            {constant.PENDING_SINCE}{" "}
-          </Text>
-          <Text
-            style={[
-              globalFontStyle.imageBackgroundLayout,
-              style.displayItemsTextTwo,
-            ]}
-          >
-            {item.dt_updated}
-          </Text>
-        </View>
-        <View style={{ flexDirection: "row" }}>
-          <Text
-            style={[
-              globalFontStyle.imageBackgroundLayout,
-              style.displayItemsTextTwo,
-            ]}
-          >
-            {"Pending As"}{" "}
-          </Text>
-          <Text
-            style={[
-              globalFontStyle.imageBackgroundLayout,
-              style.displayItemsTextTwo,
-            ]}
-          >
-            {item.vc_status}{" "}
-          </Text>
-        </View>
+        <HomeInfo label={"Req#"} value={item.in_requestid} />
+        <HomeInfo label={constant.REQUESTER_NAME} value={item.vc_name} />
+        <HomeInfo label={constant.PENDING_SINCE} value={item.dt_updated} />
+        <HomeInfo label={"Pending As"} value={item.vc_status} />
         {this.state.active_index === index ? (
           this.renderSubView(item)
         ) : (

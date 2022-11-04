@@ -3,21 +3,14 @@ import {
   Text,
   View,
   BackHandler,
-  TouchableOpacity,
   TextInput,
-  KeyboardAvoidingView,
-  Dimensions,
   ImageBackground,
 } from "react-native";
 import { connect } from "react-redux";
 import { styles } from "./styles";
-import { SafeAreaView, ScrollView } from "react-navigation";
 import SubHeader from "../../GlobalComponent/SubHeader";
-import helper from "../../utilities/helper";
-import DateTimePicker from "@react-native-community/datetimepicker";
 import moment from "moment";
 import DatePicker from "./dateTimePicker/DateTimePicker";
-import { LabelTextDashValue } from "../../GlobalComponent/LabelText/LabelText";
 import {
   leaveApplyActionCreator,
   resetForm,

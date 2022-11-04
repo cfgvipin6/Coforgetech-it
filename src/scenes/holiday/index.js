@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import {
   Text,
   View,
-  Alert,
-  TouchableOpacity,
   ScrollView,
   BackHandler,
   ImageBackground,
@@ -11,39 +9,20 @@ import {
 import { connect } from "react-redux";
 import { styles } from "./styles";
 import { Icon } from "react-native-elements";
-import {
-  SELECT_YEAR,
-  SELECT_PLACE,
-  DATE,
-  DAY,
-  HOLIDAY_NAME,
-  NO_HOLIDAY,
-} from "./constants";
+import { DATE, DAY, HOLIDAY_NAME } from "./constants";
 import { writeLog } from "../../utilities/logger";
 import {
   leaveYearLocation,
   holidayActionCreator,
   resetLeave,
-  noLeaveData,
   resetNoLeaves,
 } from "./holidayActionCreator";
 import { Table, Row, Cols, Rows } from "react-native-table-component";
 import ActivityIndicatorView from "../../GlobalComponent/myActivityIndicator";
-import {
-  GUN_METAL_COLOR,
-  VALID_BUTTON_COLOR,
-  WHITE_COLOR,
-} from "../../../appconfig";
 import SubHeader from "../../GlobalComponent/SubHeader";
-import ModalDropdown from "react-native-modal-dropdown";
-import helper from "../../utilities/helper";
-import UserMessage from "../../components/userMessage";
-import { globalFontStyle } from "../../components/globalFontStyle";
 import { Dropdown } from "../../GlobalComponent/DropDown/DropDown";
 import CustomButton from "../../components/customButton";
 import images from "../../images";
-import IEngageDropDown from "../../GlobalComponent/CustomDropDown";
-import { showToast } from "../../GlobalComponent/Toast";
 let globalConstants = require("../../GlobalConstants");
 const tableHead = [DATE, DAY, HOLIDAY_NAME];
 class HolidayScreen extends Component {
@@ -354,7 +333,6 @@ mapDispatchToProps = (dispatch) => {
   };
 };
 mapStateToProps = (state) => {
-  // console.log("Leave data from leave reducer is : ", state.holidayReducer)
   return {
     loginData: state && state.loginReducer && state.loginReducer.loginData,
     yearData: state.holidayReducer.yearData,

@@ -227,7 +227,7 @@ class LoginScreen extends Component {
               }}
               onChangeText={(text) => this.setId(text)}
               underlineColor="transparent"
-              placeholder={"Enter your empoloyee ID"}
+              placeholder={"Enter your employee ID"}
               style={[AppStyle.font.fontSmallRegular, style.inputTextStyle]}
               autoCapitalize="none"
               autoCorrect={false}
@@ -317,12 +317,10 @@ const mapDispatchToProps = (dispatch) => {
 };
 const mapStateToProps = (state) => {
   return {
-    loginData: state && state.loginReducer && state.loginReducer.loginData,
-    loginLoading:
-      state && state.loginReducer && state.loginReducer.login_loading,
-    modalLoading:
-      state && state.loginReducer && state.loginReducer.modal_loading,
-    appVersion: state && state.authReducer && state.authReducer.version,
+    loginData: state?.loginReducer?.loginData,
+    loginLoading: state?.loginReducer?.login_loading,
+    modalLoading: state?.loginReducer?.modal_loading,
+    appVersion: state?.authReducer?.version,
   };
 };
 

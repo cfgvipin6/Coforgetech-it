@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import {
   Text,
   View,
-  Alert,
   ImageBackground,
   FlatList,
   TouchableOpacity,
@@ -10,8 +9,6 @@ import {
   BackHandler,
 } from "react-native";
 import { connect } from "react-redux";
-import { globalFontStyle } from "../../components/globalFontStyle.js";
-import { ScrollView } from "react-native-gesture-handler";
 import { styles } from "./styles";
 import { Icon, SearchBar } from "react-native-elements";
 import {
@@ -24,8 +21,6 @@ import {
 import { SUBMIT_TO, APPROVE, SEND_BACK, REJ } from "./constants";
 import ActivityIndicatorView from "../../GlobalComponent/myActivityIndicator";
 import SubHeader from "../../GlobalComponent/SubHeader";
-import helper from "../../utilities/helper";
-import ModalDropdown from "react-native-modal-dropdown";
 import UserMessage from "../../components/userMessage";
 let globalConstants = require("../../GlobalConstants");
 import { writeLog } from "../../utilities/logger";
@@ -93,7 +88,6 @@ class LeaveActionsScreen extends Component {
     );
   }
   componentWillUnmount() {
-    console.log("Leave Component is unmounted");
     this.props.resetLeaveAction();
   }
   onFocus = () => {

@@ -9,14 +9,8 @@ import {
   Image,
 } from "react-native";
 import React, { Component } from "react";
-import ModalDropdown from "react-native-modal-dropdown";
 import { Icon, Button, SearchBar, Card } from "react-native-elements";
-import moment from "moment";
-import DocumentPicker from "react-native-document-picker";
 import RadioForm from "react-native-simple-radio-button";
-import UserMessage from "../../components/userMessage";
-import { moderateScale } from "../../components/fontScaling.js";
-import RNFetchBlob from "rn-fetch-blob";
 import {
   RESIGNATION_SUBMIT_DATE,
   REQUESTED_LWD,
@@ -303,8 +297,8 @@ export const SkillSearchView = (parent) => {
               raised={true}
               containerStyle={styles.searchBarSkills}
               autoCapitalize="none"
-            autoCompleteType="off"
-            autoCorrect={false}
+              autoCompleteType="off"
+              autoCorrect={false}
             />
             <TouchableOpacity
               onPress={() => {
