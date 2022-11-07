@@ -8,13 +8,11 @@ import {
   View,
   TouchableOpacity,
   LayoutAnimation,
-  TouchableHighlight,
   UIManager,
   Platform,
   FlatList,
   RefreshControl,
   ImageBackground,
-  Alert,
   BackHandler,
   ScrollView,
   Dimensions,
@@ -29,10 +27,9 @@ import {
 } from "./travelAction";
 import { SearchBar, Card } from "react-native-elements";
 import SlidingUpPanel from "rn-sliding-up-panel";
-import { moderateScale } from "../../components/fontScaling.js";
 import { globalFontStyle } from "../../components/globalFontStyle";
 import ActivityIndicatorView from "../../GlobalComponent/myActivityIndicator";
-import CustomButton from "../../components/customButton";
+import { TravelInfo } from "./travelInfo";
 import SubHeader from "../../GlobalComponent/SubHeader";
 import helper from "../../utilities/helper";
 import { writeLog } from "../../utilities/logger";
@@ -120,7 +117,7 @@ class TravelScreen extends Component {
   }
   componentDidMount() {
     this.checkServiceType();
-    writeLog('Landed on ' + 'TravelScreen');
+    writeLog("Landed on " + "TravelScreen");
     this.resetTravelState();
     BackHandler.addEventListener(
       "hardwareBackPress",
@@ -144,8 +141,15 @@ class TravelScreen extends Component {
   }
 
   checkServiceType() {
-    console.log('Checking service type : ', this.state.userServiceType);
-    writeLog('Invoked ' + 'checkServiceType' + ' of ' + 'TravelScreen' + ' & service type is : ' + this.state.userServiceType);
+    console.log("Checking service type : ", this.state.userServiceType);
+    writeLog(
+      "Invoked " +
+        "checkServiceType" +
+        " of " +
+        "TravelScreen" +
+        " & service type is : " +
+        this.state.userServiceType
+    );
     if (
       this.state.userServiceType != "" &&
       this.state.userServiceType != null &&
@@ -195,30 +199,12 @@ class TravelScreen extends Component {
   }
 
   showTravelInfoGrid = (itemName, itemValue) => {
-    if (itemValue != "" && itemValue != null && itemValue != undefined) {
-      return (
-        <View style={{ flexDirection: "row" }}>
-          <Text
-            style={[
-              globalFontStyle.imageBackgroundLayout,
-              styles.subViewTextOne,
-            ]}
-          >
-            {itemName}
-          </Text>
-          <Text
-            style={[
-              globalFontStyle.imageBackgroundLayout,
-              styles.subViewTextTwo,
-            ]}
-          >
-            {itemValue}
-          </Text>
-        </View>
-      );
-    } else {
-      return null;
-    }
+    return (
+      <TravelInfo
+        label={itemName}
+        value={itemValue == undefined ? "" : itemValue}
+      />
+    );
   };
 
   renderTravelSubView(item) {
@@ -275,54 +261,14 @@ class TravelScreen extends Component {
     return (
       <BoxContainer>
         <View style={styles.view_One}>
-          <View style={styles.rowFashion}>
-            <Text
-              style={[globalFontStyle.imageBackgroundLayout, styles.textTwo]}
-            >
-              {"Document#"}{" "}
-            </Text>
-            <Text
-              style={[globalFontStyle.imageBackgroundLayout, styles.textTwo]}
-            >
-              {item.DocumentNo.trim()}{" "}
-            </Text>
-          </View>
-          <View style={styles.rowFashion}>
-            <Text
-              style={[globalFontStyle.imageBackgroundLayout, styles.textTwo]}
-            >
-              {"Employee"}{" "}
-            </Text>
-            <Text
-              style={[globalFontStyle.imageBackgroundLayout, styles.textTwo]}
-            >
-              {item.DocOwnerCode.trim() + " : " + item.DocOwnerName.trim()}{" "}
-            </Text>
-          </View>
-          <View style={styles.rowFashion}>
-            <Text
-              style={[globalFontStyle.imageBackgroundLayout, styles.textTwo]}
-            >
-              {"Itinerary"}{" "}
-            </Text>
-            <Text
-              style={[globalFontStyle.imageBackgroundLayout, styles.textTwo]}
-            >
-              {item.Itinerary.trim()}
-            </Text>
-          </View>
-          <View style={styles.rowFashion}>
-            <Text
-              style={[globalFontStyle.imageBackgroundLayout, styles.textTwo]}
-            >
-              {"Departure Date"}{" "}
-            </Text>
-            <Text
-              style={[globalFontStyle.imageBackgroundLayout, styles.textTwo]}
-            >
-              {deptDate}
-            </Text>
-          </View>
+          <TravelInfo label={"Document#"} value={item.DocumentNo.trim()} />;
+          <TravelInfo
+            label={"Employee"}
+            value={item.DocOwnerCode.trim() + " : " + item.DocOwnerName.trim()}
+          />
+          ;
+          <TravelInfo label={"Itinerary"} value={item.Itinerary.trim()} />;
+          <TravelInfo label={"Departure Date"} value={deptDate} />;
         </View>
         <View style={styles.view_Two}>
           {this.state.active_index === index ? (
@@ -557,7 +503,7 @@ class TravelScreen extends Component {
         <View style={globalFontStyle.searchViewGlobal}>
           <SearchBar
             lightTheme
-            placeholder={'Search by document number'}
+            placeholder={"Search by document number"}
             onChangeText={this.updateSearch}
             value={query}
             raised={true}

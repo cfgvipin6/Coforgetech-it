@@ -315,42 +315,35 @@ export const Attachment = (parent) => {
     </View>
   );
 };
-
-const renderTitle = ({ title = "" }) => {
-  return (
-    <View style={styles.lineHolder}>
-      <View style={styles.line} />
-      <Text>{title}</Text>
-      <View style={styles.line} />
-    </View>
-  );
-};
 export const WorkRow = (props) => {
   if (props.title === "Forward to supervisor") {
     let data = props.data;
     if (data[0].NeglectSupervisor.Value === "Y" && data[0].Docno.Value === "") {
       return null;
-    } else return renderTitle(props.title);
-  } else return renderTitle(props.title);
+    } else {
+      return (
+        <View style={styles.lineHolder}>
+          <View style={styles.line} />
+          <Text>{props.title}</Text>
+          <View style={styles.line} />
+        </View>
+      );
+    }
+  } else {
+    return (
+      <View style={styles.lineHolder}>
+        <View style={styles.line} />
+        <Text>{props.title}</Text>
+        <View style={styles.line} />
+      </View>
+    );
+  }
 };
 
 export const Iniitian = (props) => {
-  const {
-    data,
-    isSupervisor,
-    handlerRemarks,
-    selectedEmpName,
-    searchCallBack,
-    supervisorRemarks,
-  } = this.props;
-  if (isSupervisor && data.length) {
-    const {
-      NeglectSupervisor,
-      Docno,
-      SupervisorCode,
-      SupervisorName,
-    } = data[0];
-    if (NeglectSupervisor.Value === "Y" && Docno.Value === "") {
+  let data = props.data;
+  if (props.isSupervisor && data && data[0]) {
+    if (data[0].NeglectSupervisor.Value === "Y" && data[0].Docno.Value === "") {
       return null;
     } else {
       return (
@@ -365,7 +358,7 @@ export const Iniitian = (props) => {
                 multiline={false}
                 style={styles.textInputStyle}
               >
-                {SupervisorCode.Value}
+                {data[0].SupervisorCode.Value}
               </TextInput>
             </View>
             <View style={styles.name}>
@@ -377,7 +370,7 @@ export const Iniitian = (props) => {
                 multiline={false}
                 style={styles.textInputStyle}
               >
-                {SupervisorName.Value}
+                {data[0].SupervisorName.Value}
               </TextInput>
             </View>
           </View>
@@ -389,7 +382,7 @@ export const Iniitian = (props) => {
             multiline={false}
             style={styles.remarksStyle}
             onChangeText={(text) => {
-              supervisorRemarks(text);
+              props.supervisorRemarks(text);
             }}
           />
         </View>
@@ -400,10 +393,11 @@ export const Iniitian = (props) => {
       <View>
         <View>
           <View style={styles.name}>
-            {selectedEmpName === "" || selectedEmpName === undefined ? (
+            {props.selectedEmpName === "" ||
+            props.selectedEmpName === undefined ? (
               <TouchableOpacity
                 onPress={() => {
-                  searchCallBack();
+                  props.searchCallBack();
                 }}
               >
                 <Text multiline={false} style={styles.textOtherStyle}>
@@ -413,12 +407,12 @@ export const Iniitian = (props) => {
             ) : (
               <TouchableOpacity
                 onPress={() => {
-                  searchCallBack();
+                  props.searchCallBack();
                 }}
               >
                 <Text multiline={false} style={styles.textOther2Style}>
-                  {selectedEmpName.substring(
-                    selectedEmpName.lastIndexOf(":") + 2
+                  {props.selectedEmpName.substring(
+                    props.selectedEmpName.lastIndexOf(":") + 2
                   )}
                 </Text>
               </TouchableOpacity>
@@ -433,7 +427,7 @@ export const Iniitian = (props) => {
           multiline={false}
           style={styles.remarksStyle}
           onChangeText={(text) => {
-            handlerRemarks(text);
+            props.handlerRemarks(text);
           }}
         />
       </View>

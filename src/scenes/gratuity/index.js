@@ -25,6 +25,7 @@ let globalConstants = require("../../GlobalConstants");
 import images from "../../images";
 import { AppStyle } from "../commonStyle";
 import SubHeader from "../../GlobalComponent/SubHeader";
+import { GratuityInfo } from "./gratuityInfo";
 class GratuityScreen extends Component {
   constructor(props) {
     super(props);
@@ -269,46 +270,29 @@ class GratuityScreen extends Component {
           {data.reimbursements?.LTA.IsActive ? (
             <View>
               <View style={styles.seperatorView} />
-
-              <View style={styles.displayItemsView}>
-                <Text style={globalFontStyle.cardLeftText}>
-                  {data.reimbursements.LTA.Key}
-                </Text>
-                <Text style={styles.rightSideVal}>
-                  {data.reimbursements.LTA.Value}
-                </Text>
-              </View>
+              <GratuityInfo
+                label={data.reimbursements.LTA.Key}
+                value={data.reimbursements.LTA.Value}
+              />
             </View>
           ) : null}
           {data.reimbursements?.Petrol.IsActive ? (
-            <View style={styles.displayItemsView}>
-              <Text style={globalFontStyle.cardLeftText}>
-                {data.reimbursements.Petrol.Key}
-              </Text>
-              <Text style={styles.rightSideVal}>
-                {data.reimbursements.Petrol.Value}
-              </Text>
-            </View>
+            <GratuityInfo
+              label={data.reimbursements.Petrol.Key}
+              value={data.reimbursements.Petrol.Value}
+            />
           ) : null}
           {data.reimbursements?.Mobile.IsActive ? (
-            <View style={styles.displayItemsView}>
-              <Text style={globalFontStyle.cardLeftText}>
-                {data.reimbursements.Mobile.Key}
-              </Text>
-              <Text style={styles.rightSideVal}>
-                {data.reimbursements.Mobile.Value}
-              </Text>
-            </View>
+            <GratuityInfo
+              label={data.reimbursements.Mobile.Key}
+              value={data.reimbursements.Mobile.Value}
+            />
           ) : null}
           {data.reimbursements?.Driver.IsActive ? (
-            <View style={styles.displayItemsView}>
-              <Text style={globalFontStyle.cardLeftText}>
-                {data.reimbursements.Driver.Key}
-              </Text>
-              <Text style={styles.rightSideVal}>
-                {data.reimbursements.Driver.Value}
-              </Text>
-            </View>
+            <GratuityInfo
+              label={data.reimbursements.Driver.Key}
+              value={data.reimbursements.Driver.Value}
+            />
           ) : null}
         </View>
       );
@@ -320,14 +304,11 @@ class GratuityScreen extends Component {
   renderLeaveDetails = () => {
     return this.state.leaveArray.map((leave) => {
       return (
-        <View>
-          <View style={styles.displayItemsView}>
-            <Text style={globalFontStyle.cardLeftText}>{leave.Key}</Text>
-            <Text style={styles.rightSideVal}>
-              {parseInt(leave.Value).toFixed(2)}
-            </Text>
-          </View>
-        </View>
+        <GratuityInfo
+          key={leave.Key}
+          label={leave.Key}
+          value={parseInt(leave.Value).toFixed(2)}
+        />
       );
     });
   };
