@@ -175,6 +175,7 @@ class CreateVoucher extends Component {
     this.props.navigation.pop();
   };
 
+  
   getCategoryCallBack = () => {
     this.setState({ loader: false });
     let myEmpData = this.state.cvEmployeeDataArray[0];
@@ -299,6 +300,7 @@ class CreateVoucher extends Component {
         if (this.state.categoryIdValue == 1) {
           this.props.fetchCVSubCategory(this.state.categoryIdValue);
         } else {
+     
           this.setState({
             subCategoryIdValue: "",
             subCategoryTextValue: "",
@@ -689,7 +691,10 @@ class CreateVoucher extends Component {
   };
 
   additionalExpenseDetailsView = () => {
+ 
     if (this.state.subCategoryIdValue == 9) {
+      let {ResignationDate} = this.state.cvEmployeeDataArray[0];
+      console.log("ResignationDate",ResignationDate)
       return (
         <View style={styles.userInfoView}>
           <ImageBackground style={styles.cardBackground} resizeMode="cover">
@@ -743,37 +748,66 @@ class CreateVoucher extends Component {
                   this.onInvestmentPlanSelection(index, value)
                 }
               />
+               {
+                  ResignationDate ?
+                  <LabelEditText
+                  heading={constants.DATE_OF_RESIGNATION_TEXT}
+                  isEditable={false}
+                  myValue={ResignationDate}
+                />
+                :
+                null
+                 }
             </View>
           </ImageBackground>
         </View>
       );
     } else if (this.state.subCategoryIdValue == 1) {
-      return (
-        <View style={styles.userInfoView}>
-          <ImageBackground style={styles.cardBackground} resizeMode="cover">
-            {sectionTitle(constants.BALANCE_TEXT)}
-            <View style={styles.cardStyle}>
-              <LabelEditText
-                heading={constants.WEF_DATE_TEXT}
-                isEditable={false}
-                myValue={this.state.wefDateValue}
-              />
-              <LabelEditText
-                heading={constants.TILL_DATE_TEXT}
-                isEditable={false}
-                myValue={this.state.tillDateValue}
-              />
-              <LabelEditText
-                heading={constants.CLAIMABLE_BAL_TEXT}
-                isEditable={false}
-                myValue={this.state.claimableBalValue}
-              />
+      let {ResignationDate} = this.state.cvEmployeeDataArray[0];
+         
+          return (
+            <View style={styles.userInfoView}>
+              <ImageBackground style={styles.cardBackground} resizeMode="cover">
+                {sectionTitle(constants.BALANCE_TEXT)}
+                <View style={styles.cardStyle}>
+                  <LabelEditText
+                    heading={constants.WEF_DATE_TEXT}
+                    isEditable={false}
+                    myValue={this.state.wefDateValue}
+                  />
+                  <LabelEditText
+                    heading={constants.TILL_DATE_TEXT}
+                    isEditable={false}
+                    myValue={this.state.tillDateValue}
+                  />
+                  <LabelEditText
+                    heading={constants.CLAIMABLE_BAL_TEXT}
+                    isEditable={false}
+                    myValue={this.state.claimableBalValue}
+                  />
+                 {
+                  ResignationDate ?
+                  <LabelEditText
+                  heading={constants.DATE_OF_RESIGNATION_TEXT}
+                  isEditable={false}
+                  myValue={ResignationDate}
+                />
+                :
+                null
+                 }
+            
+                </View>
+              </ImageBackground>
             </View>
-          </ImageBackground>
-        </View>
-      );
+          );
+         
+        //  else{
+        //   return alert ("Not Claimable Take a break")
+        //  }
+      
     } else if (this.state.subCategoryIdValue == 8) {
       //wedding
+      let {ResignationDate} = this.state.cvEmployeeDataArray[0];
       return (
         <View style={styles.userInfoView}>
           <ImageBackground style={styles.cardBackground} resizeMode="cover">
@@ -784,16 +818,30 @@ class CreateVoucher extends Component {
                 isEditable={false}
                 myValue={this.state.weddingDateValue}
               />
+             {
+                  ResignationDate ?
+                  <LabelEditText
+                  heading={constants.DATE_OF_RESIGNATION_TEXT}
+                  isEditable={false}
+                  myValue={ResignationDate}
+                />
+                :
+                null
+                 }
             </View>
           </ImageBackground>
         </View>
       );
-    } else {
+    } 
+ 
+    
+    else {
       return null;
     }
   };
 
   nextNavigateAction = async () => {
+    let {ResignationDate} = this.state.cvEmployeeDataArray[0];
     let categoryData = this.props.cvCategoryData;
     let file = categoryData.find(
       (item) => this.state.categoryIdValue == item.ID
@@ -923,17 +971,40 @@ class CreateVoucher extends Component {
       ) {
         //wedding validation
         return alert(constants.FILL_WED_DETAIL_ERR_MSG);
-      } else if (
+      } 
+      else if (
+        this.state.subCategoryIdValue == 8 &&
+        ResignationDate != ""
+      ) {
+        return Alert.alert("As you have resigned, so you cannot claim this voucher.");
+      }
+      else if (
         this.state.subCategoryIdValue == 8 &&
         this.state.isWeddingClaimTaken != 0
       ) {
         return alert(constants.WED_CLAIM_TAKEN_ERR_MSG);
-      } else if (
+      }
+
+      else if (
+        this.state.subCategoryIdValue == 1 &&
+        ResignationDate != ""
+      ) {
+        return Alert.alert("As you have resigned, so you cannot claim this voucher.");
+      }
+       else if (
         this.state.subCategoryIdValue == 1 &&
         this.state.claimableBalValue == 0
       ) {
         return alert(constants.INSUFFICIENT_BAL_ERR_MSG);
-      } else if (
+      }
+
+      else if (
+        this.state.subCategoryIdValue == 9 &&
+        ResignationDate != ""
+      ) {
+        return Alert.alert("As you have resigned, so you cannot claim this voucher.");
+      }
+       else if (
         this.state.subCategoryIdValue == 9 &&
         (this.state.childNameValue === "" ||
           this.state.claimForValue === "" ||

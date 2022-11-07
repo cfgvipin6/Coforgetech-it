@@ -64,6 +64,7 @@ export const CLAIMABLE_BAL_TEXT = 'Claimable Bal';
 export const TOTAL_VOUCHER_CREATED = 'Number of Vouchers';
 export const TOTAL_AMOUNT_VOUCHERS = 'Total Amount of Vouchers';
 export const DATE_OF_WEDDING_TEXT = 'Date of wedding';
+export const DATE_OF_RESIGNATION_TEXT = 'Date of resignation';
 export const PARTICULAR_TEXT = 'Particular';
 export const CASH_MEMO_NO_TEXT = 'Cash Memo No';
 export const NUM_PEOPLE = 'Number of people';
