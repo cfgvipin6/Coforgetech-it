@@ -112,7 +112,7 @@ class LoginScreen extends Component {
     });
   }
 
-  checkDetails() {
+  handleCheckDetails() {
     Keyboard.dismiss();
     const { password } = this.state;
     if (password && newEmployeeId) {
@@ -267,7 +267,7 @@ class LoginScreen extends Component {
               />
             </View>
 
-            <TouchableOpacity onPress={() => this.checkDetails()}>
+            <TouchableOpacity onPress={() => this.handleCheckDetails()}>
               <Image style={[style.textStyle]} source={images.loginButton} />
             </TouchableOpacity>
             <View style={style.seperatorContainer}>
