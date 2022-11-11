@@ -13,19 +13,10 @@ import {
 } from "react-native";
 import { connect } from "react-redux";
 import { Keyboard } from "react-native";
-// import { ScrollView } from "react-native-gesture-handler"
 import { DismissKeyboardView } from "../../components/DismissKeyboardView";
-import {
-  loginActionCreator,
-  modalAction,
-  checkVersion,
-  loginDataClear,
-} from "./LoginAction";
-import { globalFontStyle } from "../../components/globalFontStyle";
+import { loginActionCreator, modalAction, loginDataClear } from "./LoginAction";
 import style from "./style.js";
-import DialogModal from "../../components/dialogBox";
 import GlobalData from "../../utilities/globalData";
-import Header from "../../GlobalComponent/Header";
 import ActivityIndicatorView from "../../GlobalComponent/myActivityIndicator";
 import SplashScreen from "react-native-splash-screen";
 import {
@@ -42,12 +33,7 @@ import HeaderView from "../../GlobalComponent/Header";
 import { AppStyle } from "../commonStyle";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { DEVICE_VERSION } from "../../components/DeviceInfoFile";
-const lockIcon = require("../../assets/locked.png");
-const personIcon = require("../../assets/person.png");
-const bg_02 = require("../../assets/bg02.jpg");
-const bg_01 = require("../../assets/bg01.jpg");
 let constant = require("./constants");
-let appConfig = require("../../../appconfig");
 let globalData = new GlobalData();
 let newEmployeeLength = 0;
 let newEmployeeId = null;
@@ -72,10 +58,8 @@ class LoginScreen extends Component {
     }, 1000);
   };
   componentDidMount() {
-    writeLog("Landed on " + "LoginScreen");
-    this.props &&
-      this.props.navigation &&
-      this.props.navigation.addListener("willFocus", this.onFocus);
+    const { navigation } = this.props;
+    navigation?.addListener("willFocus", this.onFocus);
     SplashScreen.hide();
     removeUserName();
     removePassword();
@@ -85,28 +69,29 @@ class LoginScreen extends Component {
     BackHandler.removeEventListener("hardwareBackPress", this.goBack);
   }
   componentDidUpdate(previousProps, state) {
+    const { loginData, navigation } = this.props;
     if (
-      this.props.loginData &&
-      this.props.loginData !== previousProps.loginData &&
-      !this.props.loginData?.hasOwnProperty("res") &&
-      !this.props.loginData?.hasOwnProperty("Exception")
+      loginData &&
+      loginData !== previousProps.loginData &&
+      !loginData?.hasOwnProperty("res") &&
+      !loginData?.hasOwnProperty("Exception")
     ) {
-      globalData.setAccessToken(this.props.loginData?.Authkey);
-      globalData.setLoggedInEmployeeId(this.props.loginData?.SmCode);
-      this.props.navigation.replace("DashBoardNew2");
-    } else if (this.props.loginData?.hasOwnProperty("res")) {
-      if (previousProps.loginData != this.props.loginData) {
+      globalData.setAccessToken(loginData?.Authkey);
+      globalData.setLoggedInEmployeeId(loginData?.SmCode);
+      navigation.replace("DashBoardNew2");
+    } else if (loginData?.hasOwnProperty("res")) {
+      if (previousProps.loginData != loginData) {
         this.setState({
           heading: "Sorry",
           message: "Invalid credentials , Please enter valid credentials.",
           visibility: true,
         });
       }
-    } else if (this.props.loginData?.hasOwnProperty("Exception")) {
-      if (previousProps.loginData != this.props.loginData) {
+    } else if (loginData?.hasOwnProperty("Exception")) {
+      if (previousProps.loginData != loginData) {
         this.setState({
           heading: "Error",
-          message: this.props.loginData.Exception,
+          message: loginData?.Exception,
           visibility: true,
         });
       }
@@ -127,22 +112,15 @@ class LoginScreen extends Component {
     });
   }
 
-  async checkDetails() {
+  handleCheckDetails() {
     Keyboard.dismiss();
-    writeLog("Clicked on " + "checkDetails" + " of " + "LoginScreen");
-    if (
-      this.state.password === null ||
-      this.state.password === undefined ||
-      this.state.password === "" ||
-      newEmployeeId === null ||
-      newEmployeeId === undefined ||
-      newEmployeeId === ""
-    ) {
+    const { password } = this.state;
+    if (password && newEmployeeId) {
+      setLoginType(constant.APP_LOGIN);
+      this.props.login(newEmployeeId, password, this.clearData, undefined);
+    } else {
       return alert("Please enter valid credentials !");
     }
-    let password = this.state.password;
-    setLoginType(constant.APP_LOGIN);
-    this.props.login(newEmployeeId, password, this.clearData, undefined);
   }
 
   showDialogBox() {
@@ -187,7 +165,6 @@ class LoginScreen extends Component {
   };
 
   loginWithAd = () => {
-    writeLog("Clicked on " + "loginWithAd" + " of " + "AdLoginScreen");
     setLoginType(constant.AD_LOGIN);
     this.props.navigation.navigate("WebRoute", {
       URL: properties.adLoginUrl,
@@ -195,18 +172,15 @@ class LoginScreen extends Component {
   };
 
   handleConfirm = (msg) => {
-    console.log("Message is : ", msg);
-    this.props.modalAction(false);
+    const { modalAction, loginData, appVersion, navigation } = this.props;
+    modalAction(false);
     this.setState({ visibility: false });
-    writeLog("Clicked on " + "handleConfirm" + " of " + "LoginScreen");
     if (
-      (this.props.loginData.StatusCode &&
-        this.props.loginData.StatusCode === 405) ||
-      (this.props.appVersion.Version &&
-        this.props.appVersion.Version !== DEVICE_VERSION)
+      loginData?.StatusCode === 405 ||
+      appVersion?.Version !== DEVICE_VERSION
     ) {
       if (msg.includes("install")) {
-        this.props.navigation.replace("WebRoute", {
+        navigation.replace("WebRoute", {
           URL: properties.adLoginUrl,
         });
       }
@@ -217,6 +191,7 @@ class LoginScreen extends Component {
     writeLog("Clicked on " + "goBack" + " of " + "LoginScreen");
     return false;
   };
+
   showErrorView = () => {
     return (
       <UserMessage
@@ -236,7 +211,7 @@ class LoginScreen extends Component {
           {this.state.visibility && this.showErrorView()}
           <HeaderView isLoginScreen={true} props={this.props} />
           <Text style={styles.versionTextStyle}>
-            {"App Ver : " + DEVICE_VERSION}
+            {`App Ver : ${DEVICE_VERSION}`}
           </Text>
           <ActivityIndicatorView loader={this.props.loginLoading} />
           <View style={style.middleView2}>
@@ -254,7 +229,7 @@ class LoginScreen extends Component {
               }}
               onChangeText={(text) => this.setId(text)}
               underlineColor="transparent"
-              placeholder={"Enter your empoloyee ID"}
+              placeholder={"Enter your employee ID"}
               style={[AppStyle.font.fontSmallRegular, style.inputTextStyle]}
               autoCapitalize="none"
               autoCorrect={false}
@@ -294,11 +269,7 @@ class LoginScreen extends Component {
               />
             </View>
 
-            <TouchableOpacity
-              onPress={() => {
-                this.checkDetails();
-              }}
-            >
+            <TouchableOpacity onPress={() => this.handleCheckDetails()}>
               <Image style={[style.textStyle]} source={images.loginButton} />
             </TouchableOpacity>
             <View style={style.seperatorContainer}>
@@ -348,12 +319,10 @@ const mapDispatchToProps = (dispatch) => {
 };
 const mapStateToProps = (state) => {
   return {
-    loginData: state && state.loginReducer && state.loginReducer.loginData,
-    loginLoading:
-      state && state.loginReducer && state.loginReducer.login_loading,
-    modalLoading:
-      state && state.loginReducer && state.loginReducer.modal_loading,
-    appVersion: state && state.authReducer && state.authReducer.version,
+    loginData: state?.loginReducer?.loginData,
+    loginLoading: state?.loginReducer?.login_loading,
+    modalLoading: state?.loginReducer?.modal_loading,
+    appVersion: state?.authReducer?.version,
   };
 };
 

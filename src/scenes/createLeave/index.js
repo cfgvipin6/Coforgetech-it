@@ -3,21 +3,14 @@ import {
   Text,
   View,
   BackHandler,
-  TouchableOpacity,
   TextInput,
-  KeyboardAvoidingView,
-  Dimensions,
   ImageBackground,
 } from "react-native";
 import { connect } from "react-redux";
 import { styles } from "./styles";
-import { SafeAreaView, ScrollView } from "react-navigation";
 import SubHeader from "../../GlobalComponent/SubHeader";
-import helper from "../../utilities/helper";
-import DateTimePicker from "@react-native-community/datetimepicker";
 import moment from "moment";
 import DatePicker from "./dateTimePicker/DateTimePicker";
-import { LabelTextDashValue } from "../../GlobalComponent/LabelText/LabelText";
 import {
   leaveApplyActionCreator,
   resetForm,
@@ -798,7 +791,7 @@ class CreateLeave extends Component {
           backVisible={true}
           logoutVisible={true}
           handleBackPress={() => this.handleBack()}
-          navigation={this.props.navigation}
+          navigation={this.props?.navigation}
         />
         {this.state.leaveData?.Balances?.length > 0 ? (
           <View>
@@ -1048,7 +1041,7 @@ class CreateLeave extends Component {
     );
   }
 }
-mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch) => {
   return {
     fetchLeaveData: (loginData, callBack, errorCallBack) =>
       dispatch(leaveApplyActionCreator(loginData, callBack, errorCallBack)),
@@ -1079,7 +1072,7 @@ mapDispatchToProps = (dispatch) => {
       ),
   };
 };
-mapStateToProps = (state) => {
+const mapStateToProps = (state) => {
   return {
     loginData: state && state.loginReducer && state.loginReducer.loginData,
     applyData: state.leaveApplyReducer.applyLeaveData,

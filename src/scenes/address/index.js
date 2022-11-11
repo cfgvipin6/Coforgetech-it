@@ -17,7 +17,6 @@ import ActivityIndicatorView from "../../GlobalComponent/myActivityIndicator";
 import helper from "../../utilities/helper";
 import SubHeader from "../../GlobalComponent/SubHeader";
 import { connect } from "react-redux";
-import { Card } from "react-native-elements";
 import { globalFontStyle } from "../../components/globalFontStyle";
 import { writeLog } from "../../utilities/logger";
 import UserMessage from "../../components/userMessage";
@@ -213,10 +212,6 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 const mapStateToProps = (state) => {
-  // console.log("address data from address reducer is :::", state.addressReducer.addressResponse)
-  // console.log("loading flag value from address reducer is :::", state.addressReducer.addressLoader)
-  // console.log("error message from address reducer is :::", state.addressReducer.addressError)
-  console.log("adderss Data===>", state.addressReducer.addressResponse);
   return {
     loginData: state && state.loginReducer && state.loginReducer.loginData,
     addressData: state.addressReducer.addressResponse,

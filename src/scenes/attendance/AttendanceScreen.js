@@ -4,10 +4,10 @@ import { Card } from "react-native-elements";
 import { connect } from "react-redux";
 import { ScrollView } from "react-native-gesture-handler";
 import { styles } from "./styles";
+import { AttendanceInfo } from "./AttendanceInfo";
 import { globalFontStyle } from "../../components/globalFontStyle";
 import ActivityIndicatorView from "../../GlobalComponent/myActivityIndicator";
 import SubHeader from "../../GlobalComponent/SubHeader";
-import helper from "../../utilities/helper";
 import { Icon } from "react-native-elements";
 import { currentTime } from "../Dashboard/DashboardUtility2";
 import { writeLog } from "../../utilities/logger";
@@ -109,58 +109,36 @@ class AttendanceScreen extends Component {
         "DD-MM-YYYY HH:mm:ss"
       ).format("HH:mm:ss");
       // console.log("Date time from server is :" + date + " " + time)
+      const { eligibilityData } = this.props;
+      const eligibilityInfo = eligibilityData[0];
       return (
         <Card style={styles.attendanceCard}>
           <View>
-            <View style={styles.cardView}>
-              <Text style={globalFontStyle.cardLeftText}>
-                Attendance Marked :{" "}
-              </Text>
-              <Text style={globalFontStyle.cardRightText}>
-                {this.props.eligibilityData[0].attendaceMarked === "Y"
-                  ? "Yes"
-                  : "No"}
-              </Text>
-            </View>
+            <AttendanceInfo
+              label="Attendance Marked"
+              value={eligibilityInfo?.attendaceMarked === "Y" ? "Yes" : "No"}
+            />
+            <AttendanceInfo
+              label="Attendance Date"
+              value={eligibilityInfo?.attendanceMarkedDate}
+            />
 
-            <View style={styles.cardView}>
-              <Text style={globalFontStyle.cardLeftText}>
-                Attendance Date :{" "}
-              </Text>
-              <Text style={globalFontStyle.cardRightText}>
-                {this.props.eligibilityData[0].attendanceMarkedDate}
-              </Text>
-            </View>
-
-            <View style={styles.cardView}>
-              <Text style={globalFontStyle.cardLeftText}>
-                Attendance Time :{" "}
-              </Text>
-              <Text style={globalFontStyle.cardRightText}>
-                {this.props.eligibilityData[0].attendanceMarkedTime}
-              </Text>
-            </View>
-            {this.props.eligibilityData[0].scheduledInTime != null ? (
-              <View style={styles.cardView}>
-                <Text style={globalFontStyle.cardLeftText}>
-                  ScheduledInTime :{" "}
-                </Text>
-                <Text style={globalFontStyle.cardRightText}>
-                  {this.props.eligibilityData[0].scheduledInTime}
-                </Text>
-              </View>
-            ) : null}
-
-            {this.props.eligibilityData[0].scheduledOutTime != null ? (
-              <View style={styles.cardView}>
-                <Text style={globalFontStyle.cardLeftText}>
-                  ScheduledOutTime :{" "}
-                </Text>
-                <Text style={globalFontStyle.cardRightText}>
-                  {this.props.eligibilityData[0].scheduledOutTime}
-                </Text>
-              </View>
-            ) : null}
+            <AttendanceInfo
+              label="Attendance Time"
+              value={eligibilityInfo?.attendanceMarkedTime}
+            />
+            {eligibilityInfo.scheduledInTime && (
+              <AttendanceInfo
+                label="ScheduledInTime"
+                value={eligibilityInfo?.scheduledInTime}
+              />
+            )}
+            {eligibilityInfo.scheduledOutTime && (
+              <AttendanceInfo
+                label="ScheduledOutTime"
+                value={eligibilityInfo?.scheduledOutTime}
+              />
+            )}
           </View>
         </Card>
       );
@@ -211,7 +189,6 @@ mapDispatchToProps = (dispatch) => {
   };
 };
 mapStateToProps = (state) => {
-  // console.log("Eligibility data in side attendance view screen. ",state.pendingReducer.eligibilityData)
   return {
     loginData: state && state.loginReducer && state.loginReducer.loginData,
     loading: state.pendingReducer.loading_pending,

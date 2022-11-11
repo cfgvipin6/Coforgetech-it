@@ -9,11 +9,7 @@ import {
   View,
   TouchableOpacity,
   BackHandler,
-  Alert,
   RefreshControl,
-  ScrollView,
-  Image,
-  ImageStore,
   ImageBackground,
 } from "react-native";
 import { pendingActionCreator, resetDashboardCreator } from "./PendingAction";
@@ -174,8 +170,7 @@ class DashboardView extends Component {
           pageTitle: globalConstants.RR_TITLE,
         });
       }
-    } 
-    else if (item.Type === "Local Conveyance Voucher") {
+    } else if (item.Type === "Local Conveyance Voucher") {
       if (item.Count == 0) {
         countErrorMessage =
           constants.YOU_DONT_HAVE_ERROR_TEXT +
@@ -189,7 +184,7 @@ class DashboardView extends Component {
           pageTitle: globalConstants.LCV_TITLE,
         });
       }
-    } 
+    }
     // timesheet approval
     else if (item.Type === "Timesheet Approval") {
       if (item.Count == 0) {
@@ -205,8 +200,7 @@ class DashboardView extends Component {
           pageTitle: globalConstants.TIMESHEET_APPROVALS,
         });
       }
-    } 
-    else if (item.Type === "Cash Voucher") {
+    } else if (item.Type === "Cash Voucher") {
       if (item.Count == 0) {
         countErrorMessage =
           constants.YOU_DONT_HAVE_ERROR_TEXT +
