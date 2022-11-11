@@ -261,14 +261,13 @@ class TravelScreen extends Component {
     return (
       <BoxContainer>
         <View style={styles.view_One}>
-          <TravelInfo label={"Document#"} value={item.DocumentNo.trim()} />;
+          <TravelInfo label={"Document#"} value={item?.DocumentNo.trim()} />
           <TravelInfo
             label={"Employee"}
-            value={item.DocOwnerCode.trim() + " : " + item.DocOwnerName.trim()}
+            value={item.DocOwnerCode.trim() + " : " + item?.DocOwnerName.trim()}
           />
-          ;
-          <TravelInfo label={"Itinerary"} value={item.Itinerary.trim()} />;
-          <TravelInfo label={"Departure Date"} value={deptDate} />;
+          <TravelInfo label={"Itinerary"} value={item?.Itinerary.trim()} />
+          <TravelInfo label={"Departure Date"} value={deptDate} />
         </View>
         <View style={styles.view_Two}>
           {this.state.active_index === index ? (

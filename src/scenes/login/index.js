@@ -118,7 +118,9 @@ class LoginScreen extends Component {
     if (password && newEmployeeId) {
       setLoginType(constant.APP_LOGIN);
       this.props.login(newEmployeeId, password, this.clearData, undefined);
-    } else return alert("Please enter valid credentials !");
+    } else {
+      return alert("Please enter valid credentials !");
+    }
   }
 
   showDialogBox() {
@@ -209,7 +211,7 @@ class LoginScreen extends Component {
           {this.state.visibility && this.showErrorView()}
           <HeaderView isLoginScreen={true} props={this.props} />
           <Text style={styles.versionTextStyle}>
-            {"App Ver : " + DEVICE_VERSION}
+            {`App Ver : ${DEVICE_VERSION}`}
           </Text>
           <ActivityIndicatorView loader={this.props.loginLoading} />
           <View style={style.middleView2}>
