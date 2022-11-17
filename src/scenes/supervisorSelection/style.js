@@ -1,9 +1,5 @@
-import {Dimensions} from 'react-native';
-import {moderateScale} from '../../components/fontScaling';
-var appConfig = require('../../../appconfig');
 
-const screenWidth = Dimensions.get('window').width;
-const screenHeight = Dimensions.get('window').height;
+var appConfig = require('../../../appconfig');
 
 export default {
     container:{

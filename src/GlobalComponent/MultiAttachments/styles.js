@@ -1,5 +1,4 @@
-import { StyleSheet, Platform, Dimensions } from 'react-native';
-import { moderateScale } from '../../components/fontScaling.js';
+import { StyleSheet } from 'react-native';
 var appConfig = require('../../../appconfig');
 export const styles = StyleSheet.create({
   container:{

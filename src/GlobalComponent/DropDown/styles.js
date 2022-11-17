@@ -1,7 +1,7 @@
-import { StyleSheet, Platform, Dimensions } from 'react-native';
-import { moderateScale } from '../../components/fontScaling.js';
+import { StyleSheet} from 'react-native';
+import { moderateScale, setWidth } from '../../components/fontScaling.js';
 var appConfig = require('../../../appconfig');
-const sw = Dimensions.get('window').width;
+const sw = setWidth(100)
 export const styles = StyleSheet.create({
   dropdownStyle:{
     width: sw / 2,

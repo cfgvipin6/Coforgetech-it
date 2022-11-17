@@ -1,13 +1,9 @@
 import React, { Component } from 'react';
-import { BackHandler } from 'react-native';
-import { Dimensions } from 'react-native';
-import { Text, View } from 'react-native';
+import { BackHandler, View } from 'react-native'
 import Pdf from 'react-native-pdf';
-import RNFetchBlob from 'rn-fetch-blob';
-import ActivityIndicatorView from '../../GlobalComponent/myActivityIndicator';
+import { setHeight, setWidth } from '../../components/fontScaling';
 import SubHeader from '../../GlobalComponent/SubHeader';
 import properties from '../../resource/properties';
-import { fetchGETMethod } from '../../utilities/fetchService';
 let globalConstants = require('../../GlobalConstants');
 class schemePDFView extends Component {
 	constructor(props) {
@@ -63,8 +59,8 @@ class schemePDFView extends Component {
 					}}
 					style={{
 						flex: 1,
-						width: Dimensions.get('window').width,
-						height: Dimensions.get('window').height,
+						width: setWidth(100),
+						height: setHeight(100),
 					}}
 				/>
 			</View>

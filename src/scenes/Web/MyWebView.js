@@ -9,7 +9,6 @@ import {
   Modal,
   TouchableOpacity,
   FlatList,
-  Dimensions,
 } from 'react-native';
 import ActivityIndicatorView from '../../GlobalComponent/myActivityIndicator';
 import { TEMP_URI } from '../auth/constants';
@@ -24,9 +23,9 @@ import { Image } from 'react-native-elements';
 import { writeLog } from '../../utilities/logger';
 import {showToast} from '../../GlobalComponent/Toast';
 import { DEVICE_VERSION } from '../../components/DeviceInfoFile';
+import { setHeight, setWidth } from '../../components/fontScaling';
 const backgroundImage = require('../../assets/iniitian_splash.png');
-const screenWidth = Dimensions.get('window').width;
-const screenHeight = Dimensions.get('window').height;
+
 let URI, webState;
 class MyWebView extends Component {
   constructor(props) {
@@ -243,8 +242,8 @@ class MyWebView extends Component {
         ) : (
           <Image
             style={{
-              width: screenWidth,
-              height: screenHeight,
+              width: setWidth(100),
+              height:setHeight(100),
             }}
             source={backgroundImage}
           />

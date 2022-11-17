@@ -7,7 +7,6 @@ import {
     Text,
 } from 'react-native';
 import { Icon } from 'react-native-elements';
-import LinearGradient from 'react-native-linear-gradient';
 import OrangeBar from '../../components/orangeBar';
 import images from '../../images';
 import {removePassword, removeUserName } from '../../scenes/auth/AuthUtility';

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, ImageBackground, Dimensions, BackHandler } from "react-native";
+import { View, ImageBackground, BackHandler } from "react-native";
 import { connect } from "react-redux";
 import { styles } from "./styles";
 import UserMessage from "../../../components/userMessage";
@@ -13,6 +13,7 @@ import { REQUEST_SUCCESS } from "./constants";
 let globalConstants = require("../../../GlobalConstants");
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scrollview";
 import images from "../../../images";
+import { writeLog } from "../../../utilities/logger";
 
 class ITPendingDetails extends Component {
   constructor(props) {

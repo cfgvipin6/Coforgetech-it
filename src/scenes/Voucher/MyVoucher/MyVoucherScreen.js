@@ -12,46 +12,22 @@ import {
   View,
   Text,
   BackHandler,
-  TextInput,
-  TouchableOpacity,
-  Image,
   ImageBackground,
-  Dimensions,
-  RefreshControl,
-  ScrollView,
-} from "react-native";
-import PropTypes from "prop-types";
+
+ } from "react-native";
 import { connect } from "react-redux";
 import SubHeader from "../../../GlobalComponent/SubHeader";
 import { styles } from "./styles";
-import RadioForm from "react-native-simple-radio-button";
 import { globalFontStyle } from "../../../components/globalFontStyle";
-import { RadioForms } from "../../../GlobalComponent/LabelRadioForm/LabelRadioForm";
-import { Dropdown } from "../../../GlobalComponent/DropDown/DropDown";
-import { FileBrowser } from "../../../GlobalComponent/FileBrowser/FileBrowser";
 import { LabelTextDashValue } from "../../../GlobalComponent/LabelText/LabelText";
-import { LabelEditText } from "../../../GlobalComponent/LabelEditText/LabelEditText";
-import CustomButton from "../../../components/customButton";
-import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scrollview";
 import ActivityIndicatorView from "../../../GlobalComponent/myActivityIndicator";
 import { Card, SearchBar } from "react-native-elements";
-import {
-  CheckBoxCard,
-  SelectAllController,
-} from "../../../GlobalComponent/CheckBoxCard/CheckBoxCard";
-import { BUTTON_OPTIONS } from "./constants";
-import { Remarks } from "../../../GlobalComponent/Remarks/Remarks";
 import { ApproveRejectCards } from "../../../GlobalComponent/ApproveRejectList/ApproveRejectList";
-import { moderateScale } from "../../../components/fontScaling";
-import { ApproveRejectButtons } from "../../../GlobalComponent/ApproveRejectButtons/ApproveRejectButtons";
-import { DetailHistoryPanel } from "../../../GlobalComponent/DetailHistoryPanel/DetailHistoryPanel";
-import { HistoryView } from "../../../GlobalComponent/HistoryView/HistoryView";
 import { getMyRequestsData, resetMyRequests } from "./myVoucherRequestAction";
 import { writeLog } from "../../../utilities/logger";
 import UserMessage from "../../../components/userMessage";
-import { showToast } from "../../../GlobalComponent/Toast";
 let globalConstants = require("../../../GlobalConstants");
-const { height } = Dimensions.get("window");
+
 const stopMessage =
   "India Expense Claim (Vouchers) modification process has been stopped due to financial year end closing.";
 class MyVoucherScreen extends Component {
@@ -161,11 +137,11 @@ class MyVoucherScreen extends Component {
     this.props.navigation.pop();
   };
 
-  openNewPanel = (item, panel) => {
-    if (this._panel.current !== null) {
-      this._panel.current.show(height / 1.3);
-    }
-  };
+  // openNewPanel = (item, panel) => {
+  //   if (this._panel.current !== null) {
+  //     this._panel.current.show(height / 1.3);
+  //   }
+  // };
 
   proceedRequest = (item) => {
     //usVoucher handle

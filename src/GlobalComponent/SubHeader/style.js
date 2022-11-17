@@ -1,15 +1,14 @@
-import { Dimensions, StyleSheet } from 'react-native';
-import { moderateScale } from '../../components/fontScaling';
+import {Platform, StyleSheet } from 'react-native';
+import { moderateScale, setHeight, setWidth } from '../../components/fontScaling';
 import { AppStyle } from '../../scenes/commonStyle';
 let appConfig = require('../../../appconfig');
-const screenWidth = Dimensions.get('window').width;
-const screenHeight = Dimensions.get('window').height;
+
 
 export const styles = StyleSheet.create({
     containerView: {
-        width: screenWidth,
-        height:screenHeight * 8 / 100,
-        backgroundColor:appConfig.WHITE_COLOR,
+        width:setWidth(100),
+        height:Platform.OS =='ios'?setHeight(7):setHeight(8),
+         backgroundColor:appConfig.WHITE_COLOR,
         justifyContent:'center',
         alignItems:'flex-start',
     },
@@ -64,9 +63,7 @@ export const styles = StyleSheet.create({
         width:'45%',
         alignItems: 'center',
         justifyContent: 'center',
-        // borderWidth:2,
-        // borderColor:'orange',
-        // borderRadius:8,
+       
     },
     modalOptionTouchable2: {
         height: moderateScale(50),

@@ -1,5 +1,4 @@
 import { moderateScale } from "../../components/fontScaling";
-import { Dimensions, Platform } from "react-native";
 var appConfig = require("../../../appconfig");
 
 export default {

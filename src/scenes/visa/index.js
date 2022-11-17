@@ -11,27 +11,21 @@ import {
   ImageBackground,
   TouchableOpacity,
   LayoutAnimation,
-  TouchableHighlight,
-  Alert,
   Image,
   ScrollView,
-  Dimensions,
 } from "react-native";
 import { connect } from "react-redux";
 import { SearchBar, Card } from "react-native-elements";
 import { styles } from "./styles";
-import { moderateScale } from "../../components/fontScaling";
+import { setHeight } from "../../components/fontScaling";
 import ActivityIndicatorView from "../../GlobalComponent/myActivityIndicator";
 import SubHeader from "../../GlobalComponent/SubHeader";
 import { visaFetchData, resetVisaHome, visaFetchHistory } from "./visaAction";
 import { globalFontStyle } from "../../components/globalFontStyle";
-import CustomButton from "../../components/customButton";
 import SlidingUpPanel from "rn-sliding-up-panel";
-import SwipeablePanel from "rn-swipeable-panel";
-import helper from "../../utilities/helper";
+
 let globalConstants = require("../../GlobalConstants");
 let constants = require("./constants");
-const { height } = Dimensions.get("window");
 import { writeLog } from "../../utilities/logger";
 import UserMessage from "../../components/userMessage";
 import BoxContainer from "../../components/boxContainer.js";
@@ -452,7 +446,7 @@ class VisaScreen extends Component {
   };
 
   openNewPanel = (visaID) => {
-    this._panel.show(height / 1.3);
+    this._panel.show(setHeight(70));
     {
       this.props.fetchVisaHistory(visaID);
     }
@@ -462,12 +456,12 @@ class VisaScreen extends Component {
     return (
       <SlidingUpPanel
         ref={(c) => (this._panel = c)}
-        draggableRange={{ top: height / 1.3, bottom: 0 }}
+        draggableRange={{ top: setHeight(80), bottom: 0 }}
         // showBackdrop={false}
-        height={height}
+        height={setHeight(100)}
         // allowMomentum={true}
-        onMomentumDragStart={(height) => {
-          height;
+        onMomentumDragStart={(setHeight) => {
+          setHeight();
         }} //height of panel here : height/1.3
         onMomentumDragEnd={0}
       >
@@ -483,7 +477,7 @@ class VisaScreen extends Component {
             </View>
             <ScrollView
               keyboardShouldPersistTaps="handled"
-              style={{ flex: 1, marginBottom: height - height / 1.3 }}
+              style={{ flex: 1, marginBottom:setHeight(10)}}
             >
               <View style={{ marginBottom: 10 }}>
                 {this.renderVisaHistory()}

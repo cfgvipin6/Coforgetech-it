@@ -19,7 +19,7 @@ export const LabelEditText = (props) => {
               : "default"
           }
           editable={props.isEditable !== undefined ? props.isEditable : true}
-          value={props.myValue.toString()}
+          value={props.myValue}
           placeholder={props.placeHolder}
           placeholderTextColor="rgb(204, 205, 207)"
           maxLength={props.myMaxLength}

@@ -27,8 +27,6 @@ import { LabelTextNoValue } from '../../../GlobalComponent/LabelText/LabelText';
 import InputController from './components/inputController';
 import ColorDescription from './colorDescription';
 import WeeklyGridTab from './weeklyGridTab';
-import { TimeSheetSaveSubmit } from './components/TimeSheetSaveSubmit';
-import { Dimensions } from 'react-native';
 import { fetchSelectedWeekList } from './service/timeSheetService';
 import images from '../../../images';
 

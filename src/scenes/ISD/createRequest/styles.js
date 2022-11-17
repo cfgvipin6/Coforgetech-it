@@ -26,7 +26,7 @@ export const styles = StyleSheet.create({
     margin: moderateScale(10),
     borderWidth: 0.5,
     borderBottomColor:'black',
-    padding:moderateScale(5)
+    padding:moderateScale(5),
   },
   fileActionButton:{
     flexDirection:'row',

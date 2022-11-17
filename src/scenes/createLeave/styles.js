@@ -1,5 +1,5 @@
-import { StyleSheet, Platform, Dimensions } from 'react-native';
-import { moderateScale } from '../../components/fontScaling.js';
+import { StyleSheet } from 'react-native';
+import { moderateScale, setHeight, setWidth } from '../../components/fontScaling.js';
 var appConfig = require('../../../appconfig');
 export const styles = StyleSheet.create({
   container: {
@@ -209,8 +209,8 @@ pickerTextStyle:{
 
 },
 dropdownStyle:{
-  width:Dimensions.get('window').width / 1.3,
-  height:Dimensions.get('window').height / 4,
+  width:setWidth(70),
+  height:setHeight(25),
   alignItems: 'center',
   borderColor:appConfig.APP_ORANGE,
   borderWidth:1,
