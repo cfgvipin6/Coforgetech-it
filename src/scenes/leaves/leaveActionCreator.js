@@ -159,7 +159,7 @@ export const fetchSupervisorForLeaves = (searchText, successCallBack) => {
           'Supervisor list response for leave from server is : ',
           response
         );
-        if (response.length != undefined) {
+        if (response.length !== undefined) {
           if (
             response.length === 1 &&
             response[0].hasOwnProperty('Exception')

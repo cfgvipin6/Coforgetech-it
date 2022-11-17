@@ -1,13 +1,11 @@
-import React, { Component } from "react";
-import { BackHandler } from "react-native";
-import { Dimensions } from "react-native";
-import { Text, View } from "react-native";
-import Pdf from "react-native-pdf";
-import RNFetchBlob from "rn-fetch-blob";
-import ActivityIndicatorView from "../../GlobalComponent/myActivityIndicator";
-import SubHeader from "../../GlobalComponent/SubHeader";
-import properties from "../../resource/properties";
-let globalConstants = require("../../GlobalConstants");
+import React, { Component } from 'react';
+import { BackHandler } from 'react-native';
+import { Dimensions } from 'react-native';
+import { Text, View } from 'react-native';
+import Pdf from 'react-native-pdf';
+import SubHeader from '../../GlobalComponent/SubHeader';
+import properties from '../../resource/properties';
+let globalConstants = require('../../GlobalConstants');
 class schemePDFView extends Component {
   constructor(props) {
     super(props);
@@ -20,28 +18,28 @@ class schemePDFView extends Component {
     this.props.navigation.pop();
   };
   handleBackButtonClick = () => {
-    console.log("Hardware back pressed");
+    console.log('Hardware back pressed');
     this.props.navigation.goBack(null);
     return true;
   };
   componentDidMount() {
     BackHandler.addEventListener(
-      "hardwareBackPress",
+      'hardwareBackPress',
       this.handleBackButtonClick
     );
   }
   componentWillUnmount() {
     BackHandler.removeEventListener(
-      "hardwareBackPress",
+      'hardwareBackPress',
       this.handleBackButtonClick
     );
   }
   render() {
     let data = this.props.navigation.state.params.data;
-    console.log("Final Data is  : ", data);
+    console.log('Final Data is  : ', data);
     let fileId = data && data.item.fileId;
-    let url = properties.policyPDF.concat("?id=" + fileId);
-    console.log("URL is : ", url);
+    let url = properties.policyPDF.concat('?id=' + fileId);
+    console.log('URL is : ', url);
     const source = { uri: url, cache: false };
     return (
       <View style={{ flex: 1 }}>
@@ -61,15 +59,15 @@ class schemePDFView extends Component {
             console.log(`current page: ${page}`);
           }}
           onError={(error) => {
-            console.log("Error of pdf ", error);
+            console.log('Error of pdf ', error);
           }}
           onPressLink={(uri) => {
             console.log(`Link presse: ${uri}`);
           }}
           style={{
             flex: 1,
-            width: Dimensions.get("window").width,
-            height: Dimensions.get("window").height,
+            width: Dimensions.get('window').width,
+            height: Dimensions.get('window').height,
           }}
         />
       </View>

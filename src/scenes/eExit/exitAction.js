@@ -150,7 +150,7 @@ export const fetchExitDetails = (empCode, authToken, eccNo, callBack) => {
         console.log('Skill Data : ', formData);
         let response = await fetchPOSTMethod(url, formData);
         console.log('Skill Response : ', response);
-        if (response.length != undefined) {
+        if (response.length !== undefined) {
           if (
             response.length === 1 &&
             response[0].hasOwnProperty('Exception')
