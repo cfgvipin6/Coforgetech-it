@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import { View, TextInput, Text } from "react-native";
-import { moderateScale } from "../../components/fontScaling.js";
-import { styles } from "./styles";
-let appConfig = require("../../../appconfig");
+import React, { Component } from 'react';
+import { View, TextInput, Text } from 'react-native';
+import { moderateScale } from '../../components/fontScaling.js';
+import { styles } from './styles';
+let appConfig = require('../../../appconfig');
 
 export const LabelEditText = (props) => {
   return (
@@ -16,10 +16,10 @@ export const LabelEditText = (props) => {
           keyboardType={
             props.myKeyboardType !== undefined
               ? props.myKeyboardType
-              : "default"
+              : 'default'
           }
           editable={props.isEditable !== undefined ? props.isEditable : true}
-          value={props.myValue.toString()}
+          value={props.myValue?.toString()}
           placeholder={props.placeHolder}
           placeholderTextColor="rgb(204, 205, 207)"
           maxLength={props.myMaxLength}

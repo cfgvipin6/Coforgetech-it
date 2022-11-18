@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import { View, TextInput, Text } from "react-native";
-import { styles } from "./styles";
+import React from 'react';
+import { View, TextInput, Text } from 'react-native';
+import { styles } from './styles';
 
 export const Remarks = (props) => {
   return (
@@ -10,7 +10,7 @@ export const Remarks = (props) => {
         <TextInput
           autoCapitalize="none"
           autoCorrect={false}
-          autoCompleteType={false}
+          autoCompleteType="off"
           maxLength={500}
           multiline={true}
           onChangeText={(text) => props.onchangeText(text)}
