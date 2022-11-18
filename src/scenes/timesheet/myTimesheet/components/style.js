@@ -131,6 +131,7 @@ export const styles = StyleSheet.create({
   },
   scroller:{
     marginBottom:dh * 0.02,
+    backgroundColor:'red'
   },
   addButtonContainer:{ flex: 0, padding: 4,marginTop:5 },
   addButtonContainer2:{ flex: 0, flexDirection: 'row' ,marginBottom:10},

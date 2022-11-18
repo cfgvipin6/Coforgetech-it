@@ -4,7 +4,6 @@ import { View, Text, Picker, TouchableOpacity } from 'react-native';
 import ModalDropdown from 'react-native-modal-dropdown';
 import { Icon } from 'react-native-elements';
 import { styles } from './styles';
-import { render } from 'enzyme';
 import LinearGradient from 'react-native-linear-gradient';
 export const Dropdown = (props)=>{
     return (

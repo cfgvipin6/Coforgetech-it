@@ -7,7 +7,6 @@ import {
   TouchableOpacity,
   Image,
   ImageBackground,
-  Dimensions,
   RefreshControl,
   LayoutAnimation,
 } from "react-native";

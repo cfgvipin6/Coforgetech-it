@@ -27,6 +27,7 @@ import { cdsFetchLineItemData, resetCdsDetailsScreen, cdsFetchActionListData, cd
 import helper from '../../utilities/helper';
 import { writeLog } from '../../utilities/logger';
 import images from '../../images';
+import { setHeight } from '../../components/fontScaling';
 let globalConstants = require('../../GlobalConstants');
 let constants = require('./constants');
 const {height} = Dimensions.get('window');
@@ -460,18 +461,18 @@ export class CDSDetails extends Component {
 
   openNewPanel = (data) => {
     writeLog('Clicked on ' + 'openNewPanel' + ' of ' + 'CDSDetails');
-    this._panel.show(height / 1.3);
+    this._panel.show(setHeight(80));
     this.setState({ subLineItemData: data.SubItemDetails });
   }
 
   renderSubLineItemViewPanel = () => {
     return (
       <SlidingUpPanel ref={c => (this._panel = c)}
-          draggableRange={{top: height / 1.3, bottom: 0}}
+          draggableRange={{top: setHeight(75), bottom: 0}}
           // showBackdrop={false}
-          height={height}
+          height={setHeight(100)}
           // allowMomentum={true}
-          onMomentumDragStart={height => {height;}} //height of panel here : height/1.3
+          onMomentumDragStart={height => {setHeight(100)}} //height of panel here : height/1.3
           onMomentumDragEnd={0}
         >
           {dragHandler => (
@@ -485,7 +486,7 @@ export class CDSDetails extends Component {
               </View>
               <ScrollView
               	keyboardShouldPersistTaps="handled"
-                style={{flex:1, marginBottom: (height - height / 1.3)}}>
+                style={{flex:1, marginBottom: setHeight(10)}}>
                 <View>
                   {this.renderSubLineItemView(this.state.subLineItemData)}
                 </View>

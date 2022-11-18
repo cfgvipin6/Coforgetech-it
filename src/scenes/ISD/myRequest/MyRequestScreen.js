@@ -7,41 +7,28 @@ import {
     TouchableOpacity,
     Image,
     ImageBackground,
-    Dimensions,
-    RefreshControl,
-    ScrollView,
+
     LayoutAnimation,
 } from 'react-native';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import SubHeader from '../../../GlobalComponent/SubHeader';
 import { styles } from './styles';
-import RadioForm from 'react-native-simple-radio-button';
+
 import { globalFontStyle } from '../../../components/globalFontStyle';
-import { RadioForms } from '../../../GlobalComponent/LabelRadioForm/LabelRadioForm';
-import { Dropdown } from '../../../GlobalComponent/DropDown/DropDown';
-import { FileBrowser } from '../../../GlobalComponent/FileBrowser/FileBrowser';
 import { LabelTextDashValue } from '../../../GlobalComponent/LabelText/LabelText';
-import { LabelEditText } from '../../../GlobalComponent/LabelEditText/LabelEditText';
-import CustomButton from '../../../components/customButton';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scrollview';
 import ActivityIndicatorView from '../../../GlobalComponent/myActivityIndicator';
-import { Card, SearchBar } from 'react-native-elements';
-import {
-    CheckBoxCard,
-    SelectAllController,
-} from '../../../GlobalComponent/CheckBoxCard/CheckBoxCard';
+import {SearchBar } from 'react-native-elements';
+
 import { ApproveRejectCards } from '../../../GlobalComponent/ApproveRejectList/ApproveRejectList';
-import { DetailHistoryPanel } from '../../../GlobalComponent/DetailHistoryPanel/DetailHistoryPanel';
+
 import { getMyRequestsData, resetMyRequests } from './myRequestAction';
 import { writeLog } from '../../../utilities/logger';
 import UserMessage from '../../../components/userMessage';
 import images from '../../../images';
-import LinearGradient from 'react-native-linear-gradient';
+
 import moment from 'moment';
+import { setHeight } from '../../../components/fontScaling';
 let globalConstants = require('../../../GlobalConstants');
-let constants = require('./constants');
-const { height } = Dimensions.get('window');
 class MyRequestScreen extends Component {
     constructor(props) {
         super(props);
@@ -153,7 +140,7 @@ class MyRequestScreen extends Component {
 
     openNewPanel = (item, panel) => {
         if (this._panel.current !== null){
-            this._panel.current.show(height / 1.3);
+            this._panel.current.show(setHeight(80));
         }
     }
 

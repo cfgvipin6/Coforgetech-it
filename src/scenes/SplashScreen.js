@@ -1,8 +1,6 @@
 import React from 'react';
-import { View, Text, Image, ImageBackground, Dimensions } from 'react-native';
-
-const screenWidth = Dimensions.get('window').width;
-const screenHeight = Dimensions.get('window').height;
+import { View,Image} from 'react-native';
+import { setHeight, setWidth } from '../components/fontScaling';
 class SplashScreen extends React.Component {
   performTimeConsumingTask = async() => {
     return new Promise((resolve) =>
@@ -45,8 +43,8 @@ const styles = {
     fontWeight: 'bold',
   },
   imageBackground:{
-    height:screenHeight,
-    width: screenWidth,
+    height:setHeight(100),
+    width: setWidth(100),
     alignItems: 'center',
     justifyContent: 'center',
   },

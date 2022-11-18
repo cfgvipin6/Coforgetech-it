@@ -11,7 +11,6 @@ import {
   ImageBackground,
   Alert,
   TouchableOpacity,
-  Dimensions,
   Modal,
   FlatList,
 } from 'react-native';
@@ -72,7 +71,6 @@ import { Icon, SearchBar } from 'react-native-elements';
 import { SubmitTo } from '../createGenericVoucher/submitTo';
 import { WarningMessage } from '../../../GlobalComponent/WarningMessage/WarningMessage';
 import images from '../../../images';
-const { height } = Dimensions.get('window');
 let constants = require('./constants');
 let globalConstants = require('../../../GlobalConstants');
 let previousScreenData;

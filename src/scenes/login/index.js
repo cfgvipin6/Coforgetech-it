@@ -33,6 +33,7 @@ import HeaderView from "../../GlobalComponent/Header";
 import { AppStyle } from "../commonStyle";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { DEVICE_VERSION } from "../../components/DeviceInfoFile";
+import { setHeight } from "../../components/fontScaling";
 let constant = require("./constants");
 let globalData = new GlobalData();
 let newEmployeeLength = 0;
@@ -288,6 +289,7 @@ class LoginScreen extends Component {
               />
             </TouchableOpacity>
           </View>
+
         </ScrollView>
       </ImageBackground>
     );

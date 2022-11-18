@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity, Dimensions, Image, LayoutAnimation, ScrollView, UIManager } from 'react-native';
+import { View, Text, TouchableOpacity,Image, LayoutAnimation,UIManager } from 'react-native';
 import { moderateScale } from '../../components/fontScaling';
-const { height } = Dimensions.get('window');
 let globalConstants = require('../../GlobalConstants');
 import { globalFontStyle } from '../../components/globalFontStyle.js';
-import { render } from 'enzyme';
-import SlidingUpPanel from 'rn-sliding-up-panel';
-import { styles } from './styles';
+
 
 export class DetailHistoryPanel extends Component {
 	constructor(props) {

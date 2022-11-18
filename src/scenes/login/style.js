@@ -1,4 +1,4 @@
-import { Dimensions, Platform } from 'react-native';
+import {Platform } from 'react-native';
 import {moderateScale} from '../../components/fontScaling';
 export default {
     container: {

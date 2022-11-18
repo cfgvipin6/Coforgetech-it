@@ -2,7 +2,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-undef */
 import React, { useState, useEffect} from 'react';
-import { View, Text, ScrollView, TouchableOpacity,Dimensions } from 'react-native';
+import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
 import { fetchSelectedWeekList } from './service/timeSheetService';
 
 export default WeeklyGridTab = (props) => {

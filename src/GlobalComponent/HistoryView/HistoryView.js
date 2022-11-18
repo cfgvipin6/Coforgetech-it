@@ -9,7 +9,6 @@ import {
   Image,
   ScrollView,
   Modal,
-  Dimensions,
 } from "react-native";
 let globalConstants = require("../../GlobalConstants");
 import { globalFontStyle } from "../../components/globalFontStyle.js";
@@ -17,6 +16,7 @@ import { styles } from "./styles";
 import { Card } from "react-native-elements";
 import { FlatList } from "react-native";
 import images from "../../images";
+import { setHeight } from "../../components/fontScaling.js";
 let constants = require("./constants");
 let appConfig = require('../../../appconfig');
 export const HistoryView = props => {
@@ -51,7 +51,7 @@ export const HistoryView = props => {
             {props.historyData && props.historyData.length > 0 ? (
 			  <FlatList
 				  data={props.historyData}
-          contentContainerStyle={{paddingBottom:Dimensions.get('window').height * 0.1}}
+          contentContainerStyle={{paddingBottom:setHeight(1)}}
 				  renderItem={({ item, index }) => (
           <View key={index.toString()} style={globalFontStyle.panelContainer}>
          <View style={{flexDirection:'row',alignSelf:'center',borderColor:'light-grey',borderBottomWidth:0.25,width:'96%',paddingVertical:5,marginLeft:5,zIndex:10,borderBottomColor:'light-grey'}}>

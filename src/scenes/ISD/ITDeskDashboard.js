@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, FlatList, TouchableOpacity, BackHandler, ImageBackground } from 'react-native';
-import { globalFontStyle } from '../../components/globalFontStyle';
-import { Icon } from 'react-native-elements';
-import { styles } from './pendingRequest/styles';
+import {BackHandler, ImageBackground } from 'react-native';
 import { DashBoardItem } from '../../GlobalComponent/DashBoardItem/DashBoardItem';
 import SubHeader from '../../GlobalComponent/SubHeader';
 const data = ['My Requests', 'Create Request','Pending For Approval'];

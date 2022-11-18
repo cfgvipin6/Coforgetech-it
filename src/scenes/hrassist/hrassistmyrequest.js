@@ -6,7 +6,6 @@ import {
   TouchableOpacity,
   Image,
   ImageBackground,
-  Dimensions,
   LayoutAnimation,
 } from "react-native";
 import { connect } from "react-redux";
@@ -22,8 +21,9 @@ import { writeLog } from "./../../utilities/logger";
 import UserMessage from "./../../components/userMessage";
 import images from "./../../images";
 import { getHrRequestsList } from "./utils";
+import { setHeight } from "../../components/fontScaling";
 let globalConstants = require("./../../GlobalConstants");
-const { height } = Dimensions.get("window");
+
 class HrassistMyrequest extends Component {
   constructor(props) {
     super(props);
@@ -133,7 +133,7 @@ class HrassistMyrequest extends Component {
 
   openNewPanel = () => {
     if (this._panel.current !== null) {
-      this._panel.current.show(height / 1.3);
+      this._panel.current.show(setHeight(80));
     }
   };
 

@@ -10,18 +10,14 @@ import style, { styles } from './style';
 import DialogModal from '../../components/dialogBox';
 import { connect } from 'react-redux';
 import { Icon } from 'react-native-elements';
-import {removeUserName, removePassword, getLoginType, removeLoginType } from '../../scenes/auth/AuthUtility';
-import { loginDataClear } from '../../scenes/login/LoginAction';
-import { AD_LOGIN, APP_LOGIN } from '../../scenes/login/constants';
-import { TEMP_URI } from '../../scenes/auth/constants';
-import properties from '../../resource/properties';
+import {removeUserName, removePassword } from '../../scenes/auth/AuthUtility';
+
 import images from '../../images';
 import { AppStyle } from '../../scenes/commonStyle';
 import OrangeBar from '../../components/orangeBar';
 // import { rootReducer, AppReducer } from '../../../AppReducer';
 
 let constant = require('./constants');
-let globalConstants = require('../../GlobalConstants');
 let name , surName;
 class SubHeaderView extends Component {
   constructor(props) {

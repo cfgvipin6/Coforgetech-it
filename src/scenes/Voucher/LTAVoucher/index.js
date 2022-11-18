@@ -1,28 +1,24 @@
 import React, { Component } from 'react';
-import { BackHandler, Dimensions, ImageBackground, Modal, ScrollView, Text, TextInput, View } from 'react-native';
+import { BackHandler,ImageBackground,Text, View } from 'react-native';
 import { connect } from 'react-redux';
 import { globalFontStyle } from '../../../components/globalFontStyle';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scrollview';
 import SubHeader from '../../../GlobalComponent/SubHeader';
 import { EmpDetail } from './empDetail';
 import { uploadData, getLineItems, deleteFile, validateDetails, removeVoucher, fetchBalance, validateLTA } from './utils';
-import { deleteLogFile } from '../../../utilities/logger';
+
 import { showToast } from '../../../GlobalComponent/Toast';
 import ActivityIndicatorView from '../../../GlobalComponent/myActivityIndicator';
-import { LabelEditText } from '../../../GlobalComponent/LabelEditText/LabelEditText';
+
 import { SubmitTo } from './submitTo';
 import { cvFetchEmployeeData, cvFetchHistory, resetCvHistoryData } from '../createVoucher/cvAction';
-import UserMessage from '../../../components/userMessage';
 import { HistoryView } from '../../../GlobalComponent/HistoryView/HistoryView';
 import { moderateScale } from '../../../components/fontScaling';
 import { TouchableOpacity } from 'react-native';
 import { styles } from '../../../GlobalComponent/LabelText/styles';
 import properties from '../../../resource/properties';
-import { RadioForms } from '../../eExit/ExitHelper';
 import { LabelTextDashValue } from '../../../GlobalComponent/LabelText/LabelText';
 import moment from 'moment';
-import { DatePicker } from '../../../GlobalComponent/DatePicker/DatePicker';
-import { ExpenseDetail } from '../createGenericVoucher/expenseDetail';
 import { ExpenseDetailLTA, getLtaExpenseItem } from './expenseDetailsLTA';
 import LTADependents, { getDependents } from './ltaDependents/ltaDependents';
 import CostCalculation, { getCostData } from './CostCalculation/costCalculation';
@@ -37,7 +33,6 @@ let projData, expData, docStatus, isComingFromMyVoucher,costCenterData;
 let ltaBalance;
 let isRadioSet = false;
 let fileArray = [];
-const { height } = Dimensions.get('window');
 class CreateLtaVoucher extends Component {
   constructor(props) {
     super(props);
