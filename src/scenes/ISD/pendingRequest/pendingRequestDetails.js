@@ -1,18 +1,19 @@
-import React, { Component } from "react";
-import { View, ImageBackground, Dimensions, BackHandler } from "react-native";
-import { connect } from "react-redux";
-import { styles } from "./styles";
-import UserMessage from "../../../components/userMessage";
-import SubHeader from "../../../GlobalComponent/SubHeader";
-import ActivityIndicatorView from "../../../GlobalComponent/myActivityIndicator";
-import CustomButton from "../../../components/customButton";
-import { LabelTextDashValue } from "../../../GlobalComponent/LabelText/LabelText";
-import { Remarks } from "../../../GlobalComponent/Remarks/Remarks";
-import { approveITPendingRecord, resetITDesk } from "./pendingRequestAction";
-import { REQUEST_SUCCESS } from "./constants";
-let globalConstants = require("../../../GlobalConstants");
-import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scrollview";
-import images from "../../../images";
+import React, { Component } from 'react';
+import { View, ImageBackground, Dimensions, BackHandler } from 'react-native';
+import { connect } from 'react-redux';
+import { styles } from './styles';
+import UserMessage from '../../../components/userMessage';
+import SubHeader from '../../../GlobalComponent/SubHeader';
+import ActivityIndicatorView from '../../../GlobalComponent/myActivityIndicator';
+import CustomButton from '../../../components/customButton';
+import { LabelTextDashValue } from '../../../GlobalComponent/LabelText/LabelText';
+import { Remarks } from '../../../GlobalComponent/Remarks/Remarks';
+import { approveITPendingRecord, resetITDesk } from './pendingRequestAction';
+import { REQUEST_SUCCESS } from './constants';
+let globalConstants = require('../../../GlobalConstants');
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scrollview';
+import images from '../../../images';
+import { writeLog } from '../../../utilities/logger';
 
 class ITPendingDetails extends Component {
   constructor(props) {
@@ -20,16 +21,16 @@ class ITPendingDetails extends Component {
     this.state = {
       pendingRecord: this.props.navigation.state.params.pendingRecord,
       action: this.props.navigation.state.params.action,
-      remarks: "",
+      remarks: '',
       actionPopUP: false,
-      actionMessage: "",
+      actionMessage: '',
     };
   }
   componentDidUpdate() {
     if (
       this.props.itDeskError &&
       this.props.itDeskError.length > 0 &&
-      this.state.actionMessage === ""
+      this.state.actionMessage === ''
     ) {
       setTimeout(() => {
         this.setState({
@@ -40,7 +41,7 @@ class ITPendingDetails extends Component {
     } else if (
       this.props.itDeskActionData &&
       this.props.itDeskActionData.length > 0 &&
-      this.state.actionMessage === ""
+      this.state.actionMessage === ''
     ) {
       setTimeout(() => {
         this.setState({
@@ -51,15 +52,15 @@ class ITPendingDetails extends Component {
     }
   }
   componentDidMount() {
-    writeLog("Landed on " + "ITPendingDetails");
+    writeLog('Landed on ' + 'ITPendingDetails');
     BackHandler.addEventListener(
-      "hardwareBackPress",
+      'hardwareBackPress',
       this.handleBackButtonClick
     );
   }
   componentWillUnmount() {
     BackHandler.removeEventListener(
-      "hardwareBackPress",
+      'hardwareBackPress',
       this.handleBackButtonClick
     );
   }
@@ -74,27 +75,27 @@ class ITPendingDetails extends Component {
   };
 
   onOkClick = () => {
-    writeLog("Clicked on " + "onOkClick" + " of " + "ITPendingDetails");
+    writeLog('Clicked on ' + 'onOkClick' + ' of ' + 'ITPendingDetails');
     this.props.resetITDesk();
-    this.setState({ actionPopUP: false, actionMessage: "" }, () => {
-      this.props.navigation.navigate("PendingRequestIT");
+    this.setState({ actionPopUP: false, actionMessage: '' }, () => {
+      this.props.navigation.navigate('PendingRequestIT');
     });
   };
   showPopUp = () => {
     writeLog(
-      "Dialog is open with exception " +
+      'Dialog is open with exception ' +
         this.props.itDeskError +
-        " on " +
-        "ITPendingDetails"
+        ' on ' +
+        'ITPendingDetails'
     );
     let msgToShow =
-      this.state.actionMessage === "success"
+      this.state.actionMessage === 'success'
         ? REQUEST_SUCCESS
         : this.props.itDeskError;
     return (
       <UserMessage
         modalVisible={true}
-        heading={this.state.actionMessage === "success" ? "Success" : "Error"}
+        heading={this.state.actionMessage === 'success' ? 'Success' : 'Error'}
         message={msgToShow}
         okAction={() => {
           this.onOkClick();
@@ -104,10 +105,10 @@ class ITPendingDetails extends Component {
   };
 
   takeAction = () => {
-    if (this.state.remarks.trim() === "") {
-      return alert("Please enter remarks.");
+    if (this.state.remarks.trim() === '') {
+      return alert('Please enter remarks.');
     }
-    console.log("Action is ", this.state.action);
+    console.log('Action is ', this.state.action);
     this.props.approveRecords(
       this.props.loginData.SmCode,
       this.props.loginData.Authkey,
@@ -119,7 +120,7 @@ class ITPendingDetails extends Component {
 
   onRemarks = (remarkText) => {
     this.setState({ remarks: remarkText }, () => {
-      console.log("Remarks found", this.state.remarks);
+      console.log('Remarks found', this.state.remarks);
     });
   };
   renderMainView = () => {
@@ -170,7 +171,7 @@ class ITPendingDetails extends Component {
           />
           <CustomButton
             label={this.state.action}
-            positive={this.state.action === "APPROVE" ? true : false}
+            positive={this.state.action === 'APPROVE' ? true : false}
             performAction={() => this.takeAction()}
           />
           {this.state.actionPopUP === true ? this.showPopUp() : null}
