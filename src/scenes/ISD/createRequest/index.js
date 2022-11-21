@@ -6,7 +6,6 @@ import {
   TextInput,
   ScrollView,
   TouchableOpacity,
-  Dimensions,
   Image,
   ImageBackground,
   Alert,
@@ -55,9 +54,9 @@ import { getISD_SurveyQuestions, submitIsdSuveryQuestions } from "./utils";
 let globalConstants = require("../../../GlobalConstants");
 let appConfig = require("../../../../appconfig");
 let constants = require("./constants");
-const { height } = Dimensions.get("window");
 import _ from "lodash";
 import images from "../../../images";
+import { setHeight } from "../../../components/fontScaling";
 export class CreateRequestScreen extends Component {
   constructor(props) {
     super(props);
@@ -1095,7 +1094,7 @@ export class CreateRequestScreen extends Component {
       () => {
         setTimeout(() => {
           if (this._panel.current !== null) {
-            this._panel.current.show(height / 1.3);
+            this._panel.current.show(setHeight(80));
           }
         }, 500);
       }

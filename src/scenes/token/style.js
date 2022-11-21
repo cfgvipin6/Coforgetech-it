@@ -1,6 +1,5 @@
 import { moderateScale } from '../../components/fontScaling'
-import { Dimensions, Platform } from 'react-native'
-const screenHeight = Dimensions.get("window").height;
+
 var appConfig = require('../../../appconfig');
 
 

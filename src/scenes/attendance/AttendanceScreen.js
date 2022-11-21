@@ -5,7 +5,6 @@ import { connect } from "react-redux";
 import { ScrollView } from "react-native-gesture-handler";
 import { styles } from "./styles";
 import { AttendanceInfo } from "./AttendanceInfo";
-import { globalFontStyle } from "../../components/globalFontStyle";
 import ActivityIndicatorView from "../../GlobalComponent/myActivityIndicator";
 import SubHeader from "../../GlobalComponent/SubHeader";
 import { Icon } from "react-native-elements";

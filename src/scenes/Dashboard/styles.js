@@ -1,4 +1,4 @@
-import { AppState, StyleSheet } from 'react-native';
+import { AppState, Platform, StyleSheet } from 'react-native';
 import { moderateScale } from '../../components/fontScaling.js';
 var appConfig = require('../../../appconfig');
 export const styles = StyleSheet.create({
@@ -19,11 +19,13 @@ export const styles = StyleSheet.create({
         // backgroundColor: 'red',
       },
   versionTextStyle:{
-    padding: 5,
+    marginVertical: Platform.OS =='ios' ? 5 :12,
+    paddingBottom:Platform.OS =="ios"? 12 : 10,
     color: 'blue',
     flexDirection: 'row-reverse',
     fontSize:9,
     paddingLeft:10,
+    // backgroundColor:'red'
   },
   item: {
     backgroundColor: '#F6FAFD',

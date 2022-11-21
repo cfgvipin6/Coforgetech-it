@@ -130,6 +130,11 @@ export const TIMESHEET_APPROVALS = 'Time Sheet Approvals';
 export const VOUCHER_TEXT = 'Voucher';
 export const DETAILS_TEXT = 'Details';
 export const ACTION_TEXT = 'Action';
-export const HR_ASSIST = 'HR Assist'
+export const HR_ASSIST = 'HR Assist';
+
+export const OS = {
+    IOS:"ios",
+    ANDROID:'android'
+    }
 
 ;

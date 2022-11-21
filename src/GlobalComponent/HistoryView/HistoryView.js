@@ -9,16 +9,16 @@ import {
   Image,
   ScrollView,
   Modal,
-  Dimensions,
 } from 'react-native';
 let globalConstants = require('../../GlobalConstants');
 import { globalFontStyle } from '../../components/globalFontStyle.js';
 import { styles } from './styles';
-import { Card } from 'react-native-elements';
 import { FlatList } from 'react-native';
 import images from '../../images';
+import { setHeight } from '../../components/fontScaling.js';
 let constants = require('./constants');
 let appConfig = require('../../../appconfig');
+
 export const HistoryView = (props) => {
   console.log('history props : ', props);
   console.log('Visibiblity : ', props.visibility);
@@ -52,9 +52,7 @@ export const HistoryView = (props) => {
             {props.historyData && props.historyData.length > 0 ? (
               <FlatList
                 data={props.historyData}
-                contentContainerStyle={{
-                  paddingBottom: Dimensions.get('window').height * 0.1,
-                }}
+                contentContainerStyle={{ paddingBottom: setHeight(1) }}
                 renderItem={({ item, index }) => (
                   <View
                     key={index?.toString()}

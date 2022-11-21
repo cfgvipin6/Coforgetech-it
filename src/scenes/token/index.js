@@ -4,17 +4,8 @@ import {
   View,
   Text,
   ImageBackground,
-  TouchableHighlight,
   FlatList,
   ActivityIndicator,
-  Dimensions,
-  Modal,
-  TouchableOpacity,
-  Image,
-  TextInput,
-  KeyboardAvoidingView,
-  StyleSheet,
-  LayoutAnimation,
   UIManager,
   Platform /* Added */,
 } from 'react-native';
@@ -23,15 +14,14 @@ import style from './style.js';
 import { moderateScale } from '../../components/fontScaling.js';
 import { fetchPOSTMethod } from '../../utilities/fetchService';
 import properties from '../../resource/properties';
-import helper from '../../utilities/helper';
+
 import { ScrollView } from 'react-native-gesture-handler';
 import UserMessage from '../../components/userMessage';
-import CustomButton from '../../components/customButton';
+
 import { writeLog } from '../../utilities/logger';
 
 let constant = require('./constants');
 let appConfig = require('../../../appconfig');
-const screenHeight = Dimensions.get('window').height;
 
 export default class TokenScreen extends Component {
   constructor(props) {

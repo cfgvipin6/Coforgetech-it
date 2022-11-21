@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { BackHandler } from 'react-native';
-import { Dimensions } from 'react-native';
-import { Text, View } from 'react-native';
+import { BackHandler, View } from 'react-native';
 import Pdf from 'react-native-pdf';
+import { setHeight, setWidth } from '../../components/fontScaling';
 import SubHeader from '../../GlobalComponent/SubHeader';
 import properties from '../../resource/properties';
 let globalConstants = require('../../GlobalConstants');
@@ -66,8 +65,8 @@ class schemePDFView extends Component {
           }}
           style={{
             flex: 1,
-            width: Dimensions.get('window').width,
-            height: Dimensions.get('window').height,
+            width: setWidth(100),
+            height: setHeight(100),
           }}
         />
       </View>

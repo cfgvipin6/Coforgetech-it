@@ -13,7 +13,6 @@ import {
   ImageBackground,
   TouchableOpacity,
   Image,
-  Dimensions,
 } from "react-native";
 import SubHeader from "../../GlobalComponent/SubHeader";
 import { styles } from "./styles";
@@ -32,7 +31,6 @@ import Seperator from "../../components/Seperator";
 import { TravelInfo } from "../travel/travelInfo";
 let globalConstants = require("../../GlobalConstants");
 let constants = require("./constants");
-const { height } = Dimensions.get("window");
 
 export class TravelAdvanceScreen extends Component {
   constructor(props) {

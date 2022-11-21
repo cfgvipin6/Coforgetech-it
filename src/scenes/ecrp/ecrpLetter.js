@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Dimensions, ImageBackground } from 'react-native';
+import { View, Text, ImageBackground } from 'react-native';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import SubHeader from '../../GlobalComponent/SubHeader';

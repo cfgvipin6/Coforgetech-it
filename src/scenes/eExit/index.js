@@ -13,7 +13,6 @@ import {
   ScrollView,
   TouchableOpacity,
   Image,
-  Dimensions,
 } from "react-native";
 import { connect } from "react-redux";
 import ActivityIndicatorView from "../../GlobalComponent/myActivityIndicator";
@@ -29,9 +28,10 @@ import BoxContainer from "../../components/boxContainer.js/index.js";
 import Seperator from "../../components/Seperator.js";
 let appConfig = require("../../../appconfig");
 import images from "../../images";
+import { setHeight } from "../../components/fontScaling";
 let globalConstants = require("../../GlobalConstants");
 let constants = require("./constants");
-const { height } = Dimensions.get("window");
+
 
 export class ExitScreen extends Component {
   constructor(props) {
@@ -262,7 +262,7 @@ export class ExitScreen extends Component {
   };
 
   openNewPanel = (docNumber) => {
-    this._panel.show(height / 1.3);
+    this._panel.show(setHeight(80));
     {
       this.props.fetchExitHistory(docNumber);
     }
@@ -323,10 +323,10 @@ export class ExitScreen extends Component {
     return (
       <SlidingUpPanel
         ref={(c) => (this._panel = c)}
-        draggableRange={{ top: height / 1.3, bottom: 0 }}
-        height={height}
+        draggableRange={{ top: setHeight(75), bottom: 0 }}
+        height={setHeight(100)}
         onMomentumDragStart={(height) => {
-          height;
+          setHeight(100);
         }}
         onMomentumDragEnd={0}
       >
@@ -342,7 +342,7 @@ export class ExitScreen extends Component {
             </View>
             <ScrollView
               keyboardShouldPersistTaps="handled"
-              style={{ flex: 1, marginBottom: height - height / 1.3 }}
+              style={{ flex: 1, marginBottom:setHeight(10) }}
             >
               <View style={{ marginBottom: 10 }}>
                 {this.renderExitHistory()}

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BackHandler, Dimensions, Modal, ScrollView, Text, TextInput, View } from 'react-native';
+import { BackHandler, Text,View } from 'react-native';
 import { connect } from 'react-redux';
 import { globalFontStyle } from '../../../components/globalFontStyle';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scrollview';
@@ -8,28 +8,25 @@ import { EmpDetail } from './empDetail';
 import { ExpenseDetail } from './expenseDetail';
 import { uploadData, getLineItems, deleteFile, validateDetails, removeVoucher, fetchBalance,fetchCreateModifyStopData } from './utils';
 import { LineItemDetails } from './lineItemDetails';
-import { deleteLogFile } from '../../../utilities/logger';
+
 import { showToast } from '../../../GlobalComponent/Toast';
 import ActivityIndicatorView from '../../../GlobalComponent/myActivityIndicator';
-import { LabelEditText } from '../../../GlobalComponent/LabelEditText/LabelEditText';
+
 import { SubmitTo } from './submitTo';
 import { cvFetchEmployeeData, cvFetchHistory, resetCvHistoryData } from '../createVoucher/cvAction';
-import UserMessage from '../../../components/userMessage';
+
 import { HistoryView } from '../../../GlobalComponent/HistoryView/HistoryView';
 import { moderateScale } from '../../../components/fontScaling';
 import { TouchableOpacity } from 'react-native';
-import { LabelText } from '../../../GlobalComponent/LabelText/LabelText';
+
 import { styles } from '../../../GlobalComponent/LabelText/styles';
-import { voucherStyles } from './styles';
-import { getFiles } from '../../../GlobalComponent/MultiAttachments/MultiAttachmentView';
+
 import { BalanceView } from './balanceDetail';
 import properties from '../../../resource/properties';
-import { SafeAreaView } from 'react-native';
 import { WarningMessage } from '../../../GlobalComponent/WarningMessage/WarningMessage';
 let constants = require('./constants');
 let globalConstants = require('../../../GlobalConstants');
 let projData,costCenterData,expData, docStatus, isComingFromMyVoucher;
-const { height } = Dimensions.get('window');
 class CreateGenericVouchers extends Component {
 	constructor(props) {
 		super(props);

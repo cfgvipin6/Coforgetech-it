@@ -13,7 +13,6 @@ import {
   TouchableOpacity,
   ScrollView,
   Image,
-  Dimensions,
 } from 'react-native';
 import SubHeader from '../../GlobalComponent/SubHeader';
 import { connect } from 'react-redux';
@@ -24,15 +23,14 @@ import { globalFontStyle } from '../../components/globalFontStyle';
 import { ecrpFetchData, resetEcrpStore, ecrpFetchHistory } from './ecrpAction';
 import ActivityIndicatorView from '../../GlobalComponent/myActivityIndicator';
 import SlidingUpPanel from 'rn-sliding-up-panel';
-import helper from '../../utilities/helper';
 import { writeLog } from '../../utilities/logger';
 import UserMessage from '../../components/userMessage';
 import BoxContainer from '../../components/boxContainer.js/index.js';
-import Seperator from '../../components/Seperator.js';
 import images from '../../images';
+import { setHeight } from '../../components/fontScaling';
 let globalConstants = require('../../GlobalConstants');
 let constants = require('./constants');
-const {height} = Dimensions.get('window');
+
 
 class ECRPScreen extends Component {
   constructor(props) {
@@ -282,7 +280,7 @@ class ECRPScreen extends Component {
 
   openNewPanel = (docNumber) => {
     writeLog('Clicked on ' + 'openNewPanel' + ' of ' + 'ECRPScreen' + ' for ' + docNumber);
-    this._panel.show(height / 1.3);
+    this._panel.show(setHeight(80));
     {this.props.fetchEcrpHistory(docNumber);}
   }
 
@@ -322,9 +320,9 @@ class ECRPScreen extends Component {
   renderHistory = () => {
     return (
       <SlidingUpPanel ref={c => (this._panel = c)}
-          draggableRange={{top: height / 1.3, bottom: 0}}
-          height={height}
-          onMomentumDragStart={height => {height;}}
+          draggableRange={{top: setHeight(75), bottom: 0}}
+          height={setHeight(100)}
+          onMomentumDragStart={height => setHeight(100)}
           onMomentumDragEnd={0}
         >
           {dragHandler => (
@@ -339,7 +337,7 @@ class ECRPScreen extends Component {
               </View>
               <ScrollView
               	keyboardShouldPersistTaps="handled"
-              style={{flex:1, marginBottom: (height - height / 1.3)}}>
+              style={{flex:1, marginBottom: setHeight(10)}}>
                 <View style={{marginBottom: 10}}>
                   {this.renderEcrpHistory()}
                 </View>
