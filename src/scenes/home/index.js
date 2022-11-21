@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import {
   View,
   Text,
@@ -16,34 +16,34 @@ import {
   UIManager,
   Platform /* Added */,
   Alert,
-} from "react-native";
-import SlidingUpPanel from "rn-sliding-up-panel";
-import { SearchBar } from "react-native-elements";
-import { globalFontStyle } from "../../components/globalFontStyle.js";
-import { moderateScale } from "../../components/fontScaling.js";
-import { fetchPOSTMethod } from "../../utilities/fetchService";
-import { netInfo } from "../../utilities/NetworkInfo";
-import SubHeader from "../../GlobalComponent/SubHeader";
-import style from "./style.js";
-import properties from "../../resource/properties";
-import UserMessage from "../../components/userMessage";
-import ActivityIndicatorView from "../../GlobalComponent/myActivityIndicator";
-import DialogModal from "../../components/dialogBox";
-let globalConstants = require("../../GlobalConstants");
-let constant = require("./constants");
-let appConfig = require("../../../appconfig");
-const { height } = Dimensions.get("window");
-import { connect } from "react-redux";
-import { writeLog } from "../../utilities/logger";
-import images from "../../images.js";
-import BoxContainer from "../../components/boxContainer.js/index.js";
-import Seperator from "../../components/Seperator.js";
-import { fetchVDHBalance } from "./utils.js";
-import { HomeInfo } from "./homeInfo";
+} from 'react-native';
+import SlidingUpPanel from 'rn-sliding-up-panel';
+import { SearchBar } from 'react-native-elements';
+import { globalFontStyle } from '../../components/globalFontStyle.js';
+import { moderateScale } from '../../components/fontScaling.js';
+import { fetchPOSTMethod } from '../../utilities/fetchService';
+import { netInfo } from '../../utilities/NetworkInfo';
+import SubHeader from '../../GlobalComponent/SubHeader';
+import style from './style.js';
+import properties from '../../resource/properties';
+import UserMessage from '../../components/userMessage';
+import ActivityIndicatorView from '../../GlobalComponent/myActivityIndicator';
+import DialogModal from '../../components/dialogBox';
+let globalConstants = require('../../GlobalConstants');
+let constant = require('./constants');
+let appConfig = require('../../../appconfig');
+const { height } = Dimensions.get('window');
+import { connect } from 'react-redux';
+import { writeLog } from '../../utilities/logger';
+import images from '../../images.js';
+import BoxContainer from '../../components/boxContainer.js/index.js';
+import Seperator from '../../components/Seperator.js';
+import { fetchVDHBalance } from './utils.js';
+import { HomeInfo } from './homeInfo';
 class HomeScreen extends Component {
   constructor(props) {
     super(props);
-    if (Platform.OS === "android") {
+    if (Platform.OS === 'android') {
       /* Added */ UIManager.setLayoutAnimationEnabledExperimental(true);
     }
     this.state = {
@@ -60,13 +60,13 @@ class HomeScreen extends Component {
       noVoucherPresent: false,
       isIndicatorVisible: false,
       isRefreshing: false,
-      error_msg: "",
+      error_msg: '',
       textLayoutHeight: 0 /* Added */,
       updatedHeight: 0,
       expand: false,
       active_index: -1,
       temp_index: -1,
-      moretext: "more",
+      moretext: 'more',
       showLogoutModal: false,
     };
     this.getPendingRequests = this.getPendingRequests.bind(this);
@@ -78,27 +78,27 @@ class HomeScreen extends Component {
   }
 
   componentDidMount() {
-    writeLog("Landed on " + "HomeScreen");
+    writeLog('Landed on ' + 'HomeScreen');
     const { navigation } = this.props;
-    this.focusListener = navigation.addListener("didFocus", () => {
+    this.focusListener = navigation.addListener('didFocus', () => {
       this.getPendingRequests();
     });
     BackHandler.addEventListener(
-      "hardwareBackPress",
+      'hardwareBackPress',
       this.handleBackButtonClick
     );
   }
 
   componentWillUnmount() {
     BackHandler.removeEventListener(
-      "hardwareBackPress",
+      'hardwareBackPress',
       this.handleBackButtonClick
     );
     this.focusListener.remove();
   }
 
   handleBackButtonClick() {
-    writeLog("Clicked on " + "handleBackButtonClick" + " of " + "HomeScreen");
+    writeLog('Clicked on ' + 'handleBackButtonClick' + ' of ' + 'HomeScreen');
     isRRService = false;
     isVoucherService = false;
     this.props.navigation.goBack(null);
@@ -122,8 +122,8 @@ class HomeScreen extends Component {
         let getEmployeeId = this.state.loggedInDetails.SmCode;
         let authenticationKey = this.state.loggedInDetails.Authkey;
         let form = new FormData();
-        form.append("ECSerp", getEmployeeId);
-        form.append("AuthKey", authenticationKey);
+        form.append('ECSerp', getEmployeeId);
+        form.append('AuthKey', authenticationKey);
         this.checkServiceType();
         if (isRRService) {
           let response = await fetchPOSTMethod(
@@ -133,7 +133,7 @@ class HomeScreen extends Component {
           // console.log("properties.pendingRequestPostURL",properties.pendingRequestPostURL)
           // console.log("response from  RR pending request", response)
           if (
-            response.hasOwnProperty("Exception") &&
+            response.hasOwnProperty('Exception') &&
             (response.StatusCode == 404 || response.StatusCode == 402)
           ) {
             this.setState(
@@ -152,7 +152,7 @@ class HomeScreen extends Component {
             );
           }
           // Session Expire
-          else if (response.hasOwnProperty("Exception")) {
+          else if (response.hasOwnProperty('Exception')) {
             this.setState(
               {
                 isIndicatorVisible: false,
@@ -226,23 +226,23 @@ class HomeScreen extends Component {
             form
           );
           // console.log(cashVoucher.length,localVoucher.length,ukTravel.length,ukExpense.length,ukMileage.length,usVoucher.length)
-          console.log("voucher response from server is :", response);
+          console.log('voucher response from server is :', response);
           if (response.length > 0) {
             let type = response.map((data) => {
-              if (data.DocumentType == "CSH") {
+              if (data.DocumentType == 'CSH') {
                 cashVoucher.push(data);
-              } else if (data.DocumentType == "LCV") {
+              } else if (data.DocumentType == 'LCV') {
                 localVoucher.push(data);
-              } else if (data.DocumentType == "CNV") {
+              } else if (data.DocumentType == 'CNV') {
                 ukTravel.push(data);
-              } else if (data.DocumentType == "EXP") {
+              } else if (data.DocumentType == 'EXP') {
                 ukExpense.push(data);
-              } else if (data.DocumentType == "MLG") {
+              } else if (data.DocumentType == 'MLG') {
                 ukMileage.push(data);
               } else if (
-                data.DocumentType == "Relocation" ||
-                data.DocumentType == "Travel" ||
-                data.DocumentType == "Other"
+                data.DocumentType == 'Relocation' ||
+                data.DocumentType == 'Travel' ||
+                data.DocumentType == 'Other'
               ) {
                 usVoucher.push(data);
               }
@@ -252,7 +252,7 @@ class HomeScreen extends Component {
             });
             // console.log("after",cashVoucher.length,localVoucher.length,ukTravel.length,ukExpense.length,ukMileage.length,usVoucher.length)
             if (
-              this.state.userServiceType == "Cash Voucher Service" &&
+              this.state.userServiceType == 'Cash Voucher Service' &&
               cashVoucher.length !== 0
             ) {
               // console.log("Cash Voucher Service", response)
@@ -271,7 +271,7 @@ class HomeScreen extends Component {
                 }
               );
             } else if (
-              this.state.userServiceType == "Local Voucher Service" &&
+              this.state.userServiceType == 'Local Voucher Service' &&
               localVoucher.length !== 0
             ) {
               // console.log("Local Voucher Service", response)
@@ -290,7 +290,7 @@ class HomeScreen extends Component {
                 }
               );
             } else if (
-              this.state.userServiceType == "UK_Travel" &&
+              this.state.userServiceType == 'UK_Travel' &&
               ukTravel.length !== 0
             ) {
               // console.log("UK_Travel", response)
@@ -309,7 +309,7 @@ class HomeScreen extends Component {
                 }
               );
             } else if (
-              this.state.userServiceType == "UK_Expense" &&
+              this.state.userServiceType == 'UK_Expense' &&
               ukExpense.length !== 0
             ) {
               // console.log("UK_Expense", response)
@@ -328,7 +328,7 @@ class HomeScreen extends Component {
                 }
               );
             } else if (
-              this.state.userServiceType == "UK_Mileage" &&
+              this.state.userServiceType == 'UK_Mileage' &&
               ukMileage.length !== 0
             ) {
               // console.log("UK_Mileage", response)
@@ -347,7 +347,7 @@ class HomeScreen extends Component {
                 }
               );
             } else if (
-              this.state.userServiceType == "US_Expense" &&
+              this.state.userServiceType == 'US_Expense' &&
               usVoucher.length !== 0
             ) {
               // console.log("US_Expense", response)
@@ -366,7 +366,7 @@ class HomeScreen extends Component {
                 }
               );
             } else if (
-              response[0].hasOwnProperty("Exception") &&
+              response[0].hasOwnProperty('Exception') &&
               (response[0].StatusCode == 402 || response[0].StatusCode == 404)
             ) {
               // Logout Errors
@@ -385,7 +385,7 @@ class HomeScreen extends Component {
                 }
               );
             } // Other Exception
-            else if (response[0].hasOwnProperty("Exception")) {
+            else if (response[0].hasOwnProperty('Exception')) {
               this.setState(
                 {
                   isIndicatorVisible: false,
@@ -464,7 +464,7 @@ class HomeScreen extends Component {
   }
 
   async getRequesterList(item) {
-    let isOnsite = item.OnsiteRR == "Y" ? true : false;
+    let isOnsite = item.OnsiteRR == 'Y' ? true : false;
     let requestPosition = item.in_position;
     let resourceCategory = item.in_resource_cat;
     let requesterListArray = [];
@@ -474,35 +474,35 @@ class HomeScreen extends Component {
       requestPosition == 1 &&
       (resourceCategory == 1 || resourceCategory == 2 || resourceCategory == 3)
     ) {
-      requesterListArray = ["Supervisor", "Finance Controller"];
+      requesterListArray = ['Supervisor', 'Finance Controller'];
     } else if (isOnsite && requestPosition == 1 && resourceCategory == 1) {
-      requesterListArray = ["Supervisor", "Onsite RMG"];
+      requesterListArray = ['Supervisor', 'Onsite RMG'];
     } else if (
       requestPosition == 2 &&
       resourceCategory == 1 &&
-      vdhApprovalFLag == "N"
+      vdhApprovalFLag == 'N'
     ) {
-      requesterListArray = ["Supervisor", "RDG"];
+      requesterListArray = ['Supervisor', 'RDG'];
     } else if (
       requestPosition == 2 &&
       resourceCategory == 1 &&
-      vdhApprovalFLag == "Y"
+      vdhApprovalFLag == 'Y'
     ) {
-      requesterListArray = ["Supervisor", "VDH"];
+      requesterListArray = ['Supervisor', 'VDH'];
     } else if (
       requestPosition == 2 &&
       (resourceCategory == 2 || resourceCategory == 3)
     ) {
-      requesterListArray = ["Supervisor", "Finance Controller"];
+      requesterListArray = ['Supervisor', 'Finance Controller'];
     } else if (requestPosition == 3 && resourceCategory == 4) {
-      requesterListArray = ["Supervisor", "Finance Controller"];
+      requesterListArray = ['Supervisor', 'Finance Controller'];
     } else if (
       ((requestPosition == 1 || requestPosition == 2 || requestPosition == 3) &&
         resourceCategory == 1) ||
       resourceCategory == 2 ||
       resourceCategory == 3
     ) {
-      requesterListArray = ["Supervisor", "Finance Controller"];
+      requesterListArray = ['Supervisor', 'Finance Controller'];
     }
     this.setState({
       requesterListArray,
@@ -548,7 +548,7 @@ class HomeScreen extends Component {
   }
   successCallBack = (item, response) => {
     this.setState({ isIndicatorVisible: false }, async () => {
-      this.props.navigation.navigate("VoucherDetail", {
+      this.props.navigation.navigate('VoucherDetail', {
         voucherInfo: item,
         loggedInDetails: this.state.loggedInDetails,
         pageTitle: myPageTitle,
@@ -561,14 +561,14 @@ class HomeScreen extends Component {
     });
   };
   voucherDetail = async (item) => {
-    writeLog("Clicked on " + "voucherDetail" + " of " + "HomeScreen");
+    writeLog('Clicked on ' + 'voucherDetail' + ' of ' + 'HomeScreen');
     this.setState({ isIndicatorVisible: true }, async () => {
       await fetchVDHBalance(item, this.successCallBack);
     });
   };
 
   requestAction(action, item) {
-    this.props.navigation.navigate("SupervisorSelection", {
+    this.props.navigation.navigate('SupervisorSelection', {
       employeeDetails: item,
       action: action,
       loggedInDetails: this.state.loggedInDetails,
@@ -578,29 +578,29 @@ class HomeScreen extends Component {
 
   checkServiceType() {
     writeLog(
-      "Invoked " +
-        "checkServiceType" +
-        " of " +
-        "HomeScreen" +
-        " & service type is " +
+      'Invoked ' +
+        'checkServiceType' +
+        ' of ' +
+        'HomeScreen' +
+        ' & service type is ' +
         this.state.userServiceType
     );
     // console.log("User service type : ", this.state.userServiceType)
     if (
-      this.state.userServiceType != "" &&
+      this.state.userServiceType != '' &&
       this.state.userServiceType != null &&
       this.state.userServiceType != undefined &&
-      this.state.userServiceType != " "
+      this.state.userServiceType != ' '
     ) {
-      if (this.state.userServiceType == "RR Service") {
+      if (this.state.userServiceType == 'RR Service') {
         isRRService = true;
       } else if (
-        this.state.userServiceType == "Local Voucher Service" ||
-        this.state.userServiceType == "Cash Voucher Service" ||
-        this.state.userServiceType == "UK_Travel" ||
-        this.state.userServiceType == "UK_Expense" ||
-        this.state.userServiceType == "UK_Mileage" ||
-        this.state.userServiceType == "US_Expense"
+        this.state.userServiceType == 'Local Voucher Service' ||
+        this.state.userServiceType == 'Cash Voucher Service' ||
+        this.state.userServiceType == 'UK_Travel' ||
+        this.state.userServiceType == 'UK_Expense' ||
+        this.state.userServiceType == 'UK_Mileage' ||
+        this.state.userServiceType == 'US_Expense'
       ) {
         isVoucherService = true;
       }
@@ -609,25 +609,25 @@ class HomeScreen extends Component {
 
   renderVoucherSubView(item) {
     let projectFlag = false;
-    let projectValue = "";
+    let projectValue = '';
     let remarksFlag = false;
-    let remarksValue = "";
-    let date = item.DocumentDate.replace(/-/g, " ");
+    let remarksValue = '';
+    let date = item.DocumentDate.replace(/-/g, ' ');
 
     if (
-      item.ProjectDesc != "" &&
+      item.ProjectDesc != '' &&
       item.ProjectDesc != null &&
       item.ProjectDesc != undefined
     ) {
       projectValue =
-        item.ProjectDesc === "NA"
-          ? "NA"
-          : item.ProjectCode.trim() + " : " + item.ProjectDesc.trim();
+        item.ProjectDesc === 'NA'
+          ? 'NA'
+          : item.ProjectCode.trim() + ' : ' + item.ProjectDesc.trim();
       projectFlag = true;
     }
 
     if (
-      item.Remarks != "" &&
+      item.Remarks != '' &&
       item.Remarks != null &&
       item.Remarks != undefined
     ) {
@@ -639,12 +639,12 @@ class HomeScreen extends Component {
       <React.Fragment>
         <HomeInfo
           label="Company Code"
-          value={item.CompanyCode.trim() + " : " + item.CompanyName.trim()}
+          value={item.CompanyCode.trim() + ' : ' + item.CompanyName.trim()}
         />
         <HomeInfo
           label="Cost Center"
           value={
-            item.CostCenterCode.trim() + " : " + item.CostCenterDesc.trim()
+            item.CostCenterCode.trim() + ' : ' + item.CostCenterDesc.trim()
           }
         />
         {projectFlag ? <HomeInfo label="Project" value={projectValue} /> : null}
@@ -657,56 +657,56 @@ class HomeScreen extends Component {
 
   renderSubView(item) {
     let roleFlag = false;
-    let roleValue = "";
+    let roleValue = '';
     let customerflag = false;
-    let customerValue = "";
-    let geographyValue = "India";
+    let customerValue = '';
+    let geographyValue = 'India';
 
-    if (item.Role != null && item.Role != undefined && item.Role != "") {
-      let roleSeparate = item.Role.split(":");
-      let roleSeparated = roleSeparate[1].split("~");
+    if (item.Role != null && item.Role != undefined && item.Role != '') {
+      let roleSeparate = item.Role.split(':');
+      let roleSeparated = roleSeparate[1].split('~');
       roleValue = roleSeparated[0].trim();
       roleFlag = true;
     }
 
-    if (item.Client != null && item.Client != undefined && item.Client != "") {
-      let customerSeparate = item.Client.split(":");
+    if (item.Client != null && item.Client != undefined && item.Client != '') {
+      let customerSeparate = item.Client.split(':');
       customerValue = customerSeparate[0].trim();
       customerflag = true;
     }
 
     if (
       item.Geography != null &&
-      item.Geography != "" &&
+      item.Geography != '' &&
       item.Geography != undefined &&
-      item.Geography != " "
+      item.Geography != ' '
     ) {
       geographyValue = item.Geography;
     }
     // for position
     if (item.in_position == 1) {
-      resourceCategory = "New";
+      resourceCategory = 'New';
     } else if (item.in_position == 2) {
-      resourceCategory = "Replacement";
+      resourceCategory = 'Replacement';
     } else {
-      resourceCategory = "Extension";
+      resourceCategory = 'Extension';
     }
 
     // for category
     if (item.in_resource_cat == 1) {
-      requestPosition = "Direct";
+      requestPosition = 'Direct';
     } else if (item.in_resource_cat == 2) {
-      requestPosition = "Indirect";
+      requestPosition = 'Indirect';
     } else if (item.in_resource_cat == 3) {
-      requestPosition = "Sales";
+      requestPosition = 'Sales';
     } else {
-      requestPosition = "Contractor";
+      requestPosition = 'Contractor';
     }
     return (
       <View>
         <HomeInfo
-          label={roleFlag ? constant.ROLE : ""}
-          value={roleFlag ? roleValue : ""}
+          label={roleFlag ? constant.ROLE : ''}
+          value={roleFlag ? roleValue : ''}
         />
         <HomeInfo
           label={constant.POSITION}
@@ -716,8 +716,8 @@ class HomeScreen extends Component {
         <HomeInfo label={constant.PROJECT_DESC} value={item.vc_projectdesc} />
         <HomeInfo label={constant.NO_RESOURCE} value={item.in_number} />
         <HomeInfo
-          label={customerflag ? constant.CUSTOMER : ""}
-          value={customerflag ? customerValue : ""}
+          label={customerflag ? constant.CUSTOMER : ''}
+          value={customerflag ? customerValue : ''}
         />
       </View>
     );
@@ -728,7 +728,7 @@ class HomeScreen extends Component {
       let errorMessage = constant.SLOW_RESPONSE;
       return (
         <UserMessage
-          heading={"Sorry"}
+          heading={'Sorry'}
           message={errorMessage}
           okAction={() => {
             this.setState({ showErrorModal: false });
@@ -740,7 +740,7 @@ class HomeScreen extends Component {
       let errorMessage = constant.NO_VOUCHER_ERROR_MODAL_TEXT;
       return (
         <UserMessage
-          heading={"Pending Info"}
+          heading={'Pending Info'}
           message={errorMessage}
           okAction={() => {
             this.setState({ noVoucherPresent: false });
@@ -752,7 +752,7 @@ class HomeScreen extends Component {
       let errorMessage = constant.NO_RR_ERROR_MODAL_TEXT;
       return (
         <UserMessage
-          heading={"Pending Info"}
+          heading={'Pending Info'}
           message={errorMessage}
           okAction={() => {
             this.setState({ showNoRRModal: false });
@@ -764,7 +764,7 @@ class HomeScreen extends Component {
       let errorMessage = this.state.error_msg;
       return (
         <UserMessage
-          heading={"Access Denied"}
+          heading={'Access Denied'}
           message={errorMessage}
           okAction={() => {
             this.setState({ showTokenErrorModal: false });
@@ -776,7 +776,7 @@ class HomeScreen extends Component {
       let errorMessage = this.state.error_msg;
       return (
         <UserMessage
-          heading={"Access Denied"}
+          heading={'Access Denied'}
           message={errorMessage}
           okAction={() => {
             this.setState({ showSessionErrorModal: false });
@@ -788,7 +788,7 @@ class HomeScreen extends Component {
       let errorMessage = this.state.error_msg;
       return (
         <UserMessage
-          heading={"Pending Info"}
+          heading={'Pending Info'}
           message={errorMessage}
           okAction={() => {
             this.setState({ showOtherExceptionModal: false });
@@ -800,7 +800,7 @@ class HomeScreen extends Component {
   }
 
   backNavigate() {
-    writeLog("Clicked on " + "backNavigate" + " of " + "HomeScreen");
+    writeLog('Clicked on ' + 'backNavigate' + ' of ' + 'HomeScreen');
     this.props.navigation.pop();
     isRRService = false;
     isVoucherService = false;
@@ -809,13 +809,13 @@ class HomeScreen extends Component {
   renderVoucherRequest(item, index) {
     return (
       <BoxContainer>
-        <HomeInfo label={"Document"} value={item.DocumentNo.trim()} />
+        <HomeInfo label={'Document'} value={item.DocumentNo.trim()} />
         <HomeInfo
-          label={"Employee"}
-          value={item.EmpCode.trim() + " : " + item.EmpName.trim()}
+          label={'Employee'}
+          value={item.EmpCode.trim() + ' : ' + item.EmpName.trim()}
         />
         <HomeInfo
-          label={"Total Amount"}
+          label={'Total Amount'}
           value={parseFloat(item.TotalAmount).toFixed(2)}
         />
         <View>
@@ -830,14 +830,14 @@ class HomeScreen extends Component {
           {this.state.active_index === index ? (
             <TouchableOpacity
               onPress={() => this.expand_collapse_Function(index)}
-              style={{ alignItems: "center" }}
+              style={{ alignItems: 'center' }}
             >
               <Image source={images.lessButton} />
             </TouchableOpacity>
           ) : (
             <TouchableOpacity
               onPress={() => this.expand_collapse_Function(index)}
-              style={{ alignItems: "center" }}
+              style={{ alignItems: 'center' }}
             >
               <Image source={images.moreButton} />
             </TouchableOpacity>
@@ -845,14 +845,14 @@ class HomeScreen extends Component {
 
           <TouchableOpacity
             onPress={() => this.openNewPanel(item.DocumentNo.trim())}
-            style={{ alignItems: "center" }}
+            style={{ alignItems: 'center' }}
           >
             <Image source={images.historyButton} />
           </TouchableOpacity>
 
           <TouchableOpacity
             onPress={() => this.voucherDetail(item)}
-            style={{ alignItems: "center" }}
+            style={{ alignItems: 'center' }}
           >
             <Image source={images.proceedButton} />
           </TouchableOpacity>
@@ -864,10 +864,10 @@ class HomeScreen extends Component {
   renderPendingRequest(item, index) {
     return (
       <BoxContainer>
-        <HomeInfo label={"Req#"} value={item.in_requestid} />
+        <HomeInfo label={'Req#'} value={item.in_requestid} />
         <HomeInfo label={constant.REQUESTER_NAME} value={item.vc_name} />
         <HomeInfo label={constant.PENDING_SINCE} value={item.dt_updated} />
-        <HomeInfo label={"Pending As"} value={item.vc_status} />
+        <HomeInfo label={'Pending As'} value={item.vc_status} />
         {this.state.active_index === index ? (
           this.renderSubView(item)
         ) : (
@@ -876,23 +876,23 @@ class HomeScreen extends Component {
         <Seperator />
         <View
           style={{
-            flexDirection: "row",
-            width: "100%",
-            justifyContent: "space-around",
+            flexDirection: 'row',
+            width: '100%',
+            justifyContent: 'space-around',
             marginTop: 5,
           }}
         >
           {this.state.active_index === index ? (
             <TouchableOpacity
               onPress={() => this.expand_collapse_Function(index)}
-              style={{ alignItems: "center" }}
+              style={{ alignItems: 'center' }}
             >
               <Image source={images.lessButton} />
             </TouchableOpacity>
           ) : (
             <TouchableOpacity
               onPress={() => this.expand_collapse_Function(index)}
-              style={{ alignItems: "center" }}
+              style={{ alignItems: 'center' }}
             >
               <Image source={images.moreButton} />
             </TouchableOpacity>
@@ -900,21 +900,21 @@ class HomeScreen extends Component {
 
           <TouchableOpacity
             onPress={() => this.openNewPanel(item.in_requestid)}
-            style={{ alignItems: "center" }}
+            style={{ alignItems: 'center' }}
           >
             <Image source={images.historyButton} />
           </TouchableOpacity>
 
           <TouchableOpacity
-            onPress={() => this.requestAction("Approved", item)}
-            style={{ alignItems: "center" }}
+            onPress={() => this.requestAction('Approved', item)}
+            style={{ alignItems: 'center' }}
           >
             <Image source={images.approveButton} />
           </TouchableOpacity>
 
           <TouchableOpacity
-            onPress={() => this.requestAction("Rejected", item)}
-            style={{ alignItems: "center" }}
+            onPress={() => this.requestAction('Rejected', item)}
+            style={{ alignItems: 'center' }}
           >
             <Image source={images.rejectButton} />
           </TouchableOpacity>
@@ -925,24 +925,24 @@ class HomeScreen extends Component {
 
   renderListView(item, parameter) {
     let dataToDisplay = null;
-    if (parameter == "requesterOptionList") {
+    if (parameter == 'requesterOptionList') {
       dataToDisplay = item.item;
-    } else if (parameter == "supervisorList") {
+    } else if (parameter == 'supervisorList') {
       dataToDisplay = item.item.Code;
     }
     return (
       <View
         style={{
-          backgroundColor: "white",
-          width: "100%",
+          backgroundColor: 'white',
+          width: '100%',
           height: moderateScale(40),
-          justifyContent: "center",
+          justifyContent: 'center',
           borderRadius: moderateScale(5),
         }}
       >
         <TouchableOpacity
           onPress={() => this.getData(item, parameter)}
-          style={{ paddingLeft: 10, justifyContent: "center" }}
+          style={{ paddingLeft: 10, justifyContent: 'center' }}
         >
           <Text>{dataToDisplay}</Text>
         </TouchableOpacity>
@@ -951,33 +951,33 @@ class HomeScreen extends Component {
   }
   renderList(parameter) {
     let data = [];
-    if (parameter == "requesterOptionList") {
+    if (parameter == 'requesterOptionList') {
       data = this.state.requesterListArray;
-    } else if (parameter == "supervisorList") {
+    } else if (parameter == 'supervisorList') {
       data = this.state.supervisorList;
     }
     return (
       <View
         style={{
-          width: "90%",
+          width: '90%',
           borderWidth: moderateScale(1),
           borderColor: appConfig.LIST_BORDER_COLOUR,
-          overflow: "hidden",
+          overflow: 'hidden',
           borderRadius: moderateScale(5),
         }}
       >
         <FlatList
-          contentContainerStyle={{ flex: 0, width: "100%" }}
+          contentContainerStyle={{ flex: 0, width: '100%' }}
           data={data}
           extraData={this.state}
           renderItem={(item) => this.renderListView(item, parameter)}
           ItemSeparatorComponent={() => (
             <Image
-              source={require("../../assets/divHorizontal.png")}
+              source={require('../../assets/divHorizontal.png')}
               style={{
                 tintColor: appConfig.BORDER_GREY_COLOR,
                 height: moderateScale(1),
-                width: "100%",
+                width: '100%',
               }}
             />
           )}
@@ -987,7 +987,7 @@ class HomeScreen extends Component {
   }
   renderRequesterOptionList() {
     if (this.state.requesterOptionList) {
-      return this.renderList("requesterOptionList");
+      return this.renderList('requesterOptionList');
     }
   }
   displaySelectedRequesterField() {
@@ -1009,8 +1009,8 @@ class HomeScreen extends Component {
             borderColor: appConfig.LIST_BORDER_COLOUR,
             borderRadius: moderateScale(5),
             height: moderateScale(40),
-            width: "90%",
-            justifyContent: "center",
+            width: '90%',
+            justifyContent: 'center',
             paddingLeft: 10,
           }}
         >
@@ -1026,8 +1026,8 @@ class HomeScreen extends Component {
       this.state.supervisorList.length > 0
     ) {
       return (
-        <View style={{ height: "70%", marginTop: 5 }}>
-          {this.renderList("supervisorList")}
+        <View style={{ height: '70%', marginTop: 5 }}>
+          {this.renderList('supervisorList')}
         </View>
       );
     }
@@ -1036,7 +1036,7 @@ class HomeScreen extends Component {
     if (this.state.displayApprovalRejectDialogBox) {
       let label =
         this.state.selectedRequesterOption == null
-          ? "select"
+          ? 'select'
           : this.state.selectedRequesterOption;
       return (
         <Modal
@@ -1052,7 +1052,7 @@ class HomeScreen extends Component {
   }
 
   showRequests() {
-    let data = "";
+    let data = '';
     if (isRRService) {
       data = this.state.pendingRequest;
       // console.log("RR request to approve is", data)
@@ -1060,14 +1060,14 @@ class HomeScreen extends Component {
         return (
           <View style={globalFontStyle.listContentViewGlobal}>
             <FlatList
-              contentContainerStyle={{ flexGrow: 1, justifyContent: "center" }}
+              contentContainerStyle={{ flexGrow: 1, justifyContent: 'center' }}
               data={data}
               showsVerticalScrollIndicator={false}
               renderItem={({ item, index }) =>
                 this.renderPendingRequest(item, index)
               }
               keyExtractor={(item, index) =>
-                "pendingRequest_" + index.toString()
+                'pendingRequest_' + index.toString()
               }
               ItemSeparatorComponent={() => (
                 <View style={globalFontStyle.listContentSeparatorGlobal} />
@@ -1090,14 +1090,14 @@ class HomeScreen extends Component {
         return (
           <View style={globalFontStyle.listContentViewGlobal}>
             <FlatList
-              contentContainerStyle={{ flexGrow: 1, justifyContent: "center" }}
+              contentContainerStyle={{ flexGrow: 1, justifyContent: 'center' }}
               data={data}
               showsVerticalScrollIndicator={false}
               renderItem={({ item, index }) =>
                 this.renderVoucherRequest(item, index)
               }
               keyExtractor={(item, index) =>
-                "VoucherRequest_" + index.toString()
+                'VoucherRequest_' + index.toString()
               }
               ItemSeparatorComponent={() => (
                 <View style={globalFontStyle.listContentSeparatorGlobal} />
@@ -1124,11 +1124,11 @@ class HomeScreen extends Component {
   }
 
   handleLogoutConfirm() {
-    writeLog("Invoked " + "handleLogoutConfirm" + " of " + "HomeScreen");
+    writeLog('Invoked ' + 'handleLogoutConfirm' + ' of ' + 'HomeScreen');
     this.setState({
       showLogoutModal: false,
     });
-    this.props.navigation.navigate("Login");
+    this.props.navigation.navigate('Login');
   }
 
   showLogoutDialog() {
@@ -1139,27 +1139,27 @@ class HomeScreen extends Component {
           isVisible={this.state.showLogoutModal}
           headerText="Confirm Logout"
           messageText={
-            <Text style={{ textAlign: "center", fontSize: 18 }}>
+            <Text style={{ textAlign: 'center', fontSize: 18 }}>
               {headerTitleMsg}
             </Text>
           }
-          cancelButtonText={"CANCEL"}
+          cancelButtonText={'CANCEL'}
           handleCancel={() => this.setState({ showLogoutModal: false })}
-          confirmButtonText={"OK"}
+          confirmButtonText={'OK'}
           handleConfirm={() => this.handleLogoutConfirm()}
         />
       );
     }
   }
   handleBack() {
-    writeLog("Clicked on " + "handleBack" + " of " + "HomeScreen");
+    writeLog('Clicked on ' + 'handleBack' + ' of ' + 'HomeScreen');
     isRRService = false;
     isVoucherService = false;
     this.props.navigation.pop();
   }
 
   async getHistoryData(docNumber) {
-    writeLog("Invoked " + "getHistoryData" + " of " + "HomeScreen");
+    writeLog('Invoked ' + 'getHistoryData' + ' of ' + 'HomeScreen');
     let isNetwork = await netInfo();
     if (isNetwork) {
       // console.log("docNumber", docNumber)
@@ -1171,21 +1171,21 @@ class HomeScreen extends Component {
       let getEmployeeId = this.state.loggedInDetails.SmCode;
       let authenticationKey = this.state.loggedInDetails.Authkey;
       let form = new FormData();
-      form.append("ECSerp", getEmployeeId);
-      form.append("AuthKey", authenticationKey);
+      form.append('ECSerp', getEmployeeId);
+      form.append('AuthKey', authenticationKey);
       let myResponse;
       if (isVoucherService) {
-        form.append("DocumentNo", docNumber);
+        form.append('DocumentNo', docNumber);
         myResponse = await fetchPOSTMethod(properties.voucherHistoryUrl, form);
       } else if (isRRService) {
-        form.append("RequestID", docNumber);
+        form.append('RequestID', docNumber);
         myResponse = await fetchPOSTMethod(properties.RRHistoryUrl, form);
       }
       let response = myResponse[0];
       // console.log("==============", myResponse)
       if (myResponse.length != undefined && myResponse.length != 0) {
         if (
-          response.hasOwnProperty("Exception") &&
+          response.hasOwnProperty('Exception') &&
           (response.StatusCode == 402 || response.StatusCode == 404)
         ) {
           this.setState(
@@ -1203,7 +1203,7 @@ class HomeScreen extends Component {
               this._panel.hide();
             }
           );
-        } else if (response.hasOwnProperty("Exception")) {
+        } else if (response.hasOwnProperty('Exception')) {
           // console.log("Other Exception")
           this.setState(
             {
@@ -1243,11 +1243,11 @@ class HomeScreen extends Component {
           },
           () => {
             Alert.alert(
-              "Info",
+              'Info',
               globalConstants.NO_DATA_FROM_SERVER,
               [
                 {
-                  text: "OK",
+                  text: 'OK',
                   onPress: () =>
                     setTimeout(() => {
                       this._panel.hide();
@@ -1267,11 +1267,11 @@ class HomeScreen extends Component {
         },
         () => {
           Alert.alert(
-            "Info",
+            'Info',
             globalConstants.NO_INTERNET,
             [
               {
-                text: "OK",
+                text: 'OK',
                 onPress: () =>
                   setTimeout(() => {
                     this._panel.hide();
@@ -1301,7 +1301,7 @@ class HomeScreen extends Component {
           <View style={style.cardInnerView}>
             <Text style={globalFontStyle.cardLeftText}>{record[key].Key}</Text>
             <Text style={globalFontStyle.cardRightText}>
-              {record[key].Value === "" ? "-" : record[key].Value}
+              {record[key].Value === '' ? '-' : record[key].Value}
             </Text>
           </View>
         );
@@ -1316,15 +1316,15 @@ class HomeScreen extends Component {
         <View style={style.panelContainer}>
           <View
             style={{
-              flexDirection: "row",
-              alignSelf: "center",
-              borderColor: "light-grey",
+              flexDirection: 'row',
+              alignSelf: 'center',
+              borderColor: 'light-grey',
               borderBottomWidth: 0.25,
-              width: "96%",
+              width: '96%',
               paddingVertical: 5,
               marginLeft: 5,
               zIndex: 10,
-              borderBottomColor: "light-grey",
+              borderBottomColor: 'light-grey',
             }}
           >
             <Image source={images.rightCircleArrow} />
@@ -1349,7 +1349,7 @@ class HomeScreen extends Component {
         onMomentumDragStart={(height) => {
           height;
         }} //height of panel here : height/1.3
-        onMomentumDragEnd={0}
+        // onMomentumDragEnd={0}
       >
         {(dragHandler) => (
           <View style={style.panelNewContainer}>
@@ -1394,8 +1394,8 @@ class HomeScreen extends Component {
             <SearchBar
               lightTheme
               raised={true}
-              style={{ backgroundColor: "red" }}
-              placeholder={"Search by document number"}
+              style={{ backgroundColor: 'red' }}
+              placeholder={'Search by document number'}
               onChangeText={this.updateSearch}
               value={query}
               containerStyle={globalFontStyle.searchGlobal}

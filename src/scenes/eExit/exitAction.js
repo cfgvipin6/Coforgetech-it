@@ -1,7 +1,7 @@
 import { netInfo } from '../../utilities/NetworkInfo';
 import { NO_INTERNET, UNDEFINED_MESSAGE } from '../../GlobalConstants';
 import properties from '../../resource/properties';
-import { fetchPOSTMethod, fetchGETMethod } from '../../utilities/fetchService';
+import { fetchPOSTMethod } from '../../utilities/fetchService';
 import { RESET_DETAILS } from './constants';
 let constants = require('./constants');
 let empCode;
@@ -19,58 +19,58 @@ const loading = () => {
   };
 };
 
-const storeExitData = data => {
+const storeExitData = (data) => {
   return {
     type: constants.EXIT_DATA,
     payload: data,
   };
 };
 
-const storeExitHistory = data => {
+const storeExitHistory = (data) => {
   return {
     type: constants.EXIT_HISTORY,
     payload: data,
   };
 };
 
-const storeDetailsData = data => {
+const storeDetailsData = (data) => {
   return {
     type: constants.DETAIL_DATA,
     payload: data,
   };
 };
-const storeExitError = msg => {
+const storeExitError = (msg) => {
   return {
     type: constants.EXIT_ERROR,
     payload: msg,
   };
 };
-const storeExitDetailError = msg => {
+const storeExitDetailError = (msg) => {
   return {
     type: constants.EXIT_DETAIL_ERROR,
     payload: msg,
   };
 };
-const storeExitActionTakenData = message => {
+const storeExitActionTakenData = (message) => {
   return {
     type: constants.EXIT_ACTION_TAKEN_SUCCESS,
     payload: message,
   };
 };
 
-const storeExitActionTakenError = msg => {
+const storeExitActionTakenError = (msg) => {
   return {
     type: constants.EXIT_ACTION_TAKEN_ERROR,
     payload: msg,
   };
 };
-const storeNoticePeriod = data => {
+const storeNoticePeriod = (data) => {
   return {
     type: constants.STORE_NOTICE_PERIOD,
     payload: data,
   };
 };
-const storeSuperVisorData = data => {
+const storeSuperVisorData = (data) => {
   return {
     type: constants.EXIT_SUPERVISOR_DATA,
     payload: data,
@@ -86,9 +86,9 @@ export const fetchNoticeDetails = (
   resignationCode,
   requestorId
 ) => {
-  return async dispatch => {
+  return async (dispatch) => {
     let isNetwork = await netInfo();
-    if (rp_type === 0 || rp_type === 1){
+    if (rp_type === 0 || rp_type === 1) {
       rp_type === 0 ? (rp_type = 'Y') : (rp_type = 'N');
     }
     if (isNetwork) {
@@ -108,7 +108,10 @@ export const fetchNoticeDetails = (
         let response = await fetchPOSTMethod(url, formData);
         console.log('Notice period response : ', response);
         if (response !== undefined) {
-          if (response.length === 1 && response[0].hasOwnProperty('Exception')) {
+          if (
+            response.length === 1 &&
+            response[0].hasOwnProperty('Exception')
+          ) {
             // console.log("Notice Period api exception while fetching notice period is:  ", response);
             dispatch(storeExitDetailError(response[0].Exception));
           } else {
@@ -128,13 +131,13 @@ export const fetchNoticeDetails = (
     }
   };
 };
-export const resetDetails = ()=>{
+export const resetDetails = () => {
   return {
-    type:RESET_DETAILS,
+    type: RESET_DETAILS,
   };
 };
 export const fetchExitDetails = (empCode, authToken, eccNo, callBack) => {
-  return async dispatch => {
+  return async (dispatch) => {
     let isNetwork = await netInfo();
     if (isNetwork) {
       try {
@@ -147,8 +150,11 @@ export const fetchExitDetails = (empCode, authToken, eccNo, callBack) => {
         console.log('Skill Data : ', formData);
         let response = await fetchPOSTMethod(url, formData);
         console.log('Skill Response : ', response);
-        if (response.length != undefined) {
-          if (response.length === 1 && response[0].hasOwnProperty('Exception')) {
+        if (response.length !== undefined) {
+          if (
+            response.length === 1 &&
+            response[0].hasOwnProperty('Exception')
+          ) {
             // console.log("Skills details api exception while fetching data is :  ", response);
             dispatch(storeExitDetailError(response[0].Exception));
           } else {
@@ -170,7 +176,7 @@ export const fetchExitDetails = (empCode, authToken, eccNo, callBack) => {
 };
 
 export const exitFetchData = (empCode, authToken, isPullToLoaderActive) => {
-  return async dispatch => {
+  return async (dispatch) => {
     let isNetwork = await netInfo();
     if (isNetwork) {
       this.empCode = empCode;
@@ -183,7 +189,7 @@ export const exitFetchData = (empCode, authToken, isPullToLoaderActive) => {
       formData.append('AuthKey', authToken);
       let url = properties.getExitUrl;
       let response = await fetchPOSTMethod(url, formData);
-      if (response.length != undefined) {
+      if (response.length !== undefined) {
         console.log('Exit response main Screen', response);
         if (response.length === 1 && response[0].hasOwnProperty('Exception')) {
           dispatch(storeExitError(response[0].Exception));
@@ -210,8 +216,8 @@ export const resetExitHome = () => {
   };
 };
 
-export const fetchSupervisorData = (supervisorCallBack,query) => {
-  return async dispatch => {
+export const fetchSupervisorData = (supervisorCallBack, query) => {
+  return async (dispatch) => {
     let isNetwork = await netInfo();
     if (isNetwork) {
       let url = properties.getTrApproverList;
@@ -222,8 +228,11 @@ export const fetchSupervisorData = (supervisorCallBack,query) => {
       form.append('DocumentNo', query);
       form.append('ListFor', 'S');
       let response = await fetchPOSTMethod(url, form);
-      console.log('Supervisor list response for leave from server is : ',response);
-      if (response.length != undefined) {
+      console.log(
+        'Supervisor list response for leave from server is : ',
+        response
+      );
+      if (response.length !== undefined) {
         if (response.length === 1 && response[0].hasOwnProperty('Exception')) {
           dispatch(storeExitActionTakenError(response[0].Exception));
         } else {
@@ -248,9 +257,16 @@ export const resetSupervisor = () => {
   };
 };
 
-export const exitActionTaken = (docData, pendingRole, pendingWith, toRole, submitTo, docFinalData) => {
-  console.log('docFinalData',docFinalData);
-  return async dispatch => {
+export const exitActionTaken = (
+  docData,
+  pendingRole,
+  pendingWith,
+  toRole,
+  submitTo,
+  docFinalData
+) => {
+  console.log('docFinalData', docFinalData);
+  return async (dispatch) => {
     let isNetwork = await netInfo();
     if (isNetwork) {
       dispatch(loading());
@@ -274,8 +290,8 @@ export const exitActionTaken = (docData, pendingRole, pendingWith, toRole, submi
         torole: toRole,
         submitTo: submitTo,
         resstatus: docFinalData.resStatus,
-        ReasonTypeID : docFinalData.ReasonTypeID,
-        ReasonId : docFinalData.ReasonId,
+        ReasonTypeID: docFinalData.ReasonTypeID,
+        ReasonId: docFinalData.ReasonId,
       };
       let formData = new FormData();
       formData.append('ECSerp', this.empCode);
@@ -285,7 +301,7 @@ export const exitActionTaken = (docData, pendingRole, pendingWith, toRole, submi
       let url = properties.ExitActionUrl;
       // console.log("formData", formData);
       let response = await fetchPOSTMethod(url, formData);
-      if (response.length != undefined) {
+      if (response.length !== undefined) {
         // console.log("Exit Action Response", response);
         if (response.length === 1 && response[0].hasOwnProperty('Exception')) {
           dispatch(storeExitActionTakenError(response[0].Exception));
@@ -306,8 +322,8 @@ export const exitActionTaken = (docData, pendingRole, pendingWith, toRole, submi
   };
 };
 
-export const exitFetchHistory = docNumber => {
-  return async dispatch => {
+export const exitFetchHistory = (docNumber) => {
+  return async (dispatch) => {
     let isNetwork = await netInfo();
     if (isNetwork) {
       dispatch(loading());
@@ -317,7 +333,7 @@ export const exitFetchHistory = docNumber => {
       form.append('in_ecc_no', docNumber);
       let url = properties.exitHistoryUrl;
       let historyResponse = await fetchPOSTMethod(url, form);
-      if (historyResponse.length != undefined) {
+      if (historyResponse.length !== undefined) {
         // console.log("EXIT history response for main Screen : ",historyResponse);
         if (
           historyResponse.length === 1 &&

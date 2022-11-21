@@ -13,15 +13,25 @@ import {
 import ActivityIndicatorView from '../../GlobalComponent/myActivityIndicator';
 import { TEMP_URI } from '../auth/constants';
 import { connect } from 'react-redux';
-import { loginWithAdAction, againLoginWithAdAction, clearData, removeLoader } from './WebViewAction';
+import {
+  loginWithAdAction,
+  againLoginWithAdAction,
+  clearData,
+  removeLoader,
+} from './WebViewAction';
 import { loginAction } from '../login/LoginAction';
-import { setUserName, setToken, setSknToken, getUserName } from '../auth/AuthUtility';
+import {
+  setUserName,
+  setToken,
+  setSknToken,
+  getUserName,
+} from '../auth/AuthUtility';
 import { styles } from './styles';
 import { LOGIN_WITH_HEADING } from './constants';
 import { pendingActionCreator } from '../Dashboard/PendingAction';
 import { Image } from 'react-native-elements';
 import { writeLog } from '../../utilities/logger';
-import {showToast} from '../../GlobalComponent/Toast';
+import { showToast } from '../../GlobalComponent/Toast';
 import { DEVICE_VERSION } from '../../components/DeviceInfoFile';
 import { setHeight, setWidth } from '../../components/fontScaling';
 const backgroundImage = require('../../assets/iniitian_splash.png');
@@ -44,14 +54,14 @@ class MyWebView extends Component {
   }
   hideSpinner = () => {
     this.setState({ loading: false });
-  }
+  };
   showSpinner = () => {
     this.setState({ loading: true });
-  }
+  };
   handleBack = () => {
     if (this.state.canGoBack && this.state.title !== 'Working') {
       // console.log("Can go back")
-      if (this.WEBVIEW_REF.current){
+      if (this.WEBVIEW_REF.current) {
         this.WEBVIEW_REF.current.goBack();
       }
     } else {
@@ -59,9 +69,9 @@ class MyWebView extends Component {
       this.props.navigation.pop();
     }
     return true;
-  }
+  };
   componentDidMount() {
-   BackHandler.addEventListener('hardwareBackPress', this.handleBack);
+    BackHandler.addEventListener('hardwareBackPress', this.handleBack);
   }
   componentWillUnmount() {
     BackHandler.removeEventListener('hardwareBackPress', this.handleBack);
@@ -69,12 +79,12 @@ class MyWebView extends Component {
 
   backHandler = () => {
     this.handleBack();
-  }
+  };
 
   openPanel = () => {
     this.setState({ loading: false, modalVisible: true });
-  }
-  closeModal = user => {
+  };
+  closeModal = (user) => {
     this.props.clearData();
     this.setState({ modalVisible: false, isLoginAgain: false }, () => {
       this.props.againLoginWithAd(
@@ -85,10 +95,12 @@ class MyWebView extends Component {
         this.goForward
       );
     });
-  }
-  onNavigationStateChange = navState => {
+  };
+  onNavigationStateChange = (navState) => {
     webState = navState;
-    console.log('Landed on ' + 'MyWebView' + ' with url ' + JSON.stringify(navState));
+    console.log(
+      'Landed on ' + 'MyWebView' + ' with url ' + JSON.stringify(navState)
+    );
     writeLog('Landed on ' + 'MyWebView' + ' with url ' + navState.url);
     if (navState.url.includes('Tkn=')) {
       let token = navState.url.substring(
@@ -102,22 +114,26 @@ class MyWebView extends Component {
         this.props.loginWithAd(
           this.state.TKN,
           this.state.SKN,
-         DEVICE_VERSION,
+          DEVICE_VERSION,
           this.goForward
         );
       });
-    }
-    else if (navState.title.includes('Sign out') && navState.loading === true){
+    } else if (
+      navState.title.includes('Sign out') &&
+      navState.loading === true
+    ) {
       this.props.navigation.replace('Login');
-    }
-    else if (navState.title.includes('iNIITian Production Webserver Error Report') && navState.loading === false){
-       showToast('AD Token not found!');
+    } else if (
+      navState.title.includes('iNIITian Production Webserver Error Report') &&
+      navState.loading === false
+    ) {
+      showToast('AD Token not found!');
       this.props.navigation.replace('Login');
     }
     this.setState({
       canGoBack: navState.canGoBack,
     });
-  }
+  };
   goForward = () => {
     if (
       this.props.firstAdData &&
@@ -152,8 +168,8 @@ class MyWebView extends Component {
       console.log('Going back to AdLogin due to local service faliure');
       this.props.navigation.replace('Login');
     }
-  }
-  againLogin = user => {
+  };
+  againLogin = (user) => {
     this.props.againLoginWithAd(
       this.state.TKN,
       this.state.SKN,
@@ -161,18 +177,21 @@ class MyWebView extends Component {
       DEVICE_VERSION,
       this.goForward
     );
-  }
-  sectionItem = item => {
+  };
+  sectionItem = (item) => {
     // console.log("employee data is :", item)
     return (
       <View>
-        <TouchableOpacity style={{ marginTop: 10 }} onPress={() => this.closeModal(item)}>
+        <TouchableOpacity
+          style={{ marginTop: 10 }}
+          onPress={() => this.closeModal(item)}
+        >
           <Text style={{ color: 'white', fontSize: 16 }}>{item.EmpCode}</Text>
         </TouchableOpacity>
         <View style={styles.line} />
       </View>
     );
-  }
+  };
   showModal = () => {
     return (
       <View>
@@ -182,7 +201,8 @@ class MyWebView extends Component {
           animationType="slide"
           onRequestClose={() => {
             this.closeModal();
-          }}>
+          }}
+        >
           <View style={styles.modalContainer}>
             <View>
               <Text style={styles.modalHeading}>{LOGIN_WITH_HEADING}</Text>
@@ -196,11 +216,11 @@ class MyWebView extends Component {
         </Modal>
       </View>
     );
-  }
+  };
   onOkClick = () => {
     writeLog('Clicked on ' + 'onOkClick' + ' of ' + 'MyWebView');
     this.props.navigation.navigate('Login');
-  }
+  };
 
   showAlert = () => {
     if (this.props.firstAdData && this.props.firstAdData.length > 0) {
@@ -211,7 +231,12 @@ class MyWebView extends Component {
       ) {
         this.setState({ dialogShown: true });
         setTimeout(() => {
-          writeLog('Dialog is open with Ad Login : message is => ' + this.props.firstAdData[0].Message + ' on ' + 'MyWebView');
+          writeLog(
+            'Dialog is open with Ad Login : message is => ' +
+              this.props.firstAdData[0].Message +
+              ' on ' +
+              'MyWebView'
+          );
           return Alert.alert(
             'Ad Login',
             this.props.firstAdData[0].Message,
@@ -221,12 +246,14 @@ class MyWebView extends Component {
         }, 1000);
       }
     }
-  }
+  };
 
   render() {
     let opacityN = this.state.TKN === '' ? 1 : 1;
     let isWeb = this.state.TKN === '' ? true : false;
-    let url = this.props.navigation.state.params && this.props.navigation.state.params.URL;
+    let url =
+      this.props.navigation.state.params &&
+      this.props.navigation.state.params.URL;
     return (
       <View style={{ flex: 1 }}>
         {isWeb === true ? (
@@ -256,23 +283,28 @@ class MyWebView extends Component {
     );
   }
 }
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
     clearData: () => dispatch(clearData()),
     removeLoader: () => dispatch(removeLoader()),
     loginWithAd: (adToken, skn, version, forwardCallBack) =>
       dispatch(loginWithAdAction(adToken, skn, version, forwardCallBack)),
     againLoginWithAd: (adTokn, skn, user, version, forwardCallBack) =>
-      dispatch(againLoginWithAdAction(adTokn, skn, user, version, forwardCallBack)),
-    updateLoginData: user => dispatch(loginAction(user)),
+      dispatch(
+        againLoginWithAdAction(adTokn, skn, user, version, forwardCallBack)
+      ),
+    updateLoginData: (user) => dispatch(loginAction(user)),
     getPendingCounts: (user, val) => dispatch(pendingActionCreator(user, val)),
   };
 };
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    loginData: state && state.loginReducer &&  state.loginReducer.loginData,
+    loginData: state && state.loginReducer && state.loginReducer.loginData,
     firstAdData: state.webReducer.firstAdData,
     adLoading: state.webReducer.adLoading,
   };
 };
-export default connect(mapStateToProps, mapDispatchToProps)(MyWebView);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(MyWebView);

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import {
   Text,
   View,
@@ -10,31 +10,30 @@ import {
   Platform,
   BackHandler,
   ScrollView,
-} from "react-native";
-import { connect } from "react-redux";
-import { Keyboard } from "react-native";
-import { DismissKeyboardView } from "../../components/DismissKeyboardView";
-import { loginActionCreator, modalAction, loginDataClear } from "./LoginAction";
-import style from "./style.js";
-import GlobalData from "../../utilities/globalData";
-import ActivityIndicatorView from "../../GlobalComponent/myActivityIndicator";
-import SplashScreen from "react-native-splash-screen";
+} from 'react-native';
+import { connect } from 'react-redux';
+import { Keyboard } from 'react-native';
+import { DismissKeyboardView } from '../../components/DismissKeyboardView';
+import { loginActionCreator, modalAction, loginDataClear } from './LoginAction';
+import style from './style.js';
+import GlobalData from '../../utilities/globalData';
+import ActivityIndicatorView from '../../GlobalComponent/myActivityIndicator';
+import SplashScreen from 'react-native-splash-screen';
 import {
   removePassword,
   removeUserName,
   setLoginType,
-} from "../auth/AuthUtility";
-import { styles } from "../Dashboard/styles";
-import { writeLog } from "../../utilities/logger";
-import UserMessage from "../../components/userMessage";
-import properties from "../../resource/properties";
-import images from "../../images";
-import HeaderView from "../../GlobalComponent/Header";
-import { AppStyle } from "../commonStyle";
-import Icon from "react-native-vector-icons/MaterialCommunityIcons";
-import { DEVICE_VERSION } from "../../components/DeviceInfoFile";
-import { setHeight } from "../../components/fontScaling";
-let constant = require("./constants");
+} from '../auth/AuthUtility';
+import { styles } from '../Dashboard/styles';
+import { writeLog } from '../../utilities/logger';
+import UserMessage from '../../components/userMessage';
+import properties from '../../resource/properties';
+import images from '../../images';
+import HeaderView from '../../GlobalComponent/Header';
+import { AppStyle } from '../commonStyle';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { DEVICE_VERSION } from '../../components/DeviceInfoFile';
+let constant = require('./constants');
 let globalData = new GlobalData();
 let newEmployeeLength = 0;
 let newEmployeeId = null;
@@ -46,9 +45,9 @@ class LoginScreen extends Component {
       employeeId: null,
       password: null,
       loginData: [],
-      message: "",
+      message: '',
       visibility: false,
-      heading: "",
+      heading: '',
       showPass: false,
     };
   }
@@ -60,38 +59,38 @@ class LoginScreen extends Component {
   };
   componentDidMount() {
     const { navigation } = this.props;
-    navigation?.addListener("willFocus", this.onFocus);
+    navigation?.addListener('willFocus', this.onFocus);
     SplashScreen.hide();
     removeUserName();
     removePassword();
-    BackHandler.addEventListener("hardwareBackPress", this.goBack);
+    BackHandler.addEventListener('hardwareBackPress', this.goBack);
   }
   componentWillUnmount() {
-    BackHandler.removeEventListener("hardwareBackPress", this.goBack);
+    BackHandler.removeEventListener('hardwareBackPress', this.goBack);
   }
   componentDidUpdate(previousProps, state) {
     const { loginData, navigation } = this.props;
     if (
       loginData &&
       loginData !== previousProps.loginData &&
-      !loginData?.hasOwnProperty("res") &&
-      !loginData?.hasOwnProperty("Exception")
+      !loginData?.hasOwnProperty('res') &&
+      !loginData?.hasOwnProperty('Exception')
     ) {
       globalData.setAccessToken(loginData?.Authkey);
       globalData.setLoggedInEmployeeId(loginData?.SmCode);
-      navigation.replace("DashBoardNew2");
-    } else if (loginData?.hasOwnProperty("res")) {
+      navigation.replace('DashBoardNew2');
+    } else if (loginData?.hasOwnProperty('res')) {
       if (previousProps.loginData != loginData) {
         this.setState({
-          heading: "Sorry",
-          message: "Invalid credentials , Please enter valid credentials.",
+          heading: 'Sorry',
+          message: 'Invalid credentials , Please enter valid credentials.',
           visibility: true,
         });
       }
-    } else if (loginData?.hasOwnProperty("Exception")) {
+    } else if (loginData?.hasOwnProperty('Exception')) {
       if (previousProps.loginData != loginData) {
         this.setState({
-          heading: "Error",
+          heading: 'Error',
           message: loginData?.Exception,
           visibility: true,
         });
@@ -120,7 +119,7 @@ class LoginScreen extends Component {
       setLoginType(constant.APP_LOGIN);
       this.props.login(newEmployeeId, password, this.clearData, undefined);
     } else {
-      return alert("Please enter valid credentials !");
+      return alert('Please enter valid credentials !');
     }
   }
 
@@ -128,16 +127,16 @@ class LoginScreen extends Component {
     let exception;
     let heading;
     if (this.props.modalLoading) {
-      if (this.props.loginData.hasOwnProperty("res")) {
-        heading = "Sorry";
-        exception = "Invalid credentials , Plese enter valid credentials.";
-      } else if (this.props.loginData.hasOwnProperty("Exception")) {
-        heading = "Error";
+      if (this.props.loginData.hasOwnProperty('res')) {
+        heading = 'Sorry';
+        exception = 'Invalid credentials , Plese enter valid credentials.';
+      } else if (this.props.loginData.hasOwnProperty('Exception')) {
+        heading = 'Error';
         exception = this.props.loginData.Exception;
       }
       // console.log("Exception to show in login dialog is:", exception)
       writeLog(
-        "Dialog is open with exception " + exception + " on " + "LoginScreen"
+        'Dialog is open with exception ' + exception + ' on ' + 'LoginScreen'
       );
       return (
         <UserMessage
@@ -155,11 +154,11 @@ class LoginScreen extends Component {
   }
 
   clearData = () => {
-    console.log("Clear data invoked.");
+    console.log('Clear data invoked.');
   };
   manageEmployeeId = () => {
     while (newEmployeeLength != 0) {
-      newEmployeeId = "0" + newEmployeeId;
+      newEmployeeId = '0' + newEmployeeId;
       newEmployeeLength--;
     }
     this.setState({ employeeId: newEmployeeId });
@@ -167,7 +166,7 @@ class LoginScreen extends Component {
 
   loginWithAd = () => {
     setLoginType(constant.AD_LOGIN);
-    this.props.navigation.navigate("WebRoute", {
+    this.props.navigation.navigate('WebRoute', {
       URL: properties.adLoginUrl,
     });
   };
@@ -180,8 +179,8 @@ class LoginScreen extends Component {
       loginData?.StatusCode === 405 ||
       appVersion?.Version !== DEVICE_VERSION
     ) {
-      if (msg.includes("install")) {
-        navigation.replace("WebRoute", {
+      if (msg.includes('install')) {
+        navigation.replace('WebRoute', {
           URL: properties.adLoginUrl,
         });
       }
@@ -189,7 +188,7 @@ class LoginScreen extends Component {
   };
 
   goBack = () => {
-    writeLog("Clicked on " + "goBack" + " of " + "LoginScreen");
+    writeLog('Clicked on ' + 'goBack' + ' of ' + 'LoginScreen');
     return false;
   };
 
@@ -225,16 +224,16 @@ class LoginScreen extends Component {
             <TextInput
               theme={{
                 colors: {
-                  primary: "black",
+                  primary: 'black',
                 },
               }}
               onChangeText={(text) => this.setId(text)}
               underlineColor="transparent"
-              placeholder={"Enter your employee ID"}
+              placeholder={'Enter your employee ID'}
               style={[AppStyle.font.fontSmallRegular, style.inputTextStyle]}
               autoCapitalize="none"
               autoCorrect={false}
-              autoCompleteType={false}
+              autoCompleteType="off"
             />
             <Text style={[AppStyle.font.fontSmallRegular, style.textStyle]}>
               Password
@@ -243,12 +242,12 @@ class LoginScreen extends Component {
               <TextInput
                 theme={{
                   colors: {
-                    primary: "black",
+                    primary: 'black',
                   },
                 }}
                 onChangeText={(text) => this.setPassword(text)}
                 underlineColor="transparent"
-                placeholder={"Enter your password"}
+                placeholder={'Enter your password'}
                 style={[
                   AppStyle.font.fontSmallRegular,
                   style.inputTextStyle,
@@ -260,7 +259,7 @@ class LoginScreen extends Component {
                 autoCorrect={false}
               />
               <Icon
-                name={this.state.showPass ? "eye-outline" : "eye-off-outline"}
+                name={this.state.showPass ? 'eye-outline' : 'eye-off-outline'}
                 size={35}
                 color="grey"
                 style={style.eyeStyle}
@@ -289,16 +288,15 @@ class LoginScreen extends Component {
               />
             </TouchableOpacity>
           </View>
-
         </ScrollView>
       </ImageBackground>
     );
   };
 
   render() {
-    if (Platform.OS === "ios") {
+    if (Platform.OS === 'ios') {
       return (
-        <KeyboardAvoidingView style={style.container} behavior={"padding"}>
+        <KeyboardAvoidingView style={style.container} behavior={'padding'}>
           {this.renderMainView()}
         </KeyboardAvoidingView>
       );
