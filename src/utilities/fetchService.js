@@ -1,6 +1,7 @@
 import { writeLog } from '../utilities/logger';
 import moment from 'moment';
 const TIMEOUT = 60000;
+const POST_METHOD = 'POST';
 
 const handleError = (error) => {
   if (error?.length) {
@@ -32,7 +33,7 @@ const onApiCall = (url, data = {}, requestType = 'get') => {
       method: requestType,
       signal: controller.signal,
       timeout: TIMEOUT,
-      ...(requestType.toUpperCase() === 'POST' && postBody),
+      ...(requestType.toUpperCase() === POST_METHOD && postBody),
     })
       .then((response) => {
         if (response.ok) {
@@ -51,7 +52,7 @@ const onApiCall = (url, data = {}, requestType = 'get') => {
   });
 };
 
-async function fetchGETMethod(url) {
+export const fetchGETMethod = async (url) => {
   let myURLArr = url.split('/');
   let apiEndPoint = myURLArr[myURLArr.length - 1];
   let startTime = new Date();
@@ -67,15 +68,15 @@ async function fetchGETMethod(url) {
   console.log(`${apiEndPoint} login response time=> ${timeTaken}`);
   writeLog(`${apiEndPoint} login response time=> ${timeTaken}`);
   return res;
-}
+};
 
-async function fetchPOSTMethodNew(url, form) {
-  const res = await onApiCall(url, form, 'POST');
+export const fetchPOSTMethodNew = async (url, form) => {
+  const res = await onApiCall(url, form, POST_METHOD);
   return res;
-}
+};
 
 // login method
-async function fetchPOSTMethod(url, form) {
+export const fetchPOSTMethod = async (url, form) => {
   let myURLArr = url.split('/');
   let apiEndPoint = myURLArr[myURLArr.length - 1];
   let startTime = new Date();
@@ -92,31 +93,16 @@ async function fetchPOSTMethod(url, form) {
       .getMilliseconds()
       .toLocaleString()}`
   );
-  const res = await onApiCall(url, form, 'POST');
+  const res = await onApiCall(url, form, POST_METHOD);
   let endTime = new Date().getTime();
   let timeDiff = endTime - startTime.getTime();
   let timeTaken = moment.duration(timeDiff, 'milliseconds').asSeconds();
   console.log(`${apiEndPoint} login response time=> ${timeTaken}`);
   writeLog(`${apiEndPoint} login response time=> ${timeTaken}`);
   return res;
-}
+};
 
-// async function fetchAnotherPost(url, form) {
-//   console.log('Url is : ' + url);
-//   console.log('Form data is : ', JSON.stringify(form));
-//   const res = await onApiCall(url, form, 'POST');
-//   return res;
-// }
-
-async function post(url, data) {
-  const res = await onApiCall(url, data, 'POST');
+export const post = async (url, data) => {
+  const res = await onApiCall(url, data, POST_METHOD);
   return res;
-}
-
-export {
-  fetchGETMethod,
-  fetchPOSTMethod,
-  fetchPOSTMethodNew,
-  // fetchAnotherPost,
-  post,
 };
