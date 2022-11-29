@@ -13,7 +13,6 @@ import {
   Keyboard,
   TouchableWithoutFeedback,
 } from 'react-native';
-import ModalDropdown from 'react-native-modal-dropdown';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { connect } from 'react-redux';
 import ActivityIndicatorView from '../../../../GlobalComponent/myActivityIndicator';
@@ -42,10 +41,7 @@ import { HistoryView } from '../../../../GlobalComponent/HistoryView/HistoryView
 import moment from 'moment';
 import { showToast } from '../../../../GlobalComponent/Toast';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scrollview';
-import { KeyboardAvoidingView } from 'react-native';
-import { Platform } from 'react-native';
 import CustomButton from '../../../../components/customButton';
-import IEngageDropDown from '../../../../GlobalComponent/CustomDropDown';
 import images from '../../../../images';
 import { Dropdown } from '../../../../GlobalComponent/DropDown/DropDown';
 let globalConstants = require('../../../../GlobalConstants');
@@ -91,7 +87,7 @@ function InputController({
   const [rejectionRemarks, setRejectionRemarks] = useState('');
   const [rejectionData, setRejectionData] = useState({});
   let tempProjectList = [];
-  console.log("setSupervisor",setSupervisor)
+  console.log('setSupervisor', setSupervisor);
   const onInputResponse = (response, type, saveSubmitType) => {
     setLoading(false);
     switch (type) {
@@ -99,20 +95,25 @@ function InputController({
         setActivityList(
           response.filter(
             (data) =>
-              data.SearchText == 'Activity' || data.SearchText == 'ActivityAll'
+              data.SearchText === 'Activity' ||
+              data.SearchText === 'ActivityAll'
           )
         );
-        setProjectList(response.filter((data) => data.SearchText == 'Project'));
-        setProjectListReadOnly(response.filter((data) => data.SearchText == 'Project'));
+        setProjectList(
+          response.filter((data) => data.SearchText === 'Project')
+        );
+        setProjectListReadOnly(
+          response.filter((data) => data.SearchText === 'Project')
+        );
         tempProjectList = response.filter(
-          (data) => data.SearchText == 'Project'
+          (data) => data.SearchText === 'Project'
         );
         setCategoryList(
-          response.filter((data) => data.SearchText == 'Category')
+          response.filter((data) => data.SearchText === 'Category')
         );
 
-        setShiftList(response.filter((data) => data.SearchText == 'Shift'));
-        setColorTypes(response.filter((data) => data.SearchText == 'DayType'));
+        setShiftList(response.filter((data) => data.SearchText === 'Shift'));
+        setColorTypes(response.filter((data) => data.SearchText === 'DayType'));
         fetchData('Days', saveSubmitType);
         break;
       case 'Days':
@@ -134,7 +135,7 @@ function InputController({
             actRefs.push(actRef);
             catRefs.push(catRef);
             shiftRefs.push(shiftRef);
-            if (projectList.length == 1) {
+            if (projectList.length === 1) {
               item.lstColumns.map((eachDay) => {
                 eachDay.ProjectCode = projectList[0].Value;
               });
@@ -144,10 +145,10 @@ function InputController({
           onDaySelection(response);
           setApiDone(true);
           if (saveSubmitType !== '') {
-            if (saveSubmitType == 'Save') {
+            if (saveSubmitType === 'Save') {
               showToast('Your records has been saved successfully');
               navigation.pop();
-            } else if (saveSubmitType == 'Submit') {
+            } else if (saveSubmitType === 'Submit') {
               showToast('Your records has been submitted successfully');
               navigation.pop();
             } else {
@@ -181,7 +182,7 @@ function InputController({
           onDaySelection(response);
           setApiDone(true);
           if (saveSubmitType !== '') {
-            if (saveSubmitType == 'Save') {
+            if (saveSubmitType === 'Save') {
               showToast('Your records has been saved successfully');
             } else if (saveSubmitType == 'Submit') {
               showToast('Your records has been submitted successfully');
@@ -209,7 +210,7 @@ function InputController({
       getTodayHours(recordsResponse, currentDay).then((hours) => {
         if (
           hours < 1 &&
-          !recordsResponse.find((item) => item.TodayDate == currentDay) &&
+          !recordsResponse.find((item) => item.TodayDate === currentDay) &&
           allApiDone
         ) {
           addMoreRecord(startDate);
@@ -240,22 +241,34 @@ function InputController({
     }
   }, [remarks]);
 
- const updateProject = () => {
-  let projArray = [];
-  projectListReadOnly.map((item) => {
-    let startDate = moment(moment(item.Selected.split(' - ')[0], 'DD-MMM-YYYY').format('DD-MMM-YYYY'));
-    let endDate = moment(moment(item.Selected.split(' - ')[1], 'DD-MMM-YYYY').format('DD-MMM-YYYY'));
-    if (moment(todayDate).isBetween(startDate,endDate) || moment(todayDate).isSame(startDate) || moment(todayDate).isSame(endDate)){
-         projArray.push(item);
+  const updateProject = () => {
+    let projArray = [];
+    projectListReadOnly.map((item) => {
+      let startDate = moment(
+        moment(item.Selected.split(' - ')[0], 'DD-MMM-YYYY').format(
+          'DD-MMM-YYYY'
+        )
+      );
+      let endDate = moment(
+        moment(item.Selected.split(' - ')[1], 'DD-MMM-YYYY').format(
+          'DD-MMM-YYYY'
+        )
+      );
+      if (
+        moment(todayDate).isBetween(startDate, endDate) ||
+        moment(todayDate).isSame(startDate) ||
+        moment(todayDate).isSame(endDate)
+      ) {
+        projArray.push(item);
+      }
+    });
+    if (projArray?.length > 0) {
+      console.log('Setting project in if condition : ', projArray);
+      setProjectList(projArray);
+    } else {
+      setProjectList(projectListReadOnly);
+      console.log('Setting project in else condition : ', projectListReadOnly);
     }
-   });
-   if (projArray?.length > 0){
-    console.log('Setting project in if condition : ', projArray);
-    setProjectList(projArray);
-   } else {
-    setProjectList(projectListReadOnly);
-    console.log('Setting project in else condition : ', projectListReadOnly);
-   }
   };
 
   useEffect(() => {
@@ -268,7 +281,7 @@ function InputController({
       getTodayHours(recordsResponse, currentDay).then((hours) => {
         if (
           hours < 1 &&
-          !recordsResponse?.find((item) => item?.TodayDate == currentDay) &&
+          !recordsResponse?.find((item) => item?.TodayDate === currentDay) &&
           allApiDone
         ) {
           if (isWorkingDay) {
@@ -308,11 +321,11 @@ function InputController({
   };
   const onProjectSelection = (index, projectValue, tileIndex) => {
     let datatoUpdate = recordsResponse[tileIndex];
-    let day = datatoUpdate.lstColumns.find((data) => data.Key == currentDay);
+    let day = datatoUpdate.lstColumns.find((data) => data.Key === currentDay);
     let idx = datatoUpdate.lstColumns.findIndex(
-      (element) => element.Key == currentDay
+      (element) => element.Key === currentDay
     );
-    let projCode = projectList.find((item) => projectValue == item.Display)
+    let projCode = projectList.find((item) => projectValue === item.Display)
       .Value;
     day.ProjectCode = projCode;
     datatoUpdate.lstColumns[idx] = day;
@@ -321,11 +334,11 @@ function InputController({
   };
   const onActivitySelection = (index, activityValue, tileIndex) => {
     let datatoUpdate = recordsResponse[tileIndex];
-    let day = datatoUpdate.lstColumns.find((data) => data.Key == currentDay);
+    let day = datatoUpdate.lstColumns.find((data) => data.Key === currentDay);
     let idx = datatoUpdate.lstColumns.findIndex(
-      (element) => element.Key == currentDay
+      (element) => element.Key === currentDay
     );
-    let actCode = activityList.find((item) => activityValue == item.Display)
+    let actCode = activityList.find((item) => activityValue === item.Display)
       .Value;
     let statusCode = activityList[index];
     if (day && actCode) {
@@ -339,24 +352,24 @@ function InputController({
 
   const onCategorySelection = (index, categoryValue, tileIndex) => {
     let datatoUpdate = recordsResponse[tileIndex];
-    let day = datatoUpdate.lstColumns.find((data) => data.Key == currentDay);
+    let day = datatoUpdate.lstColumns.find((data) => data.Key === currentDay);
     let idx = datatoUpdate.lstColumns.findIndex(
-      (element) => element.Key == currentDay
+      (element) => element.Key === currentDay
     );
-    let catCode = categoryList.find((item) => categoryValue == item.Display)
+    let catCode = categoryList.find((item) => categoryValue === item.Display)
       .Value;
     day.CategoryCode = catCode;
     datatoUpdate.lstColumns[idx] = day;
     recordsResponse[tileIndex] = datatoUpdate;
     setRecords([...recordsResponse]);
   };
-  const onshiftSelection = (index, shiftValue, tileIndex) => {
+  const onShiftSelection = (index, shiftValue, tileIndex) => {
     let datatoUpdate = recordsResponse[tileIndex];
-    let day = datatoUpdate.lstColumns.find((data) => data.Key == currentDay);
+    let day = datatoUpdate.lstColumns.find((data) => data.Key === currentDay);
     let idx = datatoUpdate.lstColumns.findIndex(
-      (element) => element.Key == currentDay
+      (element) => element.Key === currentDay
     );
-    let shiftCode = shiftList.find((item) => shiftValue == item.Display).Value;
+    let shiftCode = shiftList.find((item) => shiftValue === item.Display).Value;
 
     let restriction = false;
 
@@ -364,10 +377,10 @@ function InputController({
       if (item.TodayDate) {
         getTodayData(recordsResponse, currentDay).then((todayData) => {
           todayData.map((item) => {
-            if (shiftCode == '1' && item.ShiftCode == '2') {
+            if (shiftCode === '1' && item.ShiftCode === '2') {
               restriction = true;
             }
-            if (shiftCode == '2' && item.ShiftCode == '1') {
+            if (shiftCode === '2' && item.ShiftCode === '1') {
               restriction = true;
             }
           });
@@ -375,10 +388,10 @@ function InputController({
       } else {
         getTodayData2(recordsResponse, currentDay).then((todayData) => {
           todayData.map((item) => {
-            if (shiftCode == '1' && item.ShiftCode == '2') {
+            if (shiftCode === '1' && item.ShiftCode === '2') {
               restriction = true;
             }
-            if (shiftCode == '2' && item.ShiftCode == '1') {
+            if (shiftCode === '2' && item.ShiftCode === '1') {
               restriction = true;
             }
           });
@@ -407,7 +420,7 @@ function InputController({
     let datatoUpdate = recordsResponse[index];
     if (datatoUpdate) {
       datatoUpdate.lstColumns.find(
-        (item) => item.Key == currentDay
+        (item) => item.Key === currentDay
       ).Value = text;
       recordsResponse[index] = datatoUpdate;
       setRecords([...recordsResponse]);
@@ -430,7 +443,7 @@ function InputController({
     let datatoUpdate = recordsResponse[index];
     if (datatoUpdate) {
       datatoUpdate.lstColumns.find(
-        (item) => item.Key == currentDay
+        (item) => item.Key === currentDay
       ).Remarks1 = text;
       // datatoUpdate.Remarks1 = text;
       recordsResponse[index] = datatoUpdate;
@@ -462,7 +475,7 @@ function InputController({
       dayTypes
     );
     let projList = tempProjectList.length > 0 ? tempProjectList : projectList;
-    if (projList.length == 1) {
+    if (projList.length === 1) {
       record.lstColumns.map((item) => {
         item.ProjectCode = projList[0].Value;
       });
@@ -481,7 +494,7 @@ function InputController({
     setLoading(true);
     setApiDone(false);
     let dataToDelete = recordsResponse[tileIndex].lstColumns.find(
-      (item) => item.Key == currentDay
+      (item) => item.Key === currentDay
     );
     deleteTimeSheetRecord(
       loginData,
@@ -493,7 +506,7 @@ function InputController({
   };
   const fetchData = async (type, saveSubmitType) => {
     let data = {};
-    data.Type = type == 'Binding' || type == 'Days' ? 3 : 4;
+    data.Type = type === 'Binding' || type === 'Days' ? 3 : 4;
     data.StartDate = startDate;
     data.EndDate = endDate;
     data.EmpCode = empData.empData[0].EmpCode;
@@ -530,10 +543,11 @@ function InputController({
       }
       console.log('Test Data : ', empData.empData[0]);
       setWorkingDay(
-        dayTypes?.find((item) => item?.StartDate == currentDay)?.DayID == 1 ||
-          dayTypes?.find((item) => item?.StartDate == currentDay)?.DayID == 5 ||
-          empData.empData[0]?.IsWeekEndAllow == true ||
-          empData.empData[0]?.IsHolidayAllow == true
+        dayTypes?.find((item) => item?.StartDate === currentDay)?.DayID === 1 ||
+          dayTypes?.find((item) => item?.StartDate === currentDay)?.DayID ===
+            5 ||
+          empData.empData[0]?.IsWeekEndAllow === true ||
+          empData.empData[0]?.IsHolidayAllow === true
       );
     }
     if (actRefs.length > 0) {
@@ -544,28 +558,28 @@ function InputController({
         let catRef = catRefs[i];
         shiftRef = shiftRefs[i];
         let currentObject = response?.lstColumns?.find(
-          (item) => item.Key == currentDay
+          (item) => item.Key === currentDay
         );
 
         actRef?.current?.select(
           activityList.findIndex(
-            (item) => item.Value == currentObject?.ActivityCode
+            (item) => item.Value === currentObject?.ActivityCode
           )
         );
         if (projRef.current !== null) {
-          if (projectList?.length == 1) {
+          if (projectList?.length === 1) {
             setProjVal(projectList[0].Display);
           }
           projRef.current.select(
             projectList.findIndex(
-              (item) => item.Value == currentObject?.ProjectCode
+              (item) => item.Value === currentObject?.ProjectCode
             )
           );
         }
         if (catRef.current !== null) {
           catRef.current.select(
             categoryList.findIndex(
-              (item) => item.Value == currentObject?.CategoryCode
+              (item) => item.Value === currentObject?.CategoryCode
             )
           );
         }
@@ -573,7 +587,7 @@ function InputController({
         if (shiftRef.current !== null) {
           shiftRef.current.select(
             shiftList.findIndex(
-              (item) => item.Value == currentObject?.ShiftCode
+              (item) => item.Value === currentObject?.ShiftCode
             )
           );
         }
@@ -586,7 +600,7 @@ function InputController({
     if (dayTypes.length > 0) {
       dayTypes.map((item) => {
         daysColor.map((colorItem) => {
-          if (item.DayID == colorItem.Value) {
+          if (item.DayID === colorItem.Value) {
             item.backGroundColor = colorItem.Selected;
           }
         });
@@ -601,18 +615,19 @@ function InputController({
     fetchData('Binding', submitType);
   };
   const saveData = async (data) => {
-
-    console.log("savedata",data)
+    console.log('savedata', data);
     let records = [];
     let isRemarksRequired = false;
     let isShiftRequired = false;
     data.map((item) => {
-      if(!item.IsMultipleSupv ) item.SupervisorName = setSupervisor
+      if (!item.IsMultipleSupv) {
+        item.SupervisorName = setSupervisor;
+      }
       let weekDays = item.lstColumns;
       if (weekDays) {
         for (let i = 0; i < weekDays.length; i++) {
           let day = weekDays[i];
-          if (day.Value !== '' && day.Remarks1 == '' && day.Selected == 1) {
+          if (day.Value !== '' && day.Remarks1 === '' && day.Selected === 1) {
             isRemarksRequired = true;
           }
           // if (day.Value !== '' && day.ShiftCode == '0'){
@@ -624,7 +639,7 @@ function InputController({
     if (isRemarksRequired) {
       return alert('Remarks required for selected activity.');
     }
-    if (isShiftRequired == true) {
+    if (isShiftRequired === true) {
       return alert('Shift code  required for selected day.');
     }
     getTodayHours(recordsResponse, currentDay).then(async (hours) => {
@@ -635,7 +650,6 @@ function InputController({
           } hours a day.`
         );
       } else {
-     
         let errorMessage = await validateData4(
           data,
           recordsResponse,
@@ -643,28 +657,23 @@ function InputController({
           empData,
           dayTypes,
           currentDay,
-          projectList,
-     
+          projectList
         );
         if (errorMessage && errorMessage.length > 0) {
           return alert(errorMessage[0]);
         }
         setLoading(true);
         setApiDone(false);
-           //added in formdata
-//  let supervisorCodeValue =setSupervisor
-// const [code,name]  =supervisorCodeValue.split(":");
-   
-console.log(code) 
-
+        //added in formdata
+        //  let supervisorCodeValue =setSupervisor
+        // const [code,name]  =supervisorCodeValue.split(":");
         let recordData = await prepareTimeSheetData(data, empData);
         saveSubmitTimeSheet(
           loginData,
           recordData,
           onSaveSubmitSuccess,
           onResponseFailure,
-          'Save',
-         
+          'Save'
         );
       }
     });
@@ -699,8 +708,21 @@ console.log(code)
       }
       setLoading(true);
       setApiDone(false);
-      let recordData = await prepareTimeSheet(data, empData);
-      let updatedData = await prepareTimeSheetApprove(data, empData);
+      let recordData,
+        updatedData = null;
+      try {
+        recordData = await prepareTimeSheet(data, empData);
+        console.log('prepareTimeSheet onApproveData', recordData);
+      } catch (error) {
+        console.log('onApproveData', error);
+      }
+
+      try {
+        updatedData = await prepareTimeSheetApprove(data, empData);
+        console.log('prepareTimeSheetApprove', updatedData);
+      } catch (error) {
+        console.log('prepareTimeSheetApprove error', error);
+      }
       approveRejectTimeSheet(
         loginData,
         recordData,
@@ -711,6 +733,53 @@ console.log(code)
       );
     } else {
       return alert(saveError[0]);
+    }
+  };
+
+  const onSubmitTimeSheet = async () => {
+    setRejectionModal(false);
+    try {
+      let data = rejectionData;
+      let saveError = await validateData4(
+        data,
+        recordsResponse,
+        'Save',
+        empData,
+        dayTypes,
+        currentDay,
+        projectList
+      );
+      if (saveError.length < 1) {
+        let errorMessage = await validateDataForSubmit(
+          data,
+          recordsResponse,
+          'Submit',
+          empData,
+          dayTypes
+        );
+        if (errorMessage && errorMessage.length > 0) {
+          return alert(errorMessage[0]);
+        }
+        setLoading(true);
+        setApiDone(false);
+        let recordData = await prepareTimeSheet(
+          data,
+          empData,
+          rejectionRemarks
+        );
+        console.log('prepareTimeSheet response', recordData);
+        approveRejectTimeSheet(
+          loginData,
+          recordData,
+          onApprovalRejectSuccess,
+          onResponseFailure,
+          'Reject'
+        );
+      } else {
+        return alert(saveError[0]);
+      }
+    } catch (error) {
+      console.log('on submit timesheet', error);
     }
   };
 
@@ -748,49 +817,7 @@ console.log(code)
               <CustomButton
                 label={globalConstants.SUBMIT_TEXT}
                 positive={true}
-                performAction={() => {
-                  setRejectionModal(false);
-                  setTimeout(async () => {
-                    let data = rejectionData;
-                    let saveError = await validateData4(
-                      data,
-                      recordsResponse,
-                      'Save',
-                      empData,
-                      dayTypes,
-                      currentDay,
-                      projectList
-                    );
-                    if (saveError.length < 1) {
-                      let errorMessage = await validateDataForSubmit(
-                        data,
-                        recordsResponse,
-                        'Submit',
-                        empData,
-                        dayTypes
-                      );
-                      if (errorMessage && errorMessage.length > 0) {
-                        return alert(errorMessage[0]);
-                      }
-                      setLoading(true);
-                      setApiDone(false);
-                      let recordData = await prepareTimeSheet(
-                        data,
-                        empData,
-                        rejectionRemarks
-                      );
-                      approveRejectTimeSheet(
-                        loginData,
-                        recordData,
-                        onApprovalRejectSuccess,
-                        onResponseFailure,
-                        'Reject'
-                      );
-                    } else {
-                      return alert(saveError[0]);
-                    }
-                  }, 1000);
-                }}
+                performAction={() => onSubmitTimeSheet()}
               />
             </View>
           </View>
@@ -811,7 +838,6 @@ console.log(code)
       dayTypes,
       currentDay,
       projectList
-      
     );
     if (saveError.length < 1) {
       let errorMessage = await validateDataForSubmit(
@@ -826,20 +852,27 @@ console.log(code)
       }
       setLoading(true);
       setApiDone(false);
- //added in formdata
-let supervisorCodeValue =setSupervisor
-const [supervisorCode,SupervisorName]  = supervisorCodeValue? supervisorCodeValue.split(":"):"";
-   
-console.log(supervisorCode) 
+      //added in formdata
+      let supervisorCodeValue = setSupervisor;
+      const [supervisorCode, SupervisorName] = supervisorCodeValue
+        ? supervisorCodeValue.split(':')
+        : '';
 
-      let recordData = await prepareTimeSheet(data, empData,"",supervisorCode);
-     
+      console.log(supervisorCode);
+
+      let recordData = await prepareTimeSheet(
+        data,
+        empData,
+        '',
+        supervisorCode
+      );
+
       saveSubmitTimeSheet(
         loginData,
         recordData,
         onSaveSubmitSuccess,
         onResponseFailure,
-       
+
         'Submit'
       );
     } else {
@@ -880,8 +913,8 @@ console.log(supervisorCode)
           {recordsResponse.map((tile, index) => {
             if (
               tile.lstColumns[
-                tile.lstColumns.findIndex((item) => item.Key == currentDay)
-              ]?.DID == 0 ||
+                tile.lstColumns.findIndex((item) => item.Key === currentDay)
+              ]?.DID === 0 ||
               (tile.TodayDate !== undefined && tile.TodayDate !== currentDay)
             ) {
               return null;
@@ -980,7 +1013,7 @@ console.log(supervisorCode)
                             )}
                             onDropdownWillShow={(data) => {}}
                             dropDownCallBack={(idx, value) => {
-                              return onshiftSelection(idx, value, index);
+                              return onShiftSelection(idx, value, index);
                             }}
                           />
                         </View>
@@ -988,7 +1021,7 @@ console.log(supervisorCode)
 
                       <View style={styles.rowHolder}>
                         <View
-                          style={{ flex: 0.65, backgroundColor: '#E5F2FD'}}
+                          style={{ flex: 0.65, backgroundColor: '#E5F2FD' }}
                         >
                           <Text style={styles.dropdownText}>Hours</Text>
                         </View>
@@ -999,10 +1032,10 @@ console.log(supervisorCode)
                           value={
                             recordsResponse[index].lstColumns &&
                             recordsResponse[index].lstColumns.find(
-                              (item) => currentDay == item.Key
+                              (item) => currentDay === item.Key
                             )
                               ? recordsResponse[index].lstColumns.find(
-                                  (item) => currentDay == item.Key
+                                  (item) => currentDay === item.Key
                                 ).Value
                               : ''
                           }
@@ -1024,10 +1057,10 @@ console.log(supervisorCode)
                         multiline={true}
                         value={
                           recordsResponse[index]?.lstColumns?.find(
-                            (item) => currentDay == item.Key
+                            (item) => currentDay === item.Key
                           )?.Remarks1
                             ? recordsResponse[index].lstColumns.find(
-                                (item) => currentDay == item.Key
+                                (item) => currentDay === item.Key
                               ).Remarks1
                             : ''
                         }
@@ -1053,7 +1086,7 @@ console.log(supervisorCode)
                 >
                   <Text style={styles.holidayText}>
                     {
-                      dayTypes.find((item) => item.StartDate == currentDay)
+                      dayTypes.find((item) => item.StartDate === currentDay)
                         .DayType
                     }
                   </Text>
@@ -1079,13 +1112,13 @@ console.log(supervisorCode)
                     getTodayData(recordsResponse, currentDay).then(
                       (todayData) => {
                         todayData.map((item) => {
-                          if (item.Value == 0) {
+                          if (item.Value === 0) {
                             errors.push('Please fill hours in given record');
-                          } else if (item.ActivityCode == 0) {
+                          } else if (item.ActivityCode === 0) {
                             errors.push(
                               'Please select Activity Code in given record'
                             );
-                          } else if (item.ProjectCode == 'NO-PRJ') {
+                          } else if (item.ProjectCode === 'NO-PRJ') {
                             errors.push(
                               'Please select Project code in given record'
                             );

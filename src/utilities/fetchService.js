@@ -75,7 +75,7 @@ export const fetchPOSTMethodNew = async (url, form) => {
   return res;
 };
 
-// login method
+// login method/ check Version Update
 export const fetchPOSTMethod = async (url, form) => {
   let myURLArr = url.split('/');
   let apiEndPoint = myURLArr[myURLArr.length - 1];

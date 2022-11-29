@@ -1,45 +1,45 @@
-import React, { Component } from "react";
-import { Text, View, Platform, Linking, NativeModules } from "react-native";
-import { connect } from "react-redux";
+import React, { Component } from 'react';
+import { Text, View, Platform, Linking, NativeModules } from 'react-native';
+import { connect } from 'react-redux';
 import {
   loginActionCreator,
   modalAction,
   loginAction,
-} from "../login/LoginAction";
-import SplashScreen from "react-native-splash-screen";
-import { getUserName, getLoginType } from "./AuthUtility";
-import ActivityIndicatorView from "../../GlobalComponent/myActivityIndicator";
-import RNExitApp from "react-native-exit-app";
-import { checkVersion } from "./AuthActionCreator";
-import { writeLog } from "../../utilities/logger";
-import env from "react-native-config";
-import { ANDROID_URI, IOS_URI, TEMP_URI, IOS_DEV_URI } from "./constants";
-import { AD_LOGIN, APP_LOGIN } from "../login/constants";
-import { pendingActionCreator } from "../Dashboard/PendingAction";
-import properties from "../../resource/properties";
-import { styles } from "../Dashboard/styles";
-import UserMessage from "../../components/userMessage";
-import { isAppInstalled } from "react-native-send-intent";
-import { DEVICE_VERSION } from "../../components/DeviceInfoFile";
-let SendIntentAndroid = require("react-native-send-intent");
+} from '../login/LoginAction';
+import SplashScreen from 'react-native-splash-screen';
+import { getUserName, getLoginType } from './AuthUtility';
+import ActivityIndicatorView from '../../GlobalComponent/myActivityIndicator';
+import RNExitApp from 'react-native-exit-app';
+import { checkVersion } from './AuthActionCreator';
+import { writeLog } from '../../utilities/logger';
+import env from 'react-native-config';
+import { ANDROID_URI, IOS_URI, TEMP_URI, IOS_DEV_URI } from './constants';
+import { AD_LOGIN, APP_LOGIN } from '../login/constants';
+import { pendingActionCreator } from '../Dashboard/PendingAction';
+import properties from '../../resource/properties';
+import { styles } from '../Dashboard/styles';
+import UserMessage from '../../components/userMessage';
+import { isAppInstalled } from 'react-native-send-intent';
+import { DEVICE_VERSION } from '../../components/DeviceInfoFile';
+let SendIntentAndroid = require('react-native-send-intent');
 
 class AuthScreen extends Component {
   _isFocus = false;
   navigateToDashboard = () => {
     // console.log("Navigating to dashboard....")
     SplashScreen.hide();
-    this.props.navigation.replace("DashBoardNew2");
+    this.props.navigation.replace('DashBoardNew2');
   };
   callLoginService = async (val) => {
     // console.log("Version matched is : ", val)
     getLoginType().then(async (value) => {
       SplashScreen.hide();
-      console.log("Login type is :", value);
+      console.log('Login type is :', value);
       if (value === null) {
-        this.props.navigation.replace("Login");
+        this.props.navigation.replace('Login');
       } else if (value === AD_LOGIN) {
         let url = properties.adLoginUrl;
-        this.props.navigation.replace("WebRoute", {
+        this.props.navigation.replace('WebRoute', {
           URL: properties.adLoginUrl,
         });
       } else if (value === APP_LOGIN) {
@@ -48,9 +48,9 @@ class AuthScreen extends Component {
           if (userData !== null && userData !== undefined) {
             this.props.updateLoginData(userData);
             this.props.getPendingCounts(userData, false);
-            this.props.navigation.replace("DashBoardNew2");
+            this.props.navigation.replace('DashBoardNew2');
           } else {
-            this.props.navigation.replace("Login");
+            this.props.navigation.replace('Login');
           }
         });
       }
@@ -58,7 +58,7 @@ class AuthScreen extends Component {
   };
   async componentDidMount() {
     this.props.checkForVersion(this.callLoginService);
-    this.props.navigation.addListener("willFocus", this.onFocus);
+    this.props.navigation.addListener('willFocus', this.onFocus);
   }
   onFocus = () => {
     this._isFocus = true;
@@ -67,15 +67,15 @@ class AuthScreen extends Component {
     this._isFocus = false;
   }
   handleCancel = () => {
-    writeLog("Clicked on " + "handleCancel" + " of " + "AuthScreen");
+    writeLog('Clicked on ' + 'handleCancel' + ' of ' + 'AuthScreen');
     this.props.modalAction(false);
     RNExitApp.exitApp();
   };
   handleConfirm = (msg) => {
-    writeLog("Clicked on " + "handleConfirm" + " of " + "AuthScreen");
+    writeLog('Clicked on ' + 'handleConfirm' + ' of ' + 'AuthScreen');
     this.props.modalAction(false);
     let iOS_URI = properties.isDevEnvironment ? IOS_DEV_URI : IOS_URI;
-    let URI = Platform.OS === "android" ? env.ANDROID_URI : iOS_URI;
+    let URI = Platform.OS === 'android' ? env.ANDROID_URI : iOS_URI;
     if (
       this.props.appVersion.Version &&
       this.props.appVersion.Version !== DEVICE_VERSION
@@ -92,8 +92,8 @@ class AuthScreen extends Component {
           // console.log("Don't know how to open URI: " + URI)
         }
       });
-    } else if (msg && msg.includes("Invalid credentials")) {
-      this.props.navigation.replace("Login");
+    } else if (msg && msg.includes('Invalid credentials')) {
+      this.props.navigation.replace('Login');
     } else {
       RNExitApp.exitApp();
     }
@@ -101,36 +101,41 @@ class AuthScreen extends Component {
   showDialogBox() {
     let exception;
     let heading;
+    console.log(
+      'app launch ===',
+      this.props.modal_auth_loading,
+      this.props.appVersion
+    );
     if (this.props.modal_auth_loading) {
       if (
-        Platform.OS === "android" &&
-        this.props.appVersion.hasOwnProperty("Version")
+        Platform.OS === 'android' &&
+        this.props.appVersion.hasOwnProperty('Version')
       ) {
         SplashScreen.hide();
         exception =
-          "Latest version of app is available. Press OK button to update.";
-        heading = "Version Update";
-      } else if (this.props.appVersion.hasOwnProperty("Version")) {
+          'Latest version of app is available. Press OK button to update.';
+        heading = 'Version Update';
+      } else if (this.props.appVersion.hasOwnProperty('Version')) {
         SplashScreen.hide();
         exception =
-          "Latest version of iEngage App has been made available on iEngage website. Please uninstall the old version from your phone. Using mobile phone browser, install latest iEngage App from iEngage website main page.";
-        heading = "Version Update";
-      } else if (this.props.authError.hasOwnProperty("Exception")) {
+          'Latest version of iEngage App has been made available on iEngage website. Please uninstall the old version from your phone. Using mobile phone browser, install latest iEngage App from iEngage website main page.';
+        heading = 'Version Update';
+      } else if (this.props.authError.hasOwnProperty('Exception')) {
         SplashScreen.hide();
-        heading = "Error";
+        heading = 'Error';
         exception = this.props.authError.Exception;
-      } else if (this.props.loginData.hasOwnProperty("res")) {
+      } else if (this.props.loginData.hasOwnProperty('res')) {
         SplashScreen.hide();
-        heading = "Error";
-        exception = "Invalid credentials , Plese enter valid credentials.";
-      } else if (this.props.loginData.hasOwnProperty("Exception")) {
+        heading = 'Error';
+        exception = 'Invalid credentials , Plese enter valid credentials.';
+      } else if (this.props.loginData.hasOwnProperty('Exception')) {
         SplashScreen.hide();
-        heading = "Error";
+        heading = 'Error';
         exception = this.props.loginData.Exception;
       }
       // console.log("Exception to show in auth dialog is:", exception)
       writeLog(
-        "Dialog is open with exception " + exception + " on " + "AuthScreen"
+        'Dialog is open with exception ' + exception + ' on ' + 'AuthScreen'
       );
       return (
         <UserMessage

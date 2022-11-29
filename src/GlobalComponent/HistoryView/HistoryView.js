@@ -51,13 +51,11 @@ export const HistoryView = (props) => {
           <View style={{ marginBottom: 10 }}>
             {props.historyData && props.historyData.length > 0 ? (
               <FlatList
+                keyExtractor={(item, index) => `${item.EmployeeName}_${index}`}
                 data={props.historyData}
                 contentContainerStyle={{ paddingBottom: setHeight(1) }}
                 renderItem={({ item, index }) => (
-                  <View
-                    key={index?.toString()}
-                    style={globalFontStyle.panelContainer}
-                  >
+                  <View style={globalFontStyle.panelContainer}>
                     <View
                       style={{
                         flexDirection: 'row',
