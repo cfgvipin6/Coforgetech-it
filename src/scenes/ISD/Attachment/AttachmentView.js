@@ -201,7 +201,7 @@ export const AttachmentView = (props) => {
     if (
       fileId !== undefined &&
       fileId !== null &&
-      props?.isComingFrom == 'HR'
+      props?.isComingFrom === 'HR'
     ) {
       downloadHrFile(
         loginData,
