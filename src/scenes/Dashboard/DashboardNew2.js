@@ -514,6 +514,7 @@ class DashboardNew2 extends PureComponent {
   };
 
   renderPrivacyComponent = () => {
+    console.log('renderPrivacyComponent === ');
     return (
       <PrivacyFile
         navigation={this.props.navigation}
@@ -524,11 +525,6 @@ class DashboardNew2 extends PureComponent {
   };
 
   render() {
-    console.log(
-      'isPrivacyPolicyOpen',
-      this.state.isPrivacyPolicyOpen,
-      this.state.isAcceptPrivacyPolicy
-    );
     const restrictedCompanies =
       this.props.loginData?.CO_CODE == 'N081' ||
       this.props.loginData?.CO_CODE == 'N082' ||
@@ -585,12 +581,18 @@ class DashboardNew2 extends PureComponent {
       data = data.filter((item) => item.key !== 'IT-Desk');
     }
 
+    const { isPrivacyPolicyOpen, isAcceptPrivacyPolicy } = this.state;
+    console.log(
+      'isPrivacyPolicyOpen === ',
+      isPrivacyPolicyOpen,
+      isAcceptPrivacyPolicy
+    );
+
     return (
       <View style={{ flex: 1 }}>
-        {!this.state.isPrivacyPolicyOpen &&
-          !this.state.isAcceptPrivacyPolicy && (
-            <View style={{ flex: 1 }}>{this.renderPrivacyComponent()}</View>
-          )}
+        {!isPrivacyPolicyOpen && !isAcceptPrivacyPolicy && (
+          <View style={{ flex: 1 }}>{this.renderPrivacyComponent()}</View>
+        )}
         <ImageBackground
           style={styles.backGroundView}
           source={images.loginBackground}
@@ -685,14 +687,14 @@ const mapDispatchToProps = (dispatch) => {
 };
 const mapStateToProps = (state) => {
   return {
-    loginData: state && state.loginReducer && state.loginReducer.loginData,
-    pendingData: state.pendingReducer.pendingData,
-    loading: state.pendingReducer.loading_pending,
-    pendingError: state.pendingReducer.pendingError,
-    attendanceData: state.pendingReducer.attendanceData,
-    attendanceError: state.pendingReducer.attendanceError,
-    eligibilityData: state.pendingReducer.eligibilityData,
-    viewAttendanceError: state.pendingReducer.viewAttendanceError,
+    loginData: state?.loginReducer?.loginData,
+    pendingData: state?.pendingReducer?.pendingData,
+    loading: state?.pendingReducer?.loading_pending,
+    pendingError: state?.pendingReducer?.pendingError,
+    attendanceData: state?.pendingReducer?.attendanceData,
+    attendanceError: state?.pendingReducer?.attendanceError,
+    eligibilityData: state?.pendingReducer?.eligibilityData,
+    viewAttendanceError: state?.pendingReducer?.viewAttendanceError,
   };
 };
 
