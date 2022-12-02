@@ -1,34 +1,34 @@
-import React, { Component } from "react";
-import { Text, View, Alert, BackHandler, ImageBackground } from "react-native";
-import { connect } from "react-redux";
-import { familyActionCreator, resetFamily } from "./familyActionCreator";
-import { ScrollView } from "react-native-gesture-handler";
-import { styles } from "./styles";
-import ActivityIndicatorView from "../../GlobalComponent/myActivityIndicator";
-import SubHeader from "../../GlobalComponent/SubHeader";
-import { globalFontStyle } from "../../components/globalFontStyle";
-import helper from "../../utilities/helper";
-import { NO_FAMILY } from "./constants";
-import { writeLog } from "../../utilities/logger";
-import UserMessage from "../../components/userMessage";
-import BoxContainer from "../../components/boxContainer.js";
-import images from "../../images";
-let appConfig = require("../../../appconfig");
-let globalConstants = require("../../GlobalConstants");
+import React, { Component } from 'react';
+import { Text, View, Alert, BackHandler, ImageBackground } from 'react-native';
+import { connect } from 'react-redux';
+import { familyActionCreator, resetFamily } from './familyActionCreator';
+import { ScrollView } from 'react-native-gesture-handler';
+import { styles } from './styles';
+import ActivityIndicatorView from '../../GlobalComponent/myActivityIndicator';
+import SubHeader from '../../GlobalComponent/SubHeader';
+import { globalFontStyle } from '../../components/globalFontStyle';
+import helper from '../../utilities/helper';
+import { NO_FAMILY } from './constants';
+import { writeLog } from '../../utilities/logger';
+import UserMessage from '../../components/userMessage';
+import BoxContainer from '../../components/boxContainer.js';
+import images from '../../images';
+let appConfig = require('../../../appconfig');
+let globalConstants = require('../../GlobalConstants');
 class FamilyScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
       errorPopUp: false,
-      isError: "",
-      noFamily: "",
+      isError: '',
+      noFamily: '',
     };
   }
   componentDidUpdate() {
     if (
       this.props.familyError &&
       this.props.familyError.length > 0 &&
-      this.state.isError === ""
+      this.state.isError === ''
     ) {
       setTimeout(() => {
         this.setState({ errorPopUp: true, isError: this.props.familyError });
@@ -37,7 +37,7 @@ class FamilyScreen extends Component {
       this.props.familyData.length === 0 &&
       this.props.noFamily &&
       this.props.familyError.length === 0 &&
-      this.state.noFamily === ""
+      this.state.noFamily === ''
     ) {
       setTimeout(() => {
         this.setState({ errorPopUp: true, noFamily: NO_FAMILY });
@@ -46,13 +46,13 @@ class FamilyScreen extends Component {
   }
   componentDidMount() {
     BackHandler.addEventListener(
-      "hardwareBackPress",
+      'hardwareBackPress',
       this.handleBackButtonClick
     );
-    this.props.navigation.addListener("willFocus", this.onFocus);
+    this.props.navigation.addListener('willFocus', this.onFocus);
   }
   onFocus = () => {
-    writeLog("Landed on " + "FamilyScreen");
+    writeLog('Landed on ' + 'FamilyScreen');
     this.props.loadFamily(
       this.props.loginData.SmCode,
       this.props.loginData.Authkey
@@ -61,7 +61,7 @@ class FamilyScreen extends Component {
   renderCardItem = (data) => {
     let keys = [];
     for (let key in data) {
-      if (key != "Relationship") {
+      if (key != 'Relationship') {
         keys.push(key);
       }
     }
@@ -71,10 +71,10 @@ class FamilyScreen extends Component {
       // console.log("Value : ", data[key].Value)
       if (data[key].IsActive) {
         return (
-          <View style={styles.cardView}>
+          <View key={data[key].Key} style={styles.cardView}>
             <Text style={globalFontStyle.cardLeftText}>{data[key].Key}</Text>
             <Text style={globalFontStyle.cardRightText}>
-              {data[key].Value === "" ? "-" : data[key].Value}
+              {data[key].Value === '' ? '-' : data[key].Value}
             </Text>
           </View>
         );
@@ -82,17 +82,18 @@ class FamilyScreen extends Component {
     });
   };
   renderFamilyData = () => {
-    return this.props.familyData.map((data) => {
+    return this.props.familyData.map((data, key) => {
+      console.log('data ====', data, key);
       return (
-        <BoxContainer style={{ margin: 10 }}>
+        <BoxContainer key={key} style={{ margin: 10 }}>
           <Text
             style={{
-              fontWeight: "bold",
+              fontWeight: 'bold',
               fontSize: 20,
-              alignSelf: "center",
+              alignSelf: 'center',
               backgroundColor: appConfig.APP_SKY,
-              width: "100%",
-              textAlign: "center",
+              width: '100%',
+              textAlign: 'center',
               color: appConfig.BLUISH_COLOR,
             }}
           >
@@ -104,19 +105,19 @@ class FamilyScreen extends Component {
     });
   };
   handleBack = () => {
-    writeLog("Clicked on " + "handleBack" + " of " + "FamilyScreen");
+    writeLog('Clicked on ' + 'handleBack' + ' of ' + 'FamilyScreen');
     // this.props.navigation.navigate("DashBoardNew")
     this.props.navigation.pop();
   };
   onOkNoFamily = () => {
     this.props.resetFamily();
-    this.setState({ errorPopUp: false, noFamily: "" }, () => {
+    this.setState({ errorPopUp: false, noFamily: '' }, () => {
       this.handleBack();
     });
   };
   componentWillUnmount() {
     BackHandler.removeEventListener(
-      "hardwareBackPress",
+      'hardwareBackPress',
       this.handleBackButtonClick
     );
     this.props.resetFamily();
@@ -129,9 +130,9 @@ class FamilyScreen extends Component {
   shouldPopup = () => {
     // console.log("In side show error of Family screen.")
     if (this.state.isError.length > 0) {
-      return this.showPopUp("Error", this.props.familyError);
+      return this.showPopUp('Error', this.props.familyError);
     } else if (this.state.noFamily.length > 0) {
-      return this.showPopUp("Info", this.state.noFamily);
+      return this.showPopUp('Info', this.state.noFamily);
     } else {
       return null;
     }
@@ -154,9 +155,9 @@ class FamilyScreen extends Component {
   };
 
   onOkClick = () => {
-    writeLog("Clicked on " + "onOkClick" + " of " + "Family Screen");
+    writeLog('Clicked on ' + 'onOkClick' + ' of ' + 'Family Screen');
     this.props.resetFamily();
-    this.setState({ errorPopUp: false, isError: "" }, () => {
+    this.setState({ errorPopUp: false, isError: '' }, () => {
       helper.onOkAfterError(this);
     });
   };

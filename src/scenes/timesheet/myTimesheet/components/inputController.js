@@ -243,14 +243,16 @@ function InputController({
 
   const updateProject = () => {
     let projArray = [];
-    projectListReadOnly.map((item) => {
+    console.log('projArray === : ', projectListReadOnly);
+    projectListReadOnly?.map((item) => {
+      console.log('=== item', item);
       let startDate = moment(
-        moment(item.Selected.split(' - ')[0], 'DD-MMM-YYYY').format(
+        moment(item?.Selected?.split(' - ')[0], 'DD-MMM-YYYY').format(
           'DD-MMM-YYYY'
         )
       );
       let endDate = moment(
-        moment(item.Selected.split(' - ')[1], 'DD-MMM-YYYY').format(
+        moment(item?.Selected?.split(' - ')[1], 'DD-MMM-YYYY').format(
           'DD-MMM-YYYY'
         )
       );
@@ -372,7 +374,7 @@ function InputController({
     let shiftCode = shiftList.find((item) => shiftValue === item.Display).Value;
 
     let restriction = false;
-
+    console.log(' === recordsResponse ', recordsResponse);
     recordsResponse.map((item) => {
       if (item.TodayDate) {
         getTodayData(recordsResponse, currentDay).then((todayData) => {
@@ -387,6 +389,7 @@ function InputController({
         });
       } else {
         getTodayData2(recordsResponse, currentDay).then((todayData) => {
+          console.log('=== todayData', todayData);
           todayData.map((item) => {
             if (shiftCode === '1' && item.ShiftCode === '2') {
               restriction = true;
@@ -806,7 +809,7 @@ function InputController({
             >
               <TextInput
                 placeholder={'Rejection remarks!'}
-                value={rejectionRemarks}
+                value={rejectionRemarks.toString()}
                 onChangeText={(text) => setRejectionRemarks(text)}
                 style={styles.remarksStyle2}
                 multi
@@ -854,11 +857,10 @@ function InputController({
       setApiDone(false);
       //added in formdata
       let supervisorCodeValue = setSupervisor;
+      console.log('supervisorCodeValue ===', supervisorCodeValue);
       const [supervisorCode, SupervisorName] = supervisorCodeValue
-        ? supervisorCodeValue.split(':')
+        ? supervisorCodeValue?.split(':')
         : '';
-
-      console.log(supervisorCode);
 
       let recordData = await prepareTimeSheet(
         data,
@@ -921,7 +923,7 @@ function InputController({
             }
             if (isWorkingDay) {
               return (
-                <View>
+                <View key={`${tile.DID}_${tile.DayID}_${index}`}>
                   {!disable && (
                     <TouchableOpacity
                       style={{ alignSelf: 'flex-end', marginRight: 10 }}
@@ -1079,6 +1081,7 @@ function InputController({
             } else {
               return (
                 <View
+                  key={`${tile.DID}_${tile.DayID}_${index}`}
                   style={[
                     styles.holidayContainer,
                     { backgroundColor: bgColor },

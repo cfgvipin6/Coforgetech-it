@@ -1,4 +1,4 @@
-import { styles } from "./styles";
+import { styles } from './styles';
 import {
   View,
   Text,
@@ -7,10 +7,10 @@ import {
   Modal,
   FlatList,
   Image,
-} from "react-native";
-import React, { Component } from "react";
-import { Icon, Button, SearchBar, Card } from "react-native-elements";
-import RadioForm from "react-native-simple-radio-button";
+} from 'react-native';
+import React, { Component } from 'react';
+import { Icon, Button, SearchBar, Card } from 'react-native-elements';
+import RadioForm from 'react-native-simple-radio-button';
 import {
   RESIGNATION_SUBMIT_DATE,
   REQUESTED_LWD,
@@ -24,9 +24,9 @@ import {
   RESIGNATION_TYPE,
   DOWN_ICON,
   PLANNED_SEPARATION,
-} from "./constants";
+} from './constants';
 export const ResignationDetails = (props) => {
-  console.log("Exit props", props);
+  console.log('Exit props', props);
   return (
     <Card title={RESIGNATION_TITLE}>
       <View style={styles.rowHolder}>
@@ -48,7 +48,7 @@ export const ResignationDetails = (props) => {
       <View style={styles.rowHolder}>
         <Text style={styles.heading}>{NP_REQUIRED}</Text>
         <Text style={styles.description}>
-          {props.noticePeriod === ""
+          {props.noticePeriod === ''
             ? props.exitItem.in_notice_reqd
             : props.noticePeriod.strNPreqd}
         </Text>
@@ -56,7 +56,7 @@ export const ResignationDetails = (props) => {
       <View style={styles.rowHolder}>
         <Text style={styles.heading}>{NP_SERVED}</Text>
         <Text style={styles.npServedText}>
-          {props.noticePeriod === ""
+          {props.noticePeriod === ''
             ? props.exitItem.in_notice_served
             : props.noticePeriod.npserv}
         </Text>
@@ -64,7 +64,7 @@ export const ResignationDetails = (props) => {
       <View style={styles.rowHolder}>
         <Text style={styles.heading}>{SHORT_FALL}</Text>
         <Text style={styles.shortFallText}>
-          {props.noticePeriod === ""
+          {props.noticePeriod === ''
             ? props.exitItem.in_notice_short
             : props.noticePeriod.npshort}
         </Text>
@@ -79,27 +79,27 @@ export const RadioForms = (props) => {
     props.labelHorizontal === true ? styles.radioButtonHolder : null;
   let centerStyle = styles.radioButtonHolderWithoutTitle;
   let initialVal = parseInt(props.selectedVal);
-  if (props.title === "Resignation type") {
+  if (props.title === 'Resignation type') {
     initialVal = initialVal - 1;
     disabledRadio = true;
   }
   if (props.title === NP_TREATMENT) {
   }
-  if (props.exitItem && props.exitItem.isApprovingAuth === "N") {
+  if (props.exitItem && props.exitItem.isApprovingAuth === 'N') {
     //planned separation case
     disabledRadio = true;
   }
-  if (props.selectedVal === "Y") {
+  if (props.selectedVal === 'Y') {
     initialVal = 0;
   }
-  if (props.selectedVal === "N") {
+  if (props.selectedVal === 'N') {
     initialVal = 1;
     // disabledRadio=true;
   }
-  if (props.selectedVal && props.selectedVal === "") {
+  if (props.selectedVal && props.selectedVal === '') {
     initialVal = 1;
   }
-  if (props.title === PLANNED_SEPARATION && props.selectedVal === "N") {
+  if (props.title === PLANNED_SEPARATION && props.selectedVal === 'N') {
     initialVal = 1;
   }
   // console.log("Initial val for title : ",props.title+" ",initialVal);
@@ -244,7 +244,7 @@ showSkillRequestsView = (parent) => {
         renderItem={({ item, index }) =>
           this.renderSkillItem(item, index, parent.pickSkill)
         }
-        keyExtractor={(item, index) => "pendingRequest_" + index.toString()}
+        keyExtractor={(item, index) => 'pendingRequest_' + index.toString()}
         // ItemSeparatorComponent={() => (
         //   <View style={{ backgroundColor: "white" }}>
         //     <Text></Text>
@@ -264,7 +264,7 @@ export const EditTextWithHeading = (parent) => {
       <TextInput
         autoCapitalize="none"
         autoCorrect={false}
-        autoCompleteType={false}
+        autoCompleteType="off"
         placeholder="Remarks"
         multiline={false}
         style={styles.reasonInputStyle}

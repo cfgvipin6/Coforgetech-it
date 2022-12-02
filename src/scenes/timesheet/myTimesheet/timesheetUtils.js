@@ -233,7 +233,7 @@ export const getTodayData = async (recordsResponse, currentDay) => {
 export const getTodayData2 = async (recordsResponse, currentDay) => {
   let dataContaier = [];
   let filteredTile = recordsResponse.filter((item) =>
-    item?.TimesheetDate.split(',').filter((item) => item == currentDay)
+    item?.TimesheetDate?.split(',').filter((item) => item == currentDay)
   );
   console.log('Filtered title : ', filteredTile);
   filteredTile.map((data) => {
@@ -243,8 +243,8 @@ export const getTodayData2 = async (recordsResponse, currentDay) => {
   return dataContaier;
 };
 
-export const prepareTimeSheetData = async (data) => {
-  console.log('dataprepare', data);
+export const prepareTimeSheetData = (data) => {
+  console.log('=== dataprepare', data);
   let records = [];
   data.forEach((item, index) => {
     let weekDays = item.lstColumns;

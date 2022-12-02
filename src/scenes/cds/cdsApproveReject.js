@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import {
   View,
   Text,
@@ -9,18 +9,18 @@ import {
   FlatList,
   Alert,
   ScrollView,
-} from "react-native";
-import { connect } from "react-redux";
-import SubHeader from "../../GlobalComponent/SubHeader";
-import { styles } from "./styles";
-import { globalFontStyle } from "../../components/globalFontStyle";
-import helper from "../../utilities/helper";
-import { cdsActionApprove, cdsActionTaken } from "./cdsAction";
-import UserMessage from "../../components/userMessage";
-import { writeLog } from "../../utilities/logger";
-import images from "../../images";
-let globalConstants = require("../../GlobalConstants");
-let constants = require("./constants");
+} from 'react-native';
+import { connect } from 'react-redux';
+import SubHeader from '../../GlobalComponent/SubHeader';
+import { styles } from './styles';
+import { globalFontStyle } from '../../components/globalFontStyle';
+import helper from '../../utilities/helper';
+import { cdsActionApprove, cdsActionTaken } from './cdsAction';
+import UserMessage from '../../components/userMessage';
+import { writeLog } from '../../utilities/logger';
+import images from '../../images';
+let globalConstants = require('../../GlobalConstants');
+let constants = require('./constants');
 
 export class CDSApproveReject extends Component {
   constructor(props) {
@@ -33,9 +33,9 @@ export class CDSApproveReject extends Component {
       (itemsStringArray = previousScreenData.itemsStringArray),
       (approverRoleValue = previousScreenData.approverRole),
       (this.state = {
-        remarks: "",
+        remarks: '',
         selectEmployeeOption: false,
-        selectedEmployeeValue: "",
+        selectedEmployeeValue: '',
         localCdsApproverList: [],
         showModal: false,
         resultModalVisible: false,
@@ -43,14 +43,14 @@ export class CDSApproveReject extends Component {
   }
 
   componentDidMount() {
-    writeLog("Landed on " + "CDSApproveReject");
-    if (action === "Approve") {
+    writeLog('Landed on ' + 'CDSApproveReject');
+    if (action === 'Approve') {
       let myData = this.props.fetchCdsActionApproveData(empData.CDSCode);
       // console.log("myData:",myData)
       writeLog(
-        "Fetching record for " +
-          "fetchCdsActionApproveData" +
-          " of " +
+        'Fetching record for ' +
+          'fetchCdsActionApproveData' +
+          ' of ' +
           empData.CDSCode
       );
     }
@@ -62,8 +62,8 @@ export class CDSApproveReject extends Component {
     if (
       nextProps.cdsApproverListData &&
       nextProps.cdsApproverListData.length > 0 &&
-      nextProps.cdsApproverListError === "" &&
-      nextProps.cdsActionTakenResponse === ""
+      nextProps.cdsApproverListError === '' &&
+      nextProps.cdsActionTakenResponse === ''
     ) {
       return {
         localCdsApproverList: nextProps.cdsApproverListData,
@@ -81,7 +81,7 @@ export class CDSApproveReject extends Component {
   componentDidUpdate() {
     if (
       this.state.resultModalVisible !== true &&
-      this.props.cdsActionTakenResponse === "Success"
+      this.props.cdsActionTakenResponse === 'Success'
     ) {
       setTimeout(() => {
         this.setState({
@@ -103,12 +103,12 @@ export class CDSApproveReject extends Component {
   }
   handleBack = () => {
     // this.props.resetCdsDetails();
-    writeLog("Clicked on " + "handleBack" + " of " + "CDSApproveReject");
+    writeLog('Clicked on ' + 'handleBack' + ' of ' + 'CDSApproveReject');
     this.props.navigation.pop();
   };
 
   showCdsRowGrid = (itemName, itemValue) => {
-    if (itemValue != "" && itemValue != null && itemValue != undefined) {
+    if (itemValue != '' && itemValue != null && itemValue != undefined) {
       return (
         <View style={styles.rowStyle}>
           <Text style={[globalFontStyle.imageBackgroundLayout, styles.textOne]}>
@@ -117,7 +117,7 @@ export class CDSApproveReject extends Component {
           <Text
             style={
               itemName === constants.UTILIZATION_TEXT &&
-              itemValue === "Non-Budget"
+              itemValue === 'Non-Budget'
                 ? [globalFontStyle.imageBackgroundLayout, styles.textTwoRed]
                 : [globalFontStyle.imageBackgroundLayout, styles.textTwo]
             }
@@ -144,7 +144,7 @@ export class CDSApproveReject extends Component {
             )}
             {this.showCdsRowGrid(
               globalConstants.EMPLOYEE_TEXT,
-              docDetails.EmpCode.concat(" : ").concat(docDetails.EmpName.trim())
+              docDetails.EmpCode.concat(' : ').concat(docDetails.EmpName.trim())
             )}
             {/* {this.showCdsRowGrid(
             constants.CDS_STATUS_DESC_TEXT,
@@ -153,13 +153,13 @@ export class CDSApproveReject extends Component {
             {this.showCdsRowGrid(
               globalConstants.COST_CENTER_TEXT,
               docDetails.CostCenterCode.trim()
-                .concat(" : ")
+                .concat(' : ')
                 .concat(docDetails.CostCenterName.trim())
             )}
             {this.showCdsRowGrid(
               globalConstants.PROJECT_TEXT,
               docDetails.ProjectCode.trim()
-                .concat(" : ")
+                .concat(' : ')
                 .concat(docDetails.ProjectName.trim())
             )}
             {this.showCdsRowGrid(
@@ -178,13 +178,13 @@ export class CDSApproveReject extends Component {
               constants.RECOVERABLE_TEXT,
               docDetails.RecoveryDesc
             )}
-            {docDetails.RecoveryDesc === "Yes"
+            {docDetails.RecoveryDesc === 'Yes'
               ? this.showCdsRowGrid(
                   constants.RECOVERY_DESC_TEXT,
                   docDetails.RecoveryModeDesc
                 )
               : null}
-            {docDetails.RecoveryDesc === "Yes"
+            {docDetails.RecoveryDesc === 'Yes'
               ? this.showCdsRowGrid(
                   constants.CLIENT_CODE_TEXT,
                   docDetails.ClientCode
@@ -192,7 +192,7 @@ export class CDSApproveReject extends Component {
               : null}
             {this.showCdsRowGrid(
               constants.TOTAL_AMOUNT_TEXT,
-              docDetails.CDSFinalAmount + "(" + docDetails.DefaultCurrency + ")"
+              docDetails.CDSFinalAmount + '(' + docDetails.DefaultCurrency + ')'
             )}
           </View>
         </ImageBackground>
@@ -209,7 +209,7 @@ export class CDSApproveReject extends Component {
         <TextInput
           autoCapitalize="none"
           autoCorrect={false}
-          autoCompleteType={false}
+          autoCompleteType="off"
           // multiline={true}
           maxLength={200}
           onChangeText={(text) => this.setState({ remarks: text })}
@@ -224,37 +224,37 @@ export class CDSApproveReject extends Component {
   };
 
   submitRequest = () => {
-    let finalString = "";
+    let finalString = '';
     itemsStringArray.map((str, i) => {
       if (i === 0) {
         finalString = finalString.concat(str);
       } else {
-        finalString = finalString.concat("~").concat(str);
+        finalString = finalString.concat('~').concat(str);
       }
     });
     // console.log("selectedEmployeeValue",this.state.selectedEmployeeValue)
     let MyRemarks = this.state.remarks.trim();
-    if (MyRemarks === "") {
-      alert("Please enter remarks!!");
+    if (MyRemarks === '') {
+      alert('Please enter remarks!!');
     } else if (action.toUpperCase() === globalConstants.APPROVE_CAPS_TEXT) {
-      let selectedEmpValue = "";
+      let selectedEmpValue = '';
       if (
         this.state.localCdsApproverList &&
         this.state.localCdsApproverList.length === 1
       ) {
         selectedEmpValue = this.state.localCdsApproverList[0].EmpName.split(
-          ":"
+          ':'
         );
         // console.log("single employee",this.state.localCdsApproverList[0].EmpName.split(':'))
       } else {
-        selectedEmpValue = this.state.selectedEmployeeValue.split(":");
+        selectedEmpValue = this.state.selectedEmployeeValue.split(':');
       }
       writeLog(
-        "Clicked on " +
-          "submitRequest" +
-          " of " +
-          "CDSApproveReject" +
-          " for " +
+        'Clicked on ' +
+          'submitRequest' +
+          ' of ' +
+          'CDSApproveReject' +
+          ' for ' +
           selectedEmpValue[0].trim()
       );
       this.props.completeRequest(
@@ -266,11 +266,11 @@ export class CDSApproveReject extends Component {
       );
     } else {
       writeLog(
-        "Clicked on " +
-          "submitRequest" +
-          " of " +
-          "CDSApproveReject" +
-          " for " +
+        'Clicked on ' +
+          'submitRequest' +
+          ' of ' +
+          'CDSApproveReject' +
+          ' for ' +
           empData.CDSCode
       );
       this.props.completeRequest(
@@ -278,7 +278,7 @@ export class CDSApproveReject extends Component {
         userActionValue,
         MyRemarks,
         finalString,
-        ""
+        ''
       );
     }
   };
@@ -332,7 +332,7 @@ export class CDSApproveReject extends Component {
           renderItem={(item) => this.renderListView(item)}
           ItemSeparatorComponent={() => (
             <Image
-              source={require("../../assets/divHorizontal.png")}
+              source={require('../../assets/divHorizontal.png')}
               style={styles.selectOptionImage}
             />
           )}
@@ -348,7 +348,7 @@ export class CDSApproveReject extends Component {
   }
 
   showApprover = () => {
-    let label = "";
+    let label = '';
     let selectFlag = false;
     if (
       this.state.localCdsApproverList &&
@@ -358,14 +358,14 @@ export class CDSApproveReject extends Component {
     } else {
       selectFlag = true;
       label =
-        this.state.selectedEmployeeValue === ""
+        this.state.selectedEmployeeValue === ''
           ? constants.SELECT_TEXT
           : this.state.selectedEmployeeValue;
     }
     return (
       <View style={styles.approverView}>
         <Text style={styles.submitToText}>
-          {constants.SUBMIT_TO_TEXT + "(" + approverRoleValue + ")"}
+          {constants.SUBMIT_TO_TEXT + '(' + approverRoleValue + ')'}
         </Text>
         {selectFlag ? (
           <TouchableOpacity
@@ -410,18 +410,18 @@ export class CDSApproveReject extends Component {
   };
 
   backNavigate() {
-    writeLog("Clicked on " + "backNavigate" + " of " + "CDSApproveReject");
-    this.props.navigation.navigate("DashBoard");
+    writeLog('Clicked on ' + 'backNavigate' + ' of ' + 'CDSApproveReject');
+    this.props.navigation.navigate('DashBoard');
   }
 
   showDialogBox = () => {
-    let message = "";
-    let heading = "";
+    let message = '';
+    let heading = '';
     if (this.state.showModal) {
       if (this.state.messageType === 0) {
-        message = "Your request has been ";
-        message = action != undefined ? message + action.toLowerCase() : "";
-        heading = "Successful";
+        message = 'Your request has been ';
+        message = action != undefined ? message + action.toLowerCase() : '';
+        heading = 'Successful';
         return (
           <UserMessage
             modalVisible={true}
@@ -434,7 +434,7 @@ export class CDSApproveReject extends Component {
           />
         );
       } else {
-        heading = "Error";
+        heading = 'Error';
         message = this.props.cdsActionTakenError;
         // console.log("In side show error of CDS screen.");
         return (

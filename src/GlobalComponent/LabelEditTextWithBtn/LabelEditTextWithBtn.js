@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import { View, TextInput, Text, Image } from "react-native";
-import { moderateScale } from "../../components/fontScaling.js";
-import { Icon } from "react-native-elements";
-import { styles } from "./styles";
-let appConfig = require("../../../appconfig");
+import React, { Component } from 'react';
+import { View, TextInput, Text, Image } from 'react-native';
+import { moderateScale } from '../../components/fontScaling.js';
+import { Icon } from 'react-native-elements';
+import { styles } from './styles';
+let appConfig = require('../../../appconfig');
 
 export const LabelEditTextWithBtn = (props) => {
   return (
@@ -23,11 +23,11 @@ export const LabelEditTextWithBtn = (props) => {
         <TextInput
           autoCapitalize="none"
           autoCorrect={false}
-          autoCompleteType={false}
+          autoCompleteType="off"
           keyboardType={
             props.myKeyboardType !== undefined
               ? props.myKeyboardType
-              : "default"
+              : 'default'
           }
           editable={props.isEditable !== undefined ? props.isEditable : true}
           value={props.myValue}

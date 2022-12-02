@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import {
   Text,
   View,
@@ -7,61 +7,61 @@ import {
   TouchableOpacity,
   TextInput,
   BackHandler,
-} from "react-native";
-import { connect } from "react-redux";
-import { styles } from "./styles";
-import { Icon, SearchBar } from "react-native-elements";
+} from 'react-native';
+import { connect } from 'react-redux';
+import { styles } from './styles';
+import { Icon, SearchBar } from 'react-native-elements';
 import {
   fetchSupervisorForLeaves,
   resetSupervisor,
   completeRequest,
   resetLeave,
   resetLeaveAction,
-} from "./leaveActionCreator";
-import { SUBMIT_TO, APPROVE, SEND_BACK, REJ } from "./constants";
-import ActivityIndicatorView from "../../GlobalComponent/myActivityIndicator";
-import SubHeader from "../../GlobalComponent/SubHeader";
-import UserMessage from "../../components/userMessage";
-let globalConstants = require("../../GlobalConstants");
-import { writeLog } from "../../utilities/logger";
-import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scrollview";
-import LinearGradient from "react-native-linear-gradient";
-import images from "../../images.js";
-import { Dropdown } from "../../GlobalComponent/DropDown/DropDown.js";
+} from './leaveActionCreator';
+import { SUBMIT_TO, APPROVE, SEND_BACK, REJ } from './constants';
+import ActivityIndicatorView from '../../GlobalComponent/myActivityIndicator';
+import SubHeader from '../../GlobalComponent/SubHeader';
+import UserMessage from '../../components/userMessage';
+let globalConstants = require('../../GlobalConstants');
+import { writeLog } from '../../utilities/logger';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scrollview';
+import LinearGradient from 'react-native-linear-gradient';
+import images from '../../images.js';
+import { Dropdown } from '../../GlobalComponent/DropDown/DropDown.js';
 class LeaveActionsScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
       localSuperVisorData: [],
       localSuperVisorSearchList: [],
-      submitTo: "Select",
+      submitTo: 'Select',
       leaveItem: this.props.navigation.state.params.leaveItem,
       leaveAction: this.props.navigation.state.params.leaveAction,
-      query: "",
-      remarks: "",
-      superVisorEmpName: "",
-      superVisorEmpId: "",
+      query: '',
+      remarks: '',
+      superVisorEmpName: '',
+      superVisorEmpId: '',
       showModal: false,
       showErrorModal: false,
       messageType: null,
-      isDisplayed: "",
+      isDisplayed: '',
     };
-    rejectType = "";
+    rejectType = '';
     this.submitRef = React.createRef();
   }
   showDialogBox() {
-    let message = "";
-    let heading = "";
+    let message = '';
+    let heading = '';
     if (this.state.showModal) {
       if (this.state.messageType === 0) {
-        message = "Your leave request has been ";
+        message = 'Your leave request has been ';
         message =
-          rejectType != "" && rejectType == 4
+          rejectType != '' && rejectType == 4
             ? message + SEND_BACK.toLowerCase()
             : message + this.state.leaveAction.toLowerCase();
-        heading = "Successful";
+        heading = 'Successful';
       } else {
-        heading = "Sorry";
+        heading = 'Sorry';
       }
       return (
         <UserMessage
@@ -69,7 +69,7 @@ class LeaveActionsScreen extends Component {
           message={message}
           okAction={() => {
             this.setState({ showModal: false }, () => {
-              this.props.navigation.navigate("Leave");
+              this.props.navigation.navigate('Leave');
             });
           }}
         />
@@ -77,13 +77,13 @@ class LeaveActionsScreen extends Component {
     }
   }
   backNavigate() {
-    this.props.navigation.navigate("Leave");
+    this.props.navigation.navigate('Leave');
   }
 
   componentDidMount() {
-    this.props.navigation.addListener("willFocus", this.onFocus);
+    this.props.navigation.addListener('willFocus', this.onFocus);
     BackHandler.addEventListener(
-      "hardwareBackPress",
+      'hardwareBackPress',
       this.handleBackButtonClick
     );
   }
@@ -91,13 +91,13 @@ class LeaveActionsScreen extends Component {
     this.props.resetLeaveAction();
   }
   onFocus = () => {
-    writeLog("Landed on " + "LeaveActionsScreen");
+    writeLog('Landed on ' + 'LeaveActionsScreen');
     if (this.submitRef.current != null) {
       this.submitRef.current.select(-1);
     }
   };
   handleBack = () => {
-    writeLog("Clicked on " + "handleBack" + " of " + "LeaveActionsScreen");
+    writeLog('Clicked on ' + 'handleBack' + ' of ' + 'LeaveActionsScreen');
     this.props.navigation.pop();
   };
   handleBackButtonClick = () => {
@@ -121,7 +121,7 @@ class LeaveActionsScreen extends Component {
   onOkClick = () => {
     this.setState({ showErrorModal: false }, () => {
       setTimeout(() => {
-        this.props.navigation.navigate("Leave");
+        this.props.navigation.navigate('Leave');
       }, 1000);
     });
   };
@@ -131,7 +131,7 @@ class LeaveActionsScreen extends Component {
       items.push(item[key]);
     }
     return items.map((e) => {
-      console.log("Item Key : ", e);
+      console.log('Item Key : ', e);
       if (e.IsActive) {
         return (
           <View key={e.key} style={styles.textContainer}>
@@ -157,10 +157,10 @@ class LeaveActionsScreen extends Component {
         query: searchText,
       },
       () => {
-        console.log("Query : ", this.state.query);
+        console.log('Query : ', this.state.query);
         const filteredData = this.state.localSuperVisorSearchList.filter(
           (element) => {
-            console.log("Element : ", element);
+            console.log('Element : ', element);
             let elementSearched = element.EmpName.toLowerCase();
             let queryLowerCase = this.state.query.toLowerCase();
             return elementSearched.indexOf(queryLowerCase) > -1;
@@ -177,7 +177,7 @@ class LeaveActionsScreen extends Component {
     return (
       <SearchBar
         lightTheme
-        placeholder={"Enter Emp Code or Name to search"}
+        placeholder={'Enter Emp Code or Name to search'}
         onChangeText={this.updateSearch}
         value={query}
         raised={true}
@@ -189,7 +189,7 @@ class LeaveActionsScreen extends Component {
     );
   };
   onApproverSelection = (approver) => {
-    if (approver === "Supervisor") {
+    if (approver === 'Supervisor') {
     } else {
       this.props.resetSupervisor();
     }
@@ -198,7 +198,7 @@ class LeaveActionsScreen extends Component {
     this.setState(
       {
         submitTo: value,
-        superVisorEmpName: "",
+        superVisorEmpName: '',
       },
       () => {
         this.onApproverSelection(value);
@@ -206,7 +206,7 @@ class LeaveActionsScreen extends Component {
     );
   };
   showPicker = () => {
-    let selectors = ["Supervisor", "HR"];
+    let selectors = ['Supervisor', 'HR'];
     return (
       <View style={styles.dropDownContainer}>
         <Text>{SUBMIT_TO}</Text>
@@ -260,9 +260,9 @@ class LeaveActionsScreen extends Component {
   onSupervisorSelection = (supervisor) => {
     this.props.resetSupervisor();
     this.setState({
-      superVisorEmpName: supervisor.EmpName.split(":")[1],
+      superVisorEmpName: supervisor.EmpName.split(':')[1],
       superVisorEmpId: supervisor.EmpCode,
-      query: "",
+      query: '',
     });
   };
   renderSuperVisors = (item, index) => {
@@ -287,7 +287,7 @@ class LeaveActionsScreen extends Component {
           showsVerticalScrollIndicator={false}
           renderItem={({ item, index }) => this.renderSuperVisors(item, index)}
           keyExtractor={(item, index) =>
-            "supervisorRequest_" + index.toString()
+            'supervisorRequest_' + index.toString()
           }
         />
       );
@@ -301,7 +301,7 @@ class LeaveActionsScreen extends Component {
         <TextInput
           autoCapitalize="none"
           autoCorrect={false}
-          autoCompleteType={false}
+          autoCompleteType="off"
           // multiline={true}
           maxLength={200}
           onChangeText={(text) => this.setState({ remarks: text })}
@@ -314,11 +314,11 @@ class LeaveActionsScreen extends Component {
     );
   };
   finishRequest = () => {
-    if (this.state.submitTo === "HR") {
-      this.props.completeRequest("", this.state.leaveItem, "", 2);
+    if (this.state.submitTo === 'HR') {
+      this.props.completeRequest('', this.state.leaveItem, '', 2);
     } else {
-      if (this.state.remarks === "") {
-        return alert("Please enter remarks!");
+      if (this.state.remarks === '') {
+        return alert('Please enter remarks!');
       }
       this.props.completeRequest(
         this.state.superVisorEmpId,
@@ -330,14 +330,14 @@ class LeaveActionsScreen extends Component {
   };
   displaySupervisor = () => {
     if (
-      this.state.submitTo != "Select" &&
-      (this.state.submitTo === "HR" ||
-        (this.state.submitTo === "Supervisor" &&
-          this.state.superVisorEmpName !== ""))
+      this.state.submitTo != 'Select' &&
+      (this.state.submitTo === 'HR' ||
+        (this.state.submitTo === 'Supervisor' &&
+          this.state.superVisorEmpName !== ''))
     ) {
       return (
         <View>
-          {this.state.submitTo === "HR" ? null : (
+          {this.state.submitTo === 'HR' ? null : (
             <View style={styles.selectedSupervisor}>
               <Text style={styles.textSupervisor}>
                 {this.state.superVisorEmpName}
@@ -350,7 +350,7 @@ class LeaveActionsScreen extends Component {
             onPress={() => this.finishRequest()}
           >
             <Text style={styles.btnSupervisorText}>
-              {this.state.submitTo === "HR" ? "Approve" : "Submit"}
+              {this.state.submitTo === 'HR' ? 'Approve' : 'Submit'}
             </Text>
           </TouchableOpacity>
         </View>
@@ -360,11 +360,11 @@ class LeaveActionsScreen extends Component {
   rejectLeave = (value) => {
     rejectType = value;
     // console.log("8888888888",rejectType)
-    if (this.state.remarks === "") {
-      return alert("Please enter remarks!!");
+    if (this.state.remarks === '') {
+      return alert('Please enter remarks!!');
     }
     this.props.completeRequest(
-      "",
+      '',
       this.state.leaveItem,
       this.state.remarks,
       value
@@ -417,8 +417,8 @@ class LeaveActionsScreen extends Component {
       });
     }
     if (
-      this.props.submittedData === "Success" &&
-      this.state.isDisplayed === ""
+      this.props.submittedData === 'Success' &&
+      this.state.isDisplayed === ''
     ) {
       setTimeout(() => {
         this.setState({
@@ -429,10 +429,10 @@ class LeaveActionsScreen extends Component {
       }, 1000);
     } else if (
       (this.props.submittedData &&
-        this.state.isDisplayed === "" &&
-        (JSON.stringify(this.props.submittedData).includes("Exception") ||
-          this.props.submittedData.includes("No Data from server!"))) ||
-      this.props.submittedData.includes("Unauthorized access")
+        this.state.isDisplayed === '' &&
+        (JSON.stringify(this.props.submittedData).includes('Exception') ||
+          this.props.submittedData.includes('No Data from server!'))) ||
+      this.props.submittedData.includes('Unauthorized access')
     ) {
       setTimeout(() => {
         this.setState({
@@ -444,7 +444,7 @@ class LeaveActionsScreen extends Component {
     } else if (
       this.props.leaveError &&
       this.props.leaveError.length > 0 &&
-      this.state.isDisplayed === ""
+      this.state.isDisplayed === ''
     ) {
       setTimeout(() => {
         this.setState({
@@ -467,15 +467,15 @@ class LeaveActionsScreen extends Component {
           />
           <KeyboardAwareScrollView keyboardShouldPersistTaps="never">
             <ActivityIndicatorView loader={this.props.leaveLoading} />
-            {this.state.submitTo === "Supervisor" &&
-            this.state.superVisorEmpName === ""
+            {this.state.submitTo === 'Supervisor' &&
+            this.state.superVisorEmpName === ''
               ? null
               : this.showLeaveDetails()}
             {this.state.leaveAction === APPROVE
               ? this.showPicker()
               : this.showRejectButtons()}
-            {this.state.submitTo === "Supervisor" &&
-            this.state.superVisorEmpName === ""
+            {this.state.submitTo === 'Supervisor' &&
+            this.state.superVisorEmpName === ''
               ? this.renderSearch()
               : null}
             {this.showRequests()}

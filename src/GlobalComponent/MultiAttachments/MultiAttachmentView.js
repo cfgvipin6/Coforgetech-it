@@ -1,8 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-undef */
-import React, { useState, useEffect } from "react";
-import { styles } from "./styles";
-import { Icon } from "react-native-elements";
+import React, { useState, useEffect } from 'react';
+import { styles } from './styles';
+import { Icon } from 'react-native-elements';
 import {
   TouchableOpacity,
   Text,
@@ -12,25 +12,25 @@ import {
   Platform,
   Modal,
   Image,
-} from "react-native";
-import RNFetchBlob from "rn-fetch-blob";
-import DocumentPicker from "react-native-document-picker";
-import { useSelector, useDispatch } from "react-redux";
+} from 'react-native';
+import RNFetchBlob from 'rn-fetch-blob';
+import DocumentPicker from 'react-native-document-picker';
+import { useSelector, useDispatch } from 'react-redux';
 import {
   AttachmentUpload,
   deleteAttachment,
   downloadAttachment,
-} from "./AttachmentActionCreator";
-var appConfig = require("../../../appconfig");
-import { showToast } from "../../GlobalComponent/Toast";
-import ActivityIndicatorView from "../myActivityIndicator";
-import FileViewer from "react-native-file-viewer";
-import ImagePicker from "react-native-image-picker";
-import ImageResizer from "react-native-image-resizer";
-import { Dropdown } from "../DropDown/DropDown";
-import images from "../../images";
+} from './AttachmentActionCreator';
+var appConfig = require('../../../appconfig');
+import { showToast } from '../../GlobalComponent/Toast';
+import ActivityIndicatorView from '../myActivityIndicator';
+import FileViewer from 'react-native-file-viewer';
+import ImagePicker from 'react-native-image-picker';
+import ImageResizer from 'react-native-image-resizer';
+import { Dropdown } from '../DropDown/DropDown';
+import images from '../../images';
 let fileArray;
-var RNFS = require("react-native-fs");
+var RNFS = require('react-native-fs');
 const filePicker = async (
   setData,
   files,
@@ -50,14 +50,14 @@ const filePicker = async (
         DocumentPicker.types.plainText,
       ],
     });
-    console.log("Res : ", res);
+    console.log('Res : ', res);
     if (
-      res.type.includes("video") ||
-      res.type.includes("audio") ||
-      res.type.includes("mp3") ||
-      res.type.includes("mp4")
+      res.type.includes('video') ||
+      res.type.includes('audio') ||
+      res.type.includes('mp3') ||
+      res.type.includes('mp4')
     ) {
-      return alert("Sorry , you can not add this file.");
+      return alert('Sorry , you can not add this file.');
     }
     let loginData = appState.loginReducer.loginData;
     let docNumber = documentNumber;
@@ -83,7 +83,7 @@ const filePicker = async (
     );
   } catch (err) {
     if (DocumentPicker.isCancel(err)) {
-      console.log("File picking aborted");
+      console.log('File picking aborted');
     } else {
       throw err;
     }
@@ -103,12 +103,12 @@ export const getFiles = (props) => {
 };
 let fileArrayTemp = [];
 export const MultiAttachmentView = (props) => {
-  console.log("Props in multi attachment view : ", props);
+  console.log('Props in multi attachment view : ', props);
   this.childNameRef = React.createRef();
   fileArray = props.files !== undefined ? props.files : [];
   const [docTypeArray, setDocTypeArray] = useState([
-    { DisplayText: "Invoice", Value: 1 },
-    { DisplayText: "DL", Value: 2 },
+    { DisplayText: 'Invoice', Value: 1 },
+    { DisplayText: 'DL', Value: 2 },
   ]);
   const [files, setData] = useState(fileArray);
   const [loading, setLoading] = useState(false);
@@ -116,7 +116,7 @@ export const MultiAttachmentView = (props) => {
   const appState = useSelector((state) => state);
   const [fileData, setFileData] = useState([]);
   const [modalVisible, setModalVisible] = useState(false);
-  const [hardWareType, setHardwareType] = useState("");
+  const [hardWareType, setHardwareType] = useState('');
   const dispatch = useDispatch();
   if (
     fileArray !== undefined &&
@@ -147,7 +147,7 @@ export const MultiAttachmentView = (props) => {
       (item) => item?.RowId == deletedFile.RowId
     );
     lineItemArray[props.itemIndex].LstUploadFiles.splice(removeIndex, 1);
-    console.log("Line Item Array after delete : ", lineItemArray);
+    console.log('Line Item Array after delete : ', lineItemArray);
     setLoading(false);
     setTimeout(() => {
       props.lineItemArrayCallBack(lineItemArray);
@@ -160,7 +160,7 @@ export const MultiAttachmentView = (props) => {
     let loginData = appState.loginReducer.loginData;
     let docNumber = documentNumber;
     let rowId = file.RowId;
-    if (rowId !== undefined && rowId !== null && rowId !== "") {
+    if (rowId !== undefined && rowId !== null && rowId !== '') {
       dispatch(
         deleteAttachment(
           loginData,
@@ -175,12 +175,12 @@ export const MultiAttachmentView = (props) => {
   };
   const openDownloadedFile = (data, fileName) => {
     const DocumentDir =
-      Platform.OS === "ios"
+      Platform.OS === 'ios'
         ? RNFS.DocumentDirectoryPath
         : RNFS.ExternalDirectoryPath;
-    let filePath = DocumentDir + "/" + fileName.trim();
+    let filePath = DocumentDir + '/' + fileName.trim();
     RNFetchBlob.fs
-      .writeFile(filePath, data, "base64")
+      .writeFile(filePath, data, 'base64')
       .then(() => {
         openFile(filePath);
       })
@@ -189,10 +189,10 @@ export const MultiAttachmentView = (props) => {
   const openFile = (filePath) => {
     FileViewer.open(filePath)
       .then(() => {
-        showToast("File is opening from path " + filePath);
+        showToast('File is opening from path ' + filePath);
       })
       .catch((error) => {
-        showToast("unable to open attachment file due to " + error);
+        showToast('unable to open attachment file due to ' + error);
       });
   };
   const downLoadFile = (file) => {
@@ -205,16 +205,16 @@ export const MultiAttachmentView = (props) => {
   };
   const handleCamera = (props, type) => {
     const options = {
-      title: "Click picture",
-      storageOptions: { skipBackup: true, path: "images" },
+      title: 'Click picture',
+      storageOptions: { skipBackup: true, path: 'images' },
     };
     ImagePicker.launchCamera(options, (response) => {
       if (response.didCancel) {
-        console.log("User cancelled image picker");
+        console.log('User cancelled image picker');
       } else if (response.error) {
-        console.log("ImagePicker Error: ", response.error);
+        console.log('ImagePicker Error: ', response.error);
       } else if (response.customButton) {
-        console.log("User tapped custom button: ", response.customButton);
+        console.log('User tapped custom button: ', response.customButton);
       } else {
         cameraCallBackFromCameraScreen(
           response,
@@ -234,9 +234,9 @@ export const MultiAttachmentView = (props) => {
   ) => {
     let fileName =
       data.fileName === undefined
-        ? data.uri.substring(data.uri.lastIndexOf("-") + 1, data.uri.length)
+        ? data.uri.substring(data.uri.lastIndexOf('-') + 1, data.uri.length)
         : data.fileName;
-    ImageResizer.createResizedImage(data.uri, 200, 200, "JPEG", 80).then(
+    ImageResizer.createResizedImage(data.uri, 200, 200, 'JPEG', 80).then(
       (response2) => {
         let tempData = {};
         tempData.size = response2.size;
@@ -275,19 +275,19 @@ export const MultiAttachmentView = (props) => {
 
   const onDocTypeSelection = (type) => {
     if (
-      type == "DL" &&
-      fileData.filter((file) => file.DocumentType == "DL").length > 0
+      type == 'DL' &&
+      fileData.filter((file) => file.DocumentType == 'DL').length > 0
     ) {
       return alert(
-        "You have already uploaded the DL. If you want to update the DL, please delete the existing DL from the below list and upload the new one."
+        'You have already uploaded the DL. If you want to update the DL, please delete the existing DL from the below list and upload the new one.'
       );
     }
     setModalVisible(false);
     switch (hardWareType) {
-      case "Camera":
+      case 'Camera':
         setTimeout(() => handleCamera(props, type), 600);
         break;
-      case "FilePicker":
+      case 'FilePicker':
         setTimeout(
           () =>
             filePicker(
@@ -323,8 +323,8 @@ export const MultiAttachmentView = (props) => {
               }
               style={styles.attachIcon}
               onPress={() => {
-                if (props?.catID == "4") {
-                  setHardwareType("FilePicker");
+                if (props?.catID == '4') {
+                  setHardwareType('FilePicker');
                   setModalVisible(true);
                 } else {
                   filePicker(
@@ -355,8 +355,8 @@ export const MultiAttachmentView = (props) => {
               }
               style={styles.camera}
               onPress={() => {
-                if (props?.catID == "4") {
-                  setHardwareType("Camera");
+                if (props?.catID == '4') {
+                  setHardwareType('Camera');
                   setModalVisible(true);
                 } else {
                   handleCamera(props);
@@ -370,7 +370,7 @@ export const MultiAttachmentView = (props) => {
       </View>
       {fileData?.map((imageItem) => {
         return (
-          <View style={{ flex: 1 }}>
+          <View key={imageItem?.FileName} style={{ flex: 1 }}>
             <View style={styles.fileItem} key={imageItem?.RowID}>
               <TouchableOpacity
                 style={styles.fileName}
@@ -384,7 +384,7 @@ export const MultiAttachmentView = (props) => {
               >
                 <Text style={styles.fileHeadingStyle}>
                   {imageItem?.DocumentType
-                    ? imageItem?.FileName + "(" + imageItem.DocumentType + ")"
+                    ? imageItem?.FileName + '(' + imageItem.DocumentType + ')'
                     : imageItem?.FileName}
                 </Text>
               </TouchableOpacity>
@@ -435,18 +435,18 @@ export const MultiAttachmentView = (props) => {
             >
               <Image source={images.crossButton} />
             </TouchableOpacity>
-            <Text style={{ alignSelf: "center" }}>
+            <Text style={{ alignSelf: 'center' }}>
               Please select the document type.
             </Text>
             <TouchableOpacity
               style={styles.modalButton}
-              onPress={() => onDocTypeSelection("DL")}
+              onPress={() => onDocTypeSelection('DL')}
             >
               <Text>Driving License</Text>
             </TouchableOpacity>
             <TouchableOpacity
               style={styles.modalButton}
-              onPress={() => onDocTypeSelection("Invoice")}
+              onPress={() => onDocTypeSelection('Invoice')}
             >
               <Text>Invoice</Text>
             </TouchableOpacity>

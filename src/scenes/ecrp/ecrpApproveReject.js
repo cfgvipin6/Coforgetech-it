@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import {
   Text,
   View,
@@ -8,18 +8,18 @@ import {
   Alert,
   FlatList,
   Image,
-} from "react-native";
-import { globalFontStyle } from "../../components/globalFontStyle";
-import UserMessage from "../../components/userMessage";
-import { completeRequest } from "./ecrpAction";
-import SubHeader from "../../GlobalComponent/SubHeader";
-import { connect } from "react-redux";
-import { styles } from "./styles";
-import helper from "../../utilities/helper";
-import { writeLog } from "../../utilities/logger";
-import images from "../../images";
-let constants = require("./constants");
-let globalConstants = require("../../GlobalConstants");
+} from 'react-native';
+import { globalFontStyle } from '../../components/globalFontStyle';
+import UserMessage from '../../components/userMessage';
+import { completeRequest } from './ecrpAction';
+import SubHeader from '../../GlobalComponent/SubHeader';
+import { connect } from 'react-redux';
+import { styles } from './styles';
+import helper from '../../utilities/helper';
+import { writeLog } from '../../utilities/logger';
+import images from '../../images';
+let constants = require('./constants');
+let globalConstants = require('../../GlobalConstants');
 
 class ECRPApproveReject extends Component {
   constructor(props) {
@@ -30,24 +30,24 @@ class ECRPApproveReject extends Component {
       (this.state = {
         localSuperVisorData: [],
         localSuperVisorSearchList: [],
-        submitTo: "Select",
-        superVisorEmpId: "",
-        remarks: "",
-        query: "",
+        submitTo: 'Select',
+        superVisorEmpId: '',
+        remarks: '',
+        query: '',
         showModal: false,
         messageType: null,
-        selectedEmployeeValue: "",
+        selectedEmployeeValue: '',
         selectEmployeeOption: false,
         isSelectedEmployee: false,
-        popUpMessage: "",
+        popUpMessage: '',
       });
     this.submitRef = React.createRef();
   }
   componentDidUpdate() {
     if (
       this.props.ecrpActionResponse &&
-      this.props.ecrpActionResponse === "SUCCESS" &&
-      this.state.popUpMessage === ""
+      this.props.ecrpActionResponse === 'SUCCESS' &&
+      this.state.popUpMessage === ''
     ) {
       setTimeout(() => {
         this.setState({
@@ -59,7 +59,7 @@ class ECRPApproveReject extends Component {
     } else if (
       this.props.ecrpActionError &&
       this.props.ecrpActionError.length > 0 &&
-      this.state.popUpMessage === ""
+      this.state.popUpMessage === ''
     ) {
       setTimeout(() => {
         this.setState({
@@ -71,7 +71,7 @@ class ECRPApproveReject extends Component {
     }
   }
   componentDidMount() {
-    writeLog("Landed on " + "ECRPApproveReject");
+    writeLog('Landed on ' + 'ECRPApproveReject');
   }
 
   setData = (item) => {
@@ -106,7 +106,7 @@ class ECRPApproveReject extends Component {
           renderItem={(item) => this.renderListView(item)}
           ItemSeparatorComponent={() => (
             <Image
-              source={require("../../assets/divHorizontal.png")}
+              source={require('../../assets/divHorizontal.png')}
               style={styles.selectOptionImage}
             />
           )}
@@ -122,17 +122,17 @@ class ECRPApproveReject extends Component {
   }
 
   showApprover = () => {
-    let label = "";
+    let label = '';
     let selectFlag = false;
     // console.log("------------",empData.FirstLevelSup.IsActive,"\n---------",empData.SupPLAN)
     if (
       empData.FirstLevelSup.IsActive &&
-      (empData.SupPLAN === "R" || empData.SupPLAN === "S")
+      (empData.SupPLAN === 'R' || empData.SupPLAN === 'S')
     ) {
       // console.log("1111111111SupPlan::",empData.SupPLAN)
       selectFlag = true;
       label =
-        this.state.selectedEmployeeValue === ""
+        this.state.selectedEmployeeValue === ''
           ? constants.SELECT_TEXT
           : this.state.selectedEmployeeValue;
     } else {
@@ -170,27 +170,27 @@ class ECRPApproveReject extends Component {
   };
 
   backNavigate() {
-    writeLog("Clicked on " + "backNavigate" + " of " + "ECRPApproveReject");
-    this.props.navigation.navigate("DashBoard");
+    writeLog('Clicked on ' + 'backNavigate' + ' of ' + 'ECRPApproveReject');
+    this.props.navigation.navigate('DashBoard');
   }
 
   showDialogBox = () => {
-    let message = "";
-    let heading = "";
+    let message = '';
+    let heading = '';
     if (this.state.showModal) {
       if (this.state.messageType === 0) {
-        message = "Your letter has been ";
+        message = 'Your letter has been ';
         message =
           action === globalConstants.REJECTED_TEXT
             ? message + constants.SEND_BACK_TEXT.toLowerCase()
             : message + constants.RELEASE_TEXT.toLowerCase();
-        heading = "Successful";
+        heading = 'Successful';
         return (
           <UserMessage
             heading={heading}
             message={message}
             okAction={() => {
-              this.setState({ showModal: false, popUpMessage: "" }, () => {
+              this.setState({ showModal: false, popUpMessage: '' }, () => {
                 this.backNavigate();
               });
             }}
@@ -202,7 +202,7 @@ class ECRPApproveReject extends Component {
             heading="Error"
             message={this.props.ecrpActionError}
             okAction={() => {
-              this.setState({ showModal: false, popUpMessage: "" }, () => {
+              this.setState({ showModal: false, popUpMessage: '' }, () => {
                 this.backNavigate();
               });
             }}
@@ -215,20 +215,20 @@ class ECRPApproveReject extends Component {
   submitRequest = () => {
     // console.log("selectedEmployeeValue",this.state.selectedEmployeeValue)
     let MyRemarks = this.state.remarks.trim();
-    if (MyRemarks === "" && action === globalConstants.REJECTED_TEXT) {
-      alert("Please enter remarks!!");
+    if (MyRemarks === '' && action === globalConstants.REJECTED_TEXT) {
+      alert('Please enter remarks!!');
     }
     // else if(action === globalConstants.APPROVED_TEXT && this.state.selectedEmployeeValue === "" && empData.FirstLevelSup.IsActive && (empData.SupPLAN === "R" || empData.SupPLAN === "S")) {
     // 	alert("Please select at least one Value!!");
     // }
     else if (action === globalConstants.APPROVED_TEXT) {
       writeLog(
-        "Clicked on " +
-          "submitRequest" +
-          " of " +
-          "ECRPApproveReject" +
-          " for " +
-          "Approved"
+        'Clicked on ' +
+          'submitRequest' +
+          ' of ' +
+          'ECRPApproveReject' +
+          ' for ' +
+          'Approved'
       );
       this.props.completeRequest(
         empData,
@@ -239,14 +239,14 @@ class ECRPApproveReject extends Component {
       );
     } else if (action === globalConstants.REJECTED_TEXT) {
       writeLog(
-        "Clicked on " +
-          "submitRequest" +
-          " of " +
-          "ECRPApproveReject" +
-          " for " +
-          "Rejected"
+        'Clicked on ' +
+          'submitRequest' +
+          ' of ' +
+          'ECRPApproveReject' +
+          ' for ' +
+          'Rejected'
       );
-      this.props.completeRequest(empData, 2, MyRemarks, action, "");
+      this.props.completeRequest(empData, 2, MyRemarks, action, '');
     }
   };
 
@@ -256,7 +256,7 @@ class ECRPApproveReject extends Component {
         <TextInput
           autoCapitalize="none"
           autoCorrect={false}
-          autoCompleteType={false}
+          autoCompleteType="off"
           multiline={true}
           maxLength={200}
           onChangeText={(text) => this.setState({ remarks: text })}
@@ -287,7 +287,7 @@ class ECRPApproveReject extends Component {
   };
 
   showEcrpRowGrid = (itemName, itemValue) => {
-    if (itemValue != "" && itemValue != null && itemValue != undefined) {
+    if (itemValue != '' && itemValue != null && itemValue != undefined) {
       return (
         <View style={styles.rowStyle}>
           <Text style={[globalFontStyle.imageBackgroundLayout, styles.textOne]}>
@@ -304,7 +304,7 @@ class ECRPApproveReject extends Component {
   };
 
   showEcrpUserDetails = () => {
-    let wefValue = empData.WEF.replace(/-/g, " ");
+    let wefValue = empData.WEF.replace(/-/g, ' ');
     return (
       <View style={styles.cardOuterView}>
         <ImageBackground style={styles.cardBackground} resizeMode="cover">
@@ -315,7 +315,7 @@ class ECRPApproveReject extends Component {
             )}
             {this.showEcrpRowGrid(constants.WEF_TEXT, wefValue)}
             {this.showEcrpRowGrid(constants.STATUS_TEXT, empData.EmpStatus)}
-            {empData.FirstLevelSup.Value != ":"
+            {empData.FirstLevelSup.Value != ':'
               ? this.showEcrpRowGrid(
                   constants.FIRST_LEVEL_SUP_TEXT,
                   empData.FirstLevelSup.Value

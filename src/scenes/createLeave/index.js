@@ -1,16 +1,16 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import {
   Text,
   View,
   BackHandler,
   TextInput,
   ImageBackground,
-} from "react-native";
-import { connect } from "react-redux";
-import { styles } from "./styles";
-import SubHeader from "../../GlobalComponent/SubHeader";
-import moment from "moment";
-import DatePicker from "./dateTimePicker/DateTimePicker";
+} from 'react-native';
+import { connect } from 'react-redux';
+import { styles } from './styles';
+import SubHeader from '../../GlobalComponent/SubHeader';
+import moment from 'moment';
+import DatePicker from './dateTimePicker/DateTimePicker';
 import {
   leaveApplyActionCreator,
   resetForm,
@@ -18,9 +18,9 @@ import {
   fetchTotalAppliedLeaves,
   resetSubmitData,
   resetErrorData,
-} from "./leaveApplyActionCreator";
-import ActivityIndicatorView from "../../GlobalComponent/myActivityIndicator";
-import { writeLog } from "../../utilities/logger";
+} from './leaveApplyActionCreator';
+import ActivityIndicatorView from '../../GlobalComponent/myActivityIndicator';
+import { writeLog } from '../../utilities/logger';
 import {
   HeaderView,
   Form,
@@ -36,7 +36,7 @@ import {
   RadioForms,
   OtherReason,
   ShowResultDialog,
-} from "./Helper";
+} from './Helper';
 import {
   START_DATE_NOT_SELECTED,
   END_DATE_NOT_SELECTED,
@@ -59,12 +59,12 @@ import {
   SELECT_COMP_TOIL_START_DATE,
   SELECT_COMP_TOIL_END_DATE,
   WAIT_FOR_NUM_DAYS,
-} from "./constants";
-import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scrollview";
-import UserMessage from "../../components/userMessage";
+} from './constants';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scrollview';
+import UserMessage from '../../components/userMessage';
 
-import images from "../../images";
-let globalConstants = require("../../GlobalConstants");
+import images from '../../images';
+let globalConstants = require('../../GlobalConstants');
 
 let startDate, endDate;
 let leaveCodes = [];
@@ -73,45 +73,45 @@ class CreateLeave extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      startDate: "Start Date",
-      endDate: "End Date",
+      startDate: 'Start Date',
+      endDate: 'End Date',
       modalVisible: false,
       resultModalVisible: false,
-      query: "",
+      query: '',
       empData: [],
       localEmpData: [],
-      fileData: "",
-      fileName: "",
-      selectedEmpCode: "",
-      selectedEmpName: "",
+      fileData: '',
+      fileName: '',
+      selectedEmpCode: '',
+      selectedEmpName: '',
       isHalfDay: false,
       halfDayVal: 1,
       otherRemarks: false,
-      leaveCode: "",
-      leaveType: "",
+      leaveCode: '',
+      leaveType: '',
       dateAlert: false,
-      handlerRemarks: "",
-      supervisorRemarks: "",
-      leaveReasonVal: "",
-      leaveReasonCode: "",
-      otherReasonRemarks: "",
+      handlerRemarks: '',
+      supervisorRemarks: '',
+      leaveReasonVal: '',
+      leaveReasonCode: '',
+      otherReasonRemarks: '',
       middleView: true,
-      bereavementFamilyMember: "",
-      contactNo: "",
+      bereavementFamilyMember: '',
+      contactNo: '',
       showPopUp: false,
       noLeavePopUp: false,
-      popUpMessage: "",
-      popUpHeading: "",
-      familyOtherRelation: "",
-      address1: "",
-      address2: "",
-      weddingDate: "Wedding Date *",
-      compOffStartDate: "Start Date",
-      compOffEndDate: " End Date ",
+      popUpMessage: '',
+      popUpHeading: '',
+      familyOtherRelation: '',
+      address1: '',
+      address2: '',
+      weddingDate: 'Wedding Date *',
+      compOffStartDate: 'Start Date',
+      compOffEndDate: ' End Date ',
       loading: false,
       leaveData: {},
-      storedLeaves: "",
-      errorMessage: "",
+      storedLeaves: '',
+      errorMessage: '',
     };
     this.startCalendar = React.createRef();
     this.endCalendar = React.createRef();
@@ -142,14 +142,14 @@ class CreateLeave extends Component {
     return true;
   };
   fetchTotalLeavesFromServer = () => {
-    let endMoment = moment(this.state.endDate, "DD-MMM-YYYY");
-    let startMoment = moment(this.state.startDate, "DD-MMM-YYYY");
-    let diff = endMoment.diff(startMoment, "days");
-    if (this.state.leaveCode == "") {
+    let endMoment = moment(this.state.endDate, 'DD-MMM-YYYY');
+    let startMoment = moment(this.state.startDate, 'DD-MMM-YYYY');
+    let diff = endMoment.diff(startMoment, 'days');
+    if (this.state.leaveCode == '') {
       return alert(SELECT_LEAVE_TYPE);
-    } else if (this.state.startDate == "") {
+    } else if (this.state.startDate == '') {
       return alert(START_DATE_NOT_SELECTED);
-    } else if (this.state.endDate == "") {
+    } else if (this.state.endDate == '') {
       return alert(END_DATE_NOT_SELECTED);
     } else if (diff < 0) {
       return alert(END_DATE_PASSED);
@@ -166,34 +166,34 @@ class CreateLeave extends Component {
     }
   };
   errorCallBack = (error) => {
-    console.log("Error in error call back : ", error);
+    console.log('Error in error call back : ', error);
     this.setState({ errorMessage: error }, () => {
       this.setState({ loader: false, loading: false }, () => {
         setTimeout(() => {
           this.setState({
             showPopUp: true,
             popUpMessage: this.state.errorMessage,
-            popUpHeading: "Error",
+            popUpHeading: 'Error',
           });
         });
       });
     });
   };
   totalLeavesCallBack = (response) => {
-    console.log("Stored leave response : ", response);
+    console.log('Stored leave response : ', response);
     this.setState({ storedLeaves: response });
   };
   startDateChanged = (dateData) => {
     this.setState(
       {
         startDate: dateData,
-        endDate: this.state.isHalfDay ? dateData : "End Date",
+        endDate: this.state.isHalfDay ? dateData : 'End Date',
       },
       () => {
-        if (this.state.endDate !== "End Date" && this.state.leaveCode !== "") {
-          let endMoment = moment(this.state.endDate, "DD-MMM-YYYY");
-          let startMoment = moment(this.state.startDate, "DD-MMM-YYYY");
-          let diff = endMoment.diff(startMoment, "days");
+        if (this.state.endDate !== 'End Date' && this.state.leaveCode !== '') {
+          let endMoment = moment(this.state.endDate, 'DD-MMM-YYYY');
+          let startMoment = moment(this.state.startDate, 'DD-MMM-YYYY');
+          let diff = endMoment.diff(startMoment, 'days');
           if (diff < 0) {
           } else {
             this.fetchTotalLeavesFromServer();
@@ -213,15 +213,15 @@ class CreateLeave extends Component {
       this.state.leaveData.Details[0].CompanyCode.Value;
     this.setState({ compOffStartDate: dateData });
     if (
-      this.state.leaveCode == "0440" &&
-      (companyCode == "N081" ||
-        companyCode == "N001" ||
-        companyCode == "N028" ||
-        companyCode == "N070" ||
-        companyCode == "NDEV" ||
-        companyCode == "NSU1" ||
-        companyCode == "NSU3" ||
-        companyCode == "NSU4")
+      this.state.leaveCode == '0440' &&
+      (companyCode == 'N081' ||
+        companyCode == 'N001' ||
+        companyCode == 'N028' ||
+        companyCode == 'N070' ||
+        companyCode == 'NDEV' ||
+        companyCode == 'NSU1' ||
+        companyCode == 'NSU3' ||
+        companyCode == 'NSU4')
     ) {
       this.setState({ compOffEndDate: dateData });
     }
@@ -231,10 +231,10 @@ class CreateLeave extends Component {
   };
   endDateChanged = (endDateData) => {
     this.setState({ endDate: endDateData }, () => {
-      if (this.state.leaveCode !== "") {
-        let endMoment = moment(this.state.endDate, "DD-MMM-YYYY");
-        let startMoment = moment(this.state.startDate, "DD-MMM-YYYY");
-        let diff = endMoment.diff(startMoment, "days");
+      if (this.state.leaveCode !== '') {
+        let endMoment = moment(this.state.endDate, 'DD-MMM-YYYY');
+        let startMoment = moment(this.state.startDate, 'DD-MMM-YYYY');
+        let diff = endMoment.diff(startMoment, 'days');
         if (diff < 0) {
         } else {
           this.fetchTotalLeavesFromServer();
@@ -243,12 +243,12 @@ class CreateLeave extends Component {
     });
   };
   renderDateRow = () => {
-    if (this.state.leaveCode !== "") {
+    if (this.state.leaveCode !== '') {
       return (
         <View style={styles.compContainer}>
           <View style={styles.dateRow}>
             <Text style={styles.heading}>Leave Start Date *</Text>
-            <View style={{ flex: 1, alignItems: "flex-end" }}>
+            <View style={{ flex: 1, alignItems: 'flex-end' }}>
               <DatePicker
                 callBack={this.startDateChanged}
                 title={this.state.startDate}
@@ -256,10 +256,10 @@ class CreateLeave extends Component {
               />
             </View>
           </View>
-          {this.state.startDate !== "Start Date" ? (
+          {this.state.startDate !== 'Start Date' ? (
             <View style={styles.dateRow}>
               <Text style={styles.heading}>Leave End Date *</Text>
-              <View style={{ flex: 1, alignItems: "flex-end" }}>
+              <View style={{ flex: 1, alignItems: 'flex-end' }}>
                 <DatePicker
                   callBack={this.endDateChanged}
                   title={this.state.endDate}
@@ -276,14 +276,14 @@ class CreateLeave extends Component {
   };
 
   getLeavesCallBack = (response) => {
-    console.log("Inside leaves call back : ", response);
+    console.log('Inside leaves call back : ', response);
     if (response?.Balances?.length == 0) {
       this.setState({
         loading: false,
         showPopUp: true,
         popUpMessage:
           "Sorry! You don't have leave balances to apply for leave.",
-        popUpHeading: "No Leave",
+        popUpHeading: 'No Leave',
       });
     } else if (response?.Balances?.length > 0) {
       this.setState({
@@ -294,18 +294,18 @@ class CreateLeave extends Component {
   };
 
   async componentDidMount() {
-    console.log("Compnent is Mounted");
-    writeLog("Landed on " + "CreateLeave");
+    console.log('Compnent is Mounted');
+    writeLog('Landed on ' + 'CreateLeave');
     leaveCodes = [];
     reasonCodes = [];
     let reset = await this.resetCreateLeave();
-    console.log("Reset", reset);
+    console.log('Reset', reset);
     BackHandler.addEventListener(
-      "hardwareBackPress",
+      'hardwareBackPress',
       this.handleBackButtonClick
     );
     this.setState(
-      { showPopUp: false, popUpMessage: "", popUpHeading: "", loading: true },
+      { showPopUp: false, popUpMessage: '', popUpHeading: '', loading: true },
       () => {
         this.props.fetchLeaveData(
           this.props.loginData,
@@ -319,48 +319,48 @@ class CreateLeave extends Component {
   resetCreateLeave = async () => {
     let p = new Promise((resolve, reject) => {
       BackHandler.removeEventListener(
-        "hardwareBackPress",
+        'hardwareBackPress',
         this.handleBackButtonClick
       );
       this.props.resetData();
       this.setState(
         {
-          startDate: "Start Date",
-          endDate: "End Date",
+          startDate: 'Start Date',
+          endDate: 'End Date',
           modalVisible: false,
           resultModalVisible: false,
-          query: "",
+          query: '',
           empData: [],
           localEmpData: [],
-          fileData: "",
-          fileName: "",
-          selectedEmpCode: "",
-          selectedEmpName: "",
+          fileData: '',
+          fileName: '',
+          selectedEmpCode: '',
+          selectedEmpName: '',
           isHalfDay: false,
           halfDayVal: 1,
           otherRemarks: false,
-          leaveCode: "",
-          leaveType: "",
+          leaveCode: '',
+          leaveType: '',
           dateAlert: false,
-          handlerRemarks: "",
-          supervisorRemarks: "",
-          leaveReasonVal: "",
-          leaveReasonCode: "",
-          otherReasonRemarks: "",
+          handlerRemarks: '',
+          supervisorRemarks: '',
+          leaveReasonVal: '',
+          leaveReasonCode: '',
+          otherReasonRemarks: '',
           middleView: true,
-          bereavementFamilyMember: "",
-          contactNo: "",
+          bereavementFamilyMember: '',
+          contactNo: '',
           showPopUp: false,
-          familyOtherRelation: "",
-          address1: "",
-          address2: "",
-          weddingDate: "Wedding Date *",
-          compOffStartDate: "Start Date",
-          compOffEndDate: " End Date ",
+          familyOtherRelation: '',
+          address1: '',
+          address2: '',
+          weddingDate: 'Wedding Date *',
+          compOffStartDate: 'Start Date',
+          compOffEndDate: ' End Date ',
         },
         () => {
-          console.log("Create leave data reset");
-          resolve("RESET");
+          console.log('Create leave data reset');
+          resolve('RESET');
         }
       );
     });
@@ -370,17 +370,17 @@ class CreateLeave extends Component {
   leaveTypeSelection = (index, value) => {
     if (this.props.loginData && this.props.loginData.SmCode) {
       writeLog(
-        "Selected leave is " + value + " for " + this.props.loginData.SmCode
+        'Selected leave is ' + value + ' for ' + this.props.loginData.SmCode
       );
     }
     // console.log("Leave type selected is :",index,value,leaveCodes[index],this.state.startDate,this.state.endDate)
-    if (value.includes("1/2")) {
+    if (value.includes('1/2')) {
       this.setState({
         isHalfDay: true,
         leaveCode: leaveCodes[index],
         leaveType: value,
-        startDate: "Start Date",
-        endDate: "End Date",
+        startDate: 'Start Date',
+        endDate: 'End Date',
       });
     } else {
       this.setState({
@@ -388,8 +388,8 @@ class CreateLeave extends Component {
         halfDayVal: 1,
         leaveCode: leaveCodes[index],
         leaveType: value,
-        startDate: "Start Date",
-        endDate: "End Date",
+        startDate: 'Start Date',
+        endDate: 'End Date',
       });
     }
   };
@@ -397,7 +397,7 @@ class CreateLeave extends Component {
     // console.log("Reason selected is :", index, value, reasonCodes[index])
     if (this.props.loginData && this.props.loginData.SmCode) {
       writeLog(
-        "Selected reason is " + value + " for " + this.props.loginData.SmCode
+        'Selected reason is ' + value + ' for ' + this.props.loginData.SmCode
       );
     }
     if (index == 8) {
@@ -415,11 +415,11 @@ class CreateLeave extends Component {
     }
   };
   onEmployeeSearch = () => {
-    writeLog("Clicked on " + "onEmployeeSearch" + " of " + "CreateLeave");
+    writeLog('Clicked on ' + 'onEmployeeSearch' + ' of ' + 'CreateLeave');
     this.setState({ modalVisible: true });
   };
   modalClose = () => {
-    writeLog("Clicked on " + "modalClose" + " of " + "CreateLeave");
+    writeLog('Clicked on ' + 'modalClose' + ' of ' + 'CreateLeave');
     this.setState({ modalVisible: false });
   };
   updateSearch = (searchText) => {
@@ -428,7 +428,7 @@ class CreateLeave extends Component {
         query: searchText,
       },
       () => {
-        console.log("Search Query : ", this.state.query);
+        console.log('Search Query : ', this.state.query);
         const filteredData = this.state.localEmpData.filter((element) => {
           let str1 = element.EmpCode.trim();
           let str2 = element.EmpName.trim();
@@ -442,7 +442,7 @@ class CreateLeave extends Component {
             empData: filteredData,
           },
           () => {
-            console.log("Update search called", filteredData);
+            console.log('Update search called', filteredData);
           }
         );
       }
@@ -450,11 +450,11 @@ class CreateLeave extends Component {
   };
   pickEmployee = (empData) => {
     writeLog(
-      "Clicked on " +
-        "pickEmployee" +
-        " of " +
-        "CreateLeave" +
-        ".  Employee picked is " +
+      'Clicked on ' +
+        'pickEmployee' +
+        ' of ' +
+        'CreateLeave' +
+        '.  Employee picked is ' +
         empData.EmpCode
     );
     // console.log("picked employee", empData.EmpCode, empData.EmpName)
@@ -479,7 +479,7 @@ class CreateLeave extends Component {
     // console.log("Selected family member is :", member)
     this.setState({ bereavementFamilyMember: member }, () => {
       console.log(
-        "Selected family member is : ",
+        'Selected family member is : ',
         this.state.bereavementFamilyMember
       );
     });
@@ -499,36 +499,36 @@ class CreateLeave extends Component {
   fileCallBack = (fileData, file_Name) => {
     // console.log("File data in attachment : ", fileData);
     writeLog(
-      "Clicked on " +
-        "fileCallBack" +
-        " of " +
-        "CreateLeave" +
-        " & choosen file is " +
+      'Clicked on ' +
+        'fileCallBack' +
+        ' of ' +
+        'CreateLeave' +
+        ' & choosen file is ' +
         file_Name
     );
     this.setState({ fileData: fileData, fileName: file_Name }, () => {});
   };
   submitCallBack = () => {
-    let endMoment = moment(endDate, "DD-MMM-YYYY");
-    let startMoment = moment(startDate, "DD-MMM-YYYY");
+    let endMoment = moment(endDate, 'DD-MMM-YYYY');
+    let startMoment = moment(startDate, 'DD-MMM-YYYY');
     let address1 =
-      this.state.leaveData.Details[0].Address1.Value.trim() !== "" &&
+      this.state.leaveData.Details[0].Address1.Value.trim() !== '' &&
       this.state.leaveData.Details[0].Address1.Value !== undefined
         ? this.state.leaveData.Details[0].Address1.Value
         : this.state.address1;
     let address2 =
-      this.state.leaveData.Details[0].Address2.Value.trim() !== "" &&
+      this.state.leaveData.Details[0].Address2.Value.trim() !== '' &&
       this.state.leaveData.Details[0].Address2.Value !== undefined
         ? this.state.leaveData.Details[0].Address2.Value
         : this.state.address2;
 
     let companyCode = this.state?.leaveData?.Details[0]?.CompanyCode.Value;
-    console.log("Address one :", address1);
-    console.log("Address two :", address2);
-    console.log("Leave code : ", this.state.leaveCode);
-    console.log("Company code : ", companyCode);
+    console.log('Address one :', address1);
+    console.log('Address two :', address2);
+    console.log('Leave code : ', this.state.leaveCode);
+    console.log('Company code : ', companyCode);
     console.log(
-      "Bereavement Family Member : ",
+      'Bereavement Family Member : ',
       this.state.bereavementFamilyMember
     );
     if (
@@ -538,97 +538,97 @@ class CreateLeave extends Component {
       startDate = this.startCalendar.current.state.selectedDate;
       endDate = this.endCalendar.current.state.selectedDate;
     }
-    let diff = endMoment.diff(startMoment, "days");
-    if (this.state.contactNo.includes(".")) {
+    let diff = endMoment.diff(startMoment, 'days');
+    if (this.state.contactNo.includes('.')) {
       return alert(NO_DOT);
-    } else if (address1.trim() == "") {
+    } else if (address1.trim() == '') {
       return alert(ADD_1_Required);
-    } else if (address2.trim() == "") {
+    } else if (address2.trim() == '') {
       return alert(ADD_2_Required);
     } else if (
-      this.state.leaveData.Details[0].ContactNo.Value == "" &&
-      this.state.contactNo == ""
+      this.state.leaveData.Details[0].ContactNo.Value == '' &&
+      this.state.contactNo == ''
     ) {
       return alert(CONTACT_MANDATORY);
-    } else if (this.state.leaveType == "") {
+    } else if (this.state.leaveType == '') {
       return alert(SELECT_LEAVE_TYPE);
-    } else if (this.state.startDate == "Start Date") {
+    } else if (this.state.startDate == 'Start Date') {
       return alert(START_DATE_NOT_SELECTED);
-    } else if (this.state.endDate == "End Date") {
+    } else if (this.state.endDate == 'End Date') {
       return alert(END_DATE_NOT_SELECTED);
     } else if (diff < 0) {
       return alert(END_DATE_PASSED);
-    } else if (this.state.storedLeaves == "") {
+    } else if (this.state.storedLeaves == '') {
       return alert(WAIT_FOR_NUM_DAYS);
     } else if (
-      this.state.leaveCode == "0430" &&
-      companyCode == "N060" &&
-      this.state.weddingDate == "Wedding Date *"
+      this.state.leaveCode == '0430' &&
+      companyCode == 'N060' &&
+      this.state.weddingDate == 'Wedding Date *'
     ) {
       return alert(SELECT_WEDDING_DATE);
     } else if (
-      this.state.leaveCode == "0440" &&
-      companyCode == "N060" &&
-      this.state.compOffStartDate == "Start Date"
+      this.state.leaveCode == '0440' &&
+      companyCode == 'N060' &&
+      this.state.compOffStartDate == 'Start Date'
     ) {
       return alert(SELECT_COMP_START_DATE);
     } else if (
-      this.state.leaveCode == "0440" &&
-      (companyCode == "N081" ||
-        companyCode == "N001" ||
-        companyCode == "N028" ||
-        companyCode == "N070" ||
-        companyCode == "NDEV" ||
-        companyCode == "NSU1" ||
-        companyCode == "NSU3" ||
-        companyCode == "NSU4") &&
-      this.state.compOffStartDate == "Start Date"
+      this.state.leaveCode == '0440' &&
+      (companyCode == 'N081' ||
+        companyCode == 'N001' ||
+        companyCode == 'N028' ||
+        companyCode == 'N070' ||
+        companyCode == 'NDEV' ||
+        companyCode == 'NSU1' ||
+        companyCode == 'NSU3' ||
+        companyCode == 'NSU4') &&
+      this.state.compOffStartDate == 'Start Date'
     ) {
       return alert(SELECT_COMP_START_DATE);
     } else if (
-      this.state.leaveCode == "0440" &&
-      companyCode == "N060" &&
-      this.state.compOffEndDate == " End Date "
+      this.state.leaveCode == '0440' &&
+      companyCode == 'N060' &&
+      this.state.compOffEndDate == ' End Date '
     ) {
       return alert(SELECT_COMP_END_DATE);
     } else if (
-      (this.state.leaveCode == "0400" || this.state.leaveCode == "0410") &&
-      companyCode == "N062" &&
-      this.state.compOffStartDate == "Start Date"
+      (this.state.leaveCode == '0400' || this.state.leaveCode == '0410') &&
+      companyCode == 'N062' &&
+      this.state.compOffStartDate == 'Start Date'
     ) {
       return alert(SELECT_COMP_TOIL_START_DATE);
     } else if (
-      (this.state.leaveCode == "0400" || this.state.leaveCode == "0410") &&
-      companyCode == "N062" &&
-      this.state.compOffEndDate == " End Date "
+      (this.state.leaveCode == '0400' || this.state.leaveCode == '0410') &&
+      companyCode == 'N062' &&
+      this.state.compOffEndDate == ' End Date '
     ) {
       return alert(SELECT_COMP_TOIL_END_DATE);
     } else if (
-      ((this.state.leaveCode == "0350" && companyCode == "N055") ||
-        (this.state.leaveCode == "0550" && companyCode == "N076") ||
-        this.state.leaveCode == "0530") &&
-      this.state.bereavementFamilyMember == ""
+      ((this.state.leaveCode == '0350' && companyCode == 'N055') ||
+        (this.state.leaveCode == '0550' && companyCode == 'N076') ||
+        this.state.leaveCode == '0530') &&
+      this.state.bereavementFamilyMember == ''
     ) {
       return alert(SELECT_FAMILY_MEMBER);
     } else if (
-      this.state.bereavementFamilyMember.includes("Other") &&
-      this.state.familyOtherRelation == ""
+      this.state.bereavementFamilyMember.includes('Other') &&
+      this.state.familyOtherRelation == ''
     ) {
       return alert(SELECT_OTHER_RELATION);
-    } else if (this.state.leaveReasonVal == "") {
+    } else if (this.state.leaveReasonVal == '') {
       return alert(SELECT_LEAVE_REASON);
     } else if (
-      this.state.leaveReasonCode == "9" &&
-      this.state.otherReasonRemarks == ""
+      this.state.leaveReasonCode == '9' &&
+      this.state.otherReasonRemarks == ''
     ) {
       return alert(OTHER_REASON_REMARKS);
     } else if (
-      this.state.startDate !== "Start Date" &&
-      this.state.selectedEmpCode == ""
+      this.state.startDate !== 'Start Date' &&
+      this.state.selectedEmpCode == ''
     ) {
       if (
-        startMoment.diff(moment(new Date(), "DD-MMM-YYYY"), "days") >= 0 &&
-        companyCode !== "N081"
+        startMoment.diff(moment(new Date(), 'DD-MMM-YYYY'), 'days') >= 0 &&
+        companyCode !== 'N081'
       ) {
         return alert(SELECT_WORK_HANDLE);
       }
@@ -640,7 +640,7 @@ class CreateLeave extends Component {
     dataToSubmit.dt_endDate = this.state.endDate;
     dataToSubmit.dc_NoDays = this.state.storedLeaves;
     dataToSubmit.in_torole = 1;
-    dataToSubmit.vc_docno = "";
+    dataToSubmit.vc_docno = '';
     dataToSubmit.vc_remarks = this.state.supervisorRemarks;
     dataToSubmit.Action = 1;
     dataToSubmit.ch_modified = this.state.leaveData.Details[0].EmpCode.Value;
@@ -656,35 +656,35 @@ class CreateLeave extends Component {
     dataToSubmit.vc_add1 = address1;
     dataToSubmit.vc_add2 = address2;
     dataToSubmit.vc_tel =
-      this.state.contactNo == ""
+      this.state.contactNo == ''
         ? this.state.leaveData.Details[0].ContactNo.Value
         : this.state.contactNo;
     dataToSubmit.vc_FamilyMemberRelation = this.state.bereavementFamilyMember; // blank otherwise relation when berevment leave
     dataToSubmit.vc_FamilyOtherRelation = this.state.familyOtherRelation;
     dataToSubmit.SupervisorCode = this.state.leaveData.Details[0].SupervisorCode.Value;
-    dataToSubmit.flagDownload = this.state.fileName == "" ? false : true; // Need to work later.
+    dataToSubmit.flagDownload = this.state.fileName == '' ? false : true; // Need to work later.
     dataToSubmit.ch_created = this.state.leaveData.Details[0].EmpCode.Value;
-    dataToSubmit.ContentType = ""; // would be according to attachment will be cleared later
+    dataToSubmit.ContentType = ''; // would be according to attachment will be cleared later
     dataToSubmit.vc_remarksworkhandler = this.state.handlerRemarks;
     dataToSubmit.VC_DOCUMENTNAME = this.state.fileName; // need to update later
     dataToSubmit.VB_DOCUMENT = this.state.fileData; // need to update later?
     dataToSubmit.dt_CompOffDate =
-      this.state.leaveCode == "0440" ||
-      this.state.leaveCode == "0400" ||
-      this.state.leaveCode == "0410"
+      this.state.leaveCode == '0440' ||
+      this.state.leaveCode == '0400' ||
+      this.state.leaveCode == '0410'
         ? this.state.compOffStartDate
-        : "";
+        : '';
     dataToSubmit.dt_CompOffToDate =
-      this.state.leaveCode == "0440" ||
-      this.state.leaveCode == "0400" ||
-      this.state.leaveCode == "0410"
+      this.state.leaveCode == '0440' ||
+      this.state.leaveCode == '0400' ||
+      this.state.leaveCode == '0410'
         ? this.state.compOffEndDate
-        : "";
+        : '';
     dataToSubmit.dt_WeddingDate =
-      this.state.leaveCode == "0430" ? this.state.weddingDate : "";
-    writeLog("Clicked on " + "submitCallBack" + " of " + "CreateLeave");
+      this.state.leaveCode == '0430' ? this.state.weddingDate : '';
+    writeLog('Clicked on ' + 'submitCallBack' + ' of ' + 'CreateLeave');
     this.setState(
-      { showPopUp: false, popUpHeading: "", popUpMessage: "", loading: true },
+      { showPopUp: false, popUpHeading: '', popUpMessage: '', loading: true },
       () => {
         this.props.submitLeave(
           this.props.loginData,
@@ -701,11 +701,11 @@ class CreateLeave extends Component {
         this.setState(
           {
             showPopUp: true,
-            popUpMessage: "Leave has been applied successfully",
-            popUpHeading: "Success",
+            popUpMessage: 'Leave has been applied successfully',
+            popUpHeading: 'Success',
           },
           () => {
-            console.log("Submitted Action finally : ", response[0].msgTxt);
+            console.log('Submitted Action finally : ', response[0].msgTxt);
           }
         );
       });
@@ -719,11 +719,11 @@ class CreateLeave extends Component {
   };
   showPopUp = () => {
     writeLog(
-      "Dialog is open for " + this.state.popUpMessage + " on " + "CreateLeave"
+      'Dialog is open for ' + this.state.popUpMessage + ' on ' + 'CreateLeave'
     );
-    console.log("showPopUp", this.state.showPopUp);
-    console.log("popUpMessage", this.state.popUpMessage);
-    console.log("popUpHeading", this.state.popUpHeading);
+    console.log('showPopUp', this.state.showPopUp);
+    console.log('popUpMessage', this.state.popUpMessage);
+    console.log('popUpHeading', this.state.popUpHeading);
     return (
       <UserMessage
         modalVisible={this.state.showPopUp}
@@ -737,14 +737,14 @@ class CreateLeave extends Component {
   };
 
   showNoLeaves = () => {
-    console.log("showPopUp", this.state.showPopUp);
-    console.log("popUpMessage", this.state.popUpMessage);
-    console.log("popUpHeading", this.state.popUpHeading);
+    console.log('showPopUp', this.state.showPopUp);
+    console.log('popUpMessage', this.state.popUpMessage);
+    console.log('popUpHeading', this.state.popUpHeading);
     writeLog(
-      "Dialog is open for " +
-        "You are not eligible for applying leave right now." +
-        " on " +
-        "CreateLeave"
+      'Dialog is open for ' +
+        'You are not eligible for applying leave right now.' +
+        ' on ' +
+        'CreateLeave'
     );
     return (
       <UserMessage
@@ -758,7 +758,7 @@ class CreateLeave extends Component {
     );
   };
   onOkClick = () => {
-    writeLog("Clicked on " + "onOkClick" + " of " + "CreateLeave");
+    writeLog('Clicked on ' + 'onOkClick' + ' of ' + 'CreateLeave');
     this.setState({ showPopUp: false }, () => {
       setTimeout(async () => {
         this.props.navigation.pop();
@@ -774,7 +774,7 @@ class CreateLeave extends Component {
   };
   renderMainView = () => {
     console.log(
-      "Bereavement Family Member : ",
+      'Bereavement Family Member : ',
       this.state.bereavementFamilyMember
     );
     let companyCode =
@@ -821,12 +821,12 @@ class CreateLeave extends Component {
                 this.setLeaveCodes(values);
               }}
             />
-            {(this.state.leaveCode == "0350" &&
-              companyCode !== "N055" &&
-              companyCode !== "N050" &&
-              companyCode !== "N009") ||
-            (this.state.leaveCode == "0550" && companyCode == "N076") ||
-            this.state.leaveCode == "0530" ? (
+            {(this.state.leaveCode == '0350' &&
+              companyCode !== 'N055' &&
+              companyCode !== 'N050' &&
+              companyCode !== 'N009') ||
+            (this.state.leaveCode == '0550' && companyCode == 'N076') ||
+            this.state.leaveCode == '0530' ? (
               <Dropdown
                 leftFlex={0.35}
                 title="Select family member : "
@@ -837,18 +837,18 @@ class CreateLeave extends Component {
               />
             ) : null}
 
-            {this.state.bereavementFamilyMember.includes("Other") ? (
+            {this.state.bereavementFamilyMember.includes('Other') ? (
               <View style={styles.halfHolder}>
                 <Text style={styles.heading}>Other Relation</Text>
                 <View style={styles.description}>
                   <TextInput
                     autoCapitalize="none"
                     autoCorrect={false}
-                    autoCompleteType={false}
+                    autoCompleteType="off"
                     onChangeText={(text) =>
                       this.setState({ familyOtherRelation: text })
                     }
-                    placeholder={"Other Relation ?"}
+                    placeholder={'Other Relation ?'}
                     editable={true}
                     multiline={false}
                     style={styles.textInputStyle}
@@ -864,7 +864,7 @@ class CreateLeave extends Component {
                 }}
               />
             ) : null}
-            {this.state.leaveCode == "0430" && companyCode == "N060" ? (
+            {this.state.leaveCode == '0430' && companyCode == 'N060' ? (
               <View style={styles.compContainer}>
                 <View style={styles.dateRow}>
                   <Text style={styles.heading}>Wedding Date *</Text>
@@ -876,7 +876,7 @@ class CreateLeave extends Component {
                 </View>
               </View>
             ) : null}
-            {this.state.leaveCode == "0440" && companyCode == "N060" ? (
+            {this.state.leaveCode == '0440' && companyCode == 'N060' ? (
               <View style={styles.compContainer}>
                 <View style={styles.dateRow}>
                   <Text style={styles.heading}>Comp Off Start Date *</Text>
@@ -896,15 +896,15 @@ class CreateLeave extends Component {
                 </View>
               </View>
             ) : null}
-            {this.state.leaveCode == "0440" &&
-            (companyCode == "N081" ||
-              companyCode == "N001" ||
-              companyCode == "N028" ||
-              companyCode == "N070" ||
-              companyCode == "NDEV" ||
-              companyCode == "NSU1" ||
-              companyCode == "NSU3" ||
-              companyCode == "NSU4") ? (
+            {this.state.leaveCode == '0440' &&
+            (companyCode == 'N081' ||
+              companyCode == 'N001' ||
+              companyCode == 'N028' ||
+              companyCode == 'N070' ||
+              companyCode == 'NDEV' ||
+              companyCode == 'NSU1' ||
+              companyCode == 'NSU3' ||
+              companyCode == 'NSU4') ? (
               <View style={styles.compContainer}>
                 <View style={styles.dateRow}>
                   <Text style={styles.heading}>Comp Off Date *</Text>
@@ -916,9 +916,9 @@ class CreateLeave extends Component {
                 </View>
               </View>
             ) : null}
-            {(this.state.leaveCode == "0410" ||
-              this.state.leaveCode == "0400") &&
-            companyCode == "N062" ? (
+            {(this.state.leaveCode == '0410' ||
+              this.state.leaveCode == '0400') &&
+            companyCode == 'N062' ? (
               <View style={styles.compContainer}>
                 <View style={styles.dateRow}>
                   <Text style={styles.heading}>Comp Off From Date *</Text>
@@ -939,8 +939,8 @@ class CreateLeave extends Component {
               </View>
             ) : null}
             {this.renderDateRow()}
-            {this.state.startDate !== "Start Date" &&
-            this.state.endDate !== "End Date" ? (
+            {this.state.startDate !== 'Start Date' &&
+            this.state.endDate !== 'End Date' ? (
               <DateDifferenceView
                 data={this.state.leaveData?.Details}
                 leaveCode={this.state.leaveCode}
@@ -1022,7 +1022,7 @@ class CreateLeave extends Component {
             />
           </View>
         ) : null}
-        {this.state.showPopUp == true && this.state.popUpMessage !== ""
+        {this.state.showPopUp == true && this.state.popUpMessage !== ''
           ? this.showPopUp()
           : null}
       </View>
@@ -1030,7 +1030,7 @@ class CreateLeave extends Component {
   };
   //
   render() {
-    let behave = this.state.middleView == false ? "padding" : "position";
+    let behave = this.state.middleView == false ? 'padding' : 'position';
     return (
       <ImageBackground source={images.loginBackground} style={styles.container}>
         <ActivityIndicatorView loader={this.state.loading} />

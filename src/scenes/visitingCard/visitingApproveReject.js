@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import {
   Text,
   View,
@@ -10,26 +10,26 @@ import {
   TextInput,
   BackHandler,
   Platform,
-} from "react-native";
-import { styles } from "./styles";
-import { connect } from "react-redux";
-import { DismissKeyboardView } from "../../components/DismissKeyboardView";
-import SubHeader from "../../GlobalComponent/SubHeader";
-import { globalFontStyle } from "../../components/globalFontStyle";
-import ModalDropdown from "react-native-modal-dropdown";
-import { Icon, SearchBar } from "react-native-elements";
-import UserMessage from "../../components/userMessage";
+} from 'react-native';
+import { styles } from './styles';
+import { connect } from 'react-redux';
+import { DismissKeyboardView } from '../../components/DismissKeyboardView';
+import SubHeader from '../../GlobalComponent/SubHeader';
+import { globalFontStyle } from '../../components/globalFontStyle';
+import ModalDropdown from 'react-native-modal-dropdown';
+import { Icon, SearchBar } from 'react-native-elements';
+import UserMessage from '../../components/userMessage';
 import {
   fetchSupervisorData,
   resetSupervisor,
   completeRequest,
-} from "./visitingCardAction";
-import helper from "../../utilities/helper";
-import { writeLog } from "../../utilities/logger";
-import { WHITE_COLOR } from "../../../appconfig";
-import images from "../../images";
-let constants = require("./constants");
-let globalConstants = require("../../GlobalConstants");
+} from './visitingCardAction';
+import helper from '../../utilities/helper';
+import { writeLog } from '../../utilities/logger';
+import { WHITE_COLOR } from '../../../appconfig';
+import images from '../../images';
+let constants = require('./constants');
+let globalConstants = require('../../GlobalConstants');
 
 class VisitingApproveRejectScreen extends Component {
   constructor(props) {
@@ -40,14 +40,14 @@ class VisitingApproveRejectScreen extends Component {
       (this.state = {
         localSuperVisorData: [],
         localSuperVisorSearchList: [],
-        submitTo: "Select",
-        superVisorEmpName: "",
-        superVisorEmpId: "",
-        remarks: "",
-        query: "",
+        submitTo: 'Select',
+        superVisorEmpName: '',
+        superVisorEmpId: '',
+        remarks: '',
+        query: '',
         showModal: false,
         messageType: null,
-        isPopUp: "",
+        isPopUp: '',
       });
     this.submitRef = React.createRef();
   }
@@ -56,7 +56,7 @@ class VisitingApproveRejectScreen extends Component {
     this.props.resetSupervisor();
   }
   supervisorCallBack = (data) => {
-    console.log("Data in supervisor call back : ", data);
+    console.log('Data in supervisor call back : ', data);
     this.setState({
       localSuperVisorData: data,
       localSuperVisorSearchList: data,
@@ -81,9 +81,9 @@ class VisitingApproveRejectScreen extends Component {
       });
     }
     if (
-      this.props.visitingActionResponse === "SUCCESS" &&
+      this.props.visitingActionResponse === 'SUCCESS' &&
       this.props.visitingActionError.length === 0 &&
-      this.state.isPopUp === ""
+      this.state.isPopUp === ''
     ) {
       setTimeout(() => {
         this.setState({
@@ -106,7 +106,7 @@ class VisitingApproveRejectScreen extends Component {
     }
   }
   componentDidMount() {
-    writeLog("Landed on " + "VisitingApproveRejectScreen");
+    writeLog('Landed on ' + 'VisitingApproveRejectScreen');
   }
   onFocus = () => {
     if (this.submitRef.current != null) {
@@ -116,7 +116,7 @@ class VisitingApproveRejectScreen extends Component {
 
   handleBack = () => {
     writeLog(
-      "Clicked on " + "handleBack" + " of " + "VisitingApproveRejectScreen"
+      'Clicked on ' + 'handleBack' + ' of ' + 'VisitingApproveRejectScreen'
     );
     this.props.navigation.pop();
   };
@@ -169,7 +169,7 @@ class VisitingApproveRejectScreen extends Component {
   };
 
   showVisitingRowGrid = (itemName, itemValue) => {
-    if (itemValue != "" && itemValue != null && itemValue != undefined) {
+    if (itemValue != '' && itemValue != null && itemValue != undefined) {
       return (
         <View style={styles.rowStyle}>
           <Text style={[globalFontStyle.imageBackgroundLayout, styles.textOne]}>
@@ -186,7 +186,7 @@ class VisitingApproveRejectScreen extends Component {
   };
 
   showPicker = () => {
-    let selectors = ["Supervisor", "LHR"];
+    let selectors = ['Supervisor', 'LHR'];
     return (
       <View style={styles.dropDownContainer}>
         <Text>{globalConstants.SUBMIT_TO_TEXT}</Text>
@@ -242,7 +242,7 @@ class VisitingApproveRejectScreen extends Component {
   };
 
   onApproverSelection = (approver) => {
-    if (approver === "Supervisor") {
+    if (approver === 'Supervisor') {
       // this.props.fetchSuperVisorData(this.state.query);
     } else {
       this.props.resetSupervisor();
@@ -251,17 +251,17 @@ class VisitingApproveRejectScreen extends Component {
 
   onSelection = (index, value) => {
     writeLog(
-      "Invoked " +
-        "onSelection" +
-        " of " +
-        "VisitingApproveReject" +
-        " for " +
+      'Invoked ' +
+        'onSelection' +
+        ' of ' +
+        'VisitingApproveReject' +
+        ' for ' +
         value
     );
     this.setState(
       {
         submitTo: value,
-        superVisorEmpName: "",
+        superVisorEmpName: '',
       },
       () => {
         this.onApproverSelection(value);
@@ -275,7 +275,7 @@ class VisitingApproveRejectScreen extends Component {
         <TextInput
           autoCapitalize="none"
           autoCorrect={false}
-          autoCompleteType={false}
+          autoCompleteType="off"
           multiline={true}
           maxLength={200}
           onChangeText={(text) => this.setState({ remarks: text })}
@@ -289,17 +289,17 @@ class VisitingApproveRejectScreen extends Component {
 
   submitRequest = () => {
     let MyRemarks = this.state.remarks.trim();
-    if (MyRemarks === "") {
-      return alert("Please enter remarks!!");
+    if (MyRemarks === '') {
+      return alert('Please enter remarks!!');
     }
 
-    if (this.state.submitTo === "LHR") {
+    if (this.state.submitTo === 'LHR') {
       this.props.completeRequest(
         empData.ch_empcode.Value,
         empData.in_request_no.Value,
         1,
         3,
-        "",
+        '',
         3,
         MyRemarks
       );
@@ -318,24 +318,24 @@ class VisitingApproveRejectScreen extends Component {
 
   rejectReq = () => {
     let MyRemarks = this.state.remarks.trim();
-    if (MyRemarks === "") {
-      return alert("Please enter remarks!!");
+    if (MyRemarks === '') {
+      return alert('Please enter remarks!!');
     }
     writeLog(
-      "Invoked " +
-        "rejectReq" +
-        " of " +
-        "VisitingApproveRejectScreen" +
-        " for " +
+      'Invoked ' +
+        'rejectReq' +
+        ' of ' +
+        'VisitingApproveRejectScreen' +
+        ' for ' +
         empData.in_request_no.Value
     );
     this.props.completeRequest(
       empData.ch_empcode.Value,
       empData.in_request_no.Value,
       2,
-      "",
-      "",
-      "",
+      '',
+      '',
+      '',
       MyRemarks
     );
   };
@@ -379,25 +379,25 @@ class VisitingApproveRejectScreen extends Component {
 
   backNavigate() {
     writeLog(
-      "Clicked on " + "backNavigate" + " of " + "VisitingApproveRejectScreen"
+      'Clicked on ' + 'backNavigate' + ' of ' + 'VisitingApproveRejectScreen'
     );
-    this.props.navigation.navigate("DashBoard");
+    this.props.navigation.navigate('DashBoard');
   }
 
   showDialogBox = () => {
-    let message = "";
-    let heading = "";
+    let message = '';
+    let heading = '';
     if (this.state.showModal) {
       if (this.state.messageType === 0) {
-        message = "Your request has been ";
-        message = action != undefined ? message + action.toLowerCase() : "";
-        heading = "Successful";
+        message = 'Your request has been ';
+        message = action != undefined ? message + action.toLowerCase() : '';
+        heading = 'Successful';
         return (
           <UserMessage
             heading={heading}
             message={message}
             okAction={() => {
-              this.setState({ showModal: false, isPopUp: "" });
+              this.setState({ showModal: false, isPopUp: '' });
               this.backNavigate();
             }}
           />
@@ -409,7 +409,7 @@ class VisitingApproveRejectScreen extends Component {
             heading="Error"
             message={this.props.visitingActionError}
             okAction={() => {
-              this.setState({ showModal: false, isPopUp: "" });
+              this.setState({ showModal: false, isPopUp: '' });
               this.backNavigate();
             }}
           />
@@ -421,9 +421,9 @@ class VisitingApproveRejectScreen extends Component {
   onSupervisorSelection = (supervisor) => {
     this.props.resetSupervisor();
     this.setState({
-      superVisorEmpName: supervisor.EmpName.split(":")[1],
+      superVisorEmpName: supervisor.EmpName.split(':')[1],
       superVisorEmpId: supervisor.EmpCode,
-      query: "",
+      query: '',
     });
   };
 
@@ -450,7 +450,7 @@ class VisitingApproveRejectScreen extends Component {
           showsVerticalScrollIndicator={false}
           renderItem={({ item, index }) => this.renderSuperVisors(item, index)}
           keyExtractor={(item, index) =>
-            "supervisorRequest_" + index.toString()
+            'supervisorRequest_' + index.toString()
           }
         />
       );
@@ -461,14 +461,14 @@ class VisitingApproveRejectScreen extends Component {
 
   displaySupervisorName = () => {
     if (
-      this.state.submitTo != "Select" &&
-      (this.state.submitTo === "LHR" ||
-        (this.state.submitTo === "Supervisor" &&
-          this.state.superVisorEmpName !== ""))
+      this.state.submitTo != 'Select' &&
+      (this.state.submitTo === 'LHR' ||
+        (this.state.submitTo === 'Supervisor' &&
+          this.state.superVisorEmpName !== ''))
     ) {
       return (
         <View>
-          {this.state.submitTo === "LHR" ? null : (
+          {this.state.submitTo === 'LHR' ? null : (
             <View style={styles.remarksParent}>
               <Text style={styles.textSupervisor}>
                 {this.state.superVisorEmpName}
@@ -500,15 +500,15 @@ class VisitingApproveRejectScreen extends Component {
           navigation={this.props.navigation}
         />
         {/* {this.activityIndicator()} */}
-        {this.state.submitTo === "Supervisor" &&
-        this.state.superVisorEmpName === ""
+        {this.state.submitTo === 'Supervisor' &&
+        this.state.superVisorEmpName === ''
           ? null
           : this.showVisitingUserDetails()}
         {action === globalConstants.APPROVED_TEXT
           ? this.showPicker()
           : this.showRemarksAndRejectButton()}
-        {this.state.submitTo === "Supervisor" &&
-        this.state.superVisorEmpName === ""
+        {this.state.submitTo === 'Supervisor' &&
+        this.state.superVisorEmpName === ''
           ? this.renderSearch()
           : null}
         <ScrollView
