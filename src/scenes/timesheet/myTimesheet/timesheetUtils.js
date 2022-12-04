@@ -209,6 +209,7 @@ export const validateData4 = async (
 
 export const getTodayHours = (recordsResponse, currentDay) => {
   return prepareTimeSheetData(recordsResponse).then((rec) => {
+    console.log('getTodayHours === ', rec);
     return rec
       .filter((item) => item.TimesheetDate == currentDay)
       .reduce(
@@ -243,8 +244,7 @@ export const getTodayData2 = async (recordsResponse, currentDay) => {
   return dataContaier;
 };
 
-export const prepareTimeSheetData = (data) => {
-  console.log('=== dataprepare', data);
+export const prepareTimeSheetData = async (data) => {
   let records = [];
   data.forEach((item, index) => {
     let weekDays = item.lstColumns;
@@ -256,11 +256,11 @@ export const prepareTimeSheetData = (data) => {
       //  record.SupervisorCode = getsupCode
       record.TimesheetFromDate = item.TimesheetFromDate
         ? item.TimesheetFromDate
-        : item.TimesheetDate?.split(',')[0];
+        : item?.TimesheetDate?.split(',')[0];
       record.TimesheetToDate = item.TimesheetToDate
         ? item.TimesheetToDate
-        : item.TimesheetDate?.split(',')[
-            item.TimesheetDate?.split(',').length - 1
+        : item?.TimesheetDate?.split(',')[
+            item?.TimesheetDate?.split(',').length - 1
           ];
       record.ProjectCode = week.ProjectCode;
       record.ActivityCode = week.ActivityCode;

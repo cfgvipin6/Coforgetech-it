@@ -17,6 +17,23 @@ const handleError = (error) => {
 };
 
 const onApiCall = (url, data = {}, requestType = 'get') => {
+  let myURLArr = url.split('/');
+  let apiEndPoint = myURLArr[myURLArr.length - 1];
+  let startTime = new Date();
+  console.log(
+    `${apiEndPoint} invoke=> ${startTime.toLocaleDateString()} ${startTime.toLocaleTimeString()} ${startTime
+      .getMilliseconds()
+      .toLocaleString()}`
+  );
+  console.log('Form data body === : ', JSON.stringify(data));
+  console.log(`api url is === : ${requestType}` + url);
+  // writeLog(urlToLog + " " + "is invoked for POST request with body :" +  "\n"+JSON.stringify(form))
+  writeLog(
+    `${apiEndPoint} invoke=> ${startTime.toLocaleDateString()} ${startTime.toLocaleTimeString()} ${startTime
+      .getMilliseconds()
+      .toLocaleString()}`
+  );
+
   let controller = new AbortController();
   const postBody = {
     headers: {
@@ -43,62 +60,36 @@ const onApiCall = (url, data = {}, requestType = 'get') => {
         }
       })
       .then((responseData) => {
+        console.log('onApiCall success === ', responseData);
         resolve(responseData);
       })
       .catch((err) => {
+        console.log('onApiCall error === ', err);
         reject(handleError(err));
       })
       .done();
+    let endTime = new Date().getTime();
+    let timeDiff = endTime - startTime.getTime();
+    let timeTaken = moment.duration(timeDiff, 'milliseconds').asSeconds();
+    console.log(`${apiEndPoint} response time=> ${timeTaken}`);
+    writeLog(`${apiEndPoint} response time=> ${timeTaken}`);
   });
 };
 
 export const fetchGETMethod = async (url) => {
-  let myURLArr = url.split('/');
-  let apiEndPoint = myURLArr[myURLArr.length - 1];
-  let startTime = new Date();
-  writeLog(
-    `${apiEndPoint} invoke=> ${startTime.toLocaleDateString()} ${startTime.toLocaleTimeString()} ${startTime
-      .getMilliseconds()
-      .toLocaleString()}`
-  );
   const res = await onApiCall(url);
-  let endTime = new Date().getTime();
-  let timeDiff = endTime - startTime.getTime();
-  let timeTaken = moment.duration(timeDiff, 'milliseconds').asSeconds();
-  console.log(`${apiEndPoint} login response time=> ${timeTaken}`);
-  writeLog(`${apiEndPoint} login response time=> ${timeTaken}`);
   return res;
 };
 
 export const fetchPOSTMethodNew = async (url, form) => {
   const res = await onApiCall(url, form, POST_METHOD);
+  console.log('fetchPOSTMethodNew api call === ');
   return res;
 };
 
 // login method/ check Version Update
 export const fetchPOSTMethod = async (url, form) => {
-  let myURLArr = url.split('/');
-  let apiEndPoint = myURLArr[myURLArr.length - 1];
-  let startTime = new Date();
-  console.log(
-    `${apiEndPoint} invoke=> ${startTime.toLocaleDateString()} ${startTime.toLocaleTimeString()} ${startTime
-      .getMilliseconds()
-      .toLocaleString()}`
-  );
-  console.log('Form data is : ', JSON.stringify(form));
-  console.log('Url is === : ' + url);
-  // writeLog(urlToLog + " " + "is invoked for POST request with body :" +  "\n"+JSON.stringify(form))
-  writeLog(
-    `${apiEndPoint} invoke=> ${startTime.toLocaleDateString()} ${startTime.toLocaleTimeString()} ${startTime
-      .getMilliseconds()
-      .toLocaleString()}`
-  );
   const res = await onApiCall(url, form, POST_METHOD);
-  let endTime = new Date().getTime();
-  let timeDiff = endTime - startTime.getTime();
-  let timeTaken = moment.duration(timeDiff, 'milliseconds').asSeconds();
-  console.log(`${apiEndPoint} login response time=> ${timeTaken}`);
-  writeLog(`${apiEndPoint} login response time=> ${timeTaken}`);
   return res;
 };
 

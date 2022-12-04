@@ -24,9 +24,10 @@ export const TimeSheetSaveSubmit = ({
   const [totalHours, setTotalHours] = useState(0);
   let appConfig = require('../../../../../appconfig');
 
-  const loadData = () => {
-    let records = prepareTimeSheetData(recordData);
-    console.log('=== records', records);
+  const loadData = async () => {
+    console.log('recordData === ', recordData);
+    let records = await prepareTimeSheetData(recordData);
+    console.log('records === ', records);
     records.filter((item) => item.EffortHrs !== '');
     if (records.length > 0) {
       let hrs = records.reduce((a, b) => a + parseFloat(b.EffortHrs), 0);
@@ -36,6 +37,7 @@ export const TimeSheetSaveSubmit = ({
 
   useEffect(() => {
     loadData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

@@ -618,7 +618,7 @@ function InputController({
     fetchData('Binding', submitType);
   };
   const saveData = async (data) => {
-    console.log('savedata', data);
+    console.log('savedata === ', data);
     let records = [];
     let isRemarksRequired = false;
     let isShiftRequired = false;
@@ -627,10 +627,14 @@ function InputController({
         item.SupervisorName = setSupervisor;
       }
       let weekDays = item.lstColumns;
-      if (weekDays) {
+      if (weekDays.length) {
         for (let i = 0; i < weekDays.length; i++) {
           let day = weekDays[i];
-          if (day.Value !== '' && day.Remarks1 === '' && day.Selected === 1) {
+          if (
+            day.Value !== '' &&
+            day.Remarks1 === '' &&
+            Number(day.Selected) === 1
+          ) {
             isRemarksRequired = true;
           }
           // if (day.Value !== '' && day.ShiftCode == '0'){
@@ -646,6 +650,7 @@ function InputController({
       return alert('Shift code  required for selected day.');
     }
     getTodayHours(recordsResponse, currentDay).then(async (hours) => {
+      console.log('hours === ', hours);
       if (hours > empData.empData[0].MaxHourFullDay) {
         return alert(
           `You can not fill more than ${
@@ -671,6 +676,7 @@ function InputController({
         //  let supervisorCodeValue =setSupervisor
         // const [code,name]  =supervisorCodeValue.split(":");
         let recordData = await prepareTimeSheetData(data, empData);
+        console.log('recordData === ', recordData);
         saveSubmitTimeSheet(
           loginData,
           recordData,
