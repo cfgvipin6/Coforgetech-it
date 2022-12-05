@@ -2,28 +2,28 @@
 Author: Mohit Garg(70024)
 */
 
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import {
   Text,
   View,
   ScrollView,
   BackHandler,
   ImageBackground,
-} from "react-native";
-import { styles } from "./styles";
-import { userInfo, resetAddress } from "./addressAction";
-import { resetAddressData } from "./addressAction";
-import ActivityIndicatorView from "../../GlobalComponent/myActivityIndicator";
-import helper from "../../utilities/helper";
-import SubHeader from "../../GlobalComponent/SubHeader";
-import { connect } from "react-redux";
-import { globalFontStyle } from "../../components/globalFontStyle";
-import { writeLog } from "../../utilities/logger";
-import UserMessage from "../../components/userMessage";
-let appConfig = require("../../../appconfig");
-let globalConstants = require("../../GlobalConstants");
-import BoxContainer from "../../components/boxContainer.js/index.js";
-import images from "../../images";
+} from 'react-native';
+import { styles } from './styles';
+import { userInfo, resetAddress } from './addressAction';
+import { resetAddressData } from './addressAction';
+import ActivityIndicatorView from '../../GlobalComponent/myActivityIndicator';
+import helper from '../../utilities/helper';
+import SubHeader from '../../GlobalComponent/SubHeader';
+import { connect } from 'react-redux';
+import { globalFontStyle } from '../../components/globalFontStyle';
+import { writeLog } from '../../utilities/logger';
+import UserMessage from '../../components/userMessage';
+let appConfig = require('../../../appconfig');
+let globalConstants = require('../../GlobalConstants');
+import BoxContainer from '../../components/boxContainer.js/index.js';
+import images from '../../images';
 
 class AddressScreen extends Component {
   constructor(props) {
@@ -31,19 +31,19 @@ class AddressScreen extends Component {
     this.state = {
       addressResponse: [],
       errorPopUp: false,
-      isError: "",
+      isError: '',
     };
   }
 
   onFocus = () => {
-    writeLog("Landed on " + "AddressScreen");
+    writeLog('Landed on ' + 'AddressScreen');
     this.getUserAddressInfo();
   };
   componentDidUpdate() {
     if (
       this.props.addressError &&
       this.props.addressError.length > 0 &&
-      this.state.isError === ""
+      this.state.isError === ''
     ) {
       setTimeout(() => {
         this.setState({ errorPopUp: true, isError: this.props.addressError });
@@ -52,14 +52,14 @@ class AddressScreen extends Component {
   }
   componentDidMount() {
     BackHandler.addEventListener(
-      "hardwareBackPress",
+      'hardwareBackPress',
       this.handleBackButtonClick
     );
-    this.props.navigation.addListener("willFocus", this.onFocus);
+    this.props.navigation.addListener('willFocus', this.onFocus);
   }
   componentWillUnmount() {
     BackHandler.removeEventListener(
-      "hardwareBackPress",
+      'hardwareBackPress',
       this.handleBackButtonClick
     );
   }
@@ -71,12 +71,12 @@ class AddressScreen extends Component {
     if (
       nextProps.addressData &&
       nextProps.addressData.length > 0 &&
-      nextProps.addressError === ""
+      nextProps.addressError === ''
     ) {
       const data = nextProps.addressData;
       return { addressResponse: data };
     } else if (
-      nextProps.addressError != "" &&
+      nextProps.addressError != '' &&
       nextProps.addressData.length === 0
     ) {
       return { addressResponse: [] };
@@ -91,18 +91,18 @@ class AddressScreen extends Component {
       this.props.getUserAddressInformation(this.props.loginData);
   }
   onOkClick = () => {
-    writeLog("Clicked on " + "onOkClick" + " of " + "AddressScreen");
+    writeLog('Clicked on ' + 'onOkClick' + ' of ' + 'AddressScreen');
     this.props.resetAddressScreen();
-    this.setState({ errorPopUp: false, isError: "" }, () => {
+    this.setState({ errorPopUp: false, isError: '' }, () => {
       helper.onOkAfterError(this);
     });
   };
   showError() {
     writeLog(
-      "Dialog is open with exception " +
+      'Dialog is open with exception ' +
         this.props.addressError +
-        " on " +
-        "AddressScreen"
+        ' on ' +
+        'AddressScreen'
     );
     return (
       <UserMessage
@@ -117,13 +117,14 @@ class AddressScreen extends Component {
   }
 
   cardAddressKeyValue(obj) {
+    console.log('cardAddressKeyValue ++++++ ', obj);
     for (let prop in obj) {
       let newValue = obj.Value;
       if (newValue.trim().length === 0) {
-        newValue = "-";
+        newValue = '-';
       }
       return (
-        <View style={styles.keyValueTextView}>
+        <View key={obj.Key} style={styles.keyValueTextView}>
           <Text style={globalFontStyle.cardLeftText}>{obj.Key}</Text>
           <Text style={globalFontStyle.cardRightText}>{newValue}</Text>
         </View>
@@ -132,12 +133,13 @@ class AddressScreen extends Component {
   }
 
   myCardView(addressData) {
+    console.log('myCardView ++++++ ', addressData);
     let addressKeyValueArr = [];
-    let titleValue = "";
+    let titleValue = '';
     for (let prop in addressData) {
       key = prop;
       obj = addressData[prop];
-      if (key != "Type") {
+      if (key != 'Type') {
         addressKeyValueArr.push(this.cardAddressKeyValue(obj));
       } else {
         titleValue = addressData[prop].Value;
@@ -147,12 +149,12 @@ class AddressScreen extends Component {
       <BoxContainer>
         <Text
           style={{
-            fontWeight: "bold",
+            fontWeight: 'bold',
             fontSize: 20,
-            alignSelf: "center",
+            alignSelf: 'center',
             backgroundColor: appConfig.APP_SKY,
-            width: "100%",
-            textAlign: "center",
+            width: '100%',
+            textAlign: 'center',
             color: appConfig.BLUISH_COLOR,
           }}
         >

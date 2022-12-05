@@ -27,10 +27,30 @@ export const VISITING_CARD_ERROR_TEXT = 'Visiting Card Request!!';
 export const ECRP_ERROR_TEXT = 'CRP Letter Request!!';
 export const CDS_ERROR_TEXT = 'CDS Request!!';
 export const RESIGNATION_ERROR_TEXT = 'Resignation Request!!';
-export const ADV_DOMESTIC_TRAVEL_ERROR_TEXT = 'Additional Advance Domestic Request!!';
-export const ADV_INTL_TRAVEL_ERROR_TEXT = 'Additional Advance International Request!!';
+export const ADV_DOMESTIC_TRAVEL_ERROR_TEXT =
+  'Additional Advance Domestic Request!!';
+export const ADV_INTL_TRAVEL_ERROR_TEXT =
+  'Additional Advance International Request!!';
 export const IT_SERVICE_DESK_ERROR_TEXT = 'IT Service Desk Request!!';
 export const NO_APPROVALS_TO_APPROVE = "You don't have any pending approvals!!";
-export const LOCATION_NOT_FOUND = 'Your location could not be found, Please restart your device and enable the location.';
+export const LOCATION_NOT_FOUND =
+  'Your location could not be found, Please restart your device and enable the location.';
 export const OUT_OF_CAMPUS = 'You are out of campus.';
 export const WELCOME = 'Welcome to campus';
+export const COUNTRY_CODE = [
+  'N081',
+  'N082',
+  'N083',
+  'N084',
+  'N085',
+  'N081',
+  'N060',
+  'N061',
+  'N062',
+  'N063',
+  'N064',
+  'N065',
+  'N070',
+  'N071',
+  'N072',
+];

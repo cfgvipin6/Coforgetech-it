@@ -32,50 +32,58 @@ import {
 import ActivityIndicatorView from '../../GlobalComponent/myActivityIndicator';
 import { AppStore } from '../../../AppStore';
 import { enableLocation } from '../attendance/AttendanceUtils';
-import { LOCATION_NOT_FOUND, OUT_OF_CAMPUS, WELCOME } from './Constants';
+import {
+  LOCATION_NOT_FOUND,
+  OUT_OF_CAMPUS,
+  WELCOME,
+  COUNTRY_CODE,
+} from './Constants';
 import Header from '../../GlobalComponent/Header';
 import { writeLog } from '../../utilities/logger';
-import properties from '../../resource/properties';
 import UserMessage from '../../components/userMessage';
 import DialogModal from '../../components/dialogBox';
 import moment from 'moment';
 import { showToast } from '../../GlobalComponent/Toast';
 import { getAttendanceDay, setAttendanceDay } from '../auth/AuthUtility';
-import { fcmService } from '../../GlobalComponent/pushNotification/FCMService';
-import { localNotificationService } from '../../GlobalComponent/pushNotification/LocalNotificationService';
+// import { fcmService } from '../../GlobalComponent/pushNotification/FCMService';
+// import { localNotificationService } from '../../GlobalComponent/pushNotification/LocalNotificationService';
 import images from '../../images';
 import LinearGradient from 'react-native-linear-gradient';
 import { AppStyle } from '../commonStyle';
 import { DEVICE_ID, DEVICE_VERSION } from '../../components/DeviceInfoFile';
 import PrivacyFile from './PrivacyFile';
-import AsyncStorage from '@react-native-community/async-storage';
+import { getData } from '../../utilities/asyncStorage';
+
 const GH = 120;
 let constants = require('./Constants');
 let isAlert;
 let distance;
-let data = GridDataViewAttendance;
 let eligibilityStartTime, eligibilityEndTime;
+
+const defaultState = {
+  totalCount: 0,
+  numColumns: 3,
+  isRefreshing: false,
+  isMessageToShow: false,
+  inCampus: false,
+  distance: 0,
+  message: '',
+  isMessageShown: '',
+  statusCode: 0,
+  showModal: false,
+  isAcceptPrivacyPolicy: false,
+  modalNode: null,
+  backButtonPressed: false,
+};
 class DashboardNew2 extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      totalCount: 0,
-      numColumns: 3,
-      isRefreshing: false,
-      isMessageToShow: false,
-      inCampus: false,
-      distance: 0,
-      message: '',
-      isMessageShown: '',
-      statusCode: 0,
-      showModal: false,
-      isPrivacyPolicyOpen: false,
-      isAcceptPrivacyPolicy: false,
-      backButtonPressed: false,
-      images: [
-        require('../../assets/bg01.jpg'),
-        require('../../assets/bg_03.jpg'),
-      ],
+      ...defaultState,
+      // images: [
+      //   require('../../assets/bg01.jpg'),
+      //   require('../../assets/bg_03.jpg'),
+      // ],
     };
   }
 
@@ -91,18 +99,21 @@ class DashboardNew2 extends PureComponent {
   };
 
   errorCallBack = (response) => {
+    console.log('errorCallBack +++++++++', response);
     this.setState({
       showModal: true,
       statusCode: response?.split(':')[1],
       isMessageShown: response?.split(':')[0],
     });
   };
+
   errorCallBackDashBoard = (response) => {
+    console.log('errorCallBackDashBoard +++++++++', response);
     this.setState({ showModal: true, isMessageShown: response });
   };
 
-  async componentDidMount() {
-    this.displayData();
+  componentDidMount() {
+    this.getPrivacyPolicy();
     if (AppStore.getState().loginReducer.loginData !== undefined) {
       let emp = AppStore.getState().loginReducer.loginData.SmCode;
       isAlert = emp === '00076250';
@@ -115,36 +126,37 @@ class DashboardNew2 extends PureComponent {
       this.handleBackButtonClick
     );
     this.props.navigation.addListener('willFocus', this.onFocus);
-    fcmService.registerAppWithFcm();
-    fcmService.register(onRegister, onNotification, onOpenNotification);
-    localNotificationService.configure(onOpenNotification);
-    async function onRegister(token) {
-      console.log('[App] onRegister : ', token);
-      let data = {};
-      data.registration_token = token;
-      data.device_id = DEVICE_ID;
-      console.log('Data to send on server is  :', data);
-    }
+    // fcmService.registerAppWithFcm();
+    // fcmService.register(onRegister, onNotification, onOpenNotification);
+    // localNotificationService.configure(onOpenNotification);
 
-    function onNotification(notify) {
-      console.log('[App] onNotification : ', notify);
-      const options = {
-        soundName: 'default',
-        playSound: true,
-        bigPictureUrl: 'https://picsum.photos/200',
-      };
-      localNotificationService.showNotification(
-        0,
-        notify.title,
-        notify.body,
-        notify,
-        options
-      );
-    }
+    // async function onRegister(token) {
+    //   console.log('[App] onRegister : ', token);
+    //   let data = {};
+    //   data.registration_token = token;
+    //   data.device_id = DEVICE_ID;
+    //   console.log('Data to send on server is  :', data);
+    // }
 
-    function onOpenNotification(notify) {
-      console.log('[App] onOpenNotification3 :', notify);
-    }
+    // function onNotification(notify) {
+    //   console.log('[App] onNotification : ', notify);
+    //   const options = {
+    //     soundName: 'default',
+    //     playSound: true,
+    //     bigPictureUrl: 'https://picsum.photos/200',
+    //   };
+    //   localNotificationService.showNotification(
+    //     0,
+    //     notify.title,
+    //     notify.body,
+    //     notify,
+    //     options
+    //   );
+    // }
+
+    // function onOpenNotification(notify) {
+    //   console.log('[App] onOpenNotification3 :', notify);
+    // }
   }
 
   checkToHitEligibility = async () => {
@@ -264,6 +276,10 @@ class DashboardNew2 extends PureComponent {
     }
   };
 
+  resetState = () => {
+    this.setState({ ...defaultState });
+  };
+
   componentWillUnmount() {
     BackHandler.removeEventListener(
       'hardwareBackPress',
@@ -271,6 +287,7 @@ class DashboardNew2 extends PureComponent {
     );
     AppState.removeEventListener('change', this.handleAppStateChange);
     // this.props.reset();
+    this.resetState();
   }
 
   handleBackButtonClick = () => {
@@ -283,13 +300,12 @@ class DashboardNew2 extends PureComponent {
   static getDerivedStateFromProps(nextProps, state) {
     if (nextProps.pendingData && nextProps.pendingData.length > 0) {
       const data = nextProps.pendingData;
-      console.log('Pending data : ', data);
-      let vals = data.map((item) => {
-        return parseInt(item.Count);
-      });
-      console.log('Pending vals : ', vals);
-      let total = vals.reduce((a, b) => a + b);
-      console.log('Pending total : ', total);
+      console.log('Pending data +++++++++++++++++: ', data);
+      let total = data.reduce((acc, ele) => {
+        acc += parseInt(ele.Count);
+        return acc;
+      }, 0);
+      console.log('Pending total : +++++++++++++++++ ', total);
       return {
         totalCount: total,
       };
@@ -334,9 +350,7 @@ class DashboardNew2 extends PureComponent {
           />
           <Text style={styles.gridItemText}>{item.key}</Text>
           <Text style={styles.gridItemText}>
-            {item.key === 'My Approvals'
-              ? '(' + this.state.totalCount + ')'
-              : ''}
+            {item.key === 'My Approvals' ? `(${this.state.totalCount})` : ''}
           </Text>
         </TouchableOpacity>
       </LinearGradient>
@@ -381,9 +395,7 @@ class DashboardNew2 extends PureComponent {
         modalVisible={true}
         heading={heading}
         message={this.state.isMessageShown}
-        okAction={() => {
-          this.onOkClick();
-        }}
+        okAction={this.onOkClick}
       />
     );
   };
@@ -398,19 +410,17 @@ class DashboardNew2 extends PureComponent {
           </Text>
         }
         cancelButtonText={'CANCEL'}
-        handleCancel={() => this.handleCancel()}
+        handleCancel={this.handleCancel}
         confirmButtonText={'OK'}
-        handleConfirm={() => this.handleConfirm()}
+        handleConfirm={this.handleConfirm}
       />
     );
   };
   handleConfirm = () => {
-    writeLog('Clicked on ' + 'Exit' + ' of ' + 'Dashboard New screen');
     this.setState({ backButtonPressed: false });
     BackHandler.exitApp();
   };
   handleCancel = () => {
-    writeLog('Clicked on ' + 'handleCancel' + ' of ' + 'Exit PopUp');
     this.setState({ backButtonPressed: false });
   };
   onOkClick = () => {
@@ -422,10 +432,8 @@ class DashboardNew2 extends PureComponent {
     this.props.resetError();
     this.props.clearAttendance();
     this.setState({ showModal: false, isMessageShown: '' }, () => {
-      {
-        if (this.state.statusCode == 404) {
-          this.props.navigation.navigate('Login');
-        }
+      if (this.state.statusCode === 404) {
+        this.props.navigation.navigate('Login');
       }
     });
   };
@@ -478,121 +486,110 @@ class DashboardNew2 extends PureComponent {
     }
   };
 
-  displayData = async () => {
+  getPrivacyPolicy = async () => {
     try {
-      let privacyPolicyData = await AsyncStorage.getItem('privacyPolicyData');
-      const parsedData = JSON.parse(privacyPolicyData);
+      let privacyPolicyData = await getData('privacyPolicyData');
       const { SmCode } = this.props.loginData;
-
-      console.log(
-        '===parsedData',
-        parsedData,
-        parsedData?.checkVisible &&
-          parsedData?.userSmCode === SmCode.toString(),
-        parsedData?.checkVisible,
-        SmCode
-      );
-
-      if (parsedData?.checkVisible && parsedData?.userSmCode === SmCode) {
-        this.setState({ isAcceptPrivacyPolicy: parsedData.checkVisible });
-        console.log('===isAccept', this.state.isAcceptPrivacyPolicy);
+      // console.log(
+      //   '=== parsedData',
+      //   privacyPolicyData?.checkVisible &&
+      //     privacyPolicyData?.userSmCode === SmCode,
+      //   privacyPolicyData?.userSmCode,
+      //   privacyPolicyData?.checkVisible,
+      //   SmCode
+      // );
+      if (
+        privacyPolicyData?.checkVisible &&
+        privacyPolicyData?.userSmCode === SmCode
+      ) {
+        this.setState({
+          isAcceptPrivacyPolicy: privacyPolicyData.checkVisible,
+          modalNode: null,
+        });
+      } else {
+        this.setState({
+          modalNode: (
+            <PrivacyFile
+              navigation={this.props.navigation}
+              privacyModalFunc={this.handlePrivacyPolicyModal}
+              loginUser={this.props.loginData}
+            />
+          ),
+        });
       }
     } catch (error) {
-      alert(error);
+      console.log('fetch data from async storage', error);
     }
   };
 
   handlePrivacyPolicyModal = (cb = () => {}) => {
-    console.log('cb==>', typeof cb, cb);
+    const { isPrivacyPolicyOpen } = this.state;
     this.setState(
       {
-        ...this.state,
-        isPrivacyPolicyOpen: !this.state.isPrivacyPolicyOpen,
+        isPrivacyPolicyOpen: !isPrivacyPolicyOpen,
+        modalNode: null,
       },
       () => cb()
     );
   };
 
-  renderPrivacyComponent = () => {
-    console.log('renderPrivacyComponent === ');
-    return (
-      <PrivacyFile
-        navigation={this.props.navigation}
-        privacyModalFunc={this.handlePrivacyPolicyModal}
-        loginUser={this.props.loginData}
-      />
-    );
+  filteredData = (arr, key) => {
+    const gridData = arr.filter((item) => item.key !== key);
+    console.log('filteredData +++++++ ', key, arr, gridData);
+    return gridData;
   };
 
   render() {
-    const restrictedCompanies =
-      this.props.loginData?.CO_CODE == 'N081' ||
-      this.props.loginData?.CO_CODE == 'N082' ||
-      this.props.loginData?.CO_CODE == 'N083' ||
-      this.props.loginData?.CO_CODE == 'N084' ||
-      this.props.loginData?.CO_CODE == 'N085';
-    if (this.props.eligibilityData && this.props.eligibilityData.length > 0) {
-      if (this.props.eligibilityData[0].wasEligibile === 'X') {
-        data = data.filter((item) => item.key !== 'View Attendance');
-      }
-    } else {
-      if (
-        this.props.loginData?.CO_CODE == 'N060' ||
-        this.props.loginData?.CO_CODE == 'N061' ||
-        this.props.loginData?.CO_CODE == 'N062' ||
-        this.props.loginData?.CO_CODE == 'N063' ||
-        this.props.loginData?.CO_CODE == 'N064' ||
-        this.props.loginData?.CO_CODE == 'N065' ||
-        this.props.loginData?.CO_CODE == 'N070' ||
-        this.props.loginData?.CO_CODE == 'N071' ||
-        this.props.loginData?.CO_CODE == 'N072' ||
-        restrictedCompanies
-      ) {
-        data = data.filter((item) => item.key !== 'View Attendance');
-      }
-    }
-    data = properties.isDevEnvironment ? data : this.prodGridVisible(data);
-    if (this.props.loginData?.IsVoucherVisible == 'N') {
-      data = data.filter((item) => item.key !== 'Voucher');
-    }
-    if (this.props.loginData?.PolicyID == 0) {
-      data = data.filter((item) => item.key !== 'Scheme & Policies');
-    }
-    if (this.props.loginData?.IsCommunicationAccount == 'N') {
-      data = data.filter((item) => item.key !== 'My Info');
-    }
-    if (this.props.loginData?.IsCommunicationAccount == 'N') {
-      data = data.filter((item) => item.key !== 'Balances');
-    }
-    if (this.props.loginData?.IsICard !== '3') {
-      console.log('this.props.loginData', this.props.loginData);
-      data = data.filter((item) => item.key !== 'ID Card');
-    }
-    if (this.props.loginData?.IsHRAssist == 'N') {
-      data = data.filter((item) => item.key !== 'HR Assist');
-    }
-    if (this.props.loginData?.IsLeave == 'N') {
-      data = data.filter((item) => item.key !== 'Apply Leave');
-    }
-    if (this.props.loginData?.IsHoliday == 'N') {
-      data = data.filter((item) => item.key !== 'Holiday List');
-    }
-    if (this.props.loginData?.IsITServiceDesk == 'N') {
-      data = data.filter((item) => item.key !== 'IT-Desk');
-    }
+    const { modalNode, isAcceptPrivacyPolicy } = this.state;
+    const { loginData, eligibilityData } = this.props;
+    let data = GridDataViewAttendance;
+    // const restrictedCompanies = COUNTRY_CODE.includes(loginData?.CO_CODE);
+    // console.log(
+    //   'this.props.loginData +++++++ ',
+    //   loginData,
+    //   restrictedCompanies
+    // );
 
-    const { isPrivacyPolicyOpen, isAcceptPrivacyPolicy } = this.state;
-    console.log(
-      'isPrivacyPolicyOpen === ',
-      isPrivacyPolicyOpen,
-      isAcceptPrivacyPolicy
-    );
+    // if (eligibilityData && eligibilityData.length > 0) {
+    //   if (eligibilityData[0].wasEligibile === 'X') {
+    //     data = this.filteredData(data, 'View Attendance');
+    //   }
+    // } else {
+    //   if (restrictedCompanies) {
+    //     data = this.filteredData(data, 'View Attendance');
+    //   }
+    // }
+    // data = properties.isDevEnvironment ? data : this.prodGridVisible(data);
+    // if (loginData?.IsVoucherVisible === 'N') {
+    //   data = this.filteredData(data, 'Voucher');
+    // }
+    // if (loginData?.PolicyID === 0) {
+    //   data = data.filter((item) => item.key !== 'Scheme & Policies');
+    // }
+    // if (loginData?.IsCommunicationAccount === 'N') {
+    //   data = this.filteredData(data, 'My Info');
+    // }
+    // if (loginData?.IsCommunicationAccount === 'N') {
+    //   data = this.filteredData(data, 'Balances');
+    // }
+    if (loginData?.IsICard === '0') {
+      data = this.filteredData(GridDataViewAttendance, 'ID Card');
+    }
+    // if (loginData?.IsHRAssist === 'N') {
+    //   data = this.filteredData(data, 'HR Assist');
+    // }
+    // if (loginData?.IsLeave === 'N') {
+    //   data = this.filteredData(data, 'Apply Leave');
+    // }
+    // if (loginData?.IsHoliday === 'N') {
+    //   data = this.filteredData(data, 'Holiday List');
+    // }
+    // if (loginData?.IsITServiceDesk === 'N') {
+    //   data = this.filteredData(data, 'IT-Desk');
+    // }
 
     return (
       <View style={{ flex: 1 }}>
-        {!isPrivacyPolicyOpen && !isAcceptPrivacyPolicy && (
-          <View style={{ flex: 1 }}>{this.renderPrivacyComponent()}</View>
-        )}
         <ImageBackground
           style={styles.backGroundView}
           source={images.loginBackground}
@@ -622,8 +619,6 @@ class DashboardNew2 extends PureComponent {
           </LinearGradient>
           <View style={{ flex: 1, marginTop: '2%' }}>
             {isAlert || distance === null ? this.renderWelcomeMessage() : null}
-
-            <View />
             <ScrollView
               keyboardShouldPersistTaps="handled"
               style={styles.gridParent}
@@ -645,8 +640,11 @@ class DashboardNew2 extends PureComponent {
             {this.state.showModal === true ? this.showPopUp() : null}
             {this.renderLogoutPopUp()}
           </View>
-          <ActivityIndicatorView loader={this.props.loading} />
+          {isAcceptPrivacyPolicy ? (
+            <ActivityIndicatorView loader={this.props.loading} />
+          ) : null}
         </ImageBackground>
+        {!isAcceptPrivacyPolicy && modalNode}
       </View>
     );
   }

@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+/* eslint-disable no-undef */
+import React, { useState } from 'react';
 import {
-  Alert,
   Modal,
   StyleSheet,
   Text,
@@ -8,112 +8,102 @@ import {
   ScrollView,
   SafeAreaView,
   TouchableOpacity,
-  Image,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
-import AsyncStorage from '@react-native-community/async-storage';
-
+import { storeData } from '../../utilities/asyncStorage';
 import { setHeight, setWidth } from '../../components/fontScaling';
 import { text } from './PrivacyText';
 
 const PrivacyFile = (props) => {
-  console.log('===', props);
-  const { privacyModalFunc, statusValue, navigation, loginUser } = props;
-  //   const [modalVisible, setModalVisible] = useState(false);
+  const { privacyModalFunc, navigation, loginUser } = props;
   const [checkVisible, setCheckVisible] = useState(false);
 
-  //   const handleModalVisible = (visible) => {
-  //     setModalVisible(visible);
-  //   };
   const onSubmitPrivacyPolicy = () => {
-    console.log('======= onSubmitPrivacyPolicy');
-    privacyModalFunc(storeData);
+    privacyModalFunc(storeAsyncData);
   };
   const checkStatus = () => {
     setCheckVisible(!checkVisible);
   };
 
-  const storeData = async () => {
-    console.log('===== storeData');
+  const storeAsyncData = () => {
     const privacyPolicyObj = {
       checkVisible,
       userSmCode: loginUser.SmCode,
     };
-    try {
-      await AsyncStorage.setItem(
-        'privacyPolicyData',
-        JSON.stringify(privacyPolicyObj)
-      );
-      // this.setModalVisible(false);
-    } catch (e) {
-      // saving error
-      console.log(e);
-    }
+    storeData('privacyPolicyData', privacyPolicyObj);
   };
 
   const backToLogin = () => {
     navigation.navigate('Login');
   };
+
   const goBackScreen = () => {
     privacyModalFunc(backToLogin);
   };
+
   return (
-    <View style={styles.centeredView}>
-      <Modal animationType="slide" transparent={true} visible={true}>
-        <SafeAreaView>
-          <ScrollView>
-            <View style={styles.modalContainer}>
-              <View style={styles.modalView}>
-                <Text style={{ paddingBottom: 10 }}>Privacy Policy</Text>
-                <Text style={styles.modalTextStyle}>{text}</Text>
-                <View style={styles.checkBoxContainer}>
-                  <TouchableOpacity
-                    onPress={() => checkStatus()}
-                    style={styles.checkBox}
-                  >
-                    {checkVisible ? (
-                      <Icon name="check" size={20} color="#FF7F50" />
-                    ) : (
-                      <Text />
-                    )}
-                  </TouchableOpacity>
-                  <Text>I have read and understood</Text>
-                </View>
-                <View style={styles.buttonContainer}>
-                  <TouchableOpacity
-                    onPress={() => onSubmitPrivacyPolicy()}
-                    disabled={!checkVisible}
-                    style={[
-                      styles.buttonStyle,
-                      { backgroundColor: !checkVisible ? '#ccc' : '#FF7F50' },
-                    ]}
-                  >
-                    <Text style={{ fontSize: 18, color: '#fff' }}>Submit</Text>
-                  </TouchableOpacity>
-                  <TouchableOpacity
-                    //   onPress={() => this.displayData()}
-                    onPress={() => goBackScreen()}
-                    style={styles.buttonStyle}
-                  >
-                    <Text style={{ fontSize: 18, color: '#fff' }}>Go Back</Text>
-                  </TouchableOpacity>
-                </View>
-              </View>
-            </View>
+    <Modal
+      animationType="slide"
+      transparent={true}
+      visible={true}
+      style={styles.modalContent}
+    >
+      <SafeAreaView style={styles.modalContainer}>
+        <View style={styles.modalView}>
+          <Text style={{ paddingBottom: 10 }}>Privacy Policy</Text>
+          <ScrollView style={{ flex: 1, backgroundColor: '#fff' }}>
+            <Text style={styles.modalTextStyle}>{text}</Text>
           </ScrollView>
-        </SafeAreaView>
-      </Modal>
-    </View>
+          <View style={styles.checkBoxContainer}>
+            <TouchableOpacity onPress={checkStatus} style={styles.checkBox}>
+              {checkVisible ? (
+                <Icon name="check" size={20} color="#FF7F50" />
+              ) : (
+                <Text />
+              )}
+            </TouchableOpacity>
+            <Text>I have read and understood</Text>
+          </View>
+          <View style={styles.buttonContainer}>
+            <TouchableOpacity
+              onPress={() => onSubmitPrivacyPolicy()}
+              disabled={!checkVisible}
+              style={[
+                styles.buttonStyle,
+                { backgroundColor: !checkVisible ? '#ccc' : '#FF7F50' },
+              ]}
+            >
+              <Text style={{ fontSize: 18, color: '#fff' }}>Submit</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              //   onPress={() => this.displayData()}
+              onPress={() => goBackScreen()}
+              style={styles.buttonStyle}
+            >
+              <Text style={{ fontSize: 18, color: '#fff' }}>Go Back</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </SafeAreaView>
+    </Modal>
   );
 };
 
 export default PrivacyFile;
 
 const styles = StyleSheet.create({
+  modalContent: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 4,
+    borderColor: 'rgba(0, 0, 0, 0.1)',
+    margin: 0,
+  },
   centeredView: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    margin: 0,
   },
   topCloseButton: {
     fontSize: 20,
