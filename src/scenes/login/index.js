@@ -10,6 +10,7 @@ import {
   Platform,
   BackHandler,
   ScrollView,
+  Alert,
 } from 'react-native';
 import { connect } from 'react-redux';
 import { Keyboard } from 'react-native';
@@ -42,8 +43,8 @@ class LoginScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      employeeId: null,
-      password: null,
+      employeeId: '40246',
+      password: 'cofo@123',
       loginData: [],
       message: '',
       visibility: false,
@@ -68,11 +69,11 @@ class LoginScreen extends Component {
   componentWillUnmount() {
     BackHandler.removeEventListener('hardwareBackPress', this.goBack);
   }
-  componentDidUpdate(previousProps, state) {
-    const { loginData, navigation } = this.props;
+
+  loginCB = (loginData) => {
+    const { navigation } = this.props;
+    console.log('loginData ++++++++++++', loginData);
     if (
-      loginData &&
-      loginData !== previousProps.loginData &&
       !loginData?.hasOwnProperty('res') &&
       !loginData?.hasOwnProperty('Exception')
     ) {
@@ -80,89 +81,75 @@ class LoginScreen extends Component {
       globalData.setLoggedInEmployeeId(loginData?.SmCode);
       navigation.replace('DashBoardNew2');
     } else if (loginData?.hasOwnProperty('res')) {
-      if (previousProps.loginData != loginData) {
-        this.setState({
-          heading: 'Sorry',
-          message: 'Invalid credentials , Please enter valid credentials.',
-          visibility: true,
-        });
-      }
+      this.setState({
+        heading: 'Sorry',
+        message: 'Invalid credentials , Please enter valid credentials.',
+        visibility: true,
+      });
     } else if (loginData?.hasOwnProperty('Exception')) {
-      if (previousProps.loginData != loginData) {
-        this.setState({
-          heading: 'Error',
-          message: loginData?.Exception,
-          visibility: true,
-        });
-      }
+      this.setState({
+        heading: 'Error',
+        message: loginData?.Exception,
+        visibility: true,
+      });
     }
-  }
-  setId(value) {
-    let valueLength = value.length;
-    newEmployeeLength = 8 - valueLength;
-    newEmployeeId = value;
-    this.setState({
-      employeeId: value,
-    });
-  }
+  };
 
-  setPassword(value) {
-    this.setState({
-      password: value,
-    });
-  }
+  inputHandler = (name, value) => {
+    this.setState({ ...this.state, [name]: value });
+  };
 
-  handleCheckDetails() {
+  handleCheckDetails = () => {
     Keyboard.dismiss();
-    const { password } = this.state;
-    if (password && newEmployeeId) {
+    const { employeeId, password } = this.state;
+    if (password && employeeId) {
       setLoginType(constant.APP_LOGIN);
-      this.props.login(newEmployeeId, password, this.clearData, undefined);
+      const userId = employeeId.length === 8 ? employeeId : `000${employeeId}`;
+      console.log('user credential +++++++++++++ ', userId, password);
+      this.props.login(userId, password, this.loginCB, undefined);
     } else {
-      return alert('Please enter valid credentials !');
+      return Alert.alert('', 'Please enter valid credentials !');
     }
-  }
-
-  showDialogBox() {
-    let exception;
-    let heading;
-    if (this.props.modalLoading) {
-      if (this.props.loginData.hasOwnProperty('res')) {
-        heading = 'Sorry';
-        exception = 'Invalid credentials , Plese enter valid credentials.';
-      } else if (this.props.loginData.hasOwnProperty('Exception')) {
-        heading = 'Error';
-        exception = this.props.loginData.Exception;
-      }
-      // console.log("Exception to show in login dialog is:", exception)
-      writeLog(
-        'Dialog is open with exception ' + exception + ' on ' + 'LoginScreen'
-      );
-      return (
-        <UserMessage
-          modalVisible={true}
-          heading={heading}
-          message={exception}
-          okAction={() => {
-            this.handleConfirm(exception);
-          }}
-        />
-      );
-    } else {
-      return null;
-    }
-  }
-
-  clearData = () => {
-    console.log('Clear data invoked.');
   };
-  manageEmployeeId = () => {
-    while (newEmployeeLength != 0) {
-      newEmployeeId = '0' + newEmployeeId;
-      newEmployeeLength--;
-    }
-    this.setState({ employeeId: newEmployeeId });
-  };
+
+  // showDialogBox() {
+  //   let exception;
+  //   let heading;
+  //   if (this.props.modalLoading) {
+  //     if (this.props.loginData.hasOwnProperty('res')) {
+  //       heading = 'Sorry';
+  //       exception =
+  //         'Invalid credentials , Please enter valid credentials!!!!!!.';
+  //     } else if (this.props.loginData.hasOwnProperty('Exception')) {
+  //       heading = 'Error';
+  //       exception = this.props.loginData.Exception;
+  //     }
+  //     // console.log("Exception to show in login dialog is:", exception)
+  //     writeLog(
+  //       'Dialog is open with exception ' + exception + ' on ' + 'LoginScreen'
+  //     );
+  //     return (
+  //       <UserMessage
+  //         modalVisible={true}
+  //         heading={heading}
+  //         message={exception}
+  //         okAction={() => {
+  //           this.handleConfirm(exception);
+  //         }}
+  //       />
+  //     );
+  //   } else {
+  //     return null;
+  //   }
+  // }
+
+  // manageEmployeeId = () => {
+  //   while (newEmployeeLength != 0) {
+  //     newEmployeeId = '0' + newEmployeeId;
+  //     newEmployeeLength--;
+  //   }
+  //   this.setState({ employeeId: newEmployeeId });
+  // };
 
   loginWithAd = () => {
     setLoginType(constant.AD_LOGIN);
@@ -188,7 +175,7 @@ class LoginScreen extends Component {
   };
 
   goBack = () => {
-    writeLog('Clicked on ' + 'goBack' + ' of ' + 'LoginScreen');
+    // writeLog('Clicked on ' + 'goBack' + ' of ' + 'LoginScreen');
     return false;
   };
 
@@ -205,6 +192,7 @@ class LoginScreen extends Component {
     );
   };
   renderMainView = () => {
+    const { employeeId, password, showPass } = this.state;
     return (
       <ImageBackground source={images.loginBackground} style={{ flex: 1 }}>
         <ScrollView keyboardShouldPersistTaps="handled" style={{ flex: 1 }}>
@@ -227,7 +215,8 @@ class LoginScreen extends Component {
                   primary: 'black',
                 },
               }}
-              onChangeText={(text) => this.setId(text)}
+              value={employeeId}
+              onChangeText={(val) => this.inputHandler('employeeId', val)}
               underlineColor="transparent"
               placeholder={'Enter your employee ID'}
               style={[AppStyle.font.fontSmallRegular, style.inputTextStyle]}
@@ -245,7 +234,8 @@ class LoginScreen extends Component {
                     primary: 'black',
                   },
                 }}
-                onChangeText={(text) => this.setPassword(text)}
+                onChangeText={(val) => this.inputHandler('password', val)}
+                value={password}
                 underlineColor="transparent"
                 placeholder={'Enter your password'}
                 style={[
@@ -253,34 +243,33 @@ class LoginScreen extends Component {
                   style.inputTextStyle,
                   style.paddingBottom,
                 ]}
-                onFocus={() => this.manageEmployeeId()}
-                secureTextEntry={!this.state.showPass}
+                // onFocus={() => this.manageEmployeeId()}
+                secureTextEntry={!showPass}
                 autoCapitalize="none"
                 autoCorrect={false}
               />
               <Icon
-                name={this.state.showPass ? 'eye-outline' : 'eye-off-outline'}
+                name={showPass ? 'eye-outline' : 'eye-off-outline'}
                 size={35}
                 color="grey"
                 style={style.eyeStyle}
-                onPress={() =>
-                  this.setState({ showPass: !this.state.showPass })
-                }
+                onPress={() => this.setState({ showPass: !showPass })}
               />
             </View>
 
-            <TouchableOpacity onPress={() => this.handleCheckDetails()}>
+            <TouchableOpacity onPress={this.handleCheckDetails}>
               <Image style={[style.textStyle]} source={images.loginButton} />
             </TouchableOpacity>
-            <View style={style.seperatorContainer}>
-              <View style={style.seperator} />
+
+            <View style={style.separatorContainer}>
+              <View style={style.separator} />
               <Text> Or Login Via </Text>
-              <View style={style.seperator} />
+              <View style={style.separator} />
             </View>
+
             <TouchableOpacity
-              onPress={() => {
-                this.loginWithAd();
-              }}
+              style={{ flex: 1, alignSelf: 'center', width: 'auto' }}
+              onPress={this.loginWithAd}
             >
               <Image
                 style={[style.textStyle, style.horizontalMid]}

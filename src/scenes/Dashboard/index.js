@@ -2,8 +2,8 @@
 Author: Gaganesh Sharma & Mohit Garg(70024)
 */
 
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import {
   Text,
   View,
@@ -11,46 +11,46 @@ import {
   BackHandler,
   RefreshControl,
   ImageBackground,
-} from "react-native";
-import { pendingActionCreator, resetDashboardCreator } from "./PendingAction";
-import { FlatList } from "react-native-gesture-handler";
-import { globalFontStyle } from "../../components/globalFontStyle";
-import { styles } from "./styles";
-import SubHeader from "../../GlobalComponent/SubHeader";
-import ActivityIndicatorView from "../../GlobalComponent/myActivityIndicator";
-import { Icon } from "react-native-elements";
-import { writeLog } from "../../utilities/logger";
-import UserMessage from "../../components/userMessage";
-import images from "../../images";
-let constants = require("./Constants");
-let globalConstants = require("../../GlobalConstants");
-let appConfig = require("../../../appconfig");
-let serviceType = "";
+} from 'react-native';
+import { pendingActionCreator, resetDashboardCreator } from './PendingAction';
+import { FlatList } from 'react-native-gesture-handler';
+import { globalFontStyle } from '../../components/globalFontStyle';
+import { styles } from './styles';
+import SubHeader from '../../GlobalComponent/SubHeader';
+import ActivityIndicatorView from '../../GlobalComponent/myActivityIndicator';
+import { Icon } from 'react-native-elements';
+import { writeLog } from '../../utilities/logger';
+import UserMessage from '../../components/userMessage';
+import images from '../../images';
+let constants = require('./Constants');
+let globalConstants = require('../../GlobalConstants');
+let appConfig = require('../../../appconfig');
+let serviceType = '';
 class DashboardView extends Component {
   constructor(props) {
     super(props);
-    previousScreenData = this.props.navigation.state.params;
-    isComingFromCreateVoucher =
-      previousScreenData.isComingFromCV != undefined
-        ? previousScreenData.isComingFromCV
+    this.previousScreenData = this.props.navigation.state.params;
+    this.isComingFromCreateVoucher =
+      this.previousScreenData.isComingFromCV !== undefined
+        ? this.previousScreenData.isComingFromCV
         : false;
     this.state = {
       userDetails: this.props.loginData,
       messageType: null,
       countResponseSet: [],
-      errorMessage: "",
+      errorMessage: '',
       isRefreshing: false,
       showModal: false,
     };
 
     this.handleBackButtonClick = this.handleBackButtonClick.bind(this);
-    isPullToRefreshActive = false;
+    this.isPullToRefreshActive = false;
   }
   componentDidUpdate = () => {
     if (
       this.props.pendingError &&
       this.props.pendingError.length > 0 &&
-      this.state.errorMessage === ""
+      this.state.errorMessage === ''
     ) {
       setTimeout(() => {
         this.setState({
@@ -62,14 +62,14 @@ class DashboardView extends Component {
   };
   componentDidMount() {
     //console.log("USER DETAILS:", this.state.userDetails);
-    writeLog(this.state.userDetails.SmCode + " Landed on " + "DashboardView");
+    writeLog(this.state.userDetails.SmCode + ' Landed on ' + 'DashboardView');
     BackHandler.addEventListener(
-      "hardwareBackPress",
+      'hardwareBackPress',
       this.handleBackButtonClick
     );
     this.getPendingCounts();
     this.willFocusSubscription = this.props.navigation.addListener(
-      "willFocus",
+      'willFocus',
       () => {
         this.getPendingCounts();
       }
@@ -78,7 +78,7 @@ class DashboardView extends Component {
 
   componentWillUnmount() {
     BackHandler.removeEventListener(
-      "hardwareBackPress",
+      'hardwareBackPress',
       this.handleBackButtonClick
     );
     this.willFocusSubscription.remove();
@@ -86,7 +86,7 @@ class DashboardView extends Component {
 
   onRefresh = () => {
     this.setState({ isRefreshing: true });
-    isPullToRefreshActive = true;
+    this.isPullToRefreshActive = true;
     this.wait(2000).then(() => this.setState({ isRefreshing: false }));
   };
 
@@ -100,7 +100,7 @@ class DashboardView extends Component {
 
   handleBackButtonClick() {
     writeLog(
-      "Clicked on " + "handleBackButtonClick" + " of " + "DashboardView"
+      'Clicked on ' + 'handleBackButtonClick' + ' of ' + 'DashboardView'
     );
     this.props.navigation.pop();
     return true;
@@ -122,7 +122,7 @@ class DashboardView extends Component {
     if (
       nextProps.pendingData &&
       nextProps.pendingData.length > 0 &&
-      nextProps.pendingError === ""
+      nextProps.pendingError === ''
     ) {
       const data = nextProps.pendingData;
       //alert(JSON.stringify(data));
@@ -136,7 +136,7 @@ class DashboardView extends Component {
         };
       }
     } else if (
-      nextProps.pendingError != "" &&
+      nextProps.pendingError != '' &&
       nextProps.pendingData.length === 0
     ) {
       return {
@@ -151,34 +151,37 @@ class DashboardView extends Component {
     this.setState({
       countResponseSet: [],
     });
-    this.props.getPendingCounts(this.props.loginData, isPullToRefreshActive);
+    this.props.getPendingCounts(
+      this.props.loginData,
+      this.isPullToRefreshActive
+    );
   }
   sectionItemClick(item) {
-    console.log("items", item);
-    writeLog("Clicked on " + item.Type + " of " + "DashboardView");
-    if (item.Type === "Resource Request") {
+    console.log('items', item);
+    writeLog('Clicked on ' + item.Type + ' of ' + 'DashboardView');
+    if (item.Type === 'Resource Request') {
       if (item.Count == 0) {
-        countErrorMessage =
+        this.countErrorMessage =
           constants.YOU_DONT_HAVE_ERROR_TEXT +
           constants.RESOURCE_REQUEST_ERROR_TEXT;
-        alert(countErrorMessage);
+        alert(this.countErrorMessage);
       } else {
-        serviceType = "RR Service";
-        this.props.navigation.navigate("Home", {
+        serviceType = 'RR Service';
+        this.props.navigation.navigate('Home', {
           loginApiResponse: this.state.userDetails,
           serviceType: serviceType,
           pageTitle: globalConstants.RR_TITLE,
         });
       }
-    } else if (item.Type === "Local Conveyance Voucher") {
+    } else if (item.Type === 'Local Conveyance Voucher') {
       if (item.Count == 0) {
-        countErrorMessage =
+        this.countErrorMessage =
           constants.YOU_DONT_HAVE_ERROR_TEXT +
           constants.LOCAL_CONVEYANCE_VOUCHER_ERROR_TEXT;
-        alert(countErrorMessage);
+        alert(this.countErrorMessage);
       } else {
-        serviceType = "Local Voucher Service";
-        this.props.navigation.navigate("Home", {
+        serviceType = 'Local Voucher Service';
+        this.props.navigation.navigate('Home', {
           loginApiResponse: this.state.userDetails,
           serviceType: serviceType,
           pageTitle: globalConstants.LCV_TITLE,
@@ -186,208 +189,208 @@ class DashboardView extends Component {
       }
     }
     // timesheet approval
-    else if (item.Type === "Timesheet Approval") {
+    else if (item.Type === 'Timesheet Approval') {
       if (item.Count == 0) {
-        countErrorMessage =
+        this.countErrorMessage =
           constants.YOU_DONT_HAVE_ERROR_TEXT +
           constants.TIMESHEET_APPROVAL_ERROR_TEXT;
-        alert(countErrorMessage);
+        alert(this.countErrorMessage);
       } else {
-        serviceType = "Timesheet Approval";
-        this.props.navigation.navigate("TimeSheetApproval", {
+        serviceType = 'Timesheet Approval';
+        this.props.navigation.navigate('TimeSheetApproval', {
           loginApiResponse: this.state.userDetails,
           serviceType: serviceType,
           pageTitle: globalConstants.TIMESHEET_APPROVALS,
         });
       }
-    } else if (item.Type === "Cash Voucher") {
+    } else if (item.Type === 'Cash Voucher') {
       if (item.Count == 0) {
-        countErrorMessage =
+        this.countErrorMessage =
           constants.YOU_DONT_HAVE_ERROR_TEXT +
           constants.CASH_VOUCHER_ERROR_TEXT;
-        alert(countErrorMessage);
+        alert(this.countErrorMessage);
       } else {
-        serviceType = "Cash Voucher Service";
-        this.props.navigation.navigate("Home", {
+        serviceType = 'Cash Voucher Service';
+        this.props.navigation.navigate('Home', {
           loginApiResponse: this.state.userDetails,
           serviceType: serviceType,
           pageTitle: globalConstants.CASH_TITLE,
         });
       }
-    } else if (item.Type === "Domestic Travel Request") {
+    } else if (item.Type === 'Domestic Travel Request') {
       if (item.Count == 0) {
-        countErrorMessage =
+        this.countErrorMessage =
           constants.YOU_DONT_HAVE_ERROR_TEXT +
           constants.DOMESTIC_TRAVEL_ERROR_TEXT;
-        alert(countErrorMessage);
+        alert(this.countErrorMessage);
       } else {
-        serviceType = "Domestic Travel Request";
-        this.props.navigation.navigate("Travel", {
+        serviceType = 'Domestic Travel Request';
+        this.props.navigation.navigate('Travel', {
           loginApiResponse: this.state.userDetails,
           serviceType: serviceType,
         });
       }
-    } else if (item.Type === "International Travel Request") {
+    } else if (item.Type === 'International Travel Request') {
       if (item.Count == 0) {
-        countErrorMessage =
+        this.countErrorMessage =
           constants.YOU_DONT_HAVE_ERROR_TEXT +
           constants.INTERNATIONAL_TRAVEL_ERROR_TEXT;
-        alert(countErrorMessage);
+        alert(this.countErrorMessage);
       } else {
-        serviceType = "International Travel Request";
-        this.props.navigation.navigate("Travel", {
+        serviceType = 'International Travel Request';
+        this.props.navigation.navigate('Travel', {
           loginApiResponse: this.state.userDetails,
           serviceType: serviceType,
         });
       }
-    } else if (item.Type === "Conv. & Travel Voucher") {
+    } else if (item.Type === 'Conv. & Travel Voucher') {
       //UK travel voucher
       if (item.Count == 0) {
-        countErrorMessage =
+        this.countErrorMessage =
           constants.YOU_DONT_HAVE_ERROR_TEXT + constants.UK_TRAVEL_ERROR_TEXT;
-        alert(countErrorMessage);
+        alert(this.countErrorMessage);
       } else {
-        serviceType = "UK_Travel";
-        this.props.navigation.navigate("Home", {
+        serviceType = 'UK_Travel';
+        this.props.navigation.navigate('Home', {
           loginApiResponse: this.state.userDetails,
           serviceType: serviceType,
           pageTitle: globalConstants.CONV_AND_TRAVEL_TITLE,
         });
       }
-    } else if (item.Type === "Expense Voucher") {
+    } else if (item.Type === 'Expense Voucher') {
       //UK expense voucher
       if (item.Count == 0) {
-        countErrorMessage =
+        this.countErrorMessage =
           constants.YOU_DONT_HAVE_ERROR_TEXT + constants.UK_EXPENSE_ERROR_TEXT;
-        alert(countErrorMessage);
+        alert(this.countErrorMessage);
       } else {
-        serviceType = "UK_Expense";
-        this.props.navigation.navigate("Home", {
+        serviceType = 'UK_Expense';
+        this.props.navigation.navigate('Home', {
           loginApiResponse: this.state.userDetails,
           serviceType: serviceType,
           pageTitle: globalConstants.EXPENSE_TITLE,
         });
       }
-    } else if (item.Type === "Mileage Voucher") {
+    } else if (item.Type === 'Mileage Voucher') {
       //UK mileage voucher
       if (item.Count == 0) {
-        countErrorMessage =
+        this.countErrorMessage =
           constants.YOU_DONT_HAVE_ERROR_TEXT + constants.UK_MILEAGE_ERROR_TEXT;
-        alert(countErrorMessage);
+        alert(this.countErrorMessage);
       } else {
-        serviceType = "UK_Mileage";
-        this.props.navigation.navigate("Home", {
+        serviceType = 'UK_Mileage';
+        this.props.navigation.navigate('Home', {
           loginApiResponse: this.state.userDetails,
           serviceType: serviceType,
           pageTitle: globalConstants.MILEAGE_TITLE,
         });
       }
-    } else if (item.Type === "Leave") {
+    } else if (item.Type === 'Leave') {
       //Leave
       if (item.Count == 0) {
-        countErrorMessage =
+        this.countErrorMessage =
           constants.YOU_DONT_HAVE_ERROR_TEXT + constants.LEAVE_ERROR_TEXT;
-        alert(countErrorMessage);
+        alert(this.countErrorMessage);
       } else {
-        serviceType = "UK_Mileage";
-        this.props.navigation.navigate("LeaveRoute", {
+        serviceType = 'UK_Mileage';
+        this.props.navigation.navigate('LeaveRoute', {
           loginApiResponse: this.state.userDetails,
         });
       }
-    } else if (item.Type === "US Expense Claims") {
+    } else if (item.Type === 'US Expense Claims') {
       //US expense voucher
       if (item.Count == 0) {
-        countErrorMessage =
+        this.countErrorMessage =
           constants.YOU_DONT_HAVE_ERROR_TEXT + constants.US_EXPENSE_ERROR_TEXT;
-        alert(countErrorMessage);
+        alert(this.countErrorMessage);
       } else {
-        serviceType = "US_Expense";
-        this.props.navigation.navigate("Home", {
+        serviceType = 'US_Expense';
+        this.props.navigation.navigate('Home', {
           loginApiResponse: this.state.userDetails,
           serviceType: serviceType,
           pageTitle: globalConstants.US_EXPENSE_TITLE,
         });
       }
-    } else if (item.Type === "Visa") {
+    } else if (item.Type === 'Visa') {
       //Visa
       if (item.Count == 0) {
-        countErrorMessage =
+        this.countErrorMessage =
           constants.YOU_DONT_HAVE_ERROR_TEXT + constants.VISA_ERROR_TEXT;
-        alert(countErrorMessage);
+        alert(this.countErrorMessage);
       } else {
-        this.props.navigation.navigate("Visa");
+        this.props.navigation.navigate('Visa');
       }
-    } else if (item.Type === "Visiting Card") {
+    } else if (item.Type === 'Visiting Card') {
       //Visiting Card
       if (item.Count == 0) {
-        countErrorMessage =
+        this.countErrorMessage =
           constants.YOU_DONT_HAVE_ERROR_TEXT +
           constants.VISITING_CARD_ERROR_TEXT;
-        alert(countErrorMessage);
+        alert(this.countErrorMessage);
       } else {
-        this.props.navigation.navigate("VisitingCard");
+        this.props.navigation.navigate('VisitingCard');
       }
-    } else if (item.Type === "CRP Letter") {
+    } else if (item.Type === 'CRP Letter') {
       //CRP Letter
       if (item.Count == 0) {
-        countErrorMessage =
+        this.countErrorMessage =
           constants.YOU_DONT_HAVE_ERROR_TEXT + constants.ECRP_ERROR_TEXT;
-        alert(countErrorMessage);
+        alert(this.countErrorMessage);
       } else {
-        this.props.navigation.navigate("Ecrp");
+        this.props.navigation.navigate('Ecrp');
       }
-    } else if (item.Type === "Capital Deployment Sanction") {
+    } else if (item.Type === 'Capital Deployment Sanction') {
       //CDS
       if (item.Count == 0) {
-        countErrorMessage =
+        this.countErrorMessage =
           constants.YOU_DONT_HAVE_ERROR_TEXT + constants.CDS_ERROR_TEXT;
-        alert(countErrorMessage);
+        alert(this.countErrorMessage);
       } else {
-        this.props.navigation.navigate("Cds");
+        this.props.navigation.navigate('Cds');
       }
-    } else if (item.Type === "Resignation") {
+    } else if (item.Type === 'Resignation') {
       //Resignation
       if (item.Count == 0) {
-        countErrorMessage =
+        this.countErrorMessage =
           constants.YOU_DONT_HAVE_ERROR_TEXT + constants.RESIGNATION_ERROR_TEXT;
-        alert(countErrorMessage);
+        alert(this.countErrorMessage);
       } else {
-        this.props.navigation.navigate("Exit");
+        this.props.navigation.navigate('Exit');
       }
-    } else if (item.Type === "Additional Advance (Domestic)") {
+    } else if (item.Type === 'Additional Advance (Domestic)') {
       //Advance Domestic Travel
       if (item.Count == 0) {
-        countErrorMessage =
+        this.countErrorMessage =
           constants.YOU_DONT_HAVE_ERROR_TEXT +
           constants.ADV_DOMESTIC_TRAVEL_ERROR_TEXT;
-        alert(countErrorMessage);
+        alert(this.countErrorMessage);
       } else {
-        serviceType = "Travel Advance Domestic";
-        this.props.navigation.navigate("TravelAdvance", {
+        serviceType = 'Travel Advance Domestic';
+        this.props.navigation.navigate('TravelAdvance', {
           serviceType: serviceType,
         });
       }
-    } else if (item.Type === "Additional Advance (Intl.)") {
+    } else if (item.Type === 'Additional Advance (Intl.)') {
       //Advance Intl Travel
       if (item.Count == 0) {
-        countErrorMessage =
+        this.countErrorMessage =
           constants.YOU_DONT_HAVE_ERROR_TEXT +
           constants.ADV_INTL_TRAVEL_ERROR_TEXT;
-        alert(countErrorMessage);
+        alert(this.countErrorMessage);
       } else {
-        serviceType = "Travel Advance International";
-        this.props.navigation.navigate("TravelAdvance", {
+        serviceType = 'Travel Advance International';
+        this.props.navigation.navigate('TravelAdvance', {
           serviceType: serviceType,
         });
       }
-    } else if (item.Type === "IT Service Desk") {
+    } else if (item.Type === 'IT Service Desk') {
       if (item.Count == 0) {
-        countErrorMessage =
+        this.countErrorMessage =
           constants.YOU_DONT_HAVE_ERROR_TEXT +
           constants.IT_SERVICE_DESK_ERROR_TEXT;
-        alert(countErrorMessage);
+        alert(this.countErrorMessage);
       } else {
-        this.props.navigation.navigate("PendingRequestIT");
+        this.props.navigation.navigate('PendingRequestIT');
       }
     }
   }
@@ -407,7 +410,7 @@ class DashboardView extends Component {
               {item.Type}
             </Text>
             <View style={styles.countView}>
-              <Text style={styles.countText}>{"(" + item.Count + ")"}</Text>
+              <Text style={styles.countText}>{'(' + item.Count + ')'}</Text>
             </View>
           </View>
           <Icon
@@ -422,32 +425,32 @@ class DashboardView extends Component {
   }
   onOkClick = () => {
     this.props.resetState();
-    this.setState({ showModal: false, errorMessage: "" }, () => {
+    this.setState({ showModal: false, errorMessage: '' }, () => {
       this.props.navigation.pop();
     });
   };
 
-  handleBack() {
+  handleBack = () => {
     this.props.resetState();
     this.props.navigation.pop();
-  }
+  };
   render() {
     let dataToDisplay = this.state.countResponseSet.sort(
       (a, b) => b.Count - a.Count
     );
-    if (isComingFromCreateVoucher) {
+    if (this.isComingFromCreateVoucher) {
       dataToDisplay = dataToDisplay.filter(
         (item) =>
-          item.Type == "Cash Voucher" ||
-          item.Type == "Local Conveyance Voucher" ||
-          item.Type == "US Expense Claims" ||
-          item.Type == "Conv. & Travel Voucher" ||
-          item.Type == "Domestic Travel Request" ||
-          item.Type == "International Travel Request" ||
-          item.Type == "Mileage Voucher" ||
-          item.Type == "Expense Voucher" ||
-          item.Type == "Additional Advance (Domestic)" ||
-          item.Type == "Additional Advance (Intl.)"
+          item.Type == 'Cash Voucher' ||
+          item.Type == 'Local Conveyance Voucher' ||
+          item.Type == 'US Expense Claims' ||
+          item.Type == 'Conv. & Travel Voucher' ||
+          item.Type == 'Domestic Travel Request' ||
+          item.Type == 'International Travel Request' ||
+          item.Type == 'Mileage Voucher' ||
+          item.Type == 'Expense Voucher' ||
+          item.Type == 'Additional Advance (Domestic)' ||
+          item.Type == 'Additional Advance (Intl.)'
       );
     }
     return (
@@ -457,13 +460,13 @@ class DashboardView extends Component {
       >
         <SubHeader
           pageTitle={
-            isComingFromCreateVoucher
+            this.isComingFromCreateVoucher
               ? globalConstants.DASHBOARD_WITH_VOUCHER_TITLE
               : globalConstants.DASHBOARD_TITLE
           }
           backVisible={true}
           logoutVisible={true}
-          handleBackPress={() => this.handleBack()}
+          handleBackPress={this.handleBack}
           navigation={this.props.navigation}
         />
         {/* <ScrollView
@@ -487,7 +490,7 @@ class DashboardView extends Component {
           ) : null}
         </View>
         {/* </ScrollView> */}
-        {this.props.pendingError != "" ? this.showError() : null}
+        {this.props.pendingError !== '' ? this.showError() : null}
         <ActivityIndicatorView loader={this.props.loading} />
       </ImageBackground>
     );

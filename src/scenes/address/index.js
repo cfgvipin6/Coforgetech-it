@@ -117,15 +117,14 @@ class AddressScreen extends Component {
   }
 
   cardAddressKeyValue(obj) {
+    console.log('cardAddressKeyValue ++++++ ', obj);
     for (let prop in obj) {
       let newValue = obj.Value;
       if (newValue.trim().length === 0) {
         newValue = '-';
       }
-
-      console.log('===obj', obj, Math.floor(Math.random() * 1000) + 1);
       return (
-        <View key={Math.random()} style={styles.keyValueTextView}>
+        <View key={obj.Key} style={styles.keyValueTextView}>
           <Text style={globalFontStyle.cardLeftText}>{obj.Key}</Text>
           <Text style={globalFontStyle.cardRightText}>{newValue}</Text>
         </View>
@@ -134,6 +133,7 @@ class AddressScreen extends Component {
   }
 
   myCardView(addressData) {
+    console.log('myCardView ++++++ ', addressData);
     let addressKeyValueArr = [];
     let titleValue = '';
     for (let prop in addressData) {

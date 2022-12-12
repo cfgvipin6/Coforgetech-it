@@ -154,8 +154,10 @@ class AuthScreen extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <ActivityIndicatorView loader={this.props.authLoading} />
-        <ActivityIndicatorView loader={this.props.loginLoading} />
+        <ActivityIndicatorView
+          loader={this.props.authLoading || this.props.loginLoading}
+        />
+        {/* <ActivityIndicatorView loader={this.props.loginLoading} /> */}
         {this.showDialogBox()}
       </View>
     );
@@ -177,7 +179,7 @@ const mapStateToProps = (state) => {
     modal_auth_loading: state.authReducer.modal_auth_loading,
     appVersion: state.authReducer.version,
     authError: state.authReducer.error,
-    loginData: state && state.loginReducer && state.loginReducer.loginData,
+    loginData: state.loginReducer?.loginData,
     loginLoading: state.loginReducer.login_loading,
   };
 };

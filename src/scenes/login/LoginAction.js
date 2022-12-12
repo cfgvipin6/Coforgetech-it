@@ -44,7 +44,7 @@ export const loginDataClear = () => {
 export const loginActionCreator = (
   newEmployeeId,
   passWord,
-  clearDataCallBack,
+  cb = () => {},
   dashBoardCallBack
 ) => {
   return async (dispatch) => {
@@ -73,9 +73,7 @@ export const loginActionCreator = (
           (response[0].hasOwnProperty('res') ||
             response[0].hasOwnProperty('Exception'))
         ) {
-          if (clearDataCallBack !== undefined) {
-            clearDataCallBack();
-          }
+          cb(response[0]);
           dispatch(loading(false));
           dispatch(modalAction(false));
           dispatch(loginAction(response[0]));
@@ -83,6 +81,7 @@ export const loginActionCreator = (
             dispatch(modalAction(true));
           }, 1000);
         } else {
+          cb(response[0]);
           dispatch(pendingActionCreator(response[0], false));
           dispatch(loading(false));
           dispatch(modalAction(false));
@@ -95,9 +94,7 @@ export const loginActionCreator = (
         }
       } catch (error) {
         console.log('Error : ', error);
-        if (clearDataCallBack !== undefined) {
-          clearDataCallBack();
-        }
+        // cb(); // cb does not handle in case comes error
         // console.log("In side catch block of login action", error);
         dispatch(loading(false));
         dispatch(modalAction(false));
@@ -107,7 +104,7 @@ export const loginActionCreator = (
         }, 1000);
       }
     } else {
-      clearDataCallBack();
+      // cb();
       dispatch(loading(false));
       dispatch(modalAction(false));
       setTimeout(() => {
