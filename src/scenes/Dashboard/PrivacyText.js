@@ -11,17 +11,17 @@ const PrivacyText = () => {
             only and Coforge respects the privacy of its employees. The privacy
             notice which explains how we collect, use, disclose, and safeguard
             personal information is part of data privacy framework. For further
-            details, visit the following link to access the Coforge data privacy
-            framework:
+            details, visit the following link to access the coforge data privacy
+            framework:{' '}
             <Text
-              style={{ color: 'skyblue' }}
+              style={{ color: 'blue' }}
               onPress={() => {
                 Linking.openURL('https://iengage.coforge.com/');
               }}
             >
-              https://iengage.coforge.com/{' '}
+              https://iengage.coforge.com
             </Text>{' '}
-            {'>'} Privacy & IS {'>'} Data Privacy. The app privacy policy does
+            {'<'} Privacy & IS {'>'} Data Privacy. The app privacy policy does
             not apply to the third-party online/mobile store from which you
             install the Application. Coforge is not responsible for any of the
             data collected by any such third party
@@ -59,7 +59,7 @@ const PrivacyText = () => {
             Coforge global privacy standards, or its information handling
             practices, you can reach DPMCG at{' '}
             <Text
-              style={{ color: 'skyblue' }}
+              style={{ color: 'blue' }}
               onPress={() => {
                 Linking.openURL(
                   'mailto:privacy@coforge.com?subject=SendMail&body=Description'
@@ -92,10 +92,11 @@ const styles = StyleSheet.create({
   rendetTextStyle: {
     textAlign: 'justify',
     marginVertical: 10,
+    fontSize: 13,
   },
   headingStyle: {
     fontSize: 16,
     textTransform: 'uppercase',
-    fontWeight: '600',
+    fontWeight: 'bold',
   },
 });
