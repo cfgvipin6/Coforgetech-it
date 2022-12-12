@@ -51,7 +51,15 @@ const PrivacyFile = (props) => {
     >
       <SafeAreaView style={styles.modalContainer}>
         <View style={styles.modalView}>
-          <Text style={{ fontSize: 16, fontWeight: '600', paddingBottom: 20 }}>
+          <Text
+            style={{
+              fontSize: 16,
+              fontWeight: 'bold',
+              paddingBottom: 18,
+              textTransform: 'uppercase',
+              textDecorationLine: 'underline',
+            }}
+          >
             Privacy Policy
           </Text>
           <PrivacyText />
