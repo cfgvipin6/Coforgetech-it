@@ -103,10 +103,10 @@ export const approveRejectTimeSheet = async (
       body._submitData = data;
       body._actionTakenFrom = 'Mobile';
       console.log('Form data is ', body);
-      console.log(
-        'TimeSheet save submit data is ',
-        data.filter((item) => item.EffortHrs !== '' || item.EffortHrs !== 0)
-      );
+      // console.log(
+      //   'TimeSheet save submit data is ',
+      //   data.filter((item) => item.EffortHrs !== '' || item.EffortHrs !== 0)
+      // );
       let response = await fetchPOSTMethodNew(url, JSON.stringify(body));
       console.log('Timesheet saveSubmit response is  : ', response);
       if (response?.Message || response?.Result) {
@@ -171,12 +171,12 @@ export const saveSubmitTimeSheet = async (
       body._submitData = data;
       body._actionTakenFrom = 'Mobile';
       console.log('Form data is ', body);
-      console.log(
-        'TimeSheet save submit data is ',
-        data.filter((item) => item.EffortHrs !== '' || item.EffortHrs !== 0)
-      );
+      // console.log(
+      //   'TimeSheet save submit data is ',
+      //   data.filter((item) => item.EffortHrs !== '' || item.EffortHrs !== 0)
+      // );
       let response = await fetchPOSTMethodNew(url, JSON.stringify(body));
-      console.log('Timesheet saveSubmit response is  : ', response);
+      console.log('Timesheet saveSubmit response is  : === ', response);
       if (response?.Message || response?.Result) {
         successCallBack(
           response.Message ? response.Message : response.Result,

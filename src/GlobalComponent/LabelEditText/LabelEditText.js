@@ -12,7 +12,7 @@ export const LabelEditText = (props) => {
         <TextInput
           autoCapitalize="none"
           autoCorrect={false}
-          autoCompleteType={false}
+          autoCompleteType="off"
           keyboardType={
             props.myKeyboardType !== undefined
               ? props.myKeyboardType
@@ -33,7 +33,7 @@ export const LabelEditText = (props) => {
             {
               marginTop:
                 props.isSmallFont &&
-                props.isSmallFont != undefined &&
+                props.isSmallFont !== undefined &&
                 props.isSmallFont != null
                   ? moderateScale(3)
                   : moderateScale(5),

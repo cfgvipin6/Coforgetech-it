@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import {
   View,
   Text,
@@ -10,29 +10,29 @@ import {
   ScrollView,
   FlatList,
   Alert,
-} from "react-native";
-import { connect } from "react-redux";
-import { DismissKeyboardView } from "../../components/DismissKeyboardView";
-import { styles } from "./styles";
+} from 'react-native';
+import { connect } from 'react-redux';
+import { DismissKeyboardView } from '../../components/DismissKeyboardView';
+import { styles } from './styles';
 import {
   fetchRequestorList,
   resetApprover,
   completeRequest,
   resetTravelAdvanceStore,
-} from "./travelAdvanceAction";
-import SubHeader from "../../GlobalComponent/SubHeader";
-import UserMessage from "../../components/userMessage";
-import ActivityIndicatorView from "../../GlobalComponent/myActivityIndicator";
-import CustomButton from "../../components/customButton";
-import { Icon, SearchBar } from "react-native-elements";
-import ModalDropdown from "react-native-modal-dropdown";
-import helper from "../../utilities/helper";
-import { globalFontStyle } from "../../components/globalFontStyle.js";
-let globalConstants = require("../../GlobalConstants");
-let constants = require("./constants");
-import { writeLog } from "../../utilities/logger";
-import { WHITE_COLOR } from "../../../appconfig";
-import images from "../../images";
+} from './travelAdvanceAction';
+import SubHeader from '../../GlobalComponent/SubHeader';
+import UserMessage from '../../components/userMessage';
+import ActivityIndicatorView from '../../GlobalComponent/myActivityIndicator';
+import CustomButton from '../../components/customButton';
+import { Icon, SearchBar } from 'react-native-elements';
+import ModalDropdown from 'react-native-modal-dropdown';
+import helper from '../../utilities/helper';
+import { globalFontStyle } from '../../components/globalFontStyle.js';
+let globalConstants = require('../../GlobalConstants');
+let constants = require('./constants');
+import { writeLog } from '../../utilities/logger';
+import { WHITE_COLOR } from '../../../appconfig';
+import images from '../../images';
 export class TravelAdvanceApproveRejectScreen extends Component {
   constructor(props) {
     super(props);
@@ -41,20 +41,20 @@ export class TravelAdvanceApproveRejectScreen extends Component {
       (action = previousScreenData.action),
       (isDomesticRequest = previousScreenData.isDTRService),
       (this.state = {
-        remarks: "",
-        submitTo: "Select",
-        query: "",
+        remarks: '',
+        submitTo: 'Select',
+        query: '',
         localSuperVisorData: [],
         localSuperVisorSearchList: [],
         showModal: false,
         messageType: null,
-        approverEmpName: "",
-        approverEmpId: "",
-        isAlertMessage: "",
+        approverEmpName: '',
+        approverEmpId: '',
+        isAlertMessage: '',
       });
   }
   componentDidMount() {
-    writeLog("Landed on " + "TravelAdvanceApproveRejectScreen");
+    writeLog('Landed on ' + 'TravelAdvanceApproveRejectScreen');
   }
   componentWillUnmount() {
     this.props.resetSupervisor();
@@ -66,8 +66,8 @@ export class TravelAdvanceApproveRejectScreen extends Component {
     if (
       nextProps.travelAdvanceApproverData &&
       !state.query.length > 0 &&
-      nextProps.travelAdvanceActionResponse == "" &&
-      nextProps.travelAdvanceActionError == ""
+      nextProps.travelAdvanceActionResponse == '' &&
+      nextProps.travelAdvanceActionError == ''
     ) {
       return {
         localSuperVisorData: nextProps.travelAdvanceApproverData,
@@ -79,8 +79,8 @@ export class TravelAdvanceApproveRejectScreen extends Component {
   }
   componentDidUpdate() {
     if (
-      this.props.travelAdvanceActionResponse === "Success" &&
-      this.state.isAlertMessage === ""
+      this.props.travelAdvanceActionResponse === 'Success' &&
+      this.state.isAlertMessage === ''
     ) {
       setTimeout(() => {
         this.setState({
@@ -91,7 +91,7 @@ export class TravelAdvanceApproveRejectScreen extends Component {
       }, 1000);
     } else if (
       this.props.travelAdvanceActionError.length > 0 &&
-      this.state.isAlertMessage === ""
+      this.state.isAlertMessage === ''
     ) {
       setTimeout(() => {
         this.setState({
@@ -104,13 +104,13 @@ export class TravelAdvanceApproveRejectScreen extends Component {
   }
   handleBack() {
     writeLog(
-      "Clicked on " + "handleBack" + " of " + "TravelAdvanceApproveRejectScreen"
+      'Clicked on ' + 'handleBack' + ' of ' + 'TravelAdvanceApproveRejectScreen'
     );
     this.props.navigation.pop();
   }
 
   userDetailGridView = (itemName, itemValue) => {
-    if (itemValue != "" && itemValue != undefined && itemValue != null) {
+    if (itemValue != '' && itemValue != undefined && itemValue != null) {
       return (
         <View style={styles.rowStyle}>
           <Text style={[styles.textOne, globalFontStyle.imageBackgroundLayout]}>
@@ -127,8 +127,8 @@ export class TravelAdvanceApproveRejectScreen extends Component {
   };
 
   userDetail = (empData) => {
-    let deptDate = empData.DeptDate.replace(/-/g, " ");
-    let returnDate = empData.ReturnDate.replace(/-/g, " ");
+    let deptDate = empData.DeptDate.replace(/-/g, ' ');
+    let returnDate = empData.ReturnDate.replace(/-/g, ' ');
     return (
       <View style={styles.userDetailStyle}>
         <ImageBackground style={styles.cardBackground} resizeMode="cover">
@@ -139,7 +139,7 @@ export class TravelAdvanceApproveRejectScreen extends Component {
             )}
             {this.userDetailGridView(
               globalConstants.EMPLOYEE_TEXT,
-              empData.DocOwnerCode.trim() + " : " + empData.DocOwnerName.trim()
+              empData.DocOwnerCode.trim() + ' : ' + empData.DocOwnerName.trim()
             )}
             {this.userDetailGridView(
               constants.ITINERARY_TEXT,
@@ -162,23 +162,23 @@ export class TravelAdvanceApproveRejectScreen extends Component {
 
   rejectReq = () => {
     let MyRemarks = this.state.remarks.trim();
-    let actionValue = action === globalConstants.APPROVED_TEXT ? "A" : "R";
-    if (MyRemarks === "") {
-      return alert("Please enter remarks!!");
+    let actionValue = action === globalConstants.APPROVED_TEXT ? 'A' : 'R';
+    if (MyRemarks === '') {
+      return alert('Please enter remarks!!');
     }
     writeLog(
-      "Invoked " +
-        "rejectReq" +
-        " of " +
-        "TravelAdvanceApproveRejectScreen" +
-        " for " +
+      'Invoked ' +
+        'rejectReq' +
+        ' of ' +
+        'TravelAdvanceApproveRejectScreen' +
+        ' for ' +
         action
     );
     this.props.completeRequest(
       isDomesticRequest,
       empData,
       actionValue,
-      "",
+      '',
       MyRemarks
     );
   };
@@ -189,7 +189,7 @@ export class TravelAdvanceApproveRejectScreen extends Component {
         <TextInput
           autoCapitalize="none"
           autoCorrect={false}
-          autoCompleteType={false}
+          autoCompleteType="off"
           multiline={true}
           maxLength={200}
           onChangeText={(text) => this.setState({ remarks: text })}
@@ -221,17 +221,17 @@ export class TravelAdvanceApproveRejectScreen extends Component {
 
   onApproverSelection = (approver) => {
     writeLog(
-      "Invoked " +
-        "onApproverSelection" +
-        " of " +
-        "TravelAdvanceApproveRejectScreen" +
-        " for " +
+      'Invoked ' +
+        'onApproverSelection' +
+        ' of ' +
+        'TravelAdvanceApproveRejectScreen' +
+        ' for ' +
         approver
     );
-    if (approver === "Supervisor") {
-      this.props.getSelectedRequestorList(empData, "s", isDomesticRequest);
+    if (approver === 'Supervisor') {
+      this.props.getSelectedRequestorList(empData, 's', isDomesticRequest);
     } else {
-      this.props.getSelectedRequestorList(empData, "T", isDomesticRequest);
+      this.props.getSelectedRequestorList(empData, 'T', isDomesticRequest);
     }
   };
 
@@ -239,7 +239,7 @@ export class TravelAdvanceApproveRejectScreen extends Component {
     this.setState(
       {
         submitTo: value,
-        approverEmpName: "",
+        approverEmpName: '',
       },
       () => {
         this.onApproverSelection(value);
@@ -248,7 +248,7 @@ export class TravelAdvanceApproveRejectScreen extends Component {
   };
 
   showPicker = () => {
-    let selectors = ["Supervisor", "Travel Desk"];
+    let selectors = ['Supervisor', 'Travel Desk'];
     return (
       <View style={styles.dropDownContainer}>
         <Text>{globalConstants.SUBMIT_TO_TEXT}</Text>
@@ -327,7 +327,7 @@ export class TravelAdvanceApproveRejectScreen extends Component {
     this.setState({
       approverEmpName: supervisor.EmpName,
       approverEmpId: supervisor.EmpCode,
-      query: "",
+      query: '',
     });
   };
 
@@ -355,7 +355,7 @@ export class TravelAdvanceApproveRejectScreen extends Component {
           showsVerticalScrollIndicator={false}
           renderItem={({ item, index }) => this.renderSuperVisors(item, index)}
           keyExtractor={(item, index) =>
-            "supervisorRequest_" + index.toString()
+            'supervisorRequest_' + index.toString()
           }
         />
       );
@@ -366,20 +366,20 @@ export class TravelAdvanceApproveRejectScreen extends Component {
 
   submitRequest = () => {
     writeLog(
-      "Invoked " +
-        "submitRequest" +
-        " of " +
-        "TravelAdvanceApproveRejectScreen" +
-        " for " +
+      'Invoked ' +
+        'submitRequest' +
+        ' of ' +
+        'TravelAdvanceApproveRejectScreen' +
+        ' for ' +
         this.state.submitTo
     );
     let MyRemarks = this.state.remarks.trim();
-    let actionValue = action === globalConstants.APPROVED_TEXT ? "A" : "R";
-    if (MyRemarks === "") {
-      return alert("Please enter remarks!!");
+    let actionValue = action === globalConstants.APPROVED_TEXT ? 'A' : 'R';
+    if (MyRemarks === '') {
+      return alert('Please enter remarks!!');
     }
 
-    if (this.state.submitTo === "Travel Desk") {
+    if (this.state.submitTo === 'Travel Desk') {
       this.props.completeRequest(
         isDomesticRequest,
         empData,
@@ -400,9 +400,9 @@ export class TravelAdvanceApproveRejectScreen extends Component {
 
   displayApproverName = () => {
     if (
-      this.state.approverEmpName != "" &&
-      (this.state.submitTo === "Travel Desk" ||
-        this.state.submitTo === "Supervisor")
+      this.state.approverEmpName != '' &&
+      (this.state.submitTo === 'Travel Desk' ||
+        this.state.submitTo === 'Supervisor')
     ) {
       return (
         <View>
@@ -427,29 +427,29 @@ export class TravelAdvanceApproveRejectScreen extends Component {
 
   backNavigate() {
     writeLog(
-      "Clicked on " +
-        "backNavigate" +
-        " of " +
-        "TravelAdvanceApproveRejectScreen"
+      'Clicked on ' +
+        'backNavigate' +
+        ' of ' +
+        'TravelAdvanceApproveRejectScreen'
     );
-    this.props.navigation.navigate("DashBoard");
+    this.props.navigation.navigate('DashBoard');
   }
 
   showDialogBox = () => {
-    let message = "";
-    let heading = "";
+    let message = '';
+    let heading = '';
     if (this.state.showModal) {
       if (this.state.messageType === 0) {
-        message = "Your request has been ";
-        message = action != undefined ? message + action.toLowerCase() : "";
-        heading = "Successful";
+        message = 'Your request has been ';
+        message = action != undefined ? message + action.toLowerCase() : '';
+        heading = 'Successful';
         return (
           <UserMessage
             heading={heading}
             message={message}
             okAction={() => {
               this.props.resetTravelAdvance();
-              this.setState({ showModal: false, isAlertMessage: "" }, () => {
+              this.setState({ showModal: false, isAlertMessage: '' }, () => {
                 this.backNavigate();
               });
             }}
@@ -463,7 +463,7 @@ export class TravelAdvanceApproveRejectScreen extends Component {
             message={this.props.travelAdvanceActionError}
             okAction={() => {
               this.props.resetTravelAdvance();
-              this.setState({ showModal: false, isAlertMessage: "" }, () => {
+              this.setState({ showModal: false, isAlertMessage: '' }, () => {
                 this.backNavigate();
               });
             }}
@@ -489,17 +489,17 @@ export class TravelAdvanceApproveRejectScreen extends Component {
             navigation={this.props.navigation}
           />
           <ActivityIndicatorView loader={this.props.travelAdvanceLoading} />
-          {this.state.submitTo === "Select" ||
-          this.state.submitTo === "Travel Desk" ||
-          (this.state.approverEmpName != "" &&
-            this.state.submitTo === "Supervisor")
+          {this.state.submitTo === 'Select' ||
+          this.state.submitTo === 'Travel Desk' ||
+          (this.state.approverEmpName != '' &&
+            this.state.submitTo === 'Supervisor')
             ? this.userDetail(empData)
             : null}
           {action === globalConstants.APPROVED_TEXT
             ? this.showPicker()
             : this.showRemarksAndRejectButton()}
-          {this.state.submitTo === "Supervisor" &&
-          this.state.approverEmpName === ""
+          {this.state.submitTo === 'Supervisor' &&
+          this.state.approverEmpName === ''
             ? this.renderSearch()
             : null}
           <ScrollView

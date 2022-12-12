@@ -1298,7 +1298,7 @@ class HomeScreen extends Component {
     return keys.map((key) => {
       if (record[key].IsActive) {
         return (
-          <View style={style.cardInnerView}>
+          <View key={key} style={style.cardInnerView}>
             <Text style={globalFontStyle.cardLeftText}>{record[key].Key}</Text>
             <Text style={globalFontStyle.cardRightText}>
               {record[key].Value === '' ? '-' : record[key].Value}
@@ -1312,8 +1312,9 @@ class HomeScreen extends Component {
   renderHistory = (subLineItem) => {
     return subLineItem.map((record, index) => {
       let myIndex = index + 1;
+      console.log('===record', record);
       return (
-        <View style={style.panelContainer}>
+        <View key={record?.ActedBy?.Value} style={style.panelContainer}>
           <View
             style={{
               flexDirection: 'row',
@@ -1349,7 +1350,7 @@ class HomeScreen extends Component {
         onMomentumDragStart={(height) => {
           height;
         }} //height of panel here : height/1.3
-        // onMomentumDragEnd={0}
+        onMomentumDragEnd={0}
       >
         {(dragHandler) => (
           <View style={style.panelNewContainer}>

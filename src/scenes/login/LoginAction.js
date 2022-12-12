@@ -2,7 +2,6 @@ import {
   LOGIN_ACTION,
   LOGIN_LOADING,
   MODAL_LOADING,
-  APP_VERSION,
   LOGIN_DATA_CLEAR,
 } from './constants';
 import { fetchPOSTMethod } from '../../utilities/fetchService';

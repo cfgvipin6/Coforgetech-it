@@ -101,6 +101,11 @@ class AuthScreen extends Component {
   showDialogBox() {
     let exception;
     let heading;
+    console.log(
+      'app launch ===',
+      this.props.modal_auth_loading,
+      this.props.appVersion
+    );
     if (this.props.modal_auth_loading) {
       if (
         Platform.OS === 'android' &&

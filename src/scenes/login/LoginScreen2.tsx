@@ -169,7 +169,7 @@ const LoginScreen2: React.FC = (props: any) => {
             <TextInput
               autoCapitalize="none"
               autoCorrect={false}
-              autoCompleteType={false}
+              autoCompleteType="off"
               theme={{
                 colors: {
                   primary: "black",
@@ -191,7 +191,7 @@ const LoginScreen2: React.FC = (props: any) => {
               }}
               autoCapitalize="none"
               autoCorrect={false}
-              autoCompleteType={false}
+              autoCompleteType="off"
               onChangeText={(text) => setPassword(text)}
               underlineColor="transparent"
               placeholder={"Enter your password"}

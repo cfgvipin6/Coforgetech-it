@@ -146,7 +146,7 @@ class AddressScreen extends Component {
       }
     }
     return (
-      <BoxContainer>
+      <BoxContainer key={Math.random()}>
         <Text
           style={{
             fontWeight: 'bold',

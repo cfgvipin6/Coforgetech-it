@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
-import { styles } from "./styles";
-import { Icon } from "react-native-elements";
+import React, { useState, useEffect } from 'react';
+import { styles } from './styles';
+import { Icon } from 'react-native-elements';
 import {
   TouchableOpacity,
   Text,
@@ -8,24 +8,24 @@ import {
   StyleSheet,
   FlatList,
   Platform,
-} from "react-native";
-import RNFetchBlob from "rn-fetch-blob";
-import DocumentPicker from "react-native-document-picker";
-import { useSelector, useDispatch } from "react-redux";
+} from 'react-native';
+import RNFetchBlob from 'rn-fetch-blob';
+import DocumentPicker from 'react-native-document-picker';
+import { useSelector, useDispatch } from 'react-redux';
 // import { AttachmentUpload, deleteAttachment } from './AttachmentActionCreator';
-var appConfig = require("../../../../appconfig");
-import { showToast } from "../../../GlobalComponent/Toast";
-import ActivityIndicatorView from "../../../GlobalComponent/myActivityIndicator";
-import FileViewer from "react-native-file-viewer";
-import ImagePicker from "react-native-image-picker";
+var appConfig = require('../../../../appconfig');
+import { showToast } from '../../../GlobalComponent/Toast';
+import ActivityIndicatorView from '../../../GlobalComponent/myActivityIndicator';
+import FileViewer from 'react-native-file-viewer';
+import ImagePicker from 'react-native-image-picker';
 import {
   uploadIsdAttachment,
   actionOnFile,
   downloadHrFile,
-} from "./AttachmentActionCreator";
-import ImageResizer from "react-native-image-resizer";
-import { deleteHrFile } from "../../hrassist/utils";
-var RNFS = require("react-native-fs");
+} from './AttachmentActionCreator';
+import ImageResizer from 'react-native-image-resizer';
+import { deleteHrFile } from '../../hrassist/utils';
+var RNFS = require('react-native-fs');
 let fileData = [];
 let loginData;
 const filePicker = async (
@@ -46,10 +46,10 @@ const filePicker = async (
         DocumentPicker.types.zip,
       ],
     });
-    console.log("URI : " + res.uri);
-    console.log("Type : " + res.type);
-    console.log("File Name : " + res.name);
-    console.log("File Size : " + res.size);
+    console.log('URI : ' + res.uri);
+    console.log('Type : ' + res.type);
+    console.log('File Name : ' + res.name);
+    console.log('File Size : ' + res.size);
 
     let docNumber = documentNumber;
     let ItemID = rowID;
@@ -69,7 +69,7 @@ const filePicker = async (
     // dispatch(AttachmentUpload(loginData,docNumber,ItemID,File,setData,res,setLoading))
   } catch (err) {
     if (DocumentPicker.isCancel(err)) {
-      console.log("File picking aborted");
+      console.log('File picking aborted');
     } else {
       throw err;
     }
@@ -81,18 +81,18 @@ export const getISDFiles = () => {
 export const base64File = async (file) => {
   let promise = new Promise((resolve, reject) => {
     let data = RNFetchBlob.fs
-      .readStream(file.FileUri, "base64", 4095)
+      .readStream(file.FileUri, 'base64', 4095)
       .then((ifStream) => {
         ifStream.open();
         ifStream.onData((chunk) => {
           data += chunk;
         });
         ifStream.onError((error) => {
-          console.log("Oops error is :", error);
+          console.log('Oops error is :', error);
           reject(error);
         });
         ifStream.onEnd(() => {
-          let dataToSave = data.replace("[object Object]", "");
+          let dataToSave = data.replace('[object Object]', '');
           resolve(dataToSave);
         });
       });
@@ -123,8 +123,8 @@ export const AttachmentView = (props) => {
   const appState = useSelector((state) => state);
   loginData = appState.loginReducer.loginData;
   const dispatch = useDispatch();
-  console.log("Props files : ", fileArray);
-  console.log("original files : ", files);
+  console.log('Props files : ', fileArray);
+  console.log('original files : ', files);
   if (
     fileArray !== undefined &&
     fileArray.length > 0 &&
@@ -136,21 +136,21 @@ export const AttachmentView = (props) => {
     }, 1000);
   }
   useEffect(() => {
-    console.log("File data is : ", files);
+    console.log('File data is : ', files);
     fileData = files;
   });
 
   const deleteFile = (index, file) => {
     let loginData = appState.loginReducer.loginData;
     let fileId = file.FileId;
-    console.log("File to delete is :", file);
+    console.log('File to delete is :', file);
     setAction(true);
     if (fileId !== undefined && fileId !== null) {
-      if (props?.isComingFrom == "HR") {
+      if (props?.isComingFrom == 'HR') {
         deleteHrFile(
           fileId,
           (successData) => {
-            if (successData[0]?.message == "success") {
+            if (successData[0]?.message === 'success') {
               files.splice(index, 1);
               setData((files) => [...files]);
             }
@@ -163,7 +163,7 @@ export const AttachmentView = (props) => {
         actionOnFile(
           loginData,
           fileId,
-          "delete",
+          'delete',
           setData,
           index,
           files,
@@ -181,16 +181,16 @@ export const AttachmentView = (props) => {
     setAction(true);
     let loginData = appState.loginReducer.loginData;
     let fileId = file.FileId;
-    console.log("File to download is :", file);
+    console.log('File to download is :', file);
     if (
       fileId !== undefined &&
       fileId !== null &&
-      props?.isComingFrom !== "HR"
+      props?.isComingFrom !== 'HR'
     ) {
       actionOnFile(
         loginData,
         fileId,
-        "download",
+        'download',
         setData,
         index,
         files,
@@ -201,12 +201,12 @@ export const AttachmentView = (props) => {
     if (
       fileId !== undefined &&
       fileId !== null &&
-      props?.isComingFrom == "HR"
+      props?.isComingFrom === 'HR'
     ) {
       downloadHrFile(
         loginData,
         fileId,
-        "download",
+        'download',
         setData,
         index,
         files,
@@ -217,20 +217,20 @@ export const AttachmentView = (props) => {
   };
 
   const openDownloadedFile = (data, fileName) => {
-    console.log("Opening file:", data);
+    console.log('Opening file:', data);
     const DocumentDir =
-      Platform.OS === "ios"
+      Platform.OS === 'ios'
         ? RNFS.DocumentDirectoryPath
         : RNFS.ExternalDirectoryPath;
-    let filePath = DocumentDir + "/" + fileName.trim();
+    let filePath = DocumentDir + '/' + fileName.trim();
     RNFetchBlob.fs
-      .writeFile(filePath, data, "base64")
+      .writeFile(filePath, data, 'base64')
       .then(() => {
-        showToast("File is downloaded at " + filePath);
+        showToast('File is downloaded at ' + filePath);
         openFile(filePath);
       })
       .catch((error) => {
-        showToast("Error in opening file : ", error);
+        showToast('Error in opening file : ', error);
       });
   };
   const openFile = (filePath) => {
@@ -238,25 +238,25 @@ export const AttachmentView = (props) => {
     FileViewer.open(filePath)
       .then(() => {})
       .catch((error) => {
-        showToast("unable to open attachment file due to " + error);
-        console.log("unable to open attachment file due to " + error);
+        showToast('unable to open attachment file due to ' + error);
+        console.log('unable to open attachment file due to ' + error);
       });
   };
 
   const handleCamera = (props) => {
     setAction(true);
     const options = {
-      title: "Click picture",
-      storageOptions: { skipBackup: true, path: "images" },
+      title: 'Click picture',
+      storageOptions: { skipBackup: true, path: 'images' },
     };
     ImagePicker.launchCamera(options, (response) => {
-      console.log("Response = ", response);
+      console.log('Response = ', response);
       if (response.didCancel) {
-        console.log("User cancelled image picker");
+        console.log('User cancelled image picker');
       } else if (response.error) {
-        console.log("ImagePicker Error: ", response.error);
+        console.log('ImagePicker Error: ', response.error);
       } else if (response.customButton) {
-        console.log("User tapped custom button: ", response.customButton);
+        console.log('User tapped custom button: ', response.customButton);
       } else {
         cameraCallBackFromCameraScreen(response, props.docNumber, props.rowId);
       }
@@ -264,15 +264,15 @@ export const AttachmentView = (props) => {
   };
 
   const cameraCallBackFromCameraScreen = (data, documentNumber, rowID) => {
-    console.log("Camera Data : ", data);
+    console.log('Camera Data : ', data);
     let fileName =
       data.fileName === undefined
-        ? data.uri.substring(data.uri.lastIndexOf("-") + 1, data.uri.length)
+        ? data.uri.substring(data.uri.lastIndexOf('-') + 1, data.uri.length)
         : data.fileName;
-    console.log("File name is : " + fileName);
-    ImageResizer.createResizedImage(data.uri, 100, 100, "JPEG", 10).then(
+    console.log('File name is : ' + fileName);
+    ImageResizer.createResizedImage(data.uri, 100, 100, 'JPEG', 10).then(
       (response2) => {
-        console.log("Camera response 2", response2);
+        console.log('Camera response 2', response2);
         let tempData = {};
         tempData.FileSize = response2.size;
         tempData.FileName = fileName;
@@ -294,7 +294,7 @@ export const AttachmentView = (props) => {
             style={styles.attachIcon}
             onPress={() => {
               if (props.disable) {
-                showToast("You can not attach file on submitted record.");
+                showToast('You can not attach file on submitted record.');
               } else {
                 filePicker(
                   setData,
@@ -315,7 +315,7 @@ export const AttachmentView = (props) => {
             onPress={() => {
               console.log(props.disable);
               if (props.disable) {
-                showToast("You can not capture image on submitted record.");
+                showToast('You can not capture image on submitted record.');
               } else {
                 handleCamera(props);
               }
@@ -329,11 +329,14 @@ export const AttachmentView = (props) => {
         <View style={{ flex: 1 }}>
           {files.map((file, index) => {
             return (
-              <View style={styles.fileItem}>
+              <View
+                key={file.FileUri ?? `${file?.FileId}_${file?.FileName}`}
+                style={styles.fileItem}
+              >
                 <TouchableOpacity
                   style={styles.fileName}
                   onPress={() => {
-                    console.log("Opening file..... : ", file);
+                    console.log('Opening file..... : ', file);
                     if (file.FileUri !== undefined) {
                       openFile(file.FileUri);
                     } else {
@@ -348,7 +351,7 @@ export const AttachmentView = (props) => {
                     onPress={() => {
                       if (props.disable === true) {
                         showToast(
-                          "You can not delete file of submitted record."
+                          'You can not delete file of submitted record.'
                         );
                       } else {
                         deleteFile(index, file);
