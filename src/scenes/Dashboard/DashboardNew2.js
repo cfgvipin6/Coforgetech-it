@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React, { Component, PureComponent } from 'react';
+import { connect } from 'react-redux';
 import {
   Text,
   View,
@@ -13,8 +13,8 @@ import {
   ImageBackground,
   ScrollView,
   Image,
-} from "react-native";
-import { styles } from "./styles";
+} from 'react-native';
+import { styles } from './styles';
 import {
   checkingForAttendance,
   resetDashboardCreator,
@@ -23,55 +23,67 @@ import {
   clearAttendance,
   pendingActionCreator,
   resetErrors,
-} from "./PendingAction";
+} from './PendingAction';
 import {
   callLocation,
   currentTime,
   GridDataViewAttendance,
-} from "./DashboardUtility2";
-import ActivityIndicatorView from "../../GlobalComponent/myActivityIndicator";
-import { AppStore } from "../../../AppStore";
-import { enableLocation } from "../attendance/AttendanceUtils";
-import { LOCATION_NOT_FOUND, OUT_OF_CAMPUS, WELCOME } from "./Constants";
-import Header from "../../GlobalComponent/Header";
-import { writeLog } from "../../utilities/logger";
-import properties from "../../resource/properties";
-import UserMessage from "../../components/userMessage";
-import DialogModal from "../../components/dialogBox";
-import moment from "moment";
-import { showToast } from "../../GlobalComponent/Toast";
-import { getAttendanceDay, setAttendanceDay } from "../auth/AuthUtility";
-import { fcmService } from "../../GlobalComponent/pushNotification/FCMService";
-import { localNotificationService } from "../../GlobalComponent/pushNotification/LocalNotificationService";
-import images from "../../images";
-import LinearGradient from "react-native-linear-gradient";
-import { AppStyle } from "../commonStyle";
-import { DEVICE_ID, DEVICE_VERSION } from "../../components/DeviceInfoFile";
+} from './DashboardUtility2';
+import ActivityIndicatorView from '../../GlobalComponent/myActivityIndicator';
+import { AppStore } from '../../../AppStore';
+import { enableLocation } from '../attendance/AttendanceUtils';
+import {
+  LOCATION_NOT_FOUND,
+  OUT_OF_CAMPUS,
+  WELCOME,
+  COUNTRY_CODE,
+} from './Constants';
+import Header from '../../GlobalComponent/Header';
+import { writeLog } from '../../utilities/logger';
+import UserMessage from '../../components/userMessage';
+import DialogModal from '../../components/dialogBox';
+import moment from 'moment';
+import { showToast } from '../../GlobalComponent/Toast';
+import { getAttendanceDay, setAttendanceDay } from '../auth/AuthUtility';
+// import { fcmService } from '../../GlobalComponent/pushNotification/FCMService';
+// import { localNotificationService } from '../../GlobalComponent/pushNotification/LocalNotificationService';
+import images from '../../images';
+import LinearGradient from 'react-native-linear-gradient';
+import { AppStyle } from '../commonStyle';
+import { DEVICE_ID, DEVICE_VERSION } from '../../components/DeviceInfoFile';
+import PrivacyFile from './PrivacyFile';
+import { getData } from '../../utilities/asyncStorage';
+
 const GH = 120;
-let constants = require("./Constants");
+let constants = require('./Constants');
 let isAlert;
 let distance;
-let data = GridDataViewAttendance;
 let eligibilityStartTime, eligibilityEndTime;
-class DashboardNew2 extends Component {
+
+const defaultState = {
+  totalCount: 0,
+  numColumns: 3,
+  isRefreshing: false,
+  isMessageToShow: false,
+  inCampus: false,
+  distance: 0,
+  message: '',
+  isMessageShown: '',
+  statusCode: 0,
+  showModal: false,
+  isAcceptPrivacyPolicy: false,
+  modalNode: null,
+  backButtonPressed: false,
+};
+class DashboardNew2 extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      totalCount: 0,
-      numColumns: 3,
-      isRefreshing: false,
-      isMessageToShow: false,
-      inCampus: false,
-      distance: 0,
-      message: "",
-      isMessageShown: "",
-      statusCode: 0,
-      showModal: false,
-      backButtonPressed: false,
-      images: [
-        require("../../assets/bg01.jpg"),
-        require("../../assets/bg_03.jpg"),
-      ],
+      ...defaultState,
+      // images: [
+      //   require('../../assets/bg01.jpg'),
+      //   require('../../assets/bg_03.jpg'),
+      // ],
     };
   }
 
@@ -80,67 +92,73 @@ class DashboardNew2 extends Component {
       setTimeout(() => {
         this.setState({
           showModal: true,
-          isMessageShown: "Your attendance has been marked successfully.",
+          isMessageShown: 'Your attendance has been marked successfully.',
         });
       }, 1000);
     }
   };
 
   errorCallBack = (response) => {
+    console.log('errorCallBack +++++++++', response);
     this.setState({
       showModal: true,
-      statusCode: response?.split(":")[1],
-      isMessageShown: response?.split(":")[0],
+      statusCode: response?.split(':')[1],
+      isMessageShown: response?.split(':')[0],
     });
   };
+
   errorCallBackDashBoard = (response) => {
+    console.log('errorCallBackDashBoard +++++++++', response);
     this.setState({ showModal: true, isMessageShown: response });
   };
 
-  async componentDidMount() {
+  componentDidMount() {
+    this.getPrivacyPolicy();
     if (AppStore.getState().loginReducer.loginData !== undefined) {
       let emp = AppStore.getState().loginReducer.loginData.SmCode;
-      isAlert = emp === "00076250";
+      isAlert = emp === '00076250';
     }
-    if (Platform.OS === "android") {
+    if (Platform.OS === 'android') {
       enableLocation();
     }
     BackHandler.addEventListener(
-      "hardwareBackPress",
+      'hardwareBackPress',
       this.handleBackButtonClick
     );
-    this.props.navigation.addListener("willFocus", this.onFocus);
-    fcmService.registerAppWithFcm();
-    fcmService.register(onRegister, onNotification, onOpenNotification);
-    localNotificationService.configure(onOpenNotification);
-    async function onRegister(token) {
-      console.log("[App] onRegister : ", token);
-      let data = {};
-      data.registration_token = token;
-      data.device_id = DEVICE_ID;
-      console.log("Data to send on server is  :", data);
-    }
+    this.props.navigation.addListener('willFocus', this.onFocus);
+    // fcmService.registerAppWithFcm();
+    // fcmService.register(onRegister, onNotification, onOpenNotification);
+    // localNotificationService.configure(onOpenNotification);
 
-    function onNotification(notify) {
-      console.log("[App] onNotification : ", notify);
-      const options = {
-        soundName: "default",
-        playSound: true,
-        bigPictureUrl: "https://picsum.photos/200",
-      };
-      localNotificationService.showNotification(
-        0,
-        notify.title,
-        notify.body,
-        notify,
-        options
-      );
-    }
+    // async function onRegister(token) {
+    //   console.log('[App] onRegister : ', token);
+    //   let data = {};
+    //   data.registration_token = token;
+    //   data.device_id = DEVICE_ID;
+    //   console.log('Data to send on server is  :', data);
+    // }
 
-    function onOpenNotification(notify) {
-      console.log("[App] onOpenNotification3 :", notify);
-    }
+    // function onNotification(notify) {
+    //   console.log('[App] onNotification : ', notify);
+    //   const options = {
+    //     soundName: 'default',
+    //     playSound: true,
+    //     bigPictureUrl: 'https://picsum.photos/200',
+    //   };
+    //   localNotificationService.showNotification(
+    //     0,
+    //     notify.title,
+    //     notify.body,
+    //     notify,
+    //     options
+    //   );
+    // }
+
+    // function onOpenNotification(notify) {
+    //   console.log('[App] onOpenNotification3 :', notify);
+    // }
   }
+
   checkToHitEligibility = async () => {
     let isAttendanceSaved = await getAttendanceDay();
     if (
@@ -156,9 +174,9 @@ class DashboardNew2 extends Component {
     }
   };
   handleAppStateChange = async (nextAppState) => {
-    console.log("App state change is called", nextAppState);
+    console.log('App state change is called', nextAppState);
     if (
-      nextAppState == "active" &&
+      nextAppState == 'active' &&
       this.props.loginData &&
       this.props.loginData.SmCode
     ) {
@@ -169,7 +187,7 @@ class DashboardNew2 extends Component {
     setAttendanceDay(this.props.loginData.TodayDate);
   };
   callAttendanceService = (currentTime, position) => {
-    console.log("Calling attendance service.");
+    console.log('Calling attendance service.');
     this.props.checkAttendance(
       currentTime,
       this.props.loginData.SmCode,
@@ -182,14 +200,14 @@ class DashboardNew2 extends Component {
   };
   welcomeCallBack = (distance) => {
     this.distance = distance;
-    console.log("welcome call back invoked distance....", distance);
+    console.log('welcome call back invoked distance....', distance);
     this.setState({ isMessageToShow: true });
     setTimeout(() => {
       this.setState({
         isMessageToShow: false,
         inCampus: false,
         distance: 0,
-        message: "",
+        message: '',
       });
     }, 3500);
     if (distance === null) {
@@ -209,18 +227,18 @@ class DashboardNew2 extends Component {
     eligibilityEndTime = new Date().getTime();
     let diff = eligibilityEndTime - eligibilityStartTime;
     console.log(
-      "Check eligibility service Time : ",
-      moment.duration(diff, "milliseconds").asSeconds()
+      'Check eligibility service Time : ',
+      moment.duration(diff, 'milliseconds').asSeconds()
     );
     if (
       this.props.eligibilityData &&
       this.props.eligibilityData.length > 0 &&
-      this.props.eligibilityData[0].attendaceMarked === "N" &&
-      this.props.eligibilityData[0].wasEligibile === "Y" &&
-      this.props.eligibilityData[0].Withinshift === "Y"
+      this.props.eligibilityData[0].attendaceMarked === 'N' &&
+      this.props.eligibilityData[0].wasEligibile === 'Y' &&
+      this.props.eligibilityData[0].Withinshift === 'Y'
     ) {
       console.log(
-        "Getting location after eligibility service response if attendance not marked"
+        'Getting location after eligibility service response if attendance not marked'
       );
       callLocation(
         this.callAttendanceService,
@@ -233,7 +251,7 @@ class DashboardNew2 extends Component {
       isAlert
     ) {
       console.log(
-        "Getting location after eligibility service response if attendance marked"
+        'Getting location after eligibility service response if attendance marked'
       );
       callLocation(null, this.welcomeCallBack, this.hideLoader);
       this.props.hideLoader();
@@ -244,10 +262,10 @@ class DashboardNew2 extends Component {
     }
   };
   onFocus = async () => {
-    AppState.addEventListener("change", this.handleAppStateChange);
+    AppState.addEventListener('change', this.handleAppStateChange);
     if (AppStore.getState().loginReducer.loginData !== undefined) {
       let emp = AppStore.getState().loginReducer.loginData.SmCode;
-      writeLog(emp + " Landed on " + "DashboardNew");
+      writeLog(emp + ' Landed on ' + 'DashboardNew');
       this.props.getPendingCounts(
         this.props.loginData,
         false,
@@ -258,18 +276,23 @@ class DashboardNew2 extends Component {
     }
   };
 
+  resetState = () => {
+    this.setState({ ...defaultState });
+  };
+
   componentWillUnmount() {
     BackHandler.removeEventListener(
-      "hardwareBackPress",
+      'hardwareBackPress',
       this.handleBackButtonClick
     );
-    AppState.removeEventListener("change", this.handleAppStateChange);
+    AppState.removeEventListener('change', this.handleAppStateChange);
     // this.props.reset();
+    this.resetState();
   }
 
   handleBackButtonClick = () => {
     this.setState({
-      isMessageShown: "Do you want to quit the app?",
+      isMessageShown: 'Do you want to quit the app?',
       backButtonPressed: true,
     });
     return true;
@@ -277,13 +300,12 @@ class DashboardNew2 extends Component {
   static getDerivedStateFromProps(nextProps, state) {
     if (nextProps.pendingData && nextProps.pendingData.length > 0) {
       const data = nextProps.pendingData;
-      console.log("Pending data : ", data);
-      let vals = data.map((item) => {
-        return parseInt(item.Count);
-      });
-      console.log("Pending vals : ", vals);
-      let total = vals.reduce((a, b) => a + b);
-      console.log("Pending total : ", total);
+      console.log('Pending data +++++++++++++++++: ', data);
+      let total = data.reduce((acc, ele) => {
+        acc += parseInt(ele.Count);
+        return acc;
+      }, 0);
+      console.log('Pending total : +++++++++++++++++ ', total);
       return {
         totalCount: total,
       };
@@ -292,17 +314,17 @@ class DashboardNew2 extends Component {
     }
   }
   onItemClick = (item) => {
-    if (item.key === "My Approvals") {
+    if (item.key === 'My Approvals') {
       if (this.state.totalCount > 0) {
-        this.props.navigation.push("DashBoard", {
+        this.props.navigation.push('DashBoard', {
           loginApiResponse: this.props.loginData,
         });
       } else {
         return showToast(constants.NO_APPROVALS_TO_APPROVE);
       }
     }
-    writeLog("Clicked on " + item.key + " of " + "DashboardNew");
-    AppState.removeEventListener("change", this.handleAppStateChange);
+    writeLog('Clicked on ' + item.key + ' of ' + 'DashboardNew');
+    AppState.removeEventListener('change', this.handleAppStateChange);
     this.props.navigation.navigate(item.screenToNavigate);
   };
 
@@ -314,7 +336,7 @@ class DashboardNew2 extends Component {
       <LinearGradient
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 0 }}
-        colors={["#F9F6EE", "#D3E5FC"]}
+        colors={['#F9F6EE', '#D3E5FC']}
         style={[styles.gridItem, { height: GH / 1.3, width: GH }]}
       >
         <TouchableOpacity
@@ -323,14 +345,12 @@ class DashboardNew2 extends Component {
           }}
         >
           <Image
-            style={{ alignSelf: "center", justifyContent: "center" }}
+            style={{ alignSelf: 'center', justifyContent: 'center' }}
             source={item.navOptionThumb}
           />
           <Text style={styles.gridItemText}>{item.key}</Text>
           <Text style={styles.gridItemText}>
-            {item.key === "My Approvals"
-              ? "(" + this.state.totalCount + ")"
-              : ""}
+            {item.key === 'My Approvals' ? `(${this.state.totalCount})` : ''}
           </Text>
         </TouchableOpacity>
       </LinearGradient>
@@ -360,24 +380,22 @@ class DashboardNew2 extends Component {
       this.props.attendanceData.length > 0 &&
       this.props.attendanceData[0] &&
       this.props.attendanceData[0].attendaceMarked !== null &&
-      this.props.attendanceData[0].attendaceMarked === "Y"
+      this.props.attendanceData[0].attendaceMarked === 'Y'
     ) {
-      heading = "Attendance";
+      heading = 'Attendance';
     } else if (this.state.backButtonPressed === true) {
-      heading = "Confirm Exit";
+      heading = 'Confirm Exit';
     } else if (this.state.statusCode == 404 || this.state.statusCode == 402) {
-      heading = "Error";
+      heading = 'Error';
     } else {
-      heading = "Info";
+      heading = 'Info';
     }
     return (
       <UserMessage
         modalVisible={true}
         heading={heading}
         message={this.state.isMessageShown}
-        okAction={() => {
-          this.onOkClick();
-        }}
+        okAction={this.onOkClick}
       />
     );
   };
@@ -387,24 +405,22 @@ class DashboardNew2 extends Component {
         isVisible={this.state.backButtonPressed}
         headerText="Exit App ?"
         messageText={
-          <Text style={{ textAlign: "center" }}>
+          <Text style={{ textAlign: 'center' }}>
             {this.state.isMessageShown}
           </Text>
         }
-        cancelButtonText={"CANCEL"}
-        handleCancel={() => this.handleCancel()}
-        confirmButtonText={"OK"}
-        handleConfirm={() => this.handleConfirm()}
+        cancelButtonText={'CANCEL'}
+        handleCancel={this.handleCancel}
+        confirmButtonText={'OK'}
+        handleConfirm={this.handleConfirm}
       />
     );
   };
   handleConfirm = () => {
-    writeLog("Clicked on " + "Exit" + " of " + "Dashboard New screen");
     this.setState({ backButtonPressed: false });
     BackHandler.exitApp();
   };
   handleCancel = () => {
-    writeLog("Clicked on " + "handleCancel" + " of " + "Exit PopUp");
     this.setState({ backButtonPressed: false });
   };
   onOkClick = () => {
@@ -415,11 +431,9 @@ class DashboardNew2 extends Component {
     }
     this.props.resetError();
     this.props.clearAttendance();
-    this.setState({ showModal: false, isMessageShown: "" }, () => {
-      {
-        if (this.state.statusCode == 404) {
-          this.props.navigation.navigate("Login");
-        }
+    this.setState({ showModal: false, isMessageShown: '' }, () => {
+      if (this.state.statusCode === 404) {
+        this.props.navigation.navigate('Login');
       }
     });
   };
@@ -437,11 +451,11 @@ class DashboardNew2 extends Component {
   }
   renderWelcomeMessage = () => {
     if (this.state.isMessageToShow) {
-      let backGroundColor = "green";
+      let backGroundColor = 'green';
       if (this.state.inCampus) {
-        backGroundColor = "green";
+        backGroundColor = 'green';
       } else {
-        backGroundColor = "red";
+        backGroundColor = 'red';
       }
       return (
         <View
@@ -449,7 +463,7 @@ class DashboardNew2 extends Component {
         >
           <Text style={styles.welcomeText}>{this.state.message}</Text>
           <Text style={styles.welcomeText}>
-            {this.state.distance ? " Distance: " + this.state.distance : null}
+            {this.state.distance ? ' Distance: ' + this.state.distance : null}
           </Text>
         </View>
       );
@@ -462,131 +476,176 @@ class DashboardNew2 extends Component {
     if (
       this.props.loginData &&
       this.props.loginData.IsVoucherVisible &&
-      this.props.loginData.IsVoucherVisible == "Y"
+      this.props.loginData.IsVoucherVisible == 'Y'
     ) {
-      return gridData.filter((item) => item.key !== "CoWIN");
+      return gridData.filter((item) => item.key !== 'CoWIN');
     } else {
       return gridData.filter(
-        (item) => item.key !== "Voucher" && item.key !== "CoWIN"
+        (item) => item.key !== 'Voucher' && item.key !== 'CoWIN'
       );
     }
   };
 
-  render() {
-    const restrictedCompanies =
-      this.props.loginData?.CO_CODE == "N081" ||
-      this.props.loginData?.CO_CODE == "N082" ||
-      this.props.loginData?.CO_CODE == "N083" ||
-      this.props.loginData?.CO_CODE == "N084" ||
-      this.props.loginData?.CO_CODE == "N085";
-    if (this.props.eligibilityData && this.props.eligibilityData.length > 0) {
-      if (this.props.eligibilityData[0].wasEligibile === "X") {
-        data = data.filter((item) => item.key !== "View Attendance");
-      }
-    } else {
+  getPrivacyPolicy = async () => {
+    try {
+      let privacyPolicyData = await getData('privacyPolicyData');
+      const { SmCode } = this.props.loginData;
+      // console.log(
+      //   '=== parsedData',
+      //   privacyPolicyData?.checkVisible &&
+      //     privacyPolicyData?.userSmCode === SmCode,
+      //   privacyPolicyData?.userSmCode,
+      //   privacyPolicyData?.checkVisible,
+      //   SmCode
+      // );
       if (
-        this.props.loginData?.CO_CODE == "N060" ||
-        this.props.loginData?.CO_CODE == "N061" ||
-        this.props.loginData?.CO_CODE == "N062" ||
-        this.props.loginData?.CO_CODE == "N063" ||
-        this.props.loginData?.CO_CODE == "N064" ||
-        this.props.loginData?.CO_CODE == "N065" ||
-        this.props.loginData?.CO_CODE == "N070" ||
-        this.props.loginData?.CO_CODE == "N071" ||
-        this.props.loginData?.CO_CODE == "N072" ||
-        restrictedCompanies
+        privacyPolicyData?.checkVisible &&
+        privacyPolicyData?.userSmCode === SmCode
       ) {
-        data = data.filter((item) => item.key !== "View Attendance");
+        this.setState({
+          isAcceptPrivacyPolicy: privacyPolicyData.checkVisible,
+          modalNode: null,
+        });
+      } else {
+        this.setState({
+          modalNode: (
+            <PrivacyFile
+              navigation={this.props.navigation}
+              privacyModalFunc={this.handlePrivacyPolicyModal}
+              loginUser={this.props.loginData}
+            />
+          ),
+        });
       }
+    } catch (error) {
+      console.log('fetch data from async storage', error);
     }
-    data = properties.isDevEnvironment ? data : this.prodGridVisible(data);
-    if (this.props.loginData?.IsVoucherVisible == "N") {
-      data = data.filter((item) => item.key !== "Voucher");
+  };
+
+  handlePrivacyPolicyModal = (cb = () => {}) => {
+    const { isPrivacyPolicyOpen } = this.state;
+    this.setState(
+      {
+        isPrivacyPolicyOpen: !isPrivacyPolicyOpen,
+        modalNode: null,
+      },
+      () => cb()
+    );
+  };
+
+  filteredData = (arr, key) => {
+    const gridData = arr.filter((item) => item.key !== key);
+    console.log('filteredData +++++++ ', key, arr, gridData);
+    return gridData;
+  };
+
+  render() {
+    const { modalNode, isAcceptPrivacyPolicy } = this.state;
+    const { loginData, eligibilityData } = this.props;
+    let data = GridDataViewAttendance;
+    // const restrictedCompanies = COUNTRY_CODE.includes(loginData?.CO_CODE);
+    // console.log(
+    //   'this.props.loginData +++++++ ',
+    //   loginData,
+    //   restrictedCompanies
+    // );
+
+    // if (eligibilityData && eligibilityData.length > 0) {
+    //   if (eligibilityData[0].wasEligibile === 'X') {
+    //     data = this.filteredData(data, 'View Attendance');
+    //   }
+    // } else {
+    //   if (restrictedCompanies) {
+    //     data = this.filteredData(data, 'View Attendance');
+    //   }
+    // }
+    // data = properties.isDevEnvironment ? data : this.prodGridVisible(data);
+    // if (loginData?.IsVoucherVisible === 'N') {
+    //   data = this.filteredData(data, 'Voucher');
+    // }
+    // if (loginData?.PolicyID === 0) {
+    //   data = data.filter((item) => item.key !== 'Scheme & Policies');
+    // }
+    // if (loginData?.IsCommunicationAccount === 'N') {
+    //   data = this.filteredData(data, 'My Info');
+    // }
+    // if (loginData?.IsCommunicationAccount === 'N') {
+    //   data = this.filteredData(data, 'Balances');
+    // }
+    if (loginData?.IsICard === '0') {
+      data = this.filteredData(GridDataViewAttendance, 'ID Card');
     }
-    if (this.props.loginData?.PolicyID == 0) {
-      data = data.filter((item) => item.key !== "Scheme & Policies");
-    }
-    if (this.props.loginData?.IsCommunicationAccount == "N") {
-      data = data.filter((item) => item.key !== "My Info");
-    }
-    if (this.props.loginData?.IsCommunicationAccount == "N") {
-      data = data.filter((item) => item.key !== "Balances");
-    }
-    if (this.props.loginData?.IsICard !== "3") {
-       console.log("this.props.loginData",this.props.loginData);
-      data = data.filter((item) => item.key !== "ID Card");
-     
-     
-    }
-    if (this.props.loginData?.IsHRAssist == "N") {
-      data = data.filter((item) => item.key !== "HR Assist");
-    }
-    if (this.props.loginData?.IsLeave == "N") {
-      data = data.filter((item) => item.key !== "Apply Leave");
-      
-    }
-    if (this.props.loginData?.IsHoliday == "N") {
-      data = data.filter((item) => item.key !== "Holiday List");
-    }
-    if (this.props.loginData?.IsITServiceDesk == "N") {
-      data = data.filter((item) => item.key !== "IT-Desk");
-    }
+    // if (loginData?.IsHRAssist === 'N') {
+    //   data = this.filteredData(data, 'HR Assist');
+    // }
+    // if (loginData?.IsLeave === 'N') {
+    //   data = this.filteredData(data, 'Apply Leave');
+    // }
+    // if (loginData?.IsHoliday === 'N') {
+    //   data = this.filteredData(data, 'Holiday List');
+    // }
+    // if (loginData?.IsITServiceDesk === 'N') {
+    //   data = this.filteredData(data, 'IT-Desk');
+    // }
 
     return (
-      <ImageBackground
-        style={styles.backGroundView}
-        source={images.loginBackground}
-      >
-        <Header props={this.props} />
-        <Text style={styles.versionTextStyle}>
-          {"App Ver : " + DEVICE_VERSION}
-        </Text>
-        <LinearGradient
-          colors={["#053E6D", "#0569B9"]}
-          style={{
-            width: "95%",
-            alignSelf: "center",
-            borderWidth: 1,
-            borderColor: "orange",
-            borderRadius: 8,
-          }}
+      <View style={{ flex: 1 }}>
+        <ImageBackground
+          style={styles.backGroundView}
+          source={images.loginBackground}
         >
-          <Text
-            style={[
-              AppStyle.font.fontMediumBold,
-              { alignSelf: "center", color: "#fff", marginVertical: "2%" },
-            ]}
-          >
-            {"Hi " + this.props.loginData?.SmFirstname}
+          <Header props={this.props} />
+          <Text style={styles.versionTextStyle}>
+            {'App Ver : ' + DEVICE_VERSION}
           </Text>
-        </LinearGradient>
-        <View style={{ flex: 1, marginTop: "2%" }}>
-          {isAlert || distance === null ? this.renderWelcomeMessage() : null}
-
-          <View />
-          <ScrollView
-            keyboardShouldPersistTaps="handled"
-            style={styles.gridParent}
-            refreshControl={
-              <RefreshControl
-                onRefresh={this.onRefresh}
-                refreshing={this.state.isRefreshing}
-              />
-            }
+          <LinearGradient
+            colors={['#053E6D', '#0569B9']}
+            style={{
+              width: '95%',
+              alignSelf: 'center',
+              borderWidth: 1,
+              borderColor: 'orange',
+              borderRadius: 8,
+            }}
           >
-            <FlatList
-              data={this.formatRow(data, this.state.numColumns)}
-              extraData={this.state}
-              renderItem={this.renderItem}
-              numColumns={this.state.numColumns}
-              keyExtractor={(item, index) => index}
-            />
-          </ScrollView>
-          {this.state.showModal === true ? this.showPopUp() : null}
-          {this.renderLogoutPopUp()}
-        </View>
-        <ActivityIndicatorView loader={this.props.loading} />
-      </ImageBackground>
+            <Text
+              style={[
+                AppStyle.font.fontMediumBold,
+                { alignSelf: 'center', color: '#fff', marginVertical: '2%' },
+              ]}
+            >
+              {'Hi ' + this.props.loginData?.SmFirstname}
+            </Text>
+          </LinearGradient>
+          <View style={{ flex: 1, marginTop: '2%' }}>
+            {isAlert || distance === null ? this.renderWelcomeMessage() : null}
+            <ScrollView
+              keyboardShouldPersistTaps="handled"
+              style={styles.gridParent}
+              refreshControl={
+                <RefreshControl
+                  onRefresh={this.onRefresh}
+                  refreshing={this.state.isRefreshing}
+                />
+              }
+            >
+              <FlatList
+                data={this.formatRow(data, this.state.numColumns)}
+                extraData={this.state}
+                renderItem={this.renderItem}
+                numColumns={this.state.numColumns}
+                keyExtractor={(item, index) => index}
+              />
+            </ScrollView>
+            {this.state.showModal === true ? this.showPopUp() : null}
+            {this.renderLogoutPopUp()}
+          </View>
+          {isAcceptPrivacyPolicy ? (
+            <ActivityIndicatorView loader={this.props.loading} />
+          ) : null}
+        </ImageBackground>
+        {!isAcceptPrivacyPolicy && modalNode}
+      </View>
     );
   }
 }
@@ -626,14 +685,14 @@ const mapDispatchToProps = (dispatch) => {
 };
 const mapStateToProps = (state) => {
   return {
-    loginData: state && state.loginReducer && state.loginReducer.loginData,
-    pendingData: state.pendingReducer.pendingData,
-    loading: state.pendingReducer.loading_pending,
-    pendingError: state.pendingReducer.pendingError,
-    attendanceData: state.pendingReducer.attendanceData,
-    attendanceError: state.pendingReducer.attendanceError,
-    eligibilityData: state.pendingReducer.eligibilityData,
-    viewAttendanceError: state.pendingReducer.viewAttendanceError,
+    loginData: state?.loginReducer?.loginData,
+    pendingData: state?.pendingReducer?.pendingData,
+    loading: state?.pendingReducer?.loading_pending,
+    pendingError: state?.pendingReducer?.pendingError,
+    attendanceData: state?.pendingReducer?.attendanceData,
+    attendanceError: state?.pendingReducer?.attendanceError,
+    eligibilityData: state?.pendingReducer?.eligibilityData,
+    viewAttendanceError: state?.pendingReducer?.viewAttendanceError,
   };
 };
 

@@ -1,100 +1,109 @@
-import {Platform } from 'react-native';
-import {moderateScale} from '../../components/fontScaling';
+import { Platform } from 'react-native';
+import { moderateScale } from '../../components/fontScaling';
 export default {
-    container: {
-      flex: 1,
+  container: {
+    flex: 1,
   },
-  backGroundView:{
-     width:'100%',
-     height:'100%',
+  backGroundView: {
+    width: '100%',
+    height: '100%',
   },
-  titleLogo:{
-   alignSelf:'center',
+  titleLogo: {
+    alignSelf: 'center',
   },
 
-  inputs:{
-      height:45,
-      marginLeft:16,
-      borderBottomColor: '#FFFFFF',
-      flex:1,
+  inputs: {
+    height: 45,
+    marginLeft: 16,
+    borderBottomColor: '#FFFFFF',
+    flex: 1,
   },
   inputContainer: {
-      borderBottomColor: '#F5FCFF',
-      backgroundColor: '#FFFFFF',
-      borderRadius:30,
-      borderBottomWidth: 1,
-      height:50,
-      flexDirection: 'row',
-      alignItems:'center',
-      elevation: 6,
-      marginLeft:16,
+    borderBottomColor: '#F5FCFF',
+    backgroundColor: '#FFFFFF',
+    borderRadius: 30,
+    borderBottomWidth: 1,
+    height: 50,
+    flexDirection: 'row',
+    alignItems: 'center',
+    elevation: 6,
+    marginLeft: 16,
   },
-  inputIcon:{
-      width:moderateScale(20),
-      height:moderateScale(20),
-      marginLeft:15,
-      justifyContent: 'center',
-    },
+  inputIcon: {
+    width: moderateScale(20),
+    height: moderateScale(20),
+    marginLeft: 15,
+    justifyContent: 'center',
+  },
 
   middleView2: {
-    width:'85%',
-    alignSelf:'center',
-    height:Platform.OS == 'ios' ? '90%' : '78%',
-},
-horizontalMid:{
-  alignSelf:'center',
-  marginTop:0,
-},
-textStyle:{
-   marginTop:'13%',
-},
-inputTextStyle:{
-  marginTop:'2%',
-  paddingTop:'1%',
-  backgroundColor:'#fff',
-  borderBottomWidth: 1,
-  flex:1,
-  color:'#000',
-},
-paddingBottom:{
- paddingBottom:10,
-},
-middleView: {
-      flex: 4,
-      backgroundColor: '#d5e6f5',
-      justifyContent:'flex-end',
-},
+    width: '85%',
+    alignSelf: 'center',
+    height: Platform.OS == 'ios' ? '90%' : '78%',
+  },
+  horizontalMid: {
+    alignSelf: 'center',
+    marginTop: 0,
+  },
+  textStyle: {
+    marginTop: '13%',
+  },
+  buttonOuterLayout: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  buttonLayout: {
+    marginBottom: 10,
+  },
+  inputTextStyle: {
+    marginTop: '2%',
+    paddingTop: '1%',
+    backgroundColor: '#fff',
+    borderBottomWidth: 1,
+    flex: 1,
+    color: '#000',
+  },
+  paddingBottom: {
+    paddingBottom: 10,
+  },
+  middleView: {
+    flex: 4,
+    backgroundColor: '#d5e6f5',
+    justifyContent: 'flex-end',
+  },
   bottomView: {
     flex: 3,
     backgroundColor: 'green',
   },
-  seperatorContainer:{
-    flex:1,
-    flexDirection:'row',
-    marginTop:'5%',
-    alignItems:'center',
+  separatorContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    marginTop: '5%',
+    alignItems: 'center',
   },
-  seperator:{
-    height:1,
-    width:'35%',
-    backgroundColor:'#000',
+  separator: {
+    height: 1,
+    width: '35%',
+    backgroundColor: '#000',
   },
-  headerIcon:{
-      height:125,
-      width:125,
-      resizeMode:'contain',
-      marginLeft: 30,
-      marginRight: 30,
-      marginTop: 5,
+  headerIcon: {
+    height: 125,
+    width: 125,
+    resizeMode: 'contain',
+    marginLeft: 30,
+    marginRight: 30,
+    marginTop: 5,
   },
-  versionTextStyle:{
+  versionTextStyle: {
     padding: 5,
     position: 'absolute',
     marginBottom: 0,
     color: 'blue',
     flexDirection: 'row-reverse',
   },
-  bgStyle:{ width: '100%', height: '100%',justifyContent:'center' },
+  bgStyle: { width: '100%', height: '100%', justifyContent: 'center' },
   adButton: {
     alignItems: 'center',
     backgroundColor: '#db8607',
@@ -102,7 +111,7 @@ middleView: {
     marginVertical: 15,
     marginHorizontal: 20,
     justifyContent: 'center',
-    borderRadius:30,
+    borderRadius: 30,
     elevation: 6,
   },
   button: {
@@ -112,9 +121,9 @@ middleView: {
     marginVertical: 15,
     marginHorizontal: 20,
     justifyContent: 'center',
-    borderRadius:30,
+    borderRadius: 30,
     elevation: 6,
-    flex:1,
+    flex: 1,
   },
   btnText: {
     color: 'black',
@@ -137,44 +146,49 @@ middleView: {
     marginRight: 20,
   },
   labelBox: {
-      backgroundColor: 'transparent',
-      paddingTop: 10,
-      paddingBottom: 50,
-      paddingLeft: 20,
-      paddingRight: 20,
-      marginLeft: 20,
-      marginRight: 20,
-      opacity: 0.5,
-      elevation: 20,
-
-    },
-    TextShadowStyle:
-    {
-       textAlign: 'center',
-       textShadowColor: '#779bbd',
-       textShadowOffset: { width: 4, height: 2 },
-       textShadowRadius: 1,
-       fontWeight: 'bold',
-       paddingTop: 20,
-       color: '#14046b',
-    },
-    loginBoxButtom: {
-      borderBottomLeftRadius: 30,
-      borderBottomRightRadius: 30,
-    },
-    loginBoxTop: {
-      borderTopRightRadius: 30,
-      borderTopLeftRadius: 30,
+    backgroundColor: 'transparent',
+    paddingTop: 10,
+    paddingBottom: 50,
+    paddingLeft: 20,
+    paddingRight: 20,
+    marginLeft: 20,
+    marginRight: 20,
+    opacity: 0.5,
+    elevation: 20,
   },
-    bottomLogo:{
-    alignSelf:'center',
-    position:'absolute',
-    top:'60%',
-    right:0,
-    bottom:0,
-    left:0,
-    width:'100%',
-    height:'40%',
+  TextShadowStyle: {
+    textAlign: 'center',
+    textShadowColor: '#779bbd',
+    textShadowOffset: { width: 4, height: 2 },
+    textShadowRadius: 1,
+    fontWeight: 'bold',
+    paddingTop: 20,
+    color: '#14046b',
   },
-  eyeStyle:{position:'absolute',top:0,right:0,bottom:0,left:'88%',zIndex:10},
-  };
+  loginBoxButtom: {
+    borderBottomLeftRadius: 30,
+    borderBottomRightRadius: 30,
+  },
+  loginBoxTop: {
+    borderTopRightRadius: 30,
+    borderTopLeftRadius: 30,
+  },
+  bottomLogo: {
+    alignSelf: 'center',
+    position: 'absolute',
+    top: '60%',
+    right: 0,
+    bottom: 0,
+    left: 0,
+    width: '100%',
+    height: '40%',
+  },
+  eyeStyle: {
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: '88%',
+    zIndex: 10,
+  },
+};
