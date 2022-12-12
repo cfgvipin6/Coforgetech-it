@@ -1,8 +1,6 @@
 import React from 'react';
-import { Dimensions, TouchableOpacity, StyleSheet, View, ScrollView, Text, Modal } from 'react-native';
-import { FlatList } from 'react-native-gesture-handler';
+import { Dimensions, TouchableOpacity, StyleSheet, View, FlatList, Text, Modal } from 'react-native';
 let appConfig = require('../../../appconfig');
-const WIDTH = Dimensions.get('window').width;
 const ModalPicker = props => {
      console.log('Props of modal picker : ',props);
     const getListItems = (element,index)=>{

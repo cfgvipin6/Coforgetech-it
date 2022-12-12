@@ -1,12 +1,5 @@
 import React, { Component } from "react";
-import {
-  Text,
-  View,
-  FlatList,
-  TouchableOpacity,
-  BackHandler,
-  ImageBackground,
-} from "react-native";
+import { BackHandler, ImageBackground } from "react-native";
 import { DashBoardItem } from "../../GlobalComponent/DashBoardItem/DashBoardItem";
 import SubHeader from "../../GlobalComponent/SubHeader";
 const data = ["Raise My Query", "Track My Query"];

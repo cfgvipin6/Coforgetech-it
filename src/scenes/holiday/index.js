@@ -1,61 +1,41 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import {
   Text,
   View,
-  Alert,
-  TouchableOpacity,
   ScrollView,
   BackHandler,
   ImageBackground,
-} from "react-native";
-import { connect } from "react-redux";
-import { styles } from "./styles";
-import { Icon } from "react-native-elements";
-import {
-  SELECT_YEAR,
-  SELECT_PLACE,
-  DATE,
-  DAY,
-  HOLIDAY_NAME,
-  NO_HOLIDAY,
-} from "./constants";
-import { writeLog } from "../../utilities/logger";
+} from 'react-native';
+import { connect } from 'react-redux';
+import { styles } from './styles';
+import { Icon } from 'react-native-elements';
+import { DATE, DAY, HOLIDAY_NAME } from './constants';
+import { writeLog } from '../../utilities/logger';
 import {
   leaveYearLocation,
   holidayActionCreator,
   resetLeave,
-  noLeaveData,
   resetNoLeaves,
-} from "./holidayActionCreator";
-import { Table, Row, Cols, Rows } from "react-native-table-component";
-import ActivityIndicatorView from "../../GlobalComponent/myActivityIndicator";
-import {
-  GUN_METAL_COLOR,
-  VALID_BUTTON_COLOR,
-  WHITE_COLOR,
-} from "../../../appconfig";
-import SubHeader from "../../GlobalComponent/SubHeader";
-import ModalDropdown from "react-native-modal-dropdown";
-import helper from "../../utilities/helper";
-import UserMessage from "../../components/userMessage";
-import { globalFontStyle } from "../../components/globalFontStyle";
-import { Dropdown } from "../../GlobalComponent/DropDown/DropDown";
-import CustomButton from "../../components/customButton";
-import images from "../../images";
-import IEngageDropDown from "../../GlobalComponent/CustomDropDown";
-import { showToast } from "../../GlobalComponent/Toast";
-let globalConstants = require("../../GlobalConstants");
+} from './holidayActionCreator';
+import { Table, Row, Cols, Rows } from 'react-native-table-component';
+import ActivityIndicatorView from '../../GlobalComponent/myActivityIndicator';
+import SubHeader from '../../GlobalComponent/SubHeader';
+import { Dropdown } from '../../GlobalComponent/DropDown/DropDown';
+import CustomButton from '../../components/customButton';
+import images from '../../images';
+import UserMessage from '../../components/userMessage';
+let globalConstants = require('../../GlobalConstants');
 const tableHead = [DATE, DAY, HOLIDAY_NAME];
 class HolidayScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      yearValue: "Select",
-      countryCode: "Select",
-      locationValue: "Select",
+      yearValue: 'Select',
+      countryCode: 'Select',
+      locationValue: 'Select',
       errorPopUp: false,
-      isError: "",
-      noHoliday: "",
+      isError: '',
+      noHoliday: '',
       locationData: [],
       yearData: [],
       loading: false,
@@ -65,25 +45,25 @@ class HolidayScreen extends Component {
     this.yearRef = React.createRef();
   }
   componentDidMount() {
-    this.props.navigation.addListener("willFocus", this.onFocus);
+    this.props.navigation.addListener('willFocus', this.onFocus);
     BackHandler.addEventListener(
-      "hardwareBackPress",
+      'hardwareBackPress',
       this.handleBackButtonClick
     );
   }
   holidaySuccessCallBack = (holidayData) => {
-    console.log("holidayData : ", holidayData);
+    console.log('holidayData : ', holidayData);
     this.setState({ holidayData }, () => {
       if (holidayData.length == 0) {
         this.setState({
           errorPopUp: true,
-          noHoliday: "No holiday found for this location & year.",
+          noHoliday: 'No holiday found for this location & year.',
         });
       }
     });
   };
   successCallBack = (data) => {
-    console.log("Year n location data : ", data);
+    console.log('Year n location data : ', data);
     let locationValues = data?.Location.map((el) => {
       return el;
     });
@@ -108,7 +88,7 @@ class HolidayScreen extends Component {
     }, 1000);
   };
   onFocus = () => {
-    writeLog("Landed on " + "HolidayScreen");
+    writeLog('Landed on ' + 'HolidayScreen');
     // this.locationRef.current.select(-1);
     this.props.fetchYearLocation(
       this.props.loginData.SmCode,
@@ -120,27 +100,27 @@ class HolidayScreen extends Component {
 
   componentWillUnmount() {
     BackHandler.removeEventListener(
-      "hardwareBackPress",
+      'hardwareBackPress',
       this.handleBackButtonClick
     );
     this.setState({
-      yearValue: "Select",
-      countryCode: "Select",
-      locationValue: "Select",
+      yearValue: 'Select',
+      countryCode: 'Select',
+      locationValue: 'Select',
     });
     this.props.resetLeave();
   }
   showLeaveData = () => {
     // console.log("Show leaves button clicked ! ")
-    console.log("Year Value : ", this.state.yearValue);
-    console.log("Country code : ", this.state.countryCode);
-    console.log("Location value : ", this.state.locationValue);
+    console.log('Year Value : ', this.state.yearValue);
+    console.log('Country code : ', this.state.countryCode);
+    console.log('Location value : ', this.state.locationValue);
     if (
-      this.state.yearValue === "Select" ||
-      this.state.countryCode === "Select" ||
-      this.state.locationValue === "Select"
+      this.state.yearValue === 'Select' ||
+      this.state.countryCode === 'Select' ||
+      this.state.locationValue === 'Select'
     ) {
-      return alert("Please select year and location!");
+      return alert('Please select year and location!');
     }
     this.props.showLeaves(
       this.state.yearValue,
@@ -154,7 +134,7 @@ class HolidayScreen extends Component {
     return true;
   };
   handleBack = () => {
-    writeLog("Clicked on " + "handleBack" + " of " + "HolidayScreen");
+    writeLog('Clicked on ' + 'handleBack' + ' of ' + 'HolidayScreen');
     // this.props.navigation.navigate("DashBoardNew")
     this.props.navigation.pop();
   };
@@ -169,16 +149,16 @@ class HolidayScreen extends Component {
       <View>
         <View
           style={{
-            flexDirection: "row",
+            flexDirection: 'row',
             marginHorizontal: 10,
-            justifyContent: "space-between",
+            justifyContent: 'space-between',
             height: 35,
             marginTop: 20,
           }}
         >
-          <Text style={{ marginTop: 5, fontWeight: "bold" }}>Year</Text>
+          <Text style={{ marginTop: 5, fontWeight: 'bold' }}>Year</Text>
           <Dropdown
-            dropDownWidth={"80%"}
+            dropDownWidth={'80%'}
             forwardedRef={this.yearRef}
             dropDownData={this.state.yearData}
             dropDownCallBack={(index, value) => this.yearSelected(index, value)}
@@ -186,16 +166,16 @@ class HolidayScreen extends Component {
         </View>
         <View
           style={{
-            flexDirection: "row",
+            flexDirection: 'row',
             marginHorizontal: 10,
             marginTop: 10,
-            justifyContent: "space-between",
+            justifyContent: 'space-between',
             height: 35,
           }}
         >
-          <Text style={{ marginTop: 5, fontWeight: "bold" }}>Place</Text>
+          <Text style={{ marginTop: 5, fontWeight: 'bold' }}>Place</Text>
           <Dropdown
-            dropDownWidth={"82%"}
+            dropDownWidth={'82%'}
             dropDownData={this.state.locationData.map((el) => el.LocationDesc)}
             dropDownCallBack={(index, value) =>
               this.locationSelected(index, value)
@@ -212,7 +192,7 @@ class HolidayScreen extends Component {
   };
   locationSelected = (index, value) => {
     let locationId = this.state.locationData[index].LocationID;
-    console.log("Location data : ", this.state.locationData);
+    console.log('Location data : ', this.state.locationData);
     this.setState({
       countryCode: locationId,
       locationValue: value,
@@ -221,9 +201,9 @@ class HolidayScreen extends Component {
 
   shouldPopup = () => {
     if (this.state.isError.length > 0) {
-      return this.showPopUp("Error", this.state.isError);
+      return this.showPopUp('Error', this.state.isError);
     } else if (this.state.noHoliday.length > 0) {
-      return this.showPopUp("Info", this.state.noHoliday);
+      return this.showPopUp('Info', this.state.noHoliday);
     } else {
       return null;
     }
@@ -245,13 +225,13 @@ class HolidayScreen extends Component {
     );
   };
   onOkClick = () => {
-    writeLog("Clicked on " + "onOkClick" + " of " + "Holiday Screen");
+    writeLog('Clicked on ' + 'onOkClick' + ' of ' + 'Holiday Screen');
     this.props.resetLeave();
-    this.setState({ errorPopUp: false, isError: "" }, () => {});
+    this.setState({ errorPopUp: false, isError: '' }, () => {});
   };
   onHolidayOkClick = () => {
     this.props.resetNoLeave();
-    this.setState({ errorPopUp: false, noHoliday: "" });
+    this.setState({ errorPopUp: false, noHoliday: '' });
   };
 
   tableView() {
@@ -271,7 +251,7 @@ class HolidayScreen extends Component {
         reQ[i] = new Array(dates[i], day[i], holidays[i]);
       }
       return (
-        <Table borderStyle={{ borderWidth: 2, borderColor: "#c8e1ff" }}>
+        <Table borderStyle={{ borderWidth: 2, borderColor: '#c8e1ff' }}>
           <Row
             data={tableHead}
             style={styles.tableHead}
@@ -287,7 +267,7 @@ class HolidayScreen extends Component {
       );
     } else if (
       this.state.holidayData.length == 0 &&
-      this.state.countryCode != "Select" &&
+      this.state.countryCode != 'Select' &&
       this.state.isNoLeaves === true
     ) {
       return this.shouldPopup();
@@ -306,9 +286,9 @@ class HolidayScreen extends Component {
           />
           {this.showDropDown()}
           <ActivityIndicatorView loader={this.state.loading} />
-          <View style={{ width: "35%", marginTop: "2%", alignSelf: "center" }}>
+          <View style={{ width: '35%', marginTop: '2%', alignSelf: 'center' }}>
             <CustomButton
-              label={"Get Holidays"}
+              label={'Get Holidays'}
               positive={true}
               performAction={() => this.showLeaveData()}
             />
@@ -321,7 +301,7 @@ class HolidayScreen extends Component {
           >
             {this.tableView()}
           </ScrollView>
-          <View style={{ marginTop: 10, width: "35%", alignSelf: "center" }} />
+          <View style={{ marginTop: 10, width: '35%', alignSelf: 'center' }} />
           {this.state.errorPopUp === true ? this.shouldPopup() : null}
         </View>
       </ImageBackground>
@@ -354,7 +334,6 @@ mapDispatchToProps = (dispatch) => {
   };
 };
 mapStateToProps = (state) => {
-  // console.log("Leave data from leave reducer is : ", state.holidayReducer)
   return {
     loginData: state && state.loginReducer && state.loginReducer.loginData,
     yearData: state.holidayReducer.yearData,

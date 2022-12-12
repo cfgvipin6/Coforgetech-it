@@ -1,5 +1,12 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { Alert, ImageBackground, Modal, RefreshControl, Text, View } from 'react-native';
+import {
+  Alert,
+  ImageBackground,
+  Modal,
+  RefreshControl,
+  Text,
+  View,
+} from 'react-native';
 import { SearchBar } from 'react-native-elements';
 import { FlatList } from 'react-native-gesture-handler';
 import { SafeAreaView } from 'react-navigation';
@@ -10,7 +17,10 @@ import SubHeader from '../../../../GlobalComponent/SubHeader';
 import { showToast } from '../../../../GlobalComponent/Toast';
 import images from '../../../../images';
 import { writeLog } from '../../../../utilities/logger';
-import { fetchEmpDetails, fetchTimeSheetApprovals } from '../../myTimesheet/service/timeSheetService';
+import {
+  fetchEmpDetails,
+  fetchTimeSheetApprovals,
+} from '../../myTimesheet/service/timeSheetService';
 import { EMP_CODE, EMP_NAME, WEEK_NAME } from '../constants';
 import { styles } from './styles';
 let globalConstants = require('../../../../GlobalConstants');
@@ -75,9 +85,11 @@ export const TimeSheetApprovals = (props) => {
           <View style={styles.buttonContainer}>
             <View style={styles.button}>
               <CustomButton
-               label={globalConstants.PROCEED_TEXT}
-               positive={true}
-                performAction={() => approveAction(globalConstants.APPROVED_TEXT, item)}
+                label={globalConstants.PROCEED_TEXT}
+                positive={true}
+                performAction={() =>
+                  approveAction(globalConstants.APPROVED_TEXT, item)
+                }
               />
             </View>
           </View>
@@ -86,22 +98,22 @@ export const TimeSheetApprovals = (props) => {
     );
   };
 
-  const approveAction = (action,item)=>{
+  const approveAction = (action, item) => {
     props.navigation.navigate('MyTimesheet5', {
-      empData:[item],
+      empData: [item],
       selectedWeek: item.WeekName,
-      isComingFromApprovals:true,
+      isComingFromApprovals: true,
     });
   };
-  useEffect(()=>{
-   const fetchEmployees =  async ()=>{
+  useEffect(() => {
+    const fetchEmployees = async () => {
       let startDate = localTimeSheetSearchData[0].WeekName.split(' - ')[0];
       let endDate = localTimeSheetSearchData[0].WeekName.split(' - ')[1];
-     let emps = await fetchEmpDetails(startDate,endDate);
-     setEmpArray(emps.Result);
+      let emps = await fetchEmpDetails(startDate, endDate);
+      setEmpArray(emps.Result);
     };
     fetchEmployees();
-  },[localTimeSheetSearchData]);
+  }, [localTimeSheetSearchData]);
 
   const onRefresh = () => {
     fetchApprovals();
@@ -140,25 +152,25 @@ export const TimeSheetApprovals = (props) => {
     if (approvals?.Result && approvals.Result.length > 0) {
       setLocalTimeSheetData(approvals.Result);
       setLocalTimeSheetSearchData(approvals.Result);
-    }
-    else {
+    } else {
       setLocalTimeSheetData([]);
       setLocalTimeSheetSearchData([]);
-      Alert.alert('No Records','No Records found to approve!',[
-       {
-         text:'Ok',
-         onPress:()=>props.navigation.pop(),
+      Alert.alert('No Records', 'No Records found to approve!', [
+        {
+          text: 'Ok',
+          onPress: () => props.navigation.pop(),
         },
       ]);
     }
-  },[props.navigation]);
+  }, [props.navigation]);
 
   useEffect(() => {
-     props.navigation.addListener('didFocus', () => {
+    props.navigation.addListener('didFocus', () => {
       fetchApprovals();
       console.log('Fetch approvals call');
     });
   }, [fetchApprovals, props.navigation]);
+
   useEffect(() => {
     console.log('Time sheet data : ', localTimeSheetSearchData);
     const filteredData = localTimeSheetSearchData.filter((element) => {
@@ -178,36 +190,33 @@ export const TimeSheetApprovals = (props) => {
   };
 
   return (
-    <ImageBackground
-      style={{flex:1}}
-      source={images.loginBackground}
-    >
-    <SafeAreaView style={styles.container}>
-      <ActivityIndicatorView loader={loading} />
-      <View style={globalFontStyle.subHeaderViewGlobal}>
-        <SubHeader
-          pageTitle={globalConstants.TIMESHEET_APPROVALS}
-          backVisible={true}
-          logoutVisible={true}
-          handleBackPress={() => handleBack()}
-          navigation={props.navigation}
-        />
-      </View>
-      <View style={globalFontStyle.searchViewGlobal}>
-        <SearchBar
-          lightTheme
-          placeholder={'Search by document number'}
-          onChangeText={updateSearch}
-          value={query}
-          raised={true}
-          containerStyle={globalFontStyle.searchGlobal}
-          autoCapitalize="none"
+    <ImageBackground style={{ flex: 1 }} source={images.loginBackground}>
+      <SafeAreaView style={styles.container}>
+        <ActivityIndicatorView loader={loading} />
+        <View style={globalFontStyle.subHeaderViewGlobal}>
+          <SubHeader
+            pageTitle={globalConstants.TIMESHEET_APPROVALS}
+            backVisible={true}
+            logoutVisible={true}
+            handleBackPress={() => handleBack()}
+            navigation={props.navigation}
+          />
+        </View>
+        <View style={globalFontStyle.searchViewGlobal}>
+          <SearchBar
+            lightTheme
+            placeholder={'Search by document number'}
+            onChangeText={updateSearch}
+            value={query}
+            raised={true}
+            containerStyle={globalFontStyle.searchGlobal}
+            autoCapitalize="none"
             autoCompleteType="off"
             autoCorrect={false}
-        />
-      </View>
-      <View style={globalFontStyle.contentViewGlobal}>{showApprovals()}</View>
-    </SafeAreaView>
+          />
+        </View>
+        <View style={globalFontStyle.contentViewGlobal}>{showApprovals()}</View>
+      </SafeAreaView>
     </ImageBackground>
   );
 };

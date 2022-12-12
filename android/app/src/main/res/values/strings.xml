@@ -1,0 +1,17 @@
+<resources>
+    <!--    <string name="app_name">iNIITian</string>-->
+    <string name="app_name_Dev">iEngage_Dev</string>
+    <string name="app_name_Prod">iEngage</string>
+    <string name="appCenterCrashes_whenToSendCrashes" moduleConfig="true" translatable="false">ASK_JAVASCRIPT</string>
+    <string name="appCenterAnalytics_whenToEnableAnalytics" moduleConfig="true" translatable="false">ALWAYS_SEND</string>
+    <string name="CodePushDeploymentKey" moduleConfig="true">FLMvz0H4eeb_hBQcpKow9wedKMruOViKCwT9b</string>
+    <string name="title_activity_secure">SecureActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+</resources>

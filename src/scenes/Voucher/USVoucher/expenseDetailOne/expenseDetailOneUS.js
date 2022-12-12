@@ -1,30 +1,32 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState, useEffect } from 'react';
-import { ImageBackground, Text, View, TouchableOpacity } from 'react-native';
-import { LabelText } from '../../../../GlobalComponent/LabelText/LabelText.js';
-import { sectionTitle, calculateFinancialYear, calculateDaysDiff } from '../../createVoucher/cvUtility.js';
-import { LabelEditText } from '../../../../GlobalComponent/LabelEditText/LabelEditText.js';
-import { DatePicker } from '../../../../GlobalComponent/DatePicker/DatePicker.js';
-import CustomButton from '../../../../components/customButton.js';
-import { Checkbox, overlay } from 'react-native-paper';
-import _ from 'lodash';
-import moment from 'moment';
-import { Dropdown } from '../../../../GlobalComponent/DropDown/DropDown.js';
-import { styles } from '../../createVoucher/styles';
-import { Tooltip, Icon, colors } from 'react-native-elements';
-import { fetchLCVModeRate } from '../utils.js';
-import ActivityIndicatorView from '../../../../GlobalComponent/myActivityIndicator/index.js';
-let appConfig = require('../../../../../appconfig');
-let constants = require('./../../createVoucher/constants');
-let globalConstants = require('../../../../GlobalConstants');
+import React, { useState, useEffect } from "react";
+import { ImageBackground, Text, View, TouchableOpacity } from "react-native";
+import {
+  sectionTitle,
+  calculateFinancialYear,
+  calculateDaysDiff,
+} from "../../createVoucher/cvUtility.js";
+import { LabelEditText } from "../../../../GlobalComponent/LabelEditText/LabelEditText.js";
+import { DatePicker } from "../../../../GlobalComponent/DatePicker/DatePicker.js";
+import CustomButton from "../../../../components/customButton.js";
+import { CheckBox, Tooltip } from "react-native-elements";
+import _ from "lodash";
+import moment from "moment";
+import { Dropdown } from "../../../../GlobalComponent/DropDown/DropDown.js";
+import { styles } from "../../createVoucher/styles";
+import { fetchLCVModeRate } from "../utils.js";
+let appConfig = require("../../../../../appconfig");
+let constants = require("./../../createVoucher/constants");
+let globalConstants = require("../../../../GlobalConstants");
 let editableFile;
 export const ExpenseDetailOneUS = (props) => {
-  console.log('propssss', props);
+  console.log("propssss", props);
   let categoryId = props.myCategoryId;
   let isDocumentSaved = true; //props.isDocumentSaved
-  let dateDefault = moment().format('DD-MMM-YYYY');
+  let dateDefault = moment().format("DD-MMM-YYYY");
   let empData = props.myEmpData[0];
-  let defaultCurrencyIdValue = empData.CURRENCY !== '' ? empData.CURRENCY : 'INR';
+  let defaultCurrencyIdValue =
+    empData.CURRENCY !== "" ? empData.CURRENCY : "INR";
   let dateLbl,
     startDateLbl,
     endDateLbl,
@@ -50,34 +52,38 @@ export const ExpenseDetailOneUS = (props) => {
   currencyRef = React.createRef();
   typeRef = React.createRef();
   const [expenseId, setExpenseId] = useState(props.myExpenseTypeId);
-  console.log('expenseTypeId4444', expenseId);
+  console.log("expenseTypeId4444", expenseId);
   const [dateValue, setDateValue] = useState(dateDefault);
   const [dateCalendarVisible, setDateCalendarVisible] = useState(false);
   const [startDateValue, setStartDateValue] = useState(dateDefault);
-  const [startDateCalendarVisible, setStartDateCalendarVisible] = useState(false);
+  const [startDateCalendarVisible, setStartDateCalendarVisible] = useState(
+    false
+  );
   const [endDateValue, setEndDateValue] = useState(dateDefault);
   const [endDateCalendarVisible, setEndDateCalendarVisible] = useState(false);
-  const [validTillCalendarVisible, setValidTillCalendarVisible] = useState(false);
+  const [validTillCalendarVisible, setValidTillCalendarVisible] = useState(
+    false
+  );
   const [validTillDateValue, setValidTillDateValue] = useState(dateDefault);
-  const [fromInput, setFromInput] = useState('');
-  const [toInput, setToInput] = useState('');
-  const [carrierInput, setCarrierInput] = useState('');
-  const [amountInput, setAmountInput] = useState('');
+  const [fromInput, setFromInput] = useState("");
+  const [toInput, setToInput] = useState("");
+  const [carrierInput, setCarrierInput] = useState("");
+  const [amountInput, setAmountInput] = useState("");
   const [amountEditable, setAmountEditable] = useState(true);
-  const [exchRateInput, setExchRateInput] = useState('');
+  const [exchRateInput, setExchRateInput] = useState("");
   const [exchRateEditable, setExchRateEditable] = useState(false);
-  const [finalExchAmount, setFinalExchAmount] = useState('');
+  const [finalExchAmount, setFinalExchAmount] = useState("");
   const [modeOfConveyanceObject, setModeOfConveyanceObject] = useState({});
   const [payTypeObject, setPayTypeObject] = useState({});
   const [currencyObject, setCurrencyObject] = useState({});
-  const [hotelInput, setHotelInput] = useState('');
-  const [guestInput, setGuestInput] = useState('');
-  const [locationInput, setLocationInput] = useState('');
-  const [milesValue, setMilesValue] = useState('');
-  const [descriptionValue, setDescriptionValue] = useState('');
+  const [hotelInput, setHotelInput] = useState("");
+  const [guestInput, setGuestInput] = useState("");
+  const [locationInput, setLocationInput] = useState("");
+  const [milesValue, setMilesValue] = useState("");
+  const [descriptionValue, setDescriptionValue] = useState("");
   const [sChecked, setSChecked] = useState(false);
   const [rChecked, setRChecked] = useState(false);
-  const [type, setType] = useState('');
+  const [type, setType] = useState("");
   const [meal, setIncident] = useState({});
   const [editPress, setEditPress] = useState(0);
   const [ownCarRate, setOwnCarRate] = useState(0);
@@ -170,25 +176,29 @@ export const ExpenseDetailOneUS = (props) => {
   }
 
   const onModeOfConveyanceSelection = (i, val) => {
-    let myModeOfConveyanceObject = modeOfTravelData.find((el) => el.DisplayText == val);
-    console.log('My Mode of ConveyanceObject', myModeOfConveyanceObject);
+    let myModeOfConveyanceObject = modeOfTravelData.find(
+      (el) => el.DisplayText == val
+    );
+    console.log("My Mode of ConveyanceObject", myModeOfConveyanceObject);
     setModeOfConveyanceObject(myModeOfConveyanceObject);
     if (expenseId == 3 && myModeOfConveyanceObject.ID == 2) {
-        fetchLCVModeRate(dateValue, categoryId).then((res) => {
+      fetchLCVModeRate(dateValue, categoryId).then((res) => {
         props.checkError(res);
         if (res.UsLcvModeRate > 0) {
           setAmountEditable(false);
           setOwnCarRate(res.UsLcvModeRate);
           if (milesValue > 0) {
-            setAmountInput((milesValue * res.UsLcvModeRate).toFixed(2).toString());
+            setAmountInput(
+              (milesValue * res.UsLcvModeRate).toFixed(2).toString()
+            );
           } else {
-            setAmountInput('');
+            setAmountInput("");
           }
         } else {
           setAmountEditable(true);
           setOwnCarRate(0);
         }
-    });
+      });
     } else {
       setAmountEditable(true);
       setOwnCarRate(0);
@@ -196,44 +206,52 @@ export const ExpenseDetailOneUS = (props) => {
   };
 
   const onPayTypeSelection = (i, val) => {
-    let myPayTypeObject = empData.UsVoucherPayTypeList.find((el) => el.DisplayText == val);
+    let myPayTypeObject = empData.UsVoucherPayTypeList.find(
+      (el) => el.DisplayText == val
+    );
     setPayTypeObject(myPayTypeObject);
   };
 
   const onCurrencySelection = (i, val) => {
-    let myCurrencyObject = empData.UsVoucherCurrencyList.find((el) => el.DisplayText == val);
+    let myCurrencyObject = empData.UsVoucherCurrencyList.find(
+      (el) => el.DisplayText == val
+    );
     setCurrencyObject(myCurrencyObject);
   };
 
   const onMilesTextChanged = (text) => {
     setMilesValue(text);
-    if (expenseId == 3 && !_.isEmpty(modeOfConveyanceObject) && modeOfConveyanceObject.ID == 2) {
+    if (
+      expenseId == 3 &&
+      !_.isEmpty(modeOfConveyanceObject) &&
+      modeOfConveyanceObject.ID == 2
+    ) {
       if (ownCarRate > 0) {
         setAmountInput((text * ownCarRate).toFixed(2).toString());
       } else {
-        setAmountInput('');
+        setAmountInput("");
       }
     }
   };
 
   const dateConfirm = (date) => {
     setDateCalendarVisible(false);
-    setDateValue(moment(date).format('DD-MMM-YYYY'));
+    setDateValue(moment(date).format("DD-MMM-YYYY"));
   };
 
   const startDateConfirm = (date) => {
     setStartDateCalendarVisible(false);
-    setStartDateValue(moment(date).format('DD-MMM-YYYY'));
+    setStartDateValue(moment(date).format("DD-MMM-YYYY"));
   };
 
   const endDateConfirm = (date) => {
     setEndDateCalendarVisible(false);
-    setEndDateValue(moment(date).format('DD-MMM-YYYY'));
+    setEndDateValue(moment(date).format("DD-MMM-YYYY"));
   };
 
   const validTillDateConfirm = (date) => {
     setValidTillCalendarVisible(false);
-    setValidTillDateValue(moment(date).format('DD-MMM-YYYY'));
+    setValidTillDateValue(moment(date).format("DD-MMM-YYYY"));
   };
 
   const addItem = () => {
@@ -275,7 +293,13 @@ export const ExpenseDetailOneUS = (props) => {
       if (_.isEmpty(descriptionValue.trim())) {
         return alert(constants.DESCRIPTION_ERR_MSG);
       }
-    } else if (expenseId == 6 || expenseId == 8 || expenseId == 9 || expenseId == 11 || expenseId == 12) {
+    } else if (
+      expenseId == 6 ||
+      expenseId == 8 ||
+      expenseId == 9 ||
+      expenseId == 11 ||
+      expenseId == 12
+    ) {
       if (_.isEmpty(meal)) {
         return alert(constants.TYPE_ERR_MSG);
       } else if (_.isEmpty(descriptionValue.trim())) {
@@ -291,7 +315,10 @@ export const ExpenseDetailOneUS = (props) => {
       }
     }
 
-    let empDOJDiff = moment(empData.DOJ, 'YYYYMMDD').diff(moment(dateValue, 'DD-MMM-YYYY'), 'days');
+    let empDOJDiff = moment(empData.DOJ, "YYYYMMDD").diff(
+      moment(dateValue, "DD-MMM-YYYY"),
+      "days"
+    );
     if (_.isEmpty(payTypeObject)) {
       alert(constants.PAY_TYPE_ERR_MSG);
     } else if (_.isEmpty(currencyObject)) {
@@ -335,7 +362,7 @@ export const ExpenseDetailOneUS = (props) => {
     setType(typeVal);
   };
   const updateExpense = (file) => {
-    console.log('File to edit is : ', file);
+    console.log("File to edit is : ", file);
     editableFile = file;
     setEditPress(2);
     setExpenseId(file.TypeofExpense);
@@ -344,7 +371,7 @@ export const ExpenseDetailOneUS = (props) => {
     let currencyObject = {};
     if (file !== undefined) {
       switch (file.TypeofExpense) {
-        case '1':
+        case "1":
           setDateValue(file.SMemoDate);
           setCarrierInput(file.Carrier);
           setStartDateValue(file.JourneyFromDate);
@@ -352,31 +379,31 @@ export const ExpenseDetailOneUS = (props) => {
           setFromInput(file.DestFrom);
           setToInput(file.DestTo);
           break;
-        case '2':
+        case "2":
           setStartDateValue(file.JourneyFromDate);
           setEndDateValue(file.JourneyToDate);
           setHotelInput(file.HotelName);
           setLocationInput(file.UsLocation);
           break;
-        case '3':
+        case "3":
           setDateValue(file.SMemoDate);
           setMilesValue(file.LCVKM);
           setDescriptionValue(file.Particulars);
           setFromInput(file.LCVFrom);
           setToInput(file.LCVTo);
           break;
-        case '4':
+        case "4":
           setDateValue(file.SMemoDate);
           setDescriptionValue(file.Particulars);
           setType(file.UsType);
           break;
-        case '5':
+        case "5":
           setDateValue(file.SMemoDate);
           setDescriptionValue(file.Particulars);
           setType(file.UsType);
           break;
 
-        case '6':
+        case "6":
           setDateValue(file.SMemoDate);
           setDescriptionValue(file.Particulars);
           expenseType.ID = file.UsType;
@@ -387,16 +414,19 @@ export const ExpenseDetailOneUS = (props) => {
             );
             typeRef.current.select(expenseTypeIndex);
             setIncident(expenseType);
-            console.log('Setting expense type while update drop down: ', expenseType);
+            console.log(
+              "Setting expense type while update drop down: ",
+              expenseType
+            );
           }
           break;
-        case '7':
+        case "7":
           setStartDateValue(file.JourneyFromDate);
           setEndDateValue(file.JourneyToDate);
           setHotelInput(file.HotelName);
           setLocationInput(file.UsLocation);
           break;
-        case '8':
+        case "8":
           setDateValue(file.SMemoDate);
           setDescriptionValue(file.Particulars);
           expenseType.ID = file.UsType;
@@ -407,10 +437,13 @@ export const ExpenseDetailOneUS = (props) => {
             );
             typeRef.current.select(expenseTypeIndex);
             setIncident(expenseType);
-            console.log('Setting expense type while update drop down: ', expenseType);
+            console.log(
+              "Setting expense type while update drop down: ",
+              expenseType
+            );
           }
           break;
-        case '9':
+        case "9":
           setDateValue(file.SMemoDate);
           setDescriptionValue(file.Particulars);
           expenseType.ID = file.UsType;
@@ -421,10 +454,13 @@ export const ExpenseDetailOneUS = (props) => {
             );
             typeRef.current.select(expenseTypeIndex);
             setIncident(expenseType);
-            console.log('Setting expense type while update drop down: ', expenseType);
+            console.log(
+              "Setting expense type while update drop down: ",
+              expenseType
+            );
           }
           break;
-        case '10':
+        case "10":
           if (categoryId == 11) {
             typeDropdownData = empData.UsTrBpWelfareTypes;
           } else if (categoryId == 13) {
@@ -441,25 +477,31 @@ export const ExpenseDetailOneUS = (props) => {
             );
             typeRef.current.select(expenseTypeIndex);
             setIncident(expenseType);
-            console.log('Setting expense type while update drop down: ', expenseType);
+            console.log(
+              "Setting expense type while update drop down: ",
+              expenseType
+            );
           }
           break;
-        case '11':
+        case "11":
           setDateValue(file.SMemoDate);
           setDescriptionValue(file.Particulars);
           setValidTillDateValue(file.ValidTill);
           expenseType.ID = file.UsType;
           expenseType.DisplayText = file.TypeofExpenseText;
-            if (typeRef.current !== null) {
-              let expenseTypeIndex = empData.UsMemberSubsTypes.findIndex(
-                (element) => element.DisplayText == file.TypeofExpenseText
-              );
-              typeRef.current.select(expenseTypeIndex);
-              setIncident(expenseType);
-              console.log('Setting expense type while update drop down: ', expenseType);
-            }
+          if (typeRef.current !== null) {
+            let expenseTypeIndex = empData.UsMemberSubsTypes.findIndex(
+              (element) => element.DisplayText == file.TypeofExpenseText
+            );
+            typeRef.current.select(expenseTypeIndex);
+            setIncident(expenseType);
+            console.log(
+              "Setting expense type while update drop down: ",
+              expenseType
+            );
+          }
           break;
-        case '12':
+        case "12":
           setDateValue(file.SMemoDate);
           setDescriptionValue(file.Particulars);
           expenseType.ID = file.UsType;
@@ -470,12 +512,15 @@ export const ExpenseDetailOneUS = (props) => {
             );
             typeRef.current.select(expenseTypeIndex);
             setIncident(expenseType);
-            console.log('Setting expense type while update drop down: ', expenseType);
+            console.log(
+              "Setting expense type while update drop down: ",
+              expenseType
+            );
           }
           break;
       }
-      setSChecked(file.ExpenseProofAttached == 'Yes' ? true : false);
-      setRChecked(file.PayReceiptAttached == 'Yes' ? true : false);
+      setSChecked(file.ExpenseProofAttached == "Yes" ? true : false);
+      setRChecked(file.PayReceiptAttached == "Yes" ? true : false);
       payTypeObject.ID = file.PayType;
       payTypeObject.DisplayText = file.PayTypeText;
 
@@ -487,7 +532,7 @@ export const ExpenseDetailOneUS = (props) => {
           payTypeRef.current.select(payTypeIndex);
         }
         setPayTypeObject(payTypeObject);
-      },100);
+      }, 100);
 
       setTimeout(() => {
         currencyObject.ID = file.vc_Currency;
@@ -501,8 +546,8 @@ export const ExpenseDetailOneUS = (props) => {
         }
       }, 100);
 
-      setAmountInput('' + file.UsAmount);
-      setExchRateInput('' + file.ExchRate);
+      setAmountInput("" + file.UsAmount);
+      setExchRateInput("" + file.ExchRate);
     }
   };
 
@@ -525,37 +570,37 @@ export const ExpenseDetailOneUS = (props) => {
       typeDropdownData = empData.UsOtherTypes;
     }
     let typeObject = typeDropdownData.find((el) => el.DisplayText == value);
-    console.log('Type object is : ', typeObject);
+    console.log("Type object is : ", typeObject);
     setIncident(typeObject);
   };
 
   const resetExpense = (file) => {
-    console.log('Expense Id in resetExpense: ', expenseId);
-    console.log('Expense type is :', file.TypeofExpense);
+    console.log("Expense Id in resetExpense: ", expenseId);
+    console.log("Expense type is :", file.TypeofExpense);
     setEditPress(1);
     setDateValue(dateDefault);
-    setAmountInput('');
-    setExchRateInput('');
-    setType('');
+    setAmountInput("");
+    setExchRateInput("");
+    setType("");
     setDateCalendarVisible(false);
     setSChecked(false);
     setRChecked(false);
     setEndDateValue(dateDefault);
     setStartDateValue(dateDefault);
-    setFromInput('');
-    setToInput('');
-    setCarrierInput('');
-    setDescriptionValue('');
-    setHotelInput('');
-    setLocationInput('');
-    setMilesValue('');
-    setGuestInput('');
+    setFromInput("");
+    setToInput("");
+    setCarrierInput("");
+    setDescriptionValue("");
+    setHotelInput("");
+    setLocationInput("");
+    setMilesValue("");
+    setGuestInput("");
   };
 
   expenseDetailsInputFieldsView = () => {
-    console.log('typeDropdownData', typeDropdownData); //expenseId
-    console.log('Expense id ', expenseId);
-    console.log('categoryId ', categoryId);
+    console.log("typeDropdownData", typeDropdownData); //expenseId
+    console.log("Expense id ", expenseId);
+    console.log("categoryId ", categoryId);
     return (
       <View>
         {dateRowVisible ? (
@@ -563,8 +608,8 @@ export const ExpenseDetailOneUS = (props) => {
             heading={dateLbl + globalConstants.ASTERISK_SYMBOL}
             myDatePickerVisible={dateCalendarVisible}
             myMaxDate={moment().toDate()}
-            myMinDate={moment(financialYearStartDate, 'DD-MMM-YYYY').toDate()}
-            myCalenderSelectedDate={moment(dateValue, 'DD-MMM-YYYY').toDate()}
+            myMinDate={moment(financialYearStartDate, "DD-MMM-YYYY").toDate()}
+            myCalenderSelectedDate={moment(dateValue, "DD-MMM-YYYY").toDate()}
             myDateValue={dateValue}
             showMyCalendar={() => setDateCalendarVisible(true)}
             handleConfirm={(date) => dateConfirm(date)}
@@ -577,11 +622,15 @@ export const ExpenseDetailOneUS = (props) => {
             disabled={false}
             forwardedRef={typeRef}
             dropDownData={typeDropdownData.map((value) => value.DisplayText)}
-            dropDownCallBack={(index, value) => onIncidentalTypeSelection(index, value)}
+            dropDownCallBack={(index, value) =>
+              onIncidentalTypeSelection(index, value)
+            }
           />
         ) : typeFieldVisible ? (
           <LabelEditText
-            heading={globalConstants.TYPE_TEXT + globalConstants.ASTERISK_SYMBOL}
+            heading={
+              globalConstants.TYPE_TEXT + globalConstants.ASTERISK_SYMBOL
+            }
             onTextChanged={(text) => onTypeSelection(text)}
             myValue={type}
             isSmallFont={true}
@@ -592,8 +641,11 @@ export const ExpenseDetailOneUS = (props) => {
             heading={startDateLbl + globalConstants.ASTERISK_SYMBOL}
             myDatePickerVisible={startDateCalendarVisible}
             myMaxDate={moment().toDate()}
-            myMinDate={moment(financialYearStartDate, 'DD-MMM-YYYY').toDate()}
-            myCalenderSelectedDate={moment(startDateValue, 'DD-MMM-YYYY').toDate()}
+            myMinDate={moment(financialYearStartDate, "DD-MMM-YYYY").toDate()}
+            myCalenderSelectedDate={moment(
+              startDateValue,
+              "DD-MMM-YYYY"
+            ).toDate()}
             myDateValue={startDateValue}
             showMyCalendar={() => setStartDateCalendarVisible(true)}
             handleConfirm={(date) => startDateConfirm(date)}
@@ -605,8 +657,11 @@ export const ExpenseDetailOneUS = (props) => {
             heading={endDateLbl + globalConstants.ASTERISK_SYMBOL}
             myDatePickerVisible={endDateCalendarVisible}
             myMaxDate={moment().toDate()}
-            myMinDate={moment(financialYearStartDate, 'DD-MMM-YYYY').toDate()}
-            myCalenderSelectedDate={moment(endDateValue, 'DD-MMM-YYYY').toDate()}
+            myMinDate={moment(financialYearStartDate, "DD-MMM-YYYY").toDate()}
+            myCalenderSelectedDate={moment(
+              endDateValue,
+              "DD-MMM-YYYY"
+            ).toDate()}
             myDateValue={endDateValue}
             showMyCalendar={() => setEndDateCalendarVisible(true)}
             handleConfirm={(date) => endDateConfirm(date)}
@@ -623,7 +678,9 @@ export const ExpenseDetailOneUS = (props) => {
         ) : null}
         {locationRowVisible ? (
           <LabelEditText
-            heading={globalConstants.LOCATION_TEXT + globalConstants.ASTERISK_SYMBOL}
+            heading={
+              globalConstants.LOCATION_TEXT + globalConstants.ASTERISK_SYMBOL
+            }
             onTextChanged={(text) => setLocationInput(text)}
             myValue={locationInput}
             isSmallFont={true}
@@ -647,10 +704,15 @@ export const ExpenseDetailOneUS = (props) => {
         ) : null}
         {modeOfConveyanceVisible ? (
           <Dropdown
-            title={constants.MODE_OF_CONVEYANCE_TEXT + globalConstants.ASTERISK_SYMBOL}
+            title={
+              constants.MODE_OF_CONVEYANCE_TEXT +
+              globalConstants.ASTERISK_SYMBOL
+            }
             disabled={false}
             dropDownData={modeOfTravelData.map((value) => value.DisplayText)}
-            dropDownCallBack={(index, value) => onModeOfConveyanceSelection(index, value)}
+            dropDownCallBack={(index, value) =>
+              onModeOfConveyanceSelection(index, value)
+            }
             isSmallFont={true}
             forwardedRef={modeRef}
           />
@@ -665,7 +727,9 @@ export const ExpenseDetailOneUS = (props) => {
         ) : null}
         {descriptionVisible ? (
           <LabelEditText
-            heading={constants.DESCRIPTION_TEXT + globalConstants.ASTERISK_SYMBOL}
+            heading={
+              constants.DESCRIPTION_TEXT + globalConstants.ASTERISK_SYMBOL
+            }
             onTextChanged={(text) => setDescriptionValue(text)}
             myValue={descriptionValue}
             isSmallFont={true}
@@ -690,10 +754,15 @@ export const ExpenseDetailOneUS = (props) => {
         ) : null}
         {validTillDateVisible ? (
           <DatePicker
-            heading={constants.VALID_TILL_TEXT + globalConstants.ASTERISK_SYMBOL}
+            heading={
+              constants.VALID_TILL_TEXT + globalConstants.ASTERISK_SYMBOL
+            }
             myDatePickerVisible={validTillCalendarVisible}
             myMinDate={moment().toDate()}
-            myCalenderSelectedDate={moment(validTillDateValue, 'DD-MMM-YYYY').toDate()}
+            myCalenderSelectedDate={moment(
+              validTillDateValue,
+              "DD-MMM-YYYY"
+            ).toDate()}
             myDateValue={validTillDateValue}
             showMyCalendar={() => setValidTillCalendarVisible(true)}
             handleConfirm={(date) => validTillDateConfirm(date)}
@@ -704,20 +773,28 @@ export const ExpenseDetailOneUS = (props) => {
           title={constants.PAY_TYPE_TEXT + globalConstants.ASTERISK_SYMBOL}
           disabled={false}
           forwardedRef={payTypeRef}
-          dropDownData={empData.UsVoucherPayTypeList.map((value) => value.DisplayText)}
+          dropDownData={empData.UsVoucherPayTypeList.map(
+            (value) => value.DisplayText
+          )}
           dropDownCallBack={(index, value) => onPayTypeSelection(index, value)}
           isSmallFont={true}
         />
         <Dropdown
-          title={globalConstants.CURRENCY_TEXT + globalConstants.ASTERISK_SYMBOL}
+          title={
+            globalConstants.CURRENCY_TEXT + globalConstants.ASTERISK_SYMBOL
+          }
           disabled={false}
           forwardedRef={currencyRef}
-          dropDownData={empData.UsVoucherCurrencyList.map((value) => value.DisplayText)}
+          dropDownData={empData.UsVoucherCurrencyList.map(
+            (value) => value.DisplayText
+          )}
           dropDownCallBack={(index, value) => onCurrencySelection(index, value)}
           isSmallFont={true}
         />
         <LabelEditText
-          heading={globalConstants.AMOUNT_TEXT + globalConstants.ASTERISK_SYMBOL}
+          heading={
+            globalConstants.AMOUNT_TEXT + globalConstants.ASTERISK_SYMBOL
+          }
           onTextChanged={(text) => setAmountInput(text)}
           myValue={amountInput}
           isEditable={amountEditable}
@@ -733,7 +810,11 @@ export const ExpenseDetailOneUS = (props) => {
           myKeyboardType="numeric"
         />
         <LabelEditText
-          heading={constants.AMOUNT_IN_TEXT + defaultCurrencyIdValue + globalConstants.ASTERISK_SYMBOL}
+          heading={
+            constants.AMOUNT_IN_TEXT +
+            defaultCurrencyIdValue +
+            globalConstants.ASTERISK_SYMBOL
+          }
           onTextChanged={(text) => setFinalExchAmount(text)}
           myValue={finalExchAmount}
           isEditable={false}
@@ -745,12 +826,30 @@ export const ExpenseDetailOneUS = (props) => {
             height={60}
             backgroundColor={appConfig.LOGIN_FIELDS_BACKGROUND_COLOR}
             // withOverlay={false}
-            popover={<Text>{constants.S_AT_THE_RATE_TOOLTIP_MSG}</Text>}>
-            <Text style={styles.tooltipText}>{constants.S_AT_THE_RATE_TEXT}</Text>
+            popover={<Text>{constants.S_AT_THE_RATE_TOOLTIP_MSG}</Text>}
+          >
+            <Text style={styles.tooltipText}>
+              {constants.S_AT_THE_RATE_TEXT}
+            </Text>
           </Tooltip>
-          <Checkbox.Android
+          {/* <Checkbox.Android
             color={appConfig.DARK_BLUISH_COLOR}
-            status={sChecked ? 'checked' : 'unchecked'}
+            status={sChecked ? "checked" : "unchecked"}
+            onPress={() => setSChecked(!sChecked)}
+          /> */}
+          <CheckBox
+            iconType="material-community"
+            checkedIcon="checkbox-marked"
+            uncheckedIcon="checkbox-blank-outline"
+            checkedColor={appConfig.DARK_BLUISH_COLOR}
+            uncheckedColor="gray"
+            // title={item.Name}
+            textStyle={{ fontWeight: "400" }}
+            containerStyle={{
+              backgroundColor: "transparent",
+              borderWidth: 0,
+            }}
+            checked={sChecked}
             onPress={() => setSChecked(!sChecked)}
           />
         </View>
@@ -762,18 +861,38 @@ export const ExpenseDetailOneUS = (props) => {
             // highlightColor={appConfig.LIST_BORDER_COLOUR}
             backgroundColor={appConfig.LOGIN_FIELDS_BACKGROUND_COLOR}
             // withOverlay={false}
-            popover={<Text>{constants.R_AT_THE_RATE_TOOLTIP_MSG}</Text>}>
-            <Text style={styles.tooltipText}>{constants.R_AT_THE_RATE_TEXT}</Text>
+            popover={<Text>{constants.R_AT_THE_RATE_TOOLTIP_MSG}</Text>}
+          >
+            <Text style={styles.tooltipText}>
+              {constants.R_AT_THE_RATE_TEXT}
+            </Text>
           </Tooltip>
-          <Checkbox.Android
+          {/* <Checkbox.Android
             color={appConfig.DARK_BLUISH_COLOR}
-            status={rChecked ? 'checked' : 'unchecked'}
+            status={rChecked ? "checked" : "unchecked"}
+            onPress={() => setRChecked(!rChecked)}
+          /> */}
+          <CheckBox
+            iconType="material-community"
+            checkedIcon="checkbox-marked"
+            uncheckedIcon="checkbox-blank-outline"
+            checkedColor={appConfig.DARK_BLUISH_COLOR}
+            uncheckedColor="gray"
+            // title={item.Name}
+            textStyle={{ fontWeight: "400" }}
+            containerStyle={{
+              backgroundColor: "transparent",
+              borderWidth: 0,
+            }}
+            checked={rChecked}
             onPress={() => setRChecked(!rChecked)}
           />
         </View>
         <View style={styles.addItemButtonView}>
           <CustomButton
-            label={props.editCase ? constants.UPDATE_TEXT : constants.ADD_ITEM_TEXT}
+            label={
+              props.editCase ? constants.UPDATE_TEXT : constants.ADD_ITEM_TEXT
+            }
             positive={true}
             performAction={() => addItem()}
           />
@@ -783,12 +902,12 @@ export const ExpenseDetailOneUS = (props) => {
   };
 
   useEffect(() => {
-    console.log('5555', currencyObject);
+    console.log("5555", currencyObject);
     if (defaultCurrencyIdValue !== currencyObject.ID) {
       setExchRateEditable(true);
     } else {
       setExchRateEditable(false);
-      setExchRateInput('1');
+      setExchRateInput("1");
     }
   }, [currencyObject]);
 
@@ -800,10 +919,10 @@ export const ExpenseDetailOneUS = (props) => {
   useEffect(() => {
     let bookingStartDateDiff = calculateDaysDiff(dateValue, startDateValue);
     let startDestDateDiff = calculateDaysDiff(startDateValue, endDateValue);
-    console.log('Bookking Date : ', dateValue);
-    console.log('Bookking start date : ', startDateValue);
-    console.log('EXPENSE ID :  ', expenseId);
-    console.log('Bookking end date : ', endDateValue);
+    console.log("Bookking Date : ", dateValue);
+    console.log("Bookking start date : ", startDateValue);
+    console.log("EXPENSE ID :  ", expenseId);
+    console.log("Bookking end date : ", endDateValue);
     if (expenseId == 1 && bookingStartDateDiff > 0) {
       setStartDateValue(dateDefault);
       setTimeout(() => {
@@ -813,20 +932,26 @@ export const ExpenseDetailOneUS = (props) => {
     if (startDestDateDiff > 0) {
       setEndDateValue(dateDefault);
       setTimeout(() => {
-        alert(expenseId == 1 ? constants.END_DATE_ERR_MSG : constants.CHECK_OUT_DATE_ERR_MSG);
+        alert(
+          expenseId == 1
+            ? constants.END_DATE_ERR_MSG
+            : constants.CHECK_OUT_DATE_ERR_MSG
+        );
       }, 100);
     }
   }, [dateValue, startDateValue, endDateValue, expenseId]);
   useEffect(() => {
-    if (modeRef.current == null)
-     {
-       return;
-      }
-    else {
+    if (modeRef.current == null) {
+      return;
+    } else {
       if (editPress == 1) {
         modeRef.current.select(-1);
         setModeOfConveyanceObject({});
-      } else if (editPress == 2 && editableFile && editableFile.TypeofExpense == 1) {
+      } else if (
+        editPress == 2 &&
+        editableFile &&
+        editableFile.TypeofExpense == 1
+      ) {
         let modeIndex = empData.UsTravelMode.findIndex(
           (element) => element.DisplayText == editableFile.UsModeOfTravelText
         );
@@ -835,8 +960,15 @@ export const ExpenseDetailOneUS = (props) => {
         conveyanceModeObject.ID = editableFile.ModeOfTravel;
         conveyanceModeObject.DisplayText = editableFile.ModeOfTravelText;
         setModeOfConveyanceObject(conveyanceModeObject);
-      } else if (modeRef.current !== null && editPress == 2 && editableFile && editableFile.TypeofExpense == 3) {
-        let modeIndex = empData.UsLcvMode.findIndex((element) => element.DisplayText == editableFile.LCVUsModeText);
+      } else if (
+        modeRef.current !== null &&
+        editPress == 2 &&
+        editableFile &&
+        editableFile.TypeofExpense == 3
+      ) {
+        let modeIndex = empData.UsLcvMode.findIndex(
+          (element) => element.DisplayText == editableFile.LCVUsModeText
+        );
         modeRef.current.select(modeIndex);
         if (editableFile.LCVUsMode == 2) {
           fetchLCVModeRate(dateValue, categoryId).then((res) => {
@@ -882,11 +1014,16 @@ export const ExpenseDetailOneUS = (props) => {
     return null;
   } else {
     return (
-
       <View style={styles.userInfoView}>
         <ImageBackground style={styles.cardBackground} resizeMode="cover">
-          {sectionTitle(isDocumentSaved ? constants.ENTER_EXPENSE_DETAILS_TEXT : constants.EXPENSE_DETAILS_TEXT)}
-          <View style={styles.cardStyle}>{expenseDetailsInputFieldsView()}</View>
+          {sectionTitle(
+            isDocumentSaved
+              ? constants.ENTER_EXPENSE_DETAILS_TEXT
+              : constants.EXPENSE_DETAILS_TEXT
+          )}
+          <View style={styles.cardStyle}>
+            {expenseDetailsInputFieldsView()}
+          </View>
         </ImageBackground>
       </View>
     );

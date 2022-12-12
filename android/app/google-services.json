@@ -1,0 +1,83 @@
+
+{
+  "project_info": {
+    "project_number": "438850051778",
+    "project_id": "iengage-b12f2",
+    "storage_bucket": "iengage-b12f2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:438850051778:android:a08a78af142422b635e55b",
+        "android_client_info": {
+          "package_name": "com.iniitian_mobile.DEV"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "438850051778-heji86ih0ifj3lkeusht4mh3q9mh9dds.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBizDF--zQOqmZ_6U4a9KOz3cgSMLqCubg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "438850051778-heji86ih0ifj3lkeusht4mh3q9mh9dds.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "438850051778-ed0tesdmashvp5r0qlhnkkorkn3is8qa.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.coforge.com.iengage"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:438850051778:android:a08a78af142422b635e55b",
+        "android_client_info": {
+          "package_name": "com.iniitian_mobile.PROD"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "438850051778-heji86ih0ifj3lkeusht4mh3q9mh9dds.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBizDF--zQOqmZ_6U4a9KOz3cgSMLqCubg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "438850051778-heji86ih0ifj3lkeusht4mh3q9mh9dds.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "438850051778-ed0tesdmashvp5r0qlhnkkorkn3is8qa.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.coforge.com.iengage"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

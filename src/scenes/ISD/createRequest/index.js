@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import {
   View,
   Text,
@@ -6,26 +6,25 @@ import {
   TextInput,
   ScrollView,
   TouchableOpacity,
-  Dimensions,
   Image,
   ImageBackground,
   Alert,
-} from "react-native";
-import { connect } from "react-redux";
-import SubHeader from "../../../GlobalComponent/SubHeader";
-import { styles } from "./styles";
-import RadioForm from "react-native-simple-radio-button";
-import { globalFontStyle } from "../../../components/globalFontStyle";
-import { LabelEditText } from "../../../GlobalComponent/LabelEditText/LabelEditText";
+} from 'react-native';
+import { connect } from 'react-redux';
+import SubHeader from '../../../GlobalComponent/SubHeader';
+import { styles } from './styles';
+import RadioForm from 'react-native-simple-radio-button';
+import { globalFontStyle } from '../../../components/globalFontStyle';
+import { LabelEditText } from '../../../GlobalComponent/LabelEditText/LabelEditText';
 import {
   RadioForms,
   RadioFormHorizontal,
-} from "../../../GlobalComponent/LabelRadioForm/LabelRadioForm";
-import { Dropdown } from "../../../GlobalComponent/DropDown/DropDown";
-import { DatePicker } from "../../../GlobalComponent/DatePicker/DatePicker";
-import { LabelTextDashValue } from "../../../GlobalComponent/LabelText/LabelText";
-import CustomButton from "../../../components/customButton";
-import ActivityIndicatorView from "../../../GlobalComponent/myActivityIndicator";
+} from '../../../GlobalComponent/LabelRadioForm/LabelRadioForm';
+import { Dropdown } from '../../../GlobalComponent/DropDown/DropDown';
+import { DatePicker } from '../../../GlobalComponent/DatePicker/DatePicker';
+import { LabelTextDashValue } from '../../../GlobalComponent/LabelText/LabelText';
+import CustomButton from '../../../components/customButton';
+import ActivityIndicatorView from '../../../GlobalComponent/myActivityIndicator';
 import {
   isdFetchDefaultData,
   isdFetchServiceTypeData,
@@ -36,29 +35,28 @@ import {
   submitAdditionalRemarksAction,
   isdUpdateRequestorDetails,
   submitRemarksOpen,
-} from "./createRequestAction";
-import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scrollview";
-import UserMessage from "../../../components/userMessage";
-import helper from "../../../utilities/helper";
-import { writeLog } from "../../../utilities/logger";
-import Autocomplete from "react-native-autocomplete-input";
-import { DialogButtons } from "../../../GlobalComponent/DialogButtons/DialogButtons";
-import { FlatList } from "react-native-gesture-handler";
-import { HistoryView } from "../../../GlobalComponent/HistoryView/HistoryView";
-import { Icon } from "react-native-elements";
-import { showToast } from "../../../GlobalComponent/Toast";
-import moment from "moment";
-import { EmployeeSearchView } from "../../createLeave/Helper";
-import { AttachmentView, uploadIsdFiles } from "../Attachment/AttachmentView";
-import { Modal } from "react-native";
-import { optionIndexToValue } from "../../EES/utils";
-import { getISD_SurveyQuestions, submitIsdSuveryQuestions } from "./utils";
-let globalConstants = require("../../../GlobalConstants");
-let appConfig = require("../../../../appconfig");
-let constants = require("./constants");
-const { height } = Dimensions.get("window");
-import _ from "lodash";
-import images from "../../../images";
+} from './createRequestAction';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scrollview';
+import UserMessage from '../../../components/userMessage';
+import helper from '../../../utilities/helper';
+import { writeLog } from '../../../utilities/logger';
+import { DialogButtons } from '../../../GlobalComponent/DialogButtons/DialogButtons';
+import { FlatList } from 'react-native-gesture-handler';
+import { HistoryView } from '../../../GlobalComponent/HistoryView/HistoryView';
+import { Icon } from 'react-native-elements';
+import { showToast } from '../../../GlobalComponent/Toast';
+import moment from 'moment';
+import { EmployeeSearchView } from '../../createLeave/Helper';
+import { AttachmentView, uploadIsdFiles } from '../Attachment/AttachmentView';
+import { Modal } from 'react-native';
+import { optionIndexToValue } from '../../EES/utils';
+import { getISD_SurveyQuestions, submitIsdSuveryQuestions } from './utils';
+let globalConstants = require('../../../GlobalConstants');
+let appConfig = require('../../../../appconfig');
+let constants = require('./constants');
+import _ from 'lodash';
+import images from '../../../images';
+import { setHeight } from '../../../components/fontScaling';
 export class CreateRequestScreen extends Component {
   constructor(props) {
     super(props);
@@ -69,15 +67,15 @@ export class CreateRequestScreen extends Component {
       requestorTypeIndex: 0,
       managerOnLeaveIndex: 0,
       durationIndex: -1,
-      descriptionInput: "",
-      selectedLocation: "",
+      descriptionInput: '',
+      selectedLocation: '',
       isSubCategoryNotAvailable: false,
       isLocationOthers: false,
-      locationOthersInput: "",
-      seatNumberInput: "",
-      ipAddressInput: "",
-      assetCodeInput: "",
-      thirdWitnessInput: "",
+      locationOthersInput: '',
+      seatNumberInput: '',
+      ipAddressInput: '',
+      assetCodeInput: '',
+      thirdWitnessInput: '',
       isdDefaultDataArray: [],
       isdServiceTypeDataArray: [],
       isdCategoryArray: [],
@@ -97,57 +95,57 @@ export class CreateRequestScreen extends Component {
       isSubCategorySelected: false,
       isPrioritySelected: false,
       isLocationSelected: false,
-      requestCategoryIdValue: "",
-      requestSubCategoryIdValue: "",
-      requestPriorityIdValue: "",
-      requesterLocationIdValue: "",
-      requestDurationIdValue: "",
-      isMgrOnLeaveValue: "N",
-      isSaveFlag: "",
+      requestCategoryIdValue: '',
+      requestSubCategoryIdValue: '',
+      requestPriorityIdValue: '',
+      requesterLocationIdValue: '',
+      requestDurationIdValue: '',
+      isMgrOnLeaveValue: 'N',
+      isSaveFlag: '',
       showStartCalendar: false,
       showEndCalendar: false,
       showIncidentCalendar: false,
-      query: "",
+      query: '',
       empSearchData: [],
       isRequestUpdate: false,
       dialogContainerVisible: false,
       historyItem: [],
-      additionalRemarks: "",
+      additionalRemarks: '',
       isPopUp: false,
-      popUpMessage: "",
-      popUpHeading: "",
-      newMobileNumber: "",
+      popUpMessage: '',
+      popUpHeading: '',
+      newMobileNumber: '',
       isMobileNumberUpdated: false,
       noOfDurationDays: 0,
-      durationFromDateValue: "",
-      durationEndDateValue: "",
+      durationFromDateValue: '',
+      durationEndDateValue: '',
       currentDate: new Date(),
-      durationEndDateMaxValue: "",
-      durationEndDateMinValue: "",
+      durationEndDateMaxValue: '',
+      durationEndDateMinValue: '',
       requestorUpdated: false,
       witnessUpdated: false,
-      witnessQuery: "",
+      witnessQuery: '',
       searchFinished: true,
       witnessSearchFinished: true,
-      incidentDate: "",
+      incidentDate: '',
       requestClosed: false,
       isRecordSaved: false,
-      requestID: "",
+      requestID: '',
       browseLoading: false,
       onBehalfVisible: false,
       witnessVisible: false,
       localOnBehalfSearchData: [],
-      subCategoryName: "",
-      reopenRemarks: "",
+      subCategoryName: '',
+      reopenRemarks: '',
       isFeedBackShown: false,
       feedVisible: false,
-      optionIndex: "",
+      optionIndex: '',
       questionArray: [],
       selectedOptionArray: [],
       questionIndex: 0,
       isAllRecordFilled: true,
       isSubmitRecord: false,
-      currentSelectedIndex: "",
+      currentSelectedIndex: '',
       isd_surveyData: {},
     };
     this._durationRef = React.createRef();
@@ -164,15 +162,15 @@ export class CreateRequestScreen extends Component {
       serviceTypeIndex: -1, // incident=1, service request=2
       managerOnLeaveIndex: 0,
       durationIndex: -1,
-      descriptionInput: "",
-      selectedLocation: "",
+      descriptionInput: '',
+      selectedLocation: '',
       isSubCategoryNotAvailable: false,
       isLocationOthers: false,
-      locationOthersInput: "",
-      seatNumberInput: "",
-      ipAddressInput: "",
-      assetCodeInput: "",
-      thirdWitnessInput: "",
+      locationOthersInput: '',
+      seatNumberInput: '',
+      ipAddressInput: '',
+      assetCodeInput: '',
+      thirdWitnessInput: '',
       isdDefaultDataArray: [],
       isdServiceTypeDataArray: [],
       isdCategoryArray: [],
@@ -193,50 +191,50 @@ export class CreateRequestScreen extends Component {
       isPrioritySelected: false,
       isLocationSelected: false,
       isDurationSelected: false,
-      requestCategoryIdValue: "",
-      requestSubCategoryIdValue: "",
-      requestPriorityIdValue: "",
-      requesterLocationIdValue: "",
-      requestDurationIdValue: "",
-      isMgrOnLeaveValue: "N",
-      isSaveFlag: "",
+      requestCategoryIdValue: '',
+      requestSubCategoryIdValue: '',
+      requestPriorityIdValue: '',
+      requesterLocationIdValue: '',
+      requestDurationIdValue: '',
+      isMgrOnLeaveValue: 'N',
+      isSaveFlag: '',
       showStartCalendar: false,
       showEndCalendar: false,
       showIncidentCalendar: false,
-      query: "",
+      query: '',
       empSearchData: [],
       isRequestUpdate: false,
       dialogContainerVisible: false,
       historyItem: [],
-      additionalRemarks: "",
-      popUpMessage: "",
-      popUpHeading: "",
-      newMobileNumber: "",
+      additionalRemarks: '',
+      popUpMessage: '',
+      popUpHeading: '',
+      newMobileNumber: '',
       isMobileNumberUpdated: false,
       noOfDurationDays: 0,
-      durationFromDateValue: "",
-      durationEndDateValue: "",
+      durationFromDateValue: '',
+      durationEndDateValue: '',
       currentDate: new Date(),
-      durationEndDateMaxValue: "",
-      durationEndDateMinValue: "",
+      durationEndDateMaxValue: '',
+      durationEndDateMinValue: '',
       requestorUpdated: false,
       witnessUpdated: false,
-      witnessQuery: "",
+      witnessQuery: '',
       searchFinished: true,
       witnessSearchFinished: true,
-      incidentDate: "",
+      incidentDate: '',
       requestClosed: false,
       isRecordSaved: false,
-      requestID: "",
+      requestID: '',
       browseLoading: false,
       onBehalfVisible: false,
       witnessVisible: false,
       localOnBehalfSearchData: [],
-      subCategoryName: "",
-      reopenRemarks: "",
+      subCategoryName: '',
+      reopenRemarks: '',
       isFeedBackShown: false,
       feedVisible: false,
-      optionIndex: "",
+      optionIndex: '',
       isd_surveyData: {},
     });
   };
@@ -245,25 +243,25 @@ export class CreateRequestScreen extends Component {
       this.props.isdDataForUpdate &&
       this.props.isdDataForUpdate.length > 0 &&
       this.props.isdDataForUpdate[0];
-    console.log("Updating screen with data : ", data);
+    console.log('Updating screen with data : ', data);
     if (data !== undefined) {
-      this.setState({ isdDefaultDataArray: data }, () => {
+      this.setState({ ...this.state, isdDefaultDataArray: data }, () => {
         if (this.mangerLeaveRef && this.mangerLeaveRef.current) {
-          console.log("IS Manager on Leave : ", data.IsMgrOnLeave);
+          console.log('IS Manager on Leave : ', data.IsMgrOnLeave);
           if (
             data.IsMgrOnLeave !== undefined &&
-            data.IsMgrOnLeave.trim() !== "" &&
-            data.IsMgrOnLeave === "N"
+            data.IsMgrOnLeave.trim() !== '' &&
+            data.IsMgrOnLeave === 'N'
           ) {
-            console.log("IS Manager on Leave no case: ", data.IsMgrOnLeave);
+            console.log('IS Manager on Leave no case: ', data.IsMgrOnLeave);
             this.mangerLeaveRef.current.updateIsActiveIndex(0);
             this.mangerLeaveRef.current.props.onPress(0);
           } else if (
             data.IsMgrOnLeave !== undefined &&
-            data.IsMgrOnLeave.trim() !== "" &&
-            data.IsMgrOnLeave === "Y"
+            data.IsMgrOnLeave.trim() !== '' &&
+            data.IsMgrOnLeave === 'Y'
           ) {
-            console.log("IS Manager on Leave yes case: ", data.IsMgrOnLeave);
+            console.log('IS Manager on Leave yes case: ', data.IsMgrOnLeave);
             this.mangerLeaveRef.current.updateIsActiveIndex(1);
             this.mangerLeaveRef.current.props.onPress(1);
           }
@@ -273,8 +271,8 @@ export class CreateRequestScreen extends Component {
     if (
       data.RequestCategoryId !== undefined &&
       data.RequestCategoryId !== null &&
-      data.RequestCategoryId !== "" &&
-      data.RequestCategoryId !== "0"
+      data.RequestCategoryId !== '' &&
+      data.RequestCategoryId !== '0'
     ) {
       setTimeout(() => {
         this.onCategorySelection(
@@ -287,92 +285,92 @@ export class CreateRequestScreen extends Component {
     if (
       data.RequestPriorityId !== undefined &&
       data.RequestPriorityId !== null &&
-      data.RequestPriorityId !== "" &&
-      data.RequestPriorityId !== "0"
+      data.RequestPriorityId !== '' &&
+      data.RequestPriorityId !== '0'
     ) {
       this.onPrioritySelection(data.RequestPriorityId);
     }
     if (
       data.RequesterLocationId !== undefined &&
       data.RequesterLocationId !== null &&
-      data.RequesterLocationId !== "" &&
-      data.RequesterLocationId !== "0"
+      data.RequesterLocationId !== '' &&
+      data.RequesterLocationId !== '0'
     ) {
       this.onLocationSelection(data.RequesterLocationId);
     }
     if (
       data.RequestDurationId !== undefined &&
       data.RequestDurationId !== null &&
-      data.RequestDurationId !== "" &&
-      data.RequestDurationId !== "0"
+      data.RequestDurationId !== '' &&
+      data.RequestDurationId !== '0'
     ) {
-      console.log("Calling onDurationSelection ...", data.RequestDurationId);
+      console.log('Calling onDurationSelection ...', data.RequestDurationId);
       this.onDurationSelection(data.RequestDurationId);
     }
     if (
       data.RequestDescription !== undefined &&
       data.RequestDescription !== null &&
-      data.RequestDescription !== ""
+      data.RequestDescription !== ''
     ) {
       this.setState({ descriptionInput: data.RequestDescription });
     }
     if (
       data.ThirdWitness !== undefined &&
       data.ThirdWitness !== null &&
-      data.ThirdWitness !== ""
+      data.ThirdWitness !== ''
     ) {
       this.setState({ thirdWitnessInput: data.ThirdWitness });
     }
     if (
       data.witness !== undefined &&
       data.witness !== null &&
-      data.witness !== ""
+      data.witness !== ''
     ) {
       this.setState({ witnessQuery: data.witness });
     }
     if (
       data.RequesterSeatNo !== undefined &&
       data.RequesterSeatNo !== null &&
-      data.RequesterSeatNo !== ""
+      data.RequesterSeatNo !== ''
     ) {
       this.setState({ seatNumberInput: data.RequesterSeatNo });
     }
     if (
       data.RequesterIP !== undefined &&
       data.RequesterIP !== null &&
-      data.RequesterIP !== ""
+      data.RequesterIP !== ''
     ) {
       this.setState({ ipAddressInput: data.RequesterIP });
     }
     if (
       data.RequesterAssetCode !== undefined &&
       data.RequesterAssetCode !== null &&
-      data.RequesterAssetCode !== ""
+      data.RequesterAssetCode !== ''
     ) {
       this.setState({ assetCodeInput: data.RequesterAssetCode });
     }
     if (
       data.DurationFromDate !== undefined &&
       data.DurationFromDate !== null &&
-      data.DurationFromDate !== ""
+      data.DurationFromDate !== ''
     ) {
       this.setState({ durationFromDateValue: data.DurationFromDate });
     }
     if (
       data.DurationToDate !== undefined &&
       data.DurationToDate !== null &&
-      data.DurationToDate !== ""
+      data.DurationToDate !== ''
     ) {
       this.setState({ durationEndDateValue: data.DurationToDate });
     }
     if (
       data.IncidentDate !== undefined &&
       data.IncidentDate !== null &&
-      data.IncidentDate !== "" &&
-      !data.IncidentDate.includes("1900")
+      data.IncidentDate !== '' &&
+      !data.IncidentDate.includes('1900')
     ) {
       let incidentDateFormatted = moment(data.IncidentDate).format(
-        "DD-MM-YYYY"
+        'DD-MM-YYYY'
       );
       this.setState({ incidentDate: incidentDateFormatted });
     } else {
@@ -381,7 +379,7 @@ export class CreateRequestScreen extends Component {
     this.showFeedbackView();
   };
   autoCompleteISD = () => {
-    this.props.autoCompleteEmployeeISD("");
+    this.props.autoCompleteEmployeeISD('');
   };
   recordUpdateCallBack = () => {
     if (this.props.navigation.state.params !== undefined) {
@@ -391,7 +389,7 @@ export class CreateRequestScreen extends Component {
         this.props.empCode,
         this.props.accessToken,
         dataFromPreviousScreen.RequestID,
-        "",
+        '',
         dataFromPreviousScreen.TeamID,
         dataFromPreviousScreen.Type,
         this.updateScreen
@@ -400,7 +398,7 @@ export class CreateRequestScreen extends Component {
   };
   componentDidMount() {
     BackHandler.addEventListener(
-      "hardwareBackPress",
+      'hardwareBackPress',
       this.handleBackButtonClick
     );
     if (
@@ -410,10 +408,10 @@ export class CreateRequestScreen extends Component {
       let dataFromPreviousScreen = this.props.navigation.state.params
         .dataToUpdate;
       let categorySelected = dataFromPreviousScreen.ServiceNumber.includes(
-        "INC"
+        'INC'
       )
         ? 0
-        : dataFromPreviousScreen.ServiceNumber.includes("SCI")
+        : dataFromPreviousScreen.ServiceNumber.includes('SCI')
         ? 2
         : 1;
       this.setState(
@@ -450,9 +448,9 @@ export class CreateRequestScreen extends Component {
   componentWillUnmount() {
     this.props.resetISDCreateScreen();
     this.resetLocalState();
-    console.log("Component is unmounted");
+    console.log('Component is unmounted');
     BackHandler.removeEventListener(
-      "hardwareBackPress",
+      'hardwareBackPress',
       this.handleBackButtonClick
     );
   }
@@ -469,31 +467,31 @@ export class CreateRequestScreen extends Component {
       isdCategoryArray:
         nextProps.isdServiceTypeData && nextProps.isdServiceTypeData.length > 0
           ? nextProps.isdServiceTypeData.filter(
-              (value) => value.SearchText == "CATEGORY"
+              (value) => value.SearchText == 'CATEGORY'
             )
           : [],
       isdSubCategoryArray:
         nextProps.isdServiceTypeData && nextProps.isdServiceTypeData.length > 0
           ? nextProps.isdServiceTypeData.filter(
-              (value) => value.SearchText == "SUBCATEGORY"
+              (value) => value.SearchText == 'SUBCATEGORY'
             )
           : [],
       isdLocationArray:
         nextProps.isdServiceTypeData && nextProps.isdServiceTypeData.length > 0
           ? nextProps.isdServiceTypeData.filter(
-              (value) => value.SearchText == "LOCATION"
+              (value) => value.SearchText == 'LOCATION'
             )
           : [],
       isdPriorityArray:
         nextProps.isdServiceTypeData && nextProps.isdServiceTypeData.length > 0
           ? nextProps.isdServiceTypeData.filter(
-              (value) => value.SearchText == "PRIORITY"
+              (value) => value.SearchText == 'PRIORITY'
             )
           : [],
       isdDurationArray:
         nextProps.isdServiceTypeData && nextProps.isdServiceTypeData.length > 0
           ? nextProps.isdServiceTypeData.filter(
-              (value) => value.SearchText == "Duration"
+              (value) => value.SearchText == 'Duration'
             )
           : [],
       isdDefaultDataArray:
@@ -510,24 +508,24 @@ export class CreateRequestScreen extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    console.log("ISD - SAVE DATA", this.props.isdSaveData);
-    console.log("Pop up message", this.state.popUpMessage);
-    console.log("LOADING", this.props.isdLoading);
+    console.log('ISD - SAVE DATA', this.props.isdSaveData);
+    console.log('Pop up message', this.state.popUpMessage);
+    console.log('LOADING', this.props.isdLoading);
     if (
       this.props.isdLoading === false &&
-      this.state.popUpMessage === "" &&
-      (this.props.isdSaveData === "success" ||
-        this.props.isdSaveData.includes("_SR") ||
-        this.props.isdSaveData.includes("_INC") ||
-        this.props.isdSaveData.includes("_SCI"))
+      this.state.popUpMessage === '' &&
+      (this.props.isdSaveData === 'success' ||
+        this.props.isdSaveData.includes('_SR') ||
+        this.props.isdSaveData.includes('_INC') ||
+        this.props.isdSaveData.includes('_SCI'))
     ) {
       setTimeout(() => {
-        let customMessge = "Data saved successfully with request number ";
+        let customMessge = 'Data saved successfully with request number ';
         let requestNumber =
           this.props.navigation.state.params &&
           this.props.navigation.state.params.dataToUpdate !== undefined
             ? this.props.navigation.state.params.dataToUpdate.ServiceNumber
-            : this.props.isdSaveData.split("_")[1];
+            : this.props.isdSaveData.split('_')[1];
         let message =
           requestNumber !== undefined
             ? customMessge + requestNumber
@@ -535,32 +533,32 @@ export class CreateRequestScreen extends Component {
         this.setState({
           isPopUp: true,
           popUpMessage: message,
-          popUpHeading: "Data Saved!",
+          popUpHeading: 'Data Saved!',
           isRecordSaved: true,
         });
       }, 1000);
     } else if (
       this.props.isdLoading === false &&
-      this.state.popUpMessage === "" &&
+      this.state.popUpMessage === '' &&
       this.props.isdSaveError.length > 0
     ) {
       setTimeout(() => {
         this.setState({
           isPopUp: true,
           popUpMessage: this.props.isdSaveError,
-          popUpHeading: "Error",
+          popUpHeading: 'Error',
         });
       }, 1000);
     } else if (
       this.props.isdLoading === false &&
-      this.state.popUpMessage === "" &&
+      this.state.popUpMessage === '' &&
       this.props.additionalRemarks.length > 0
     ) {
       setTimeout(() => {
         this.setState({
           isPopUp: true,
-          popUpMessage: "Remarks submitted successfully",
-          popUpHeading: "Remarks Submitted",
+          popUpMessage: 'Remarks submitted successfully',
+          popUpHeading: 'Remarks Submitted',
         });
       }, 1000);
     }
@@ -569,14 +567,14 @@ export class CreateRequestScreen extends Component {
         this.props?.isdDefaultData[0]?.ManagerID &&
       this.props.navigation.state.params == undefined
     ) {
-      if (this.props.isdDefaultData[0]?.ManagerID == "00000000") {
+      if (this.props.isdDefaultData[0]?.ManagerID == '00000000') {
         setTimeout(() => {
           return Alert.alert(
-            "No Supervisor !",
-            "Please contact your HR to update your supervisor in system.",
+            'No Supervisor !',
+            'Please contact your HR to update your supervisor in system.',
             [
               {
-                text: "ok",
+                text: 'ok',
                 onPress: () => this.props.navigation.pop(),
               },
             ]
@@ -594,7 +592,7 @@ export class CreateRequestScreen extends Component {
   handleBack = () => {
     this.props.resetISDCreateScreen();
     setTimeout(() => {
-      this.props.navigation.navigate("ITDeskDashBoard");
+      this.props.navigation.navigate('ITDeskDashBoard');
     }, 1000);
   };
   onBack = () => {
@@ -616,32 +614,32 @@ export class CreateRequestScreen extends Component {
 
   handleStartDateConfirm = (startDate) => {
     this.hideStartDatePicker();
-    let startDateSelected = moment(startDate, "DD-MM-YYYY").format(
-      "DD-MM-YYYY"
+    let startDateSelected = moment(startDate, 'DD-MM-YYYY').format(
+      'DD-MM-YYYY'
     );
-    let endDateUpdated = moment(startDate, "DD-MM-YYYY")
-      .add(this.state.noOfDurationDays, "days")
-      .format("DD-MM-YYYY");
+    let endDateUpdated = moment(startDate, 'DD-MM-YYYY')
+      .add(this.state.noOfDurationDays, 'days')
+      .format('DD-MM-YYYY');
 
     this.setState({
       durationFromDateValue: startDateSelected,
       durationEndDateValue: endDateUpdated,
-      durationEndDateMinValue: moment(startDate, "DD-MM-YYYY").toDate(),
-      durationEndDateMaxValue: moment(startDate, "DD-MM-YYYY")
-        .add(this.state.noOfDurationDays, "days")
+      durationEndDateMinValue: moment(startDate, 'DD-MM-YYYY').toDate(),
+      durationEndDateMaxValue: moment(startDate, 'DD-MM-YYYY')
+        .add(this.state.noOfDurationDays, 'days')
         .toDate(),
     });
-    console.log("A start date has been picked: ", startDateSelected);
+    console.log('A start date has been picked: ', startDateSelected);
   };
   incidentDateConfirm = (date) => {
     this.hideIncidentCalendar();
-    let incidentDateSelected = moment(date, "DD-MMM-YYYY").format(
-      "DD-MMM-YYYY"
+    let incidentDateSelected = moment(date, 'DD-MMM-YYYY').format(
+      'DD-MMM-YYYY'
     );
-    console.log("Incident date : ", incidentDateSelected);
-    console.log("Date : ", date);
+    console.log('Incident date : ', incidentDateSelected);
+    console.log('Date : ', date);
     this.setState({ incidentDate: incidentDateSelected }, () => {
-      console.log("Incident Date : ", this.state.incidentDate);
+      console.log('Incident Date : ', this.state.incidentDate);
     });
   };
   hideStartDatePicker = () => {
@@ -686,11 +684,11 @@ export class CreateRequestScreen extends Component {
 
   handleEndDateConfirm = (endDate) => {
     this.hideEndDatePicker();
-    let endDateSelected = moment(endDate, "DD-MM-YYYY").format("DD-MM-YYYY");
+    let endDateSelected = moment(endDate, 'DD-MM-YYYY').format('DD-MM-YYYY');
     this.setState({
       durationEndDateValue: endDateSelected,
     });
-    console.log("A end date has been picked: ", endDateSelected);
+    console.log('A end date has been picked: ', endDateSelected);
   };
 
   hideEndDatePicker = () => {
@@ -704,20 +702,20 @@ export class CreateRequestScreen extends Component {
   requestorSearch = (text) => {};
 
   onNameChanged = (text) => {
-    console.log(text + "written");
+    console.log(text + 'written');
   };
   onNameFocus = () => {
-    console.log("Name is focused");
+    console.log('Name is focused');
   };
   onMobileChanged = (text) => {
     this.setState({
       isMobileNumberUpdated: true,
       newMobileNumber: text,
     });
-    console.log(text + "mobile text written");
+    console.log(text + 'mobile text written');
   };
   onMobileFocus = () => {
-    console.log("mobile is focused");
+    console.log('mobile is focused');
   };
   onSeatNoChanged = (text) => {
     this.setState({
@@ -725,7 +723,7 @@ export class CreateRequestScreen extends Component {
     });
   };
   onSeatNoFocus = () => {
-    console.log("seat number is focused");
+    console.log('seat number is focused');
   };
   onIPChanged = (text) => {
     this.setState({
@@ -733,7 +731,7 @@ export class CreateRequestScreen extends Component {
     });
   };
   onIPFocus = () => {
-    console.log("ip is focused");
+    console.log('ip is focused');
   };
   onAssetCodeChanged = (text) => {
     this.setState({
@@ -746,47 +744,47 @@ export class CreateRequestScreen extends Component {
         thirdWitnessInput: text,
       },
       () => {
-        console.log("Third witness input is :", text);
+        console.log('Third witness input is :', text);
       }
     );
   };
   onAssetCodeFocus = () => {
-    console.log("asset code is focused");
+    console.log('asset code is focused');
   };
   onNoSubCategoryChanged = (text) => {
-    console.log(text + "written");
+    console.log(text + 'written');
   };
   onNoSubCategoryFocus = () => {
-    console.log("sub category is focused");
+    console.log('sub category is focused');
   };
   onLocationOthersChanged = (text) => {
     this.setState({
       locationOthersInput: text,
       isLocationSelected: true,
     });
-    console.log(text + "written");
+    console.log(text + 'written');
   };
   onLocationOthersFocus = () => {
-    console.log("location others is focused");
+    console.log('location others is focused');
   };
   onDescriptionChanged = (text) => {
     this.setState({
       descriptionInput: text,
     });
-    console.log(text + "written");
+    console.log(text + 'written');
   };
   onDescriptionFocus = () => {
-    console.log("description is focused");
+    console.log('description is focused');
   };
   onProjectChanged = (text) => {
-    console.log(text + "written");
+    console.log(text + 'written');
   };
   onProjectFocus = () => {
-    console.log("Project is focused");
+    console.log('Project is focused');
   };
 
   onServiceTypeSelection = (serviceType) => {
-    console.log("Service type array:", this.state.isdServiceTypeDataArray);
+    console.log('Service type array:', this.state.isdServiceTypeDataArray);
     this.setState(
       {
         serviceTypeIndex: serviceType + 1,
@@ -805,11 +803,11 @@ export class CreateRequestScreen extends Component {
     if (this.subCategoryRef.current) {
       this.subCategoryRef.current.select(-1);
     }
-    console.log("Service type selected is :", serviceType);
+    console.log('Service type selected is :', serviceType);
   };
 
   onRequestorTypeSelection = (requestorType) => {
-    console.log("Service type array:", this.state.isdServiceTypeDataArray);
+    console.log('Service type array:', this.state.isdServiceTypeDataArray);
 
     this.setState(
       {
@@ -823,21 +821,20 @@ export class CreateRequestScreen extends Component {
         // this.state.requestorUpdated ? this.props.updateRequestorDetailsISD(this.props.empCode) : null
       }
     );
-    console.log("Requester type selected is :", requestorType);
+    console.log('Requester type selected is :', requestorType);
   };
 
   onManagerOnLeaveSelection = (index) => {
     this.setState({
       managerOnLeaveIndex: index,
-      isMgrOnLeaveValue: index === 1 ? "Y" : "N",
-      
+      isMgrOnLeaveValue: index === 1 ? 'Y' : 'N',
     });
-    console.log("manager on leave answer selected is :", index);
+    console.log('manager on leave answer selected is :', index);
   };
   onCategorySelection = (i, value, data) => {
     let myCategoryId;
     let index;
-    console.log("onCategorySelection : ", i, value, data);
+    console.log('onCategorySelection : ', i, value, data);
     if (value === undefined) {
       // update case
       myCategoryId = i;
@@ -850,7 +847,7 @@ export class CreateRequestScreen extends Component {
         this.state.isdCategoryArray[i] !== undefined
           ? this.state.isdCategoryArray[i].Value
           : -1;
-      console.log("My category ID : ", myCategoryId);
+      console.log('My category ID : ', myCategoryId);
     }
     this.setState({
       isCategorySelected: true,
@@ -860,7 +857,7 @@ export class CreateRequestScreen extends Component {
     if (this.subCategoryRef.current) {
       this.subCategoryRef.current.select(-1);
     }
-    console.log("Category ID :", myCategoryId, this.state.isdCategoryArray);
+    console.log('Category ID :', myCategoryId, this.state.isdCategoryArray);
     // let newSubcategory = (this.state.isRequestUpdate===true) ? this.state.isdSubCategoryArray.filter( val =>  val === myCategoryId)  : this.state.isdSubCategoryArray.filter(value => value.CategoryId == myCategoryId)
     let newSubcategory = this.state.isdSubCategoryArray.filter(
       (value) => value.CategoryId == myCategoryId
@@ -875,11 +872,11 @@ export class CreateRequestScreen extends Component {
         isdNewSubCategoryArray: newSubcategory,
       });
     }
-    console.log("newSubcategory", newSubcategory);
-    console.log("sub Category data:", this.state.isdSubCategoryArray);
-    console.log("sub Category new data :", this.state.isdNewSubCategoryArray);
+    console.log('newSubcategory', newSubcategory);
+    console.log('sub Category data:', this.state.isdSubCategoryArray);
+    console.log('sub Category new data :', this.state.isdNewSubCategoryArray);
     console.log(
-      "Category selected is :",
+      'Category selected is :',
       this.state.requestCategoryIdValue,
       i,
       value
@@ -891,8 +888,8 @@ export class CreateRequestScreen extends Component {
       data !== undefined &&
       data.RequestSubCategoryId !== undefined &&
       data.RequestSubCategoryId !== null &&
-      data.RequestSubCategoryId !== "" &&
-      data.RequestSubCategoryId !== "0"
+      data.RequestSubCategoryId !== '' &&
+      data.RequestSubCategoryId !== '0'
     ) {
       this.onSubCategorySelection(data.RequestSubCategoryId);
     }
@@ -904,8 +901,8 @@ export class CreateRequestScreen extends Component {
         : this.state.isdSubCategoryArray;
     let subCategoryConditions =
       value === undefined
-        ? index.split("_")
-        : subCatArray[index].Value.split("_");
+        ? index.split('_')
+        : subCatArray[index].Value.split('_');
     let subCategoryId = subCategoryConditions[0];
     let durationApplicable = subCategoryConditions[1];
     let durationDays = subCategoryConditions[2];
@@ -926,12 +923,12 @@ export class CreateRequestScreen extends Component {
       seatNumberFlag: seatNumber,
       ipAddressFlag: ipAddress,
       noOfDurationDays: durationDays,
-      witNessFlag: witness === "0" ? undefined : witness === "2" ? "M" : "Y", // this way is correct
+      witNessFlag: witness === '0' ? undefined : witness === '2' ? 'M' : 'Y', // this way is correct
       // witNessFlag: witness === "1" ? undefined : witness === "0" ? "M" : "Y", // this way is for test
       thirdWitnessFlag:
-        thirdWitness === "0" ? undefined : thirdWitness === "2" ? "M" : "Y",
+        thirdWitness === '0' ? undefined : thirdWitness === '2' ? 'M' : 'Y',
       incidentDateFlag:
-        incidentDate === "0" ? undefined : incidentDate === "2" ? "M" : "Y",
+        incidentDate === '0' ? undefined : incidentDate === '2' ? 'M' : 'Y',
     });
 
     if (this.state.isRequestUpdate === true) {
@@ -943,7 +940,7 @@ export class CreateRequestScreen extends Component {
             );
             this.subCategoryRef.current.select(currIndex);
             console.log(
-              "Sub Category selected is :",
+              'Sub Category selected is :',
               this.state.requestSubCategoryIdValue,
               index,
               value
@@ -958,7 +955,7 @@ export class CreateRequestScreen extends Component {
             );
             this.subCategoryRef.current.select(currIndex);
             console.log(
-              "Sub Category selected is :",
+              'Sub Category selected is :',
               this.state.requestSubCategoryIdValue,
               index,
               value
@@ -968,7 +965,7 @@ export class CreateRequestScreen extends Component {
       }
     } else {
       console.log(
-        "Sub Category selected is :",
+        'Sub Category selected is :',
         this.state.requestSubCategoryIdValue,
         index,
         value
@@ -986,11 +983,11 @@ export class CreateRequestScreen extends Component {
     } else {
       index = i;
     }
-    console.log("Priority Array : ", this.state.isdPriorityArray, index);
+    console.log('Priority Array : ', this.state.isdPriorityArray, index);
     let myPriorityId =
       this.state.isdPriorityArray.length > 0 &&
       this.state.isdPriorityArray[index].Value;
-    console.log("My priority id is :", myPriorityId);
+    console.log('My priority id is :', myPriorityId);
     this.setState({
       isPrioritySelected: true,
       requestPriorityIdValue: myPriorityId,
@@ -998,13 +995,13 @@ export class CreateRequestScreen extends Component {
     if (this.state.isRequestUpdate === true && this.priorityRef.current) {
       this.priorityRef.current.select(index);
       console.log(
-        "Priority selected is :",
+        'Priority selected is :',
         index,
         this.state.requestPriorityIdValue
       );
     } else {
       console.log(
-        "Priority selected is :",
+        'Priority selected is :',
         index,
         this.state.requestPriorityIdValue
       );
@@ -1016,7 +1013,7 @@ export class CreateRequestScreen extends Component {
       this.state.isdLocationArray.length > 0 &&
       this.state.isdLocationArray[index] &&
       this.state.isdLocationArray[index].Value;
-    if (value === "Others") {
+    if (value === 'Others') {
       this.setState({
         isLocationOthers: true,
         requesterLocationIdValue: myLocationId,
@@ -1031,13 +1028,13 @@ export class CreateRequestScreen extends Component {
     if (this.state.isRequestUpdate === true && this.locationRef.current) {
       this.locationRef.current.select(index);
       console.log(
-        "Location selected is :",
+        'Location selected is :',
         this.state.requesterLocationIdValue,
         value
       );
     } else {
       console.log(
-        "Location selected is :",
+        'Location selected is :',
         this.state.requesterLocationIdValue,
         value
       );
@@ -1050,20 +1047,20 @@ export class CreateRequestScreen extends Component {
         requestDurationIdValue: value,
       },
       () => {
-        console.log("5555555", this.state.durationIndex);
-        console.log("666666666", this.state.requestDurationIdValue);
+        console.log('5555555', this.state.durationIndex);
+        console.log('666666666', this.state.requestDurationIdValue);
       }
     );
     if (value === 2) {
       const today = this.state.currentDate;
-      let startDate = moment(today, "DD-MM-YYYY").format("DD-MM-YYYY");
-      let endDateMinValue = moment(today, "DD-MM-YYYY").toDate();
+      let startDate = moment(today, 'DD-MM-YYYY').format('DD-MM-YYYY');
+      let endDateMinValue = moment(today, 'DD-MM-YYYY').toDate();
       let endDateMaxValue = moment()
-        .add(this.state.noOfDurationDays, "days")
+        .add(this.state.noOfDurationDays, 'days')
         .toDate();
       let endDate = moment()
-        .add(this.state.noOfDurationDays, "days")
-        .format("DD-MM-YYYY");
+        .add(this.state.noOfDurationDays, 'days')
+        .format('DD-MM-YYYY');
       this.setState({
         durationFromDateValue: startDate,
         durationEndDateValue: endDate,
@@ -1072,10 +1069,10 @@ export class CreateRequestScreen extends Component {
       });
     } else {
       this.setState({
-        durationFromDateValue: "",
-        durationEndDateValue: "",
-        durationEndDateMinValue: "",
-        durationEndDateMaxValue: "",
+        durationFromDateValue: '',
+        durationEndDateValue: '',
+        durationEndDateMinValue: '',
+        durationEndDateMaxValue: '',
       });
     }
   };
@@ -1097,7 +1094,7 @@ export class CreateRequestScreen extends Component {
       () => {
         setTimeout(() => {
           if (this._panel.current !== null) {
-            this._panel.current.show(height / 1.3);
+            this._panel.current.show(setHeight(80));
           }
         }, 500);
       }
@@ -1107,7 +1104,7 @@ export class CreateRequestScreen extends Component {
     this.setState({ dialogContainerVisible: true });
   };
   onDialogClose = () => {
-    console.log("onDialogClose called");
+    console.log('onDialogClose called');
     this.setState({ dialogContainerVisible: false });
   };
   onPanelClose = () => {
@@ -1115,12 +1112,12 @@ export class CreateRequestScreen extends Component {
   };
   onReOpenRemarks = (remarks) => {
     this.setState({ reopenRemarks: remarks }, () => {
-      console.log("Reopen Remarks", this.state.reopenRemarks);
+      console.log('Reopen Remarks', this.state.reopenRemarks);
     });
   };
   onAdditionalRemarks = (additionalRemarks) => {
     this.setState({ additionalRemarks: additionalRemarks }, () => {
-      console.log("ADDITIONAL REMARKS", this.state.additionalRemarks);
+      console.log('ADDITIONAL REMARKS', this.state.additionalRemarks);
     });
   };
   onSubmitAdditionalRemarks = (submittedData) => {
@@ -1140,12 +1137,12 @@ export class CreateRequestScreen extends Component {
     );
   };
   onSubmitOrSave = (actionType) => {
-    console.log("Default Data array", this.state.isdDefaultDataArray);
+    console.log('Default Data array', this.state.isdDefaultDataArray);
     let defaultDataArray = this.state.isdDefaultDataArray;
-    let myRequestorCode = defaultDataArray.RequesterName.split(":")[0].trim();
+    let myRequestorCode = defaultDataArray.RequesterName.split(':')[0].trim();
     console.log(
-      "PROJECT Code",
-      defaultDataArray.RequesterProjectName.split(":")[0].trim()
+      'PROJECT Code',
+      defaultDataArray.RequesterProjectName.split(':')[0].trim()
     );
     let record = {
       requestID:
@@ -1155,66 +1152,65 @@ export class CreateRequestScreen extends Component {
       requesterCode: myRequestorCode,
       requesterMobile: defaultDataArray.RequesterMobile,
       requesterProjectCode: defaultDataArray.RequesterProjectCode,
-      requestType: "",
-      requestCategoryId: "",
-      requestSubCategoryId: "",
-      requestPriorityId: "",
-      requesterLocationId: "",
-      otherLocation: "",
-      requesterSeatNo: "",
-      requesterIP: "",
-      requesterAssetCode: "",
-      requestDescription: "",
-      requestDurationId: "",
-      durationFromDate: "",
-      durationToDate: "",
+      requestType: '',
+      requestCategoryId: '',
+      requestSubCategoryId: '',
+      requestPriorityId: '',
+      requesterLocationId: '',
+      otherLocation: '',
+      requesterSeatNo: '',
+      requesterIP: '',
+      requesterAssetCode: '',
+      requestDescription: '',
+      requestDurationId: '',
+      durationFromDate: '',
+      durationToDate: '',
       managerID:
-        this.state.serviceTypeIndex === 2 ? defaultDataArray.ManagerID : "",
+        this.state.serviceTypeIndex === 2 ? defaultDataArray.ManagerID : '',
       isMgrOnLeave:
-        this.state.serviceTypeIndex === 2 ? this.state.isMgrOnLeaveValue : "",
-      isSave: "",
-      smBand: this.state.serviceTypeIndex === 2 ? defaultDataArray.SMBand : "",
+        this.state.serviceTypeIndex === 2 ? this.state.isMgrOnLeaveValue : '',
+      isSave: '',
+      smBand: this.state.serviceTypeIndex === 2 ? defaultDataArray.SMBand : '',
       reviewingManagerID:
         this.state.serviceTypeIndex === 2
           ? defaultDataArray.ReviewingManagerID
-          : "",
+          : '',
       witness:
         this.state.serviceTypeIndex === 3
-          ? this.state.witnessQuery.split(":")[0].trim()
-          : "",
+          ? this.state.witnessQuery.split(':')[0].trim()
+          : '',
       ThirdWitness:
-        this.state.serviceTypeIndex === 3 ? this.state.thirdWitnessInput : "",
+        this.state.serviceTypeIndex === 3 ? this.state.thirdWitnessInput : '',
       IncidentDate:
-        this.state.serviceTypeIndex === 3 ? this.state.incidentDate : "",
+        this.state.serviceTypeIndex === 3 ? this.state.incidentDate : '',
     };
     // if (this.state.requestorTypeIndex === 1 && !this.state.requestorUpdated) {
     // 	return alert("Please select valid Requester!!")
     // } else
-    console.log("Mobile number : ", this.state.newMobileNumber);
-    console.log("Mobile length : ", this.state.newMobileNumber.length); 
+    console.log('Mobile number : ', this.state.newMobileNumber);
+    console.log('Mobile length : ', this.state.newMobileNumber.length);
     if (
       this.state.newMobileNumber.length < 10 ||
-      this.state.newMobileNumber.length > 15  
-     
+      this.state.newMobileNumber.length > 15
     ) {
-      return alert("Valid Mobile number is mandatory.");
+      return alert('Valid Mobile number is mandatory.');
     }
-     if(/[*%#:&\s]/.test(this.state.newMobileNumber)){
-        return alert("Valid Mobile number is mandatory.");
-       }
-   
+    if (/[*%#:&\s]/.test(this.state.newMobileNumber)) {
+      return alert('Valid Mobile number is mandatory.');
+    }
+
     if (this.state.serviceTypeIndex === -1) {
-      return alert("Please select Request Type!!");
+      return alert('Please select Request Type!!');
     } else {
       record.requestType = this.state.serviceTypeIndex;
-      console.log("record", record);
-      console.log("Action type : ", actionType);
+      console.log('record', record);
+      console.log('Action type : ', actionType);
       if (actionType === constants.SUBMIT_TEXT) {
         this.setState(
           {
             isSaveFlag: false,
             requestClosed: true,
-            popUpMessage: "",
+            popUpMessage: '',
           },
           () => {
             record.isSave = false;
@@ -1231,29 +1227,31 @@ export class CreateRequestScreen extends Component {
               !this.state.isLocationSelected ||
               (this.state.isLocationOthers &&
                 this.state.locationOthersInput.length === 0) ||
-              (this.state.seatNumberFlag == 2 && mySeatNumberInput === "") ||
-              (this.state.ipAddressFlag == 2 && myIPAddressInput === "") ||
+              (this.state.seatNumberFlag === 2 && mySeatNumberInput === '') ||
+              (this.state.ipAddressFlag === 2 && myIPAddressInput === '') ||
               (this.state.witNessFlag &&
-                this.state.witNessFlag === "M" &&
-                this.state.witnessQuery.trim() === "") ||
+                this.state.witNessFlag === 'M' &&
+                this.state.witnessQuery.trim() === '') ||
               (this.state.thirdWitnessFlag &&
-                this.state.thirdWitnessFlag === "M" &&
-                this.state.thirdWitnessInput.trim() === "") ||
+                this.state.thirdWitnessFlag === 'M' &&
+                this.state.thirdWitnessInput.trim() === '') ||
               (this.state.incidentDateFlag &&
-                this.state.incidentDateFlag === "M" &&
-                this.state.incidentDate.trim() === "") ||
-              (this.state.assetCodeFlag == 2 && myAssetCodeInput === "") ||
-              (this.state.durationApplicableFlag == 2 &&
+                this.state.incidentDateFlag === 'M' &&
+                this.state.incidentDate.trim() === '') ||
+              (this.state.assetCodeFlag === 2 && myAssetCodeInput === '') ||
+              (this.state.durationApplicableFlag === 2 &&
                 this.state.durationIndex === -1) ||
-              this.state.newMobileNumber.length == 0
+              this.state.newMobileNumber.length === 0
             ) {
-              return alert("All fields with * are mandatory.");
+              return alert('All fields with * are mandatory.');
             }
             if (
-              this.state.isdDefaultDataArray.ManagerName == "" &&
-              this.state.isMgrOnLeaveValue == "N" 
+              this.state.isdDefaultDataArray?.ManagerName === '' &&
+              this.state.isMgrOnLeaveValue === 'N'
             ) {
-              return alert("Your manager is not defined in HR records. Please contact your HR for manager mapping.");
+              return alert(
+                'Your manager is not defined in HR records. Please contact your HR for manager mapping.'
+              );
             } else if (myDescriptionInput.length < 25) {
               return alert("Description can't be lesser than 25 characters.");
             } else if (myDescriptionInput.length > 4000) {
@@ -1269,28 +1267,28 @@ export class CreateRequestScreen extends Component {
                 this.state.isLocationOthers &&
                 this.state.locationOthersInput.length > 0
                   ? this.state.locationOthersInput
-                  : "";
+                  : '';
               record.requesterSeatNo =
-                this.state.seatNumberFlag != 0 ? mySeatNumberInput : "";
+                this.state.seatNumberFlag !== 0 ? mySeatNumberInput : '';
               record.requesterIP =
-                this.state.ipAddressFlag != 0 ? myIPAddressInput : "";
+                this.state.ipAddressFlag !== 0 ? myIPAddressInput : '';
               record.requesterAssetCode =
-                this.state.assetCodeFlag != 0 ? myAssetCodeInput : "";
+                this.state.assetCodeFlag !== 0 ? myAssetCodeInput : '';
               record.requestDescription = myDescriptionInput;
               record.requestDurationId = this.state.requestDurationIdValue;
               record.durationFromDate = this.state.durationFromDateValue;
               record.durationToDate = this.state.durationEndDateValue;
               record.requesterMobile = this.state.newMobileNumber;
               this.props.saveOrSubmitISD(record).then(() => {
-                console.log("mohit submit", this.props.isdSaveData);
-                if (this.props.isdSaveData && this.props.isdSaveData != "") {
+                console.log('mohit submit', this.props.isdSaveData);
+                if (this.props.isdSaveData && this.props.isdSaveData !== '') {
                   let myReqId =
                     this.state.isRequestUpdate === true
                       ? this.props.navigation.state.params.dataToUpdate
                           .RequestID
-                      : this.props.isdSaveData.split("_")[0];
-                  console.log("MyRequest ID : ", myReqId);
-                  if (this.state.fileData != "") {
+                      : this.props.isdSaveData.split('_')[0];
+                  console.log('MyRequest ID : ', myReqId);
+                  if (this.state.fileData != '') {
                     uploadIsdFiles(myReqId);
                   }
                 }
@@ -1302,7 +1300,7 @@ export class CreateRequestScreen extends Component {
         this.setState(
           {
             isSaveFlag: true,
-            popUpMessage: "",
+            popUpMessage: '',
           },
           () => {
             record.isSave = true;
@@ -1312,25 +1310,25 @@ export class CreateRequestScreen extends Component {
             record.requesterLocationId = this.state.requesterLocationIdValue;
             record.otherLocation = this.state.isLocationOthers
               ? this.state.locationOthersInput
-              : "";
+              : '';
             record.requesterSeatNo =
-              this.state.seatNumberFlag != 0 ? this.state.seatNumberInput : "";
+              this.state.seatNumberFlag !== 0 ? this.state.seatNumberInput : '';
             record.requesterIP =
-              this.state.ipAddressFlag != 0 ? this.state.ipAddressInput : "";
+              this.state.ipAddressFlag !== 0 ? this.state.ipAddressInput : '';
             record.requesterAssetCode =
-              this.state.assetCodeFlag != 0 ? this.state.assetCodeInput : "";
+              this.state.assetCodeFlag !== 0 ? this.state.assetCodeInput : '';
             record.requestDescription = this.state.descriptionInput;
             record.requestDurationId = this.state.requestDurationIdValue;
             record.durationFromDate = this.state.durationFromDateValue;
             record.durationToDate = this.state.durationEndDateValue;
             record.requesterMobile = this.state.newMobileNumber;
-            console.log("final save input record", record);
+            console.log('final save input record', record);
             this.props.saveOrSubmitISD(record).then((data) => {
-              if (this.props.isdSaveData && this.props.isdSaveData != "") {
+              if (this.props.isdSaveData && this.props.isdSaveData !== '') {
                 let myReqId =
                   this.state.isRequestUpdate === true
                     ? this.props.navigation.state.params.dataToUpdate.RequestID
-                    : this.props.isdSaveData.split("_")[0];
+                    : this.props.isdSaveData.split('_')[0];
                 uploadIsdFiles(myReqId);
               }
             });
@@ -1338,11 +1336,11 @@ export class CreateRequestScreen extends Component {
         );
       }
     }
-    console.log("Submit Action clicked", actionType);
+    console.log('Submit Action clicked', actionType);
   };
 
   findEmployee = (query) => {
-    if (query === "") {
+    if (query === '') {
       return [];
     }
 
@@ -1353,27 +1351,27 @@ export class CreateRequestScreen extends Component {
   };
   formView = () => {
     let data =
-      (this.props.isdDataForUpdate && this.props.isdDataForUpdate.length) > 0
+      (this.props.isdDataForUpdate && this.props.isdDataForUpdate?.length) > 0
         ? this.props.isdDataForUpdate[0]
         : this.state.isdDefaultDataArray;
-    console.log("ManagerName", this.state.isdDefaultDataArray.ManagerName);
-    console.log("DATA updated", data);
+    console.log('ManagerName', this.state.isdDefaultDataArray?.ManagerName);
+    console.log('DATA updated', data);
     const { query, witnessQuery } = this.state;
     let empSearchResult;
     let witnessSearchResult;
-    if (query !== "" && !this.state.searchFinished) {
+    if (query !== '' && !this.state.searchFinished) {
       empSearchResult = this.findEmployee(query);
     }
-    if (witnessQuery !== "" && !this.state.witnessSearchFinished) {
+    if (witnessQuery !== '' && !this.state.witnessSearchFinished) {
       witnessSearchResult = this.findEmployee(witnessQuery);
     }
     let reOpenStatus = data.RequestStatus;
-    let startMoment = moment(new Date(data.ModifiedOn), "DD-MM-YYYY");
-    let endMoment = moment(new Date(), "DD-MM-YYYY");
+    let startMoment = moment(new Date(data.ModifiedOn), 'DD-MM-YYYY');
+    let endMoment = moment(new Date(), 'DD-MM-YYYY');
     let duration = moment.duration(endMoment.diff(startMoment));
     let timeElapsedReopen = Math.round(duration.asHours());
-    console.log("DATA : ", data);
-    console.log("Time elapse reopen : ", timeElapsedReopen);
+    console.log('DATA : ', data);
+    console.log('Time elapse reopen : ', timeElapsedReopen);
     return (
       <View style={[globalFontStyle.contentViewGlobal, styles.contentView]}>
         <RadioFormHorizontal
@@ -1397,7 +1395,7 @@ export class CreateRequestScreen extends Component {
         />
         <LabelEditText
           heading="Mobile*"
-          myKeyboardType={"numeric"}
+          myKeyboardType={'numeric'}
           isEditable={
             this.state.requestorTypeIndex == -1 ||
             (!data.isSave && this.state.isRequestUpdate)
@@ -1546,9 +1544,9 @@ export class CreateRequestScreen extends Component {
             (this.state.witNessFlag &&
               data.isSave === true &&
               this.state.isRequestUpdate === true) ? (
-              <View style={{ flexDirection: "row", alignItems: "center" }}>
-                <Text style={{ fontWeight: "bold", flex: 1 }}>
-                  {this.state.witNessFlag === "M" ? "Witness*" : "Witness"}
+              <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                <Text style={{ fontWeight: 'bold', flex: 1 }}>
+                  {this.state.witNessFlag === 'M' ? 'Witness*' : 'Witness'}
                 </Text>
                 <TouchableOpacity
                   style={{ flex: 1 }}
@@ -1557,10 +1555,10 @@ export class CreateRequestScreen extends Component {
                   }}
                 >
                   <Text style={styles.hyperLink}>
-                    {this.state.witnessQuery !== "" &&
+                    {this.state.witnessQuery !== '' &&
                     this.state.witnessQuery !== null
                       ? this.state.witnessQuery
-                      : "Select Witness"}
+                      : 'Select Witness'}
                   </Text>
                 </TouchableOpacity>
               </View>
@@ -1570,7 +1568,7 @@ export class CreateRequestScreen extends Component {
               <LabelEditText
                 isEditable={false}
                 heading={
-                  this.state.witNessFlag === "M" ? "Witness*" : "Witness"
+                  this.state.witNessFlag === 'M' ? 'Witness*' : 'Witness'
                 }
                 myValue={data.witness} // Need to update later
               />
@@ -1583,9 +1581,9 @@ export class CreateRequestScreen extends Component {
                     : true
                 }
                 heading={
-                  this.state.thirdWitnessFlag === "M"
-                    ? "Third Party Witness*"
-                    : "Third Party Witness"
+                  this.state.thirdWitnessFlag === 'M'
+                    ? 'Third Party Witness*'
+                    : 'Third Party Witness'
                 }
                 placeHolder="Third Party Witness"
                 onTextChanged={(text) => this.onThirdWitnessChanged(text)}
@@ -1597,15 +1595,15 @@ export class CreateRequestScreen extends Component {
               <DatePicker
                 myDatePickerVisible={this.state.showIncidentCalendar}
                 heading={
-                  this.state.incidentDateFlag === "M"
-                    ? "Incident Date*"
-                    : "Incident Date"
+                  this.state.incidentDateFlag === 'M'
+                    ? 'Incident Date*'
+                    : 'Incident Date'
                 }
                 myDateValue={this.state.incidentDate}
                 showMyCalendar={this.showIncidentCalendar}
                 handleConfirm={(date) => this.incidentDateConfirm(date)}
                 hideDatePicker={this.hideIncidentCalendar}
-                myMaxDate={moment(new Date(), "DD-MM-YYYY").toDate()}
+                myMaxDate={moment(new Date(), 'DD-MM-YYYY').toDate()}
               />
             ) : null}
 
@@ -1642,7 +1640,7 @@ export class CreateRequestScreen extends Component {
               onFocusView={this.onDescriptionFocus}
             />
             {this.state.durationApplicableFlag != 0 &&
-            this.state.subCategoryName !== "Access Card Lost" ? (
+            this.state.subCategoryName !== 'Access Card Lost' ? (
               <RadioForms
                 disable={
                   (this.state.isRequestUpdate === true && !data.isSave) === true
@@ -1669,7 +1667,7 @@ export class CreateRequestScreen extends Component {
                   myDateValue={this.state.durationFromDateValue}
                   myCalenderSelectedDate={moment(
                     this.state.durationFromDateValue,
-                    "DD-MM-YYYY"
+                    'DD-MM-YYYY'
                   ).toDate()}
                   myMinDate={moment().toDate()}
                   showMyCalendar={this.showStartCalendar}
@@ -1682,7 +1680,7 @@ export class CreateRequestScreen extends Component {
                   myDateValue={this.state.durationEndDateValue}
                   myCalenderSelectedDate={moment(
                     this.state.durationEndDateValue,
-                    "DD-MM-YYYY"
+                    'DD-MM-YYYY'
                   ).toDate()}
                   myMinDate={this.state.durationEndDateMinValue}
                   myMaxDate={this.state.durationEndDateMaxValue}
@@ -1715,8 +1713,8 @@ export class CreateRequestScreen extends Component {
                 isMultiline={true}
                 myValue={
                   this.state.managerOnLeaveIndex === 0
-                    ? this.state.isdDefaultDataArray.ManagerName
-                    : this.state.isdDefaultDataArray.ReviewingManagerName
+                    ? this.state.isdDefaultDataArray?.ManagerName
+                    : this.state.isdDefaultDataArray?.ReviewingManagerName
                 }
               />
             ) : null}
@@ -1750,7 +1748,7 @@ export class CreateRequestScreen extends Component {
             renderItem={({ item, index }) =>
               this.renderHistoryButton(item, index)
             }
-            keyExtractor={(item, index) => "history_" + index.toString()}
+            keyExtractor={(item, index) => 'history_' + index.toString()}
           />
         </DialogButtons>
         {data.isSave === false && this.state.isRequestUpdate === true ? (
@@ -1823,12 +1821,12 @@ export class CreateRequestScreen extends Component {
 
   backNavigate = () => {
     writeLog(
-      "Clicked on " + "backNavigate" + " of " + "Create Incident/SR Screen"
+      'Clicked on ' + 'backNavigate' + ' of ' + 'Create Incident/SR Screen'
     );
     this.setState(
-      { isPopUp: false, popUpHeading: "", popUpMessage: "" },
+      { isPopUp: false, popUpHeading: '', popUpMessage: '' },
       () => {
-        this.props.navigation.navigate("ITDeskDashBoard");
+        this.props.navigation.navigate('ITDeskDashBoard');
       }
     );
   };
@@ -1841,23 +1839,23 @@ export class CreateRequestScreen extends Component {
         message={this.state.popUpMessage}
         okAction={() => {
           this.setState({ isPopUp: false }, () => {
-            if (this.state.popUpHeading.includes("Error")) {
+            if (this.state.popUpHeading.includes('Error')) {
               helper.onOkAfterError(this);
             } else {
-              console.log("ISD SAVE DATA : ", this.props.isdSaveData);
+              console.log('ISD SAVE DATA : ', this.props.isdSaveData);
               if (
                 this.state.requestClosed ||
-                this.state.popUpHeading === "Remarks Submitted"
+                this.state.popUpHeading === 'Remarks Submitted'
               ) {
                 this.handleBack();
               } else if (
                 this.props.isdSaveData &&
-                this.props.isdSaveData.includes("_")
+                this.props.isdSaveData.includes('_')
               ) {
                 this.setState(
-                  { requestID: this.props.isdSaveData.split("_")[0] },
+                  { requestID: this.props.isdSaveData.split('_')[0] },
                   () => {
-                    console.log("Request ID saved is : ", this.state.requestID);
+                    console.log('Request ID saved is : ', this.state.requestID);
                   }
                 );
               }
@@ -1934,31 +1932,31 @@ export class CreateRequestScreen extends Component {
   //   }
   // };
   changeQuestion = async (action) => {
-    console.log("Action fired ", action);
-    if (action == "NEXT") {
+    console.log('Action fired ', action);
+    if (action == 'NEXT') {
       this.setState(
-        { questionIndex: this.state.questionIndex + 1, optionIndex: "" },
+        { questionIndex: this.state.questionIndex + 1, optionIndex: '' },
         () => {
           this.manageIndex();
         }
       );
-    } else if (action == "PREVIOUS") {
+    } else if (action == 'PREVIOUS') {
       this.setState(
-        { questionIndex: this.state.questionIndex - 1, optionIndex: "" },
+        { questionIndex: this.state.questionIndex - 1, optionIndex: '' },
         () => {
           this.manageIndex();
         }
       );
-    } else if (action == "SUBMIT") {
+    } else if (action == 'SUBMIT') {
       let answerArray = this.state.isd_surveyData.Answer;
       let selectedOptions = this.state.selectedOptionArray;
       let questionArray = this.state.isd_surveyData.Question;
       let empCode = this.props.empCode;
       let authKey = this.props.accessToken;
 
-      console.log("Selected option array : ", selectedOptions);
-      console.log("Selected answer Array  : ", answerArray);
-      console.log("Question  Array  : ", questionArray);
+      console.log('Selected option array : ', selectedOptions);
+      console.log('Selected answer Array  : ', answerArray);
+      console.log('Question  Array  : ', questionArray);
 
       let data = {};
       let questArray = [];
@@ -1975,10 +1973,10 @@ export class CreateRequestScreen extends Component {
         questArray.push(questData);
       });
       data.lstQuestionAnswers = questArray;
-      console.log("Data to send :", data);
+      console.log('Data to send :', data);
       let submitResponse = await submitIsdSuveryQuestions(data);
-      console.log("Submit response in screen is : ", submitResponse[0].message);
-      if (submitResponse[0].message == "Success") {
+      console.log('Submit response in screen is : ', submitResponse[0].message);
+      if (submitResponse[0].message == 'Success') {
         this.setState({ feedVisible: false }, () => {
           setTimeout(() => {
             showToast(submitResponse[0].message);
@@ -1997,10 +1995,10 @@ export class CreateRequestScreen extends Component {
           borderColor: appConfig.GUN_METAL_COLOR,
           paddingHorizontal: 30,
           fontSize: 15,
-          fontWeight: "bold",
+          fontWeight: 'bold',
         }}
       >
-        {this.state.isd_surveyData.Question[qIndex].QuestionDesc + " ?"}
+        {this.state.isd_surveyData.Question[qIndex].QuestionDesc + ' ?'}
       </Text>
     );
   };
@@ -2011,10 +2009,10 @@ export class CreateRequestScreen extends Component {
           style={{
             borderWidth: 1,
             borderColor: appConfig.GUN_METAL_COLOR,
-            width: "100%",
-            height: "70%",
-            justifyContent: "center",
-            alignItems: "center",
+            width: '100%',
+            height: '70%',
+            justifyContent: 'center',
+            alignItems: 'center',
             marginTop: 20,
             paddingVertical: 20,
             paddingHorizontal: 20,
@@ -2023,7 +2021,7 @@ export class CreateRequestScreen extends Component {
         >
           <FlatList
             data={constants.optionsArray}
-            keyExtractor={(item, index) => "Option_" + index.toString()}
+            keyExtractor={(item, index) => 'Option_' + index.toString()}
             renderItem={({ item, index }) => this.renderOptionView(item, index)}
             contentContainerStyle={{ marginTop: 20 }}
           />
@@ -2069,10 +2067,10 @@ export class CreateRequestScreen extends Component {
           >
             <Text
               style={{
-                textAlign: "center",
+                textAlign: 'center',
                 paddingHorizontal: 60,
                 paddingVertical: 13,
-                color: "#fff",
+                color: '#fff',
                 fontSize: 16,
               }}
             >
@@ -2122,8 +2120,8 @@ export class CreateRequestScreen extends Component {
           let queryLowerCase = this.state.query.toString().toLowerCase();
           return elementSearched.indexOf(queryLowerCase) > -1;
         });
-        console.log("Search Query : ", this.state.query);
-        console.log("Fileterd data : ", filteredData);
+        console.log('Search Query : ', this.state.query);
+        console.log('Fileterd data : ', filteredData);
         this.setState({
           localOnBehalfSearchData: filteredData,
         });
@@ -2131,8 +2129,8 @@ export class CreateRequestScreen extends Component {
     );
   };
   pickEmployee = (empData) => {
-    console.log("Emp Data :", empData);
-    this.setState({ query: "" }, () => {
+    console.log('Emp Data :', empData);
+    this.setState({ query: '' }, () => {
       if (this.state.onBehalfVisible) {
         this.setState({ onBehalfVisible: false }, () => {
           setTimeout(() => {
@@ -2213,11 +2211,11 @@ const mapStateToProps = (state) => {
     empCode:
       state.loginReducer.loginData !== undefined
         ? state.loginReducer.loginData.SmCode
-        : "",
+        : '',
     accessToken:
       state.loginReducer.loginData !== undefined
         ? state.loginReducer.loginData.Authkey
-        : "",
+        : '',
     isdDefaultData: state.isdCreateRequestReducer.isdDefaultData,
     isdLoading: state.isdCreateRequestReducer.isdLoader,
     isdDefaultError: state.isdCreateRequestReducer.isdDefaultError,

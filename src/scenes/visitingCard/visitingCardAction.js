@@ -1,7 +1,7 @@
 import { netInfo } from '../../utilities/NetworkInfo';
 import { NO_INTERNET, UNDEFINED_MESSAGE } from '../../GlobalConstants';
 import properties from '../../resource/properties';
-import { fetchPOSTMethod, fetchGETMethod } from '../../utilities/fetchService';
+import { fetchPOSTMethod } from '../../utilities/fetchService';
 let constants = require('./constants');
 let empCode;
 let authToken;
@@ -18,56 +18,56 @@ const loading = () => {
   };
 };
 
-const storeVisitingHistory = data => {
+const storeVisitingHistory = (data) => {
   return {
     type: constants.VISITING_HISTORY,
     payload: data,
   };
 };
 
-const storeVisitingData = data => {
+const storeVisitingData = (data) => {
   return {
     type: constants.VISITING_DATA,
     payload: data,
   };
 };
 
-const storeVisitingError = msg => {
+const storeVisitingError = (msg) => {
   return {
     type: constants.VISITING_ERROR,
     payload: msg,
   };
 };
 
-const storeSuperVisorData = data => {
+const storeSuperVisorData = (data) => {
   return {
     type: constants.VISITING_SUPERVISOR_DATA,
     payload: data,
   };
 };
 
-const storeVisitingActionError = (message)=>{
-    return {
-        type: constants.VISITING_ACTION_ERROR,
-        payload: message,
-    };
+const storeVisitingActionError = (message) => {
+  return {
+    type: constants.VISITING_ACTION_ERROR,
+    payload: message,
+  };
 };
 
-const storeVisitingActionSuccess = msg => {
-    return {
-      type: constants.VISITING_ACTION_MSG,
-      payload: msg,
-    };
+const storeVisitingActionSuccess = (msg) => {
+  return {
+    type: constants.VISITING_ACTION_MSG,
+    payload: msg,
+  };
 };
 
 export const resetVisitingStore = () => {
-  return async dispatch => {
+  return async (dispatch) => {
     dispatch(resetVisiting());
   };
 };
 
 export const visitingFetchData = (empCode, authToken, isPullToLoaderActive) => {
-  return async dispatch => {
+  return async (dispatch) => {
     let isNetwork = await netInfo();
     if (isNetwork) {
       this.empCode = empCode;
@@ -120,7 +120,7 @@ export const completeRequest = (
   inPendingRole,
   vcRemarks
 ) => {
-  return async dispatch => {
+  return async (dispatch) => {
     let isNetwork = await netInfo();
     if (isNetwork) {
       dispatch(loading());
@@ -140,7 +140,10 @@ export const completeRequest = (
       let url = properties.visitingActionUrl;
       let actionResponse = await fetchPOSTMethod(url, formData);
       if (actionResponse.length != undefined) {
-        if (actionResponse.length === 1 && actionResponse[0].hasOwnProperty('Exception')) {
+        if (
+          actionResponse.length === 1 &&
+          actionResponse[0].hasOwnProperty('Exception')
+        ) {
           // console.log("visiting submit api exception while submitting to server is : ",actionResponse);
           dispatch(storeVisitingActionError(actionResponse[0].Exception));
         } else {
@@ -161,8 +164,8 @@ export const completeRequest = (
   };
 };
 
-export const fetchSupervisorData = (successCallBack,query) => {
-  return async dispatch => {
+export const fetchSupervisorData = (successCallBack, query) => {
+  return async (dispatch) => {
     let isNetwork = await netInfo();
     if (isNetwork) {
       let url = properties.getTrApproverList;
@@ -173,7 +176,10 @@ export const fetchSupervisorData = (successCallBack,query) => {
       form.append('DocumentNo', query);
       form.append('ListFor', 'S');
       let response = await fetchPOSTMethod(url, form);
-      console.log('Supervisor list response for leave from server is : ',response);
+      console.log(
+        'Supervisor list response for leave from server is : ',
+        response
+      );
       if (response.length != undefined) {
         if (response.length === 1 && response[0].hasOwnProperty('Exception')) {
           // console.log("visiting api exception while fetching visiting list from server is : ",response);
@@ -201,8 +207,8 @@ export const resetSupervisor = () => {
   };
 };
 
-export const visitingFetchHistory = docNumber => {
-  return async dispatch => {
+export const visitingFetchHistory = (docNumber) => {
+  return async (dispatch) => {
     let isNetwork = await netInfo();
     if (isNetwork) {
       dispatch(loading());

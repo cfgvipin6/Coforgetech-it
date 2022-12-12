@@ -1,11 +1,5 @@
 /* eslint-disable no-lone-blocks */
-import {
-  StyleSheet,
-  Text,
-  View,
-  ImageBackground,
-  BackHandler,
-} from "react-native";
+import { Text, View, ImageBackground, BackHandler } from "react-native";
 import React, { Component } from "react";
 import BoxContainer from "../../components/boxContainer.js";
 import { styles } from "./styles";
@@ -38,11 +32,10 @@ import {
 } from "./utils.js";
 import ActivityIndicatorView from "../../GlobalComponent/myActivityIndicator/index.js";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scrollview";
-import _ from "lodash";
+import { isEmpty } from "lodash";
 import { LabelTextDashValue } from "../../GlobalComponent/LabelText/LabelText.js";
 import { HistoryView } from "../../GlobalComponent/HistoryView/HistoryView.js";
 import UserMessage from "../../components/userMessage.js";
-import { showToast } from "../../GlobalComponent/Toast.js";
 class HRAssistCreate extends Component {
   constructor(props) {
     super(props);
@@ -77,7 +70,6 @@ class HRAssistCreate extends Component {
   };
   filesSuccessCallBack = (data) => {
     this.setState({ files: data[0]?.lstDt });
-    console.log("Data in files success call back : ", data);
   };
   activitySuccessCallBack = (data) => {
     this.setState({ loading: false, hrActivity: data }, () => {
@@ -97,7 +89,6 @@ class HRAssistCreate extends Component {
     });
   };
   myTicketDetailSuccessCallBack = (data) => {
-    console.log("HR myTicketDetailSuccessCallBack", data[0]?.reslstHRAssist[0]);
     this.setState(
       {
         empData: data[0]?.reslstHRAssist[0],
@@ -128,7 +119,6 @@ class HRAssistCreate extends Component {
       mobileNumber: data[0].Mobile,
       loading: false,
     });
-    console.log("HR data success call back", data);
   };
   successCategoryCallBack = (data) => {
     this.setState({ category: data, loading: false }, () => {
@@ -164,7 +154,6 @@ class HRAssistCreate extends Component {
               (item) => item.Value == this.state.empData.Subcategoryid
             );
             let subCatItem = this.state.subCategory[subCatIdx];
-            console.log("Sub Cat item : ", subCatItem);
             if (this.subCategoryRef.current !== null) {
               this.subCategoryRef.current.select(subCatIdx);
               this.setState({ subCatId: subCatItem?.Value });
@@ -253,9 +242,7 @@ class HRAssistCreate extends Component {
   onSubCategorySelection = (i, value) => {
     this.setState({ subCatId: this.state.subCategory[i]?.Value });
   };
-  onDescriptionFocus = () => {
-    console.log("description is focused");
-  };
+
   showHistory = () => {
     this.setState({ modalVisible: true });
   };
@@ -345,11 +332,7 @@ class HRAssistCreate extends Component {
       return alert(SUBJECT_REQUIRED);
     } else if (this.state.questInput == "") {
       return alert(DESC_REQUIRED);
-    }
-    // else if (getISDFiles().length < 1){
-    //   return alert();
-    // }
-    else if (this.state.isComingFromMyRequest) {
+    } else if (this.state.isComingFromMyRequest) {
       if (this.state.remark.length < 1) {
         return alert(REMARK_REQUIRED);
       } else {
@@ -526,7 +509,7 @@ class HRAssistCreate extends Component {
               />
             </View>
           </BoxContainer>
-          {!_.isEmpty(this.state.slaData) && (
+          {!isEmpty(this.state.slaData) && (
             <BoxContainer style={{ marginTop: 10 }}>
               <Text
                 style={{

@@ -1,8 +1,6 @@
-import { StyleSheet, Platform, Dimensions } from 'react-native';
-import { moderateScale } from '../../components/fontScaling.js';
+import { StyleSheet} from 'react-native';
+import { moderateScale, setHeight } from '../../components/fontScaling.js';
 var appConfig = require('../../../appconfig');
-let dh = Dimensions.get('window').height;
-let dw = Dimensions.get('window').window;
 export const styles = StyleSheet.create({
   heading:{
     fontWeight:'bold',
@@ -10,13 +8,13 @@ export const styles = StyleSheet.create({
   },
 
   panelNewContainer: {
-    height:dh,
-    backgroundColor: 'white',
+    height:setHeight(100),
+    backgroundColor: '#ffff',
     alignItems: 'center',
     justifyContent: 'center',
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
-    top:dh * 0.2,
+    top:setHeight(20),
     borderWidth:1,
     borderColor: appConfig.FIELD_BORDER_COLOR,
   },

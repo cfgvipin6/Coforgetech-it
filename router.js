@@ -1,109 +1,74 @@
-import { createAppContainer } from "react-navigation";
-import { createStackNavigator } from "react-navigation-stack";
-import { createDrawerNavigator } from "react-navigation-drawer";
-import { Dimensions } from "react-native";
-import LoginScreen from "./src/scenes/login";
-import HomeScreen from "./src/scenes/home";
-import SupervisorSelectionScreen from "./src/scenes/supervisorSelection";
-import TokenScreen from "./src/scenes/token";
-import DashBoardScreen from "./src/scenes/Dashboard";
-import HRAssist from "./src/scenes/hrassist";
-import MyInfoScreen from "./src/scenes/MyInfo";
-import VoucherDetailScreen from "./src/scenes/voucherDetails";
-import TravelScreen from "./src/scenes/travel";
-import TravelActionScreen from "./src/scenes/travel/TravelActionScreen";
-import VisaScreen from "./src/scenes/visa";
-import VisaApproveRejectScreen from "./src/scenes/visa/visaApproveReject";
-import VisitingCardScreen from "./src/scenes/visitingCard";
-import VisitingApproveRejectScreen from "./src/scenes/visitingCard/visitingApproveReject";
-import ECRPScreen from "./src/scenes/ecrp";
-import ECRPApproveReject from "./src/scenes/ecrp/ecrpApproveReject";
-import ECRPLetter from "./src/scenes/ecrp/ecrpLetter";
-import CDSScreen from "./src/scenes/cds";
-import CDSDetails from "./src/scenes/cds/cdsDetails";
-import CDSApproveReject from "./src/scenes/cds/cdsApproveReject";
-import ExitScreen from "./src/scenes/eExit";
-import ExitDetails from "./src/scenes/eExit/exitDetails";
-import ExitApproveReject from "./src/scenes/eExit/exitApproveReject";
-import AddressScreen from "./src/scenes/address";
-import GratuityScreen from "./src/scenes/gratuity/index";
-import CommunicationScreen from "./src/scenes/communication/index";
-import FamilyScreen from "./src/scenes/family";
-import HolidayScreen from "./src/scenes/holiday";
-import LeaveScreen from "./src/scenes/leaves/index";
-import LeaveActionsScreen from "./src/scenes/leaves/LeaveActionsScreen";
-import MyWebView from "./src/scenes/Web/MyWebView";
-import AttendanceScreen from "./src/scenes/attendance/AttendanceScreen";
-import createLeave from "./src/scenes/createLeave";
-import AuthScreen from "./src/scenes/auth/AuthScreen";
-import AdLoginScreen from "./src/scenes/login/AdLogin";
-import TravelAdvanceScreen from "./src/scenes/travelAdvance";
-import TravelAdvanceApproveRejectScreen from "./src/scenes/travelAdvance/travelAdvanceApproveReject";
-import EESScreen from "./src/scenes/EES";
-import EESQuestionScreen from "./src/scenes/EES/eesQuestionScreen";
-import PendingRequestScreen from "./src/scenes/ISD/pendingRequest";
-import ITPendingDetails from "./src/scenes/ISD/pendingRequest/pendingRequestDetails";
-import ITDeskDashboard from "./src/scenes/ISD/ITDeskDashboard";
-import CreateRequestScreen from "./src/scenes/ISD/createRequest";
-import MyRequestScreen from "./src/scenes/ISD/myRequest/MyRequestScreen";
-import VoucherDashBoard from "./src/scenes/Voucher/VoucherDashBoard";
-import CreateVoucher from "./src/scenes/Voucher/createVoucher/index";
-import CreateVoucher2 from "./src/scenes/Voucher/createVoucher/CreateVoucher_2";
-import MyVoucherScreen from "./src/scenes/Voucher/MyVoucher/MyVoucherScreen";
-import CreateGenericVouchers from "./src/scenes/Voucher/createGenericVoucher/index";
-import CreateLtaVoucher from "./src/scenes/Voucher/LTAVoucher/index";
-import CreateUSVoucherScreen from "./src/scenes/Voucher/USVoucher";
-import SchemeAndPolicyScreen from "./src/scenes/schemeAndPolicy/index";
-import { SideMenu } from "./src/components/SideMenu";
-import SchemsDetails from "./src/scenes/schemeAndPolicy/SchemsDetails";
-import schemePDFView from "./src/scenes/schemeAndPolicy/schemePDFView";
-import TimesheetDashboardScreen from "./src/scenes/timesheet/timesheetDashboard";
-import MyTimesheetScreen4 from "./src/scenes/timesheet/myTimesheet/index4";
-import MyTimesheetScreen5 from "./src/scenes/timesheet/myTimesheet/index5";
-import covidScreen from "./src/scenes/covid/index";
-import covidWebScreen from "./src/scenes/covid/webViewCovid";
-import covidVerifyOTPScreen from "./src/scenes/covid/verifyOTP";
-import { TimeSheetApprovals } from "./src/scenes/timesheet/timesheetDashboard/timesheetApprovals";
-import LoginScreen2 from "./src/scenes/login/LoginScreen2";
-import DashboardNew2 from "./src/scenes/Dashboard/DashboardNew2";
-import IdCardScreen from "./src/scenes/IDCard/IdCardScreen";
-import SurveyITDesk from "./src/scenes/ISD/Survey";
-import HrassistMyrequest from "./src/scenes/hrassist/hrassistmyrequest";
-import HRAssistCreate from "./src/scenes/hrassist/hrassistcreate";
-const WIDTH = Dimensions.get("window").width;
-const drawerConfig = {
-  contentComponent: SideMenu,
-  drawerWidth: WIDTH * 0.8,
-  drawerPosition: "right",
-};
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
+import LoginScreen from './src/scenes/login';
+import HomeScreen from './src/scenes/home';
+import SupervisorSelectionScreen from './src/scenes/supervisorSelection';
+import TokenScreen from './src/scenes/token';
+import DashBoardScreen from './src/scenes/Dashboard';
+import HRAssist from './src/scenes/hrassist';
+import MyInfoScreen from './src/scenes/MyInfo';
+import VoucherDetailScreen from './src/scenes/voucherDetails';
+import TravelScreen from './src/scenes/travel';
+import TravelActionScreen from './src/scenes/travel/TravelActionScreen';
+import VisaScreen from './src/scenes/visa';
+import VisaApproveRejectScreen from './src/scenes/visa/visaApproveReject';
+import VisitingCardScreen from './src/scenes/visitingCard';
+import VisitingApproveRejectScreen from './src/scenes/visitingCard/visitingApproveReject';
+import ECRPScreen from './src/scenes/ecrp';
+import ECRPApproveReject from './src/scenes/ecrp/ecrpApproveReject';
+import ECRPLetter from './src/scenes/ecrp/ecrpLetter';
+import CDSScreen from './src/scenes/cds';
+import CDSDetails from './src/scenes/cds/cdsDetails';
+import CDSApproveReject from './src/scenes/cds/cdsApproveReject';
+import ExitScreen from './src/scenes/eExit';
+import ExitDetails from './src/scenes/eExit/exitDetails';
+import ExitApproveReject from './src/scenes/eExit/exitApproveReject';
+import AddressScreen from './src/scenes/address';
+import GratuityScreen from './src/scenes/gratuity/index';
+import CommunicationScreen from './src/scenes/communication/index';
+import FamilyScreen from './src/scenes/family';
+import HolidayScreen from './src/scenes/holiday';
+import LeaveScreen from './src/scenes/leaves/index';
+import LeaveActionsScreen from './src/scenes/leaves/LeaveActionsScreen';
+import MyWebView from './src/scenes/Web/MyWebView';
+import AttendanceScreen from './src/scenes/attendance/AttendanceScreen';
+import createLeave from './src/scenes/createLeave';
+import AuthScreen from './src/scenes/auth/AuthScreen';
+import AdLoginScreen from './src/scenes/login/AdLogin';
+import TravelAdvanceScreen from './src/scenes/travelAdvance';
+import TravelAdvanceApproveRejectScreen from './src/scenes/travelAdvance/travelAdvanceApproveReject';
+import EESScreen from './src/scenes/EES';
+import EESQuestionScreen from './src/scenes/EES/eesQuestionScreen';
+import PendingRequestScreen from './src/scenes/ISD/pendingRequest';
+import ITPendingDetails from './src/scenes/ISD/pendingRequest/pendingRequestDetails';
+import ITDeskDashboard from './src/scenes/ISD/ITDeskDashboard';
+import CreateRequestScreen from './src/scenes/ISD/createRequest';
+import MyRequestScreen from './src/scenes/ISD/myRequest/MyRequestScreen';
+import VoucherDashBoard from './src/scenes/Voucher/VoucherDashBoard';
+import CreateVoucher from './src/scenes/Voucher/createVoucher/index';
+import CreateVoucher2 from './src/scenes/Voucher/createVoucher/CreateVoucher_2';
+import MyVoucherScreen from './src/scenes/Voucher/MyVoucher/MyVoucherScreen';
+import CreateGenericVouchers from './src/scenes/Voucher/createGenericVoucher/index';
+import CreateLtaVoucher from './src/scenes/Voucher/LTAVoucher/index';
+import CreateUSVoucherScreen from './src/scenes/Voucher/USVoucher';
+import SchemeAndPolicyScreen from './src/scenes/schemeAndPolicy/index';
+// import { SideMenu } from "./src/components/SideMenu";
+import SchemsDetails from './src/scenes/schemeAndPolicy/SchemsDetails';
+import schemePDFView from './src/scenes/schemeAndPolicy/schemePDFView';
+import TimesheetDashboardScreen from './src/scenes/timesheet/timesheetDashboard';
+import MyTimesheetScreen4 from './src/scenes/timesheet/myTimesheet/index4';
+import MyTimesheetScreen5 from './src/scenes/timesheet/myTimesheet/index5';
+import covidScreen from './src/scenes/covid/index';
+import covidWebScreen from './src/scenes/covid/webViewCovid';
+import covidVerifyOTPScreen from './src/scenes/covid/verifyOTP';
+import { TimeSheetApprovals } from './src/scenes/timesheet/timesheetDashboard/timesheetApprovals';
+import LoginScreen2 from './src/scenes/login/LoginScreen2';
+import DashboardNew2 from './src/scenes/Dashboard/DashboardNew2';
+import IdCardScreen from './src/scenes/IDCard/IdCardScreen';
+import SurveyITDesk from './src/scenes/ISD/Survey';
+import HrassistMyrequest from './src/scenes/hrassist/hrassistmyrequest';
+import HRAssistCreate from './src/scenes/hrassist/hrassistcreate';
 
-// const SchemePolicyDrawer = createDrawerNavigator({
-//       SchemePolicyStack : createStackNavigator({
-//         Schemes:{
-//           screen:SchemeAndPolicyScreen,
-//           navigationOptions :{
-//             header: null
-//           }
-//         }
-//       })
-// },drawerConfig
-// )
-const FamilyStack = createStackNavigator({
-  Family: {
-    screen: FamilyScreen,
-    navigationOptions: {
-      header: null,
-    },
-  },
-});
-const HolidayStack = createStackNavigator({
-  Leave: {
-    screen: HolidayScreen,
-    navigationOptions: {
-      header: null,
-    },
-  },
-});
 const LeaveStack = createStackNavigator({
   Leave: {
     screen: LeaveScreen,
@@ -319,13 +284,13 @@ const AppNavigator = createStackNavigator(
       },
     },
     FamilyRoute: {
-      screen: FamilyStack,
+      screen: FamilyScreen,
       navigationOptions: {
         header: null,
       },
     },
     HolidayRoute: {
-      screen: HolidayStack,
+      screen: HolidayScreen,
       navigationOptions: {
         header: null,
       },
@@ -518,7 +483,7 @@ const AppNavigator = createStackNavigator(
     },
   },
   {
-    initialRouteName: "Auth",
+    initialRouteName: 'Auth',
   }
 );
 

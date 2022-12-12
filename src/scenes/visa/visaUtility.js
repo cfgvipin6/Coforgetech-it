@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import {
   View,
   Text,
@@ -8,22 +8,22 @@ import {
   KeyboardAvoidingView,
   TextInput,
   Alert,
-} from "react-native";
-import { styles } from "./styles.js";
-import { SearchBar, Image } from "react-native-elements";
-let constants = require("./constants");
-import { globalFontStyle } from "../../components/globalFontStyle";
-import { isValidString } from "../../utilities/validation";
+} from 'react-native';
+import { styles } from './styles.js';
+import { SearchBar, Image } from 'react-native-elements';
+let constants = require('./constants');
+import { globalFontStyle } from '../../components/globalFontStyle';
+import { isValidString } from '../../utilities/validation';
 
 export const userDetail = (empData, action) => {
   let startDate =
     empData.TravelStartDate === undefined
-      ? ""
-      : empData.TravelStartDate.replace(/-/g, " ");
+      ? ''
+      : empData.TravelStartDate.replace(/-/g, ' ');
   let endDate =
     empData.TravelEndDate === undefined
-      ? ""
-      : empData.TravelEndDate.replace(/-/g, " ");
+      ? ''
+      : empData.TravelEndDate.replace(/-/g, ' ');
   return (
     <View style={styles.userInfoView}>
       <ImageBackground style={styles.cardBackground} resizeMode="cover">
@@ -58,13 +58,13 @@ export const userDetail = (empData, action) => {
             empData.IsOtherProject
           )}
           {this.showVisaRowGrid(
-            empData.IsOtherProject === "Yes"
+            empData.IsOtherProject === 'Yes'
               ? constants.ALTERNATE_COST_CENTER_TEXT
               : constants.COST_CENTER_TEXT,
             empData.CostCode
           )}
           {this.showVisaRowGrid(
-            empData.IsOtherProject === "Yes"
+            empData.IsOtherProject === 'Yes'
               ? constants.ALTERNATE_PROJECT_TEXT
               : constants.PROJECT_TEXT,
             empData.ProjectName
@@ -90,9 +90,9 @@ export const userDetail = (empData, action) => {
 };
 
 showVisaRowGrid = (itemName, itemValue) => {
-  if (itemValue != "" && itemValue != undefined && itemValue != null) {
+  if (itemValue != '' && itemValue != undefined && itemValue != null) {
     return (
-      <View style={{ flexDirection: "row" }}>
+      <View style={{ flexDirection: 'row' }}>
         <Text style={[styles.textOne, globalFontStyle.imageBackgroundLayout]}>
           {itemName}
         </Text>
@@ -114,7 +114,7 @@ approverInfoView = (empData, action) => {
   ) {
     return (
       <View style={styles.approverInfoView}>
-        <View style={{ height: 1, backgroundColor: "grey" }} />
+        <View style={{ height: 1, backgroundColor: 'grey' }} />
         <View style={styles.keyValueTextView}>
           <View style={styles.keyValueInnerTextView}>
             <Text style={styles.keyText}>
@@ -153,7 +153,7 @@ export const submitToAction = (
     !refs.state.supervisorList.length > 0
       ? constants.CHANGE_TEXT
       : constants.CANCEL_TEXT;
-  if (action === "Approved") {
+  if (action === 'Approved') {
     return (
       <View style={styles.actionButton}>
         <Text style={styles.actionText}>{constants.SUBMIT_TO_TEXT}</Text>
@@ -183,14 +183,14 @@ export const renderRemarksView = (refs) => {
         <TextInput
           autoCapitalize="none"
           autoCorrect={false}
-          autoCompleteType={false}
+          autoCompleteType="off"
           multiline={true}
           maxLength={200}
           onChangeText={(text) => refs.setState({ remarks: text })}
           value={refs.state.remarks}
           placeholder="Remarks"
           style={{
-            width: "100%",
+            width: '100%',
             paddingLeft: 10,
             paddingTop: 10,
             paddingBottom: 10,

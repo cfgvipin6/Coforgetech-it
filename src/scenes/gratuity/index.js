@@ -2,8 +2,8 @@
 Author: Anjali Bali
 */
 
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import { connect } from "react-redux";
 import {
   Text,
   View,
@@ -12,21 +12,20 @@ import {
   LayoutAnimation,
   Image,
   ImageBackground,
-} from 'react-native';
-import { Card } from 'react-native-elements';
-import ActivityIndicatorView from '../../GlobalComponent/myActivityIndicator';
-import { gratuityAction, resetGratuityData } from './gratuityAction';
-import { styles } from './styles';
-import { globalFontStyle } from '../../components/globalFontStyle';
-import { ScrollView } from 'react-native-gesture-handler';
-import { writeLog } from '../../utilities/logger';
-import UserMessage from '../../components/userMessage';
-let constants = require('./constants');
-let globalConstants = require('../../GlobalConstants');
-import Accordion from 'react-native-collapsible/Accordion';
-import images from '../../images';
-import { AppStyle } from '../commonStyle';
-import SubHeader from '../../GlobalComponent/SubHeader';
+} from "react-native";
+import ActivityIndicatorView from "../../GlobalComponent/myActivityIndicator";
+import { gratuityAction, resetGratuityData } from "./gratuityAction";
+import { styles } from "./styles";
+import { globalFontStyle } from "../../components/globalFontStyle";
+import { ScrollView } from "react-native-gesture-handler";
+import { writeLog } from "../../utilities/logger";
+import UserMessage from "../../components/userMessage";
+let constants = require("./constants");
+let globalConstants = require("../../GlobalConstants");
+import images from "../../images";
+import { AppStyle } from "../commonStyle";
+import SubHeader from "../../GlobalComponent/SubHeader";
+import { GratuityInfo } from "./gratuityInfo";
 class GratuityScreen extends Component {
   constructor(props) {
     super(props);
@@ -43,7 +42,7 @@ class GratuityScreen extends Component {
       gratuity_height: 0,
       gratuity_expand: false,
       errorPopUp: false,
-      isError: '',
+      isError: "",
       gratuityPopUp: false,
       leaveArray: [],
       activeSections: [
@@ -54,11 +53,11 @@ class GratuityScreen extends Component {
     };
   }
   componentDidUpdate(previousProps, previousState) {
-    console.log('Gratuity Data : ', this.props.gratuityData);
+    console.log("Gratuity Data : ", this.props.gratuityData);
     if (
       this.props.gratuity_error &&
       this.props.gratuity_error.length > 0 &&
-      this.state.isError === ''
+      this.state.isError === ""
     ) {
       setTimeout(() => {
         this.setState({ errorPopUp: true, isError: this.props.gratuity_error });
@@ -66,7 +65,7 @@ class GratuityScreen extends Component {
     } else if (
       this.props.gratuityData &&
       this.props.gratuityData.length > 0 &&
-      this.props.gratuityData.hasOwnProperty('leave') &&
+      this.props.gratuityData.hasOwnProperty("leave") &&
       this.props.gratuityData.OutSource &&
       this.props.gratuityData.OutSource.IsActive &&
       this.props.gratuityData.OutSource.IsActive === true
@@ -89,15 +88,15 @@ class GratuityScreen extends Component {
         }
       }
       this.setState({ leaveArray: leaves }, () => {
-        console.log('Leaves array pushed :', this.state.leaveArray);
+        console.log("Leaves array pushed :", this.state.leaveArray);
       });
     }
   }
   componentDidMount() {
-    writeLog('Landed on ' + 'GratuityScreen');
+    writeLog("Landed on " + "GratuityScreen");
     this.getGratuityScreenData();
     BackHandler.addEventListener(
-      'hardwareBackPress',
+      "hardwareBackPress",
       this.handleBackButtonClick
     );
   }
@@ -109,7 +108,7 @@ class GratuityScreen extends Component {
   }
   componentWillUnmount() {
     BackHandler.removeEventListener(
-      'hardwareBackPress',
+      "hardwareBackPress",
       this.handleBackButtonClick
     );
   }
@@ -150,9 +149,9 @@ class GratuityScreen extends Component {
   };
 
   showGratuityCalculation(data) {
-    console.log('Gratuity Details : ', data);
+    console.log("Gratuity Details : ", data);
     if (
-      data?.hasOwnProperty('gratuityDetails') &&
+      data?.hasOwnProperty("gratuityDetails") &&
       data?.GratuityVIsible?.IsActive === true
     ) {
       let currentDate = data.gratuityDetails[0].Basicdate.Value;
@@ -180,7 +179,7 @@ class GratuityScreen extends Component {
             <View>
               {this.gratuityCalculationView(
                 data.gratuityDetails[0].LastBasic.Key,
-                constants.LAST_BASIC_DATE + ' ' + currentDate,
+                constants.LAST_BASIC_DATE + " " + currentDate,
                 data.gratuityDetails[0].LastBasic.Value
               )}
             </View>
@@ -203,7 +202,7 @@ class GratuityScreen extends Component {
               )}
             </View>
           ) : null}
-          {data?.gratuityDetails[0]?.days?.Value.split(' ')[0] < 1700 && (
+          {data?.gratuityDetails[0]?.days?.Value.split(" ")[0] < 1700 && (
             <Text style={styles.messageStyle}>{constants.MESSAGE}</Text>
           )}
         </View>
@@ -214,8 +213,8 @@ class GratuityScreen extends Component {
   }
   onOkClick = () => {
     this.props.resetGratuityPage();
-    this.setState({ errorPopUp: false, isError: '' }, () => {
-      this.props.navigation.navigate('Login');
+    this.setState({ errorPopUp: false, isError: "" }, () => {
+      this.props.navigation.navigate("Login");
     });
   };
   ResetDataAfterLogout() {
@@ -236,8 +235,8 @@ class GratuityScreen extends Component {
   };
   onOkPress() {
     this.props.resetGratuityPage();
-    this.setState({ gratuityPopUp: false, isError: '' }, () => {
-      this.props.navigation.navigate('DashBoardNew2');
+    this.setState({ gratuityPopUp: false, isError: "" }, () => {
+      this.props.navigation.navigate("DashBoardNew2");
     });
   }
 
@@ -254,16 +253,16 @@ class GratuityScreen extends Component {
     );
   };
   handleBack() {
-    writeLog('Clicked on ' + 'handleBack' + ' of ' + 'GratuityScreen');
+    writeLog("Clicked on " + "handleBack" + " of " + "GratuityScreen");
     this.props.resetGratuityPage();
     // this.props.navigation.navigate("DashBoardNew")
     this.props.navigation.pop();
   }
   renderReimbursementData() {
     let data = this.props.gratuityData;
-    console.log('Gratuity data : ', data);
+    console.log("Gratuity data : ", data);
     if (
-      data.hasOwnProperty('reimbursements') &&
+      data.hasOwnProperty("reimbursements") &&
       data?.KityBalance?.IsActive === true
     ) {
       return (
@@ -271,46 +270,29 @@ class GratuityScreen extends Component {
           {data.reimbursements?.LTA.IsActive ? (
             <View>
               <View style={styles.seperatorView} />
-
-              <View style={styles.displayItemsView}>
-                <Text style={globalFontStyle.cardLeftText}>
-                  {data.reimbursements.LTA.Key}
-                </Text>
-                <Text style={styles.rightSideVal}>
-                  {data.reimbursements.LTA.Value}
-                </Text>
-              </View>
+              <GratuityInfo
+                label={data.reimbursements.LTA.Key}
+                value={data.reimbursements.LTA.Value}
+              />
             </View>
           ) : null}
           {data.reimbursements?.Petrol.IsActive ? (
-            <View style={styles.displayItemsView}>
-              <Text style={globalFontStyle.cardLeftText}>
-                {data.reimbursements.Petrol.Key}
-              </Text>
-              <Text style={styles.rightSideVal}>
-                {data.reimbursements.Petrol.Value}
-              </Text>
-            </View>
+            <GratuityInfo
+              label={data.reimbursements.Petrol.Key}
+              value={data.reimbursements.Petrol.Value}
+            />
           ) : null}
           {data.reimbursements?.Mobile.IsActive ? (
-            <View style={styles.displayItemsView}>
-              <Text style={globalFontStyle.cardLeftText}>
-                {data.reimbursements.Mobile.Key}
-              </Text>
-              <Text style={styles.rightSideVal}>
-                {data.reimbursements.Mobile.Value}
-              </Text>
-            </View>
+            <GratuityInfo
+              label={data.reimbursements.Mobile.Key}
+              value={data.reimbursements.Mobile.Value}
+            />
           ) : null}
           {data.reimbursements?.Driver.IsActive ? (
-            <View style={styles.displayItemsView}>
-              <Text style={globalFontStyle.cardLeftText}>
-                {data.reimbursements.Driver.Key}
-              </Text>
-              <Text style={styles.rightSideVal}>
-                {data.reimbursements.Driver.Value}
-              </Text>
-            </View>
+            <GratuityInfo
+              label={data.reimbursements.Driver.Key}
+              value={data.reimbursements.Driver.Value}
+            />
           ) : null}
         </View>
       );
@@ -322,14 +304,11 @@ class GratuityScreen extends Component {
   renderLeaveDetails = () => {
     return this.state.leaveArray.map((leave) => {
       return (
-        <View>
-          <View style={styles.displayItemsView}>
-            <Text style={globalFontStyle.cardLeftText}>{leave.Key}</Text>
-            <Text style={styles.rightSideVal}>
-              {parseInt(leave.Value).toFixed(2)}
-            </Text>
-          </View>
-        </View>
+        <GratuityInfo
+          key={leave.Key}
+          label={leave.Key}
+          value={parseInt(leave.Value).toFixed(2)}
+        />
       );
     });
   };
@@ -355,10 +334,10 @@ class GratuityScreen extends Component {
             leave_collapse: true,
             leave_height: 150,
             leave_expand: true,
-			reimb_collapse: false,
+            reimb_collapse: false,
             reimb_height: 0,
             reimb_expand: false,
-			gratuity_collapse: false,
+            gratuity_collapse: false,
             gratuity_height: 0,
             gratuity_expand: false,
           });
@@ -377,10 +356,10 @@ class GratuityScreen extends Component {
             reimb_collapse: true,
             reimb_height: 150,
             reimb_expand: true,
-			leave_collapse: false,
+            leave_collapse: false,
             leave_height: 0,
             leave_expand: false,
-			gratuity_collapse: false,
+            gratuity_collapse: false,
             gratuity_height: 0,
             gratuity_expand: false,
           });
@@ -399,10 +378,10 @@ class GratuityScreen extends Component {
             gratuity_collapse: true,
             gratuity_height: 150,
             gratuity_expand: true,
-			reimb_collapse: false,
+            reimb_collapse: false,
             reimb_height: 0,
             reimb_expand: false,
-			leave_collapse: false,
+            leave_collapse: false,
             leave_height: 0,
             leave_expand: false,
           });
@@ -441,18 +420,18 @@ class GratuityScreen extends Component {
               // end={{ x: 0, y: 0 }}
               // colors={['#fff','#D3E5FC']}
               style={{
-                paddingHorizontal: '2%',
-                paddingVertical: '3%',
+                paddingHorizontal: "2%",
+                paddingVertical: "3%",
                 borderRadius: 5,
-				borderColor:'#EDE6D6',
-        backgroundColor:'#F6FAFD',
-				borderWidth:0.5,
+                borderColor: "#EDE6D6",
+                backgroundColor: "#F6FAFD",
+                borderWidth: 0.5,
               }}
             >
               {this.state.leave_collapse === true ? (
                 <View>
                   {this.renderHeader(this.state.leave_collapse, heading)}
-				  <View style={styles.seperatorView}/>
+                  <View style={styles.seperatorView} />
                   {this.renderLeaveDetails()}
                 </View>
               ) : (
@@ -479,12 +458,12 @@ class GratuityScreen extends Component {
               // end={{ x: 0, y: 0 }}
               // colors={['#fff','#D3E5FC']}
               style={{
-                paddingHorizontal: '2%',
-                paddingVertical: '3%',
+                paddingHorizontal: "2%",
+                paddingVertical: "3%",
                 borderRadius: 5,
-				borderColor:'#EDE6D6',
-				borderWidth:0.5,
-        backgroundColor:'#F6FAFD',
+                borderColor: "#EDE6D6",
+                borderWidth: 0.5,
+                backgroundColor: "#F6FAFD",
               }}
             >
               {this.state.reimb_collapse === true ? (
@@ -516,18 +495,18 @@ class GratuityScreen extends Component {
               // end={{ x: 0, y: 0 }}
               // colors={['#fff','#D3E5FC']}
               style={{
-                paddingHorizontal: '2%',
-                paddingVertical: '3%',
+                paddingHorizontal: "2%",
+                paddingVertical: "3%",
                 borderRadius: 5,
-				borderColor:'#EDE6D6',
-				borderWidth:0.5,
-        backgroundColor:'#F6FAFD',
+                borderColor: "#EDE6D6",
+                borderWidth: 0.5,
+                backgroundColor: "#F6FAFD",
               }}
             >
               {this.state.gratuity_collapse === true ? (
                 <View>
                   {this.renderHeader(this.state.gratuity_collapse, heading)}
-				  <View style={styles.seperatorView}/>
+                  <View style={styles.seperatorView} />
                   {this.showGratuityCalculation(this.props.gratuityData)}
                 </View>
               ) : (
@@ -544,41 +523,37 @@ class GratuityScreen extends Component {
 
   render() {
     return (
-      <ImageBackground
-      style={{flex:1}}
-      source={images.loginBackground}
-    >
-      <View style={styles.container}>
-        <ActivityIndicatorView loader={this.props.gratuity_pending} />
-        <SubHeader
-         pageTitle={globalConstants.GRATUITY_TITLE}
-					backVisible={true}
-					logoutVisible={true}
-					handleBackPress={() => this.handleBack()}
-					navigation={this.props.navigation}
-				/>
-        {/* <Header backVisible={true} handleBackPress={() => this.handleBack()} props={this.props} /> */}
-        {this.state.gratuityPopUp === true ? (
-          this.showNoBalanceMessage()
-        ) : (
-		  <View style={{flex:1 }}>
-		  {/* <Text style={[AppStyle.font.fontRegular,{color:AppStyle.color.iengageTheme,marginTop:'5%',marginLeft:'6%'}]}>My Balances</Text> */}
-		  <ScrollView
-      	keyboardShouldPersistTaps="handled"
-            showsVerticalScrollIndicator={false}
-            style={styles.scrollPadding}
-          >
-            {this.renderLeaveBalance(constants.LEAVE_HEADING)}
-            {this.renderReimbursement(constants.REIMBURSEMENTS_HEADING)}
-            {this.renderGratuityCalculation(constants.GRATUITY_CALCULATION)}
-            {/* {this.renderReimbursementData()}
+      <ImageBackground style={{ flex: 1 }} source={images.loginBackground}>
+        <View style={styles.container}>
+          <ActivityIndicatorView loader={this.props.gratuity_pending} />
+          <SubHeader
+            pageTitle={globalConstants.GRATUITY_TITLE}
+            backVisible={true}
+            logoutVisible={true}
+            handleBackPress={() => this.handleBack()}
+            navigation={this.props.navigation}
+          />
+          {/* <Header backVisible={true} handleBackPress={() => this.handleBack()} props={this.props} /> */}
+          {this.state.gratuityPopUp === true ? (
+            this.showNoBalanceMessage()
+          ) : (
+            <View style={{ flex: 1 }}>
+              {/* <Text style={[AppStyle.font.fontRegular,{color:AppStyle.color.iengageTheme,marginTop:'5%',marginLeft:'6%'}]}>My Balances</Text> */}
+              <ScrollView
+                keyboardShouldPersistTaps="handled"
+                showsVerticalScrollIndicator={false}
+                style={styles.scrollPadding}
+              >
+                {this.renderLeaveBalance(constants.LEAVE_HEADING)}
+                {this.renderReimbursement(constants.REIMBURSEMENTS_HEADING)}
+                {this.renderGratuityCalculation(constants.GRATUITY_CALCULATION)}
+                {/* {this.renderReimbursementData()}
             {this.showGratuityCalculation(this.props.gratuityData)} */}
-          </ScrollView>
-		  </View>
-
-        )}
-        {this.state.errorPopUp === true ? this.showError() : null}
-      </View>
+              </ScrollView>
+            </View>
+          )}
+          {this.state.errorPopUp === true ? this.showError() : null}
+        </View>
       </ImageBackground>
     );
   }

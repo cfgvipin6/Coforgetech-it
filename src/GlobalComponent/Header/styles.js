@@ -1,14 +1,12 @@
-import { Dimensions, StyleSheet } from 'react-native';
-import { moderateScale } from '../../components/fontScaling';
+import {StyleSheet } from 'react-native';
+import { moderateScale, setHeight, setWidth } from '../../components/fontScaling';
 import { AppStyle } from '../../scenes/commonStyle';
 let appConfig = require('../../../appconfig');
-const screenWidth = Dimensions.get('window').width;
-const screenHeight = Dimensions.get('window').height;
 
 export const styles = StyleSheet.create({
     containerView: {
-        width: screenWidth,
-        height:screenHeight * 8 / 100,
+        width: setWidth(100),
+        height:setHeight(8),
         backgroundColor:appConfig.WHITE_COLOR,
         justifyContent:'center',
         alignItems:'flex-start',

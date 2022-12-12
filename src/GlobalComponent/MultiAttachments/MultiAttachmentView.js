@@ -15,7 +15,6 @@ import {
 } from 'react-native';
 import RNFetchBlob from 'rn-fetch-blob';
 import DocumentPicker from 'react-native-document-picker';
-import { RNCamera } from 'react-native-camera';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   AttachmentUpload,
@@ -79,7 +78,7 @@ const filePicker = async (
         res,
         setLoading,
         updateFiles,
-        docType,
+        docType
       )
     );
   } catch (err) {
@@ -134,10 +133,9 @@ export const MultiAttachmentView = (props) => {
     fileArrayTemp.push(updatedFiles);
     let lineItemArray = props?.lineItems;
     itemFileArray = updatedFiles;
-    if (lineItemArray[props.itemIndex]?.LstUploadFiles){
+    if (lineItemArray[props.itemIndex]?.LstUploadFiles) {
       lineItemArray[props.itemIndex].LstUploadFiles.push(...updatedFiles);
-    }
-    else {
+    } else {
       lineItemArray[0].LstUploadFiles = [];
       lineItemArray[0].LstUploadFiles.push(...updatedFiles);
     }
@@ -205,7 +203,7 @@ export const MultiAttachmentView = (props) => {
       downloadAttachment(loginData, ERowId, setLoading, openDownloadedFile)
     );
   };
-  const handleCamera = (props,type) => {
+  const handleCamera = (props, type) => {
     const options = {
       title: 'Click picture',
       storageOptions: { skipBackup: true, path: 'images' },
@@ -218,12 +216,22 @@ export const MultiAttachmentView = (props) => {
       } else if (response.customButton) {
         console.log('User tapped custom button: ', response.customButton);
       } else {
-        cameraCallBackFromCameraScreen(response, props.docNumber, props.rowId, type);
+        cameraCallBackFromCameraScreen(
+          response,
+          props.docNumber,
+          props.rowId,
+          type
+        );
       }
     });
   };
 
-  const cameraCallBackFromCameraScreen = (data, documentNumber, rowID, type) => {
+  const cameraCallBackFromCameraScreen = (
+    data,
+    documentNumber,
+    rowID,
+    type
+  ) => {
     let fileName =
       data.fileName === undefined
         ? data.uri.substring(data.uri.lastIndexOf('-') + 1, data.uri.length)
@@ -266,17 +274,18 @@ export const MultiAttachmentView = (props) => {
   });
 
   const onDocTypeSelection = (type) => {
-    if (type == 'DL' && fileData.filter((file)=> file.DocumentType == 'DL').length > 0){
-          return alert('You have already uploaded the DL. If you want to update the DL, please delete the existing DL from the below list and upload the new one.');
+    if (
+      type == 'DL' &&
+      fileData.filter((file) => file.DocumentType == 'DL').length > 0
+    ) {
+      return alert(
+        'You have already uploaded the DL. If you want to update the DL, please delete the existing DL from the below list and upload the new one.'
+      );
     }
     setModalVisible(false);
     switch (hardWareType) {
       case 'Camera':
-        setTimeout(
-          () =>
-           handleCamera(props,type),
-          600
-        );
+        setTimeout(() => handleCamera(props, type), 600);
         break;
       case 'FilePicker':
         setTimeout(
@@ -296,7 +305,6 @@ export const MultiAttachmentView = (props) => {
         );
         break;
     }
-
   };
   return (
     <View style={styles.container}>
@@ -328,7 +336,7 @@ export const MultiAttachmentView = (props) => {
                     props.docNumber,
                     props.rowId,
                     updateFiles,
-                    undefined,
+                    undefined
                   );
                 }
               }}
@@ -362,7 +370,7 @@ export const MultiAttachmentView = (props) => {
       </View>
       {fileData?.map((imageItem) => {
         return (
-          <View style={{ flex: 1 }}>
+          <View key={imageItem?.FileName} style={{ flex: 1 }}>
             <View style={styles.fileItem} key={imageItem?.RowID}>
               <TouchableOpacity
                 style={styles.fileName}
@@ -375,7 +383,9 @@ export const MultiAttachmentView = (props) => {
                 }}
               >
                 <Text style={styles.fileHeadingStyle}>
-                  {imageItem?.DocumentType ? imageItem?.FileName + '(' + imageItem.DocumentType + ')' : imageItem?.FileName }
+                  {imageItem?.DocumentType
+                    ? imageItem?.FileName + '(' + imageItem.DocumentType + ')'
+                    : imageItem?.FileName}
                 </Text>
               </TouchableOpacity>
               {!props.disable ? (
@@ -410,39 +420,39 @@ export const MultiAttachmentView = (props) => {
         );
       })}
       <Modal
-              visible={modalVisible}
-              animationType="slide"
-              transparent={true}
-              onRequestClose={() => {
-                setModalVisible(!modalVisible);
-              }}
+        visible={modalVisible}
+        animationType="slide"
+        transparent={true}
+        onRequestClose={() => {
+          setModalVisible(!modalVisible);
+        }}
+      >
+        <View style={styles.modalView}>
+          <View style={styles.modalContainer}>
+            <TouchableOpacity
+              onPress={() => setModalVisible(false)}
+              style={styles.closeButton}
             >
-              <View style={styles.modalView}>
-                <View style={styles.modalContainer}>
-                  <TouchableOpacity
-                    onPress={() => setModalVisible(false)}
-                    style={styles.closeButton}
-                  >
-                    <Image source={images.crossButton} />
-                  </TouchableOpacity>
-                  <Text style={{ alignSelf: 'center' }}>
-                    Please select the document type.
-                  </Text>
-                  <TouchableOpacity
-                    style={styles.modalButton}
-                    onPress={() => onDocTypeSelection('DL')}
-                  >
-                    <Text>Driving License</Text>
-                  </TouchableOpacity>
-                  <TouchableOpacity
-                    style={styles.modalButton}
-                    onPress={() => onDocTypeSelection('Invoice')}
-                  >
-                    <Text>Invoice</Text>
-                  </TouchableOpacity>
-                </View>
-              </View>
-            </Modal>
+              <Image source={images.crossButton} />
+            </TouchableOpacity>
+            <Text style={{ alignSelf: 'center' }}>
+              Please select the document type.
+            </Text>
+            <TouchableOpacity
+              style={styles.modalButton}
+              onPress={() => onDocTypeSelection('DL')}
+            >
+              <Text>Driving License</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.modalButton}
+              onPress={() => onDocTypeSelection('Invoice')}
+            >
+              <Text>Invoice</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </Modal>
     </View>
   );
 };

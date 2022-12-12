@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import {
   View,
   Text,
@@ -8,24 +8,24 @@ import {
   TextInput,
   NativeModules,
   ImageBackground,
-} from "react-native";
-import SubHeader from "../../GlobalComponent/SubHeader";
-let globalConstants = require("../../GlobalConstants");
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { globalFontStyle } from "../../components/globalFontStyle";
-import images from "../../images";
-let appConfig = require("../../../appconfig");
+} from 'react-native';
+import SubHeader from '../../GlobalComponent/SubHeader';
+let globalConstants = require('../../GlobalConstants');
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { globalFontStyle } from '../../components/globalFontStyle';
+import images from '../../images';
+let appConfig = require('../../../appconfig');
 // let Aes = NativeModules.Aes
 
 class covidVerifyOTPScreen extends Component {
   constructor(props) {
     super(props);
     previousScreenData = this.props.navigation.state.params;
-    console.log("prevData:", previousScreenData);
+    console.log('prevData:', previousScreenData);
     this.state = {
-      otpNo: "",
-      otpHashNo: "",
+      otpNo: '',
+      otpHashNo: '',
       timer: 180,
     };
   }
@@ -64,10 +64,10 @@ class covidVerifyOTPScreen extends Component {
 
   btnPress = () => {
     // this.encryptInfo(this.state.otpNo)
-    if (this.state.otpNo === "") {
-      Alert.alert("Please Enter Valid OTP.");
+    if (this.state.otpNo === '') {
+      Alert.alert('Please Enter Valid OTP.');
     } else {
-      console.log("111111");
+      console.log('111111');
       // sha256(this.state.otpNo).then(myHash => {
       //   this.setState({
       //     otpHashNo: myHash
@@ -75,11 +75,11 @@ class covidVerifyOTPScreen extends Component {
       //   console.log(this.state.otpHashNo);
       //   console.log(previousScreenData.userTxnId.trim());
       // });
-      fetch("https://cdn-api.co-vin.in/api/v2/auth/public/confirmOTP", {
-        method: "POST",
+      fetch('https://cdn-api.co-vin.in/api/v2/auth/public/confirmOTP', {
+        method: 'POST',
         headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           otp: this.state.otpHashNo,
@@ -87,13 +87,13 @@ class covidVerifyOTPScreen extends Component {
         }),
       })
         .then((res) => {
-          console.log("confirm res", res);
+          console.log('confirm res', res);
           return res.json();
         })
         .then((resData) => {
-          console.log("my OTP", this.state.otpNo);
-          console.log("myfinalhash OTP", this.state.otpHashNo);
-          console.log("2222", resData);
+          console.log('my OTP', this.state.otpNo);
+          console.log('myfinalhash OTP', this.state.otpHashNo);
+          console.log('2222', resData);
         });
     }
   };
@@ -104,7 +104,7 @@ class covidVerifyOTPScreen extends Component {
         <View style={globalFontStyle.container}>
           <View style={globalFontStyle.subHeaderViewGlobal}>
             <SubHeader
-              pageTitle={"COWIN Verification OTP"}
+              pageTitle={'COWIN Verification OTP'}
               backVisible={true}
               logoutVisible={true}
               handleBackPress={() => this.handleBack()}
@@ -115,12 +115,12 @@ class covidVerifyOTPScreen extends Component {
             <TextInput
               autoCapitalize="none"
               autoCorrect={false}
-              autoCompleteType={false}
+              autoCompleteType="off"
               placeholder="Enter OTP sent to your mobile"
               value={this.state.otpNo}
               onChangeText={(text) => this.setState({ otpNo: text })}
-              keyboardType={"numeric"}
-              style={{ alignSelf: "center" }}
+              keyboardType={'numeric'}
+              style={{ alignSelf: 'center' }}
               // onSubmitEditing={()=> this.encryptInfo(this.state.otpNo)}
             />
             <Text
@@ -129,14 +129,14 @@ class covidVerifyOTPScreen extends Component {
                   this.state.timer !== 1
                     ? appConfig.VALID_BORDER_COLOR
                     : appConfig.BLUE_TEXT_COLOR,
-                alignSelf: "center",
+                alignSelf: 'center',
                 marginBottom: 6,
-                fontWeight: "700",
+                fontWeight: '700',
               }}
             >
               {this.state.timer !== 1
-                ? this.state.timer + " sec"
-                : "Resend OTP"}
+                ? this.state.timer + ' sec'
+                : 'Resend OTP'}
             </Text>
             <Button
               title="Verify & Proceed"

@@ -1,4 +1,4 @@
-import { styles } from "./styles";
+import { styles } from './styles';
 import {
   View,
   Text,
@@ -7,18 +7,19 @@ import {
   Modal,
   FlatList,
   SafeAreaView,
-} from "react-native";
-import React, { Component } from "react";
-import ModalDropdown from "react-native-modal-dropdown";
-import { Icon, Button, SearchBar } from "react-native-elements";
-import moment from "moment";
-import DocumentPicker from "react-native-document-picker";
-import RadioForm from "react-native-simple-radio-button";
-import UserMessage from "../../components/userMessage";
-import { moderateScale } from "../../components/fontScaling.js";
-import RNFetchBlob from "rn-fetch-blob";
-import LinearGradient from "react-native-linear-gradient";
-let appConfig = require("../../../appconfig");
+  Platform,
+} from 'react-native';
+import React, { Component } from 'react';
+import ModalDropdown from 'react-native-modal-dropdown';
+import { Icon, Button, SearchBar } from 'react-native-elements';
+import moment from 'moment';
+import DocumentPicker from 'react-native-document-picker';
+import RadioForm from 'react-native-simple-radio-button';
+import UserMessage from '../../components/userMessage';
+import { moderateScale } from '../../components/fontScaling.js';
+import RNFetchBlob from 'rn-fetch-blob';
+import LinearGradient from 'react-native-linear-gradient';
+let appConfig = require('../../../appconfig');
 renderRows = (data) => {
   data.forEach((balance) => {
     return (
@@ -40,14 +41,14 @@ export const HeaderView = (props) => {
       <View style={styles.headerStyle}>
         <View style={styles.rowHolder}>
           <Text style={styles.headingText}>
-            {data[0].LeaveTypeText.Value + ":"}
+            {data[0].LeaveTypeText.Value + ':'}
           </Text>
           <Text style={styles.headingText}>{data[0].Balances.Value}</Text>
         </View>
         {data[1] && data[1].LeaveTypeText ? (
           <View style={styles.rowHolder}>
             <Text style={styles.heading}>
-              {data[1].LeaveTypeText.Value + ":"}
+              {data[1].LeaveTypeText.Value + ':'}
             </Text>
             <Text>{data[1].Balances.Value}</Text>
           </View>
@@ -78,7 +79,7 @@ export const Form = (props) => {
               <TextInput
                 autoCapitalize="none"
                 autoCorrect={false}
-                autoCompleteType={false}
+                autoCompleteType="off"
                 editable={false}
                 multiline={false}
                 style={styles.textInputStyle}
@@ -89,14 +90,14 @@ export const Form = (props) => {
           </View>
         ) : null}
         {Details.Address1.IsActive === true &&
-        Details.CompanyCode.Value !== "N005" ? (
+        Details.CompanyCode.Value !== 'N005' ? (
           <View style={styles.rowHolder}>
             <Text style={styles.heading}>{Details.Address1.Key}</Text>
             <View style={styles.description}>
               <TextInput
                 autoCapitalize="none"
                 autoCorrect={false}
-                autoCompleteType={false}
+                autoCompleteType="off"
                 onChangeText={(text) => props.address1InputHandler(text)}
                 multiline={false}
                 style={styles.textInputStyle}
@@ -107,14 +108,14 @@ export const Form = (props) => {
           </View>
         ) : null}
         {Details.Address2.IsActive === true &&
-        Details.CompanyCode.Value !== "N005" ? (
+        Details.CompanyCode.Value !== 'N005' ? (
           <View style={styles.rowHolder}>
             <Text style={styles.heading}>{Details.Address2.Key}</Text>
             <View style={styles.description}>
               <TextInput
                 autoCapitalize="none"
                 autoCorrect={false}
-                autoCompleteType={false}
+                autoCompleteType="off"
                 onChangeText={(text) => props.address2InputHandler(text)}
                 multiline={false}
                 style={styles.textInputStyle}
@@ -125,14 +126,14 @@ export const Form = (props) => {
           </View>
         ) : null}
         {Details.ContactNo.IsActive === true &&
-        Details.CompanyCode.Value !== "N005" ? (
+        Details.CompanyCode.Value !== 'N005' ? (
           <View style={styles.rowHolder}>
             <Text style={styles.heading}>{Details.ContactNo.Key}</Text>
             <View style={styles.description}>
               <TextInput
                 autoCapitalize="none"
                 autoCorrect={false}
-                autoCompleteType={false}
+                autoCompleteType="off"
                 onChangeText={(text) => {
                   props.contactNoCallBack(text);
                 }}
@@ -158,9 +159,9 @@ export const Dropdown = (parent) => {
   if (
     parent.props &&
     parent.props.length > 0 &&
-    parent.title == "Select leave type : "
+    parent.title == 'Select leave type : '
   ) {
-    console.log("data in dropdown is :", parent.props);
+    console.log('data in dropdown is :', parent.props);
     dropDownData = parent.props.map((el) => {
       parent.setLeaveCodes(el.LeaveType.Value);
       return el.LeaveTypeText.Value;
@@ -168,7 +169,7 @@ export const Dropdown = (parent) => {
   } else if (
     parent.props &&
     parent.props.length > 0 &&
-    parent.title == "Reason : "
+    parent.title == 'Reason : '
   ) {
     let reasonObject = parent.props[0];
     let reasons = [];
@@ -182,10 +183,10 @@ export const Dropdown = (parent) => {
   } else if (
     parent.props &&
     parent.props.length > 0 &&
-    parent.title === "Select family member : "
+    parent.title === 'Select family member : '
   ) {
     dropDownData = parent.props.map((el) => {
-      return "            " + el.Fnac2.Value + "            ";
+      return '            ' + el.Fnac2.Value + '            ';
     });
   }
   return (
@@ -195,7 +196,7 @@ export const Dropdown = (parent) => {
         <LinearGradient
           start={{ x: 0, y: 0 }}
           end={{ x: 1, y: 0 }}
-          colors={["#D3E5FC", "#F9F6EE"]}
+          colors={['#D3E5FC', '#F9F6EE']}
           style={styles.dropView}
         >
           <ModalDropdown
@@ -204,17 +205,17 @@ export const Dropdown = (parent) => {
               styles.dropdownStyle,
               { width: parent?.props?.desiredWidth },
             ]}
-            defaultValue={"Select"}
+            defaultValue={'Select'}
             style={styles.picker}
             textStyle={styles.pickerTextStyle}
             dropdownTextStyle={styles.dropdownTextStyle}
             showsVerticalScrollIndicator={false}
             renderSeparator={() => (
-              <View style={{ height: 1, backgroundColor: "#f68a23" }} />
+              <View style={{ height: 1, backgroundColor: '#f68a23' }} />
             )}
             onSelect={(index, value) => parent.dropDownCallBack(index, value)}
           />
-          <Icon name="arrow-drop-down" size={35} color={"#000"} />
+          <Icon name="arrow-drop-down" size={35} color={'#000'} />
         </LinearGradient>
       </View>
     </View>
@@ -223,26 +224,26 @@ export const Dropdown = (parent) => {
 export const DateDifferenceView = (props) => {
   if (
     props.startDate !== undefined &&
-    props.startDate !== "" &&
-    props.startDate !== "Start Date" &&
+    props.startDate !== '' &&
+    props.startDate !== 'Start Date' &&
     props.endDate !== undefined &&
-    props.endDate !== "End Date" &&
-    props.endDate !== ""
+    props.endDate !== 'End Date' &&
+    props.endDate !== ''
   ) {
-    let endMoment = moment(props.endDate, "DD/MMM/YYYY");
-    let startMoment = moment(props.startDate, "DD/MMM/YYYY");
-    let diff = endMoment.diff(startMoment, "days");
+    let endMoment = moment(props.endDate, 'DD/MMM/YYYY');
+    let startMoment = moment(props.startDate, 'DD/MMM/YYYY');
+    let diff = endMoment.diff(startMoment, 'days');
     if (diff == 0 || diff > 0) {
       return (
         <View style={styles.halfHolder}>
-          {props.leaveCode === "100" &&
-          props.data[0].CompanyCode.Value === "N052" ? (
+          {props.leaveCode === '100' &&
+          props.data[0].CompanyCode.Value === 'N052' ? (
             <Text style={styles.heading}>Number of hours:</Text>
           ) : (
             <Text style={styles.heading}>Number of days:</Text>
           )}
           <Text style={styles.textDays}>
-            {props.totalLeaveApplied === "" ? "" : props.totalLeaveApplied}
+            {props.totalLeaveApplied === '' ? '' : props.totalLeaveApplied}
           </Text>
         </View>
       );
@@ -267,30 +268,37 @@ export const filePicker = async (fileCallBack) => {
         DocumentPicker.types.plainText,
         DocumentPicker.types.zip,
       ],
+      readContent: true,
     });
-    let data = RNFetchBlob.fs
-      .readStream(res.uri, "base64", 4095)
-      .then((ifStream) => {
+    console.log('res ===', res);
+    let data = '';
+    if (res?.uri) {
+      let uri =
+        Platform.OS === 'ios' ? res.uri.replace('file:///', '/') : res.uri;
+      RNFetchBlob.fs.readStream(uri, 'base64', 4095).then((ifStream) => {
         ifStream.open();
         ifStream.onData((chunk) => {
           data += chunk;
         });
         ifStream.onError((error) => {
-          console.log("Oops error is :", error);
+          console.log('Oops error is :', error);
         });
         ifStream.onEnd(() => {
-          let dataToSave = data.replace("[object Object]", "");
+          let dataToSave = data.replace('[object Object]', '');
+          // console.log("base64url === ", dataToSave);
           fileCallBack(dataToSave, res.name);
         });
       });
+    }
   } catch (err) {
-    console.log("Error in file picking is :", err);
+    console.log('Error in file picking is :', err);
     if (DocumentPicker.isCancel(err)) {
     } else {
       throw err;
     }
   }
 };
+
 export const Attachment = (parent) => {
   return (
     <View style={styles.halfHolder}>
@@ -301,16 +309,16 @@ export const Attachment = (parent) => {
           filePicker(parent.fileCallBack);
         }}
       >
-        <Icon name="attachment" size={35} color={"blue"} />
+        <Icon name="attachment" size={35} color={'blue'} />
       </TouchableOpacity>
       <Text>{parent.title}</Text>
     </View>
   );
 };
 export const WorkRow = (props) => {
-  if (props.title === "Forward to supervisor") {
+  if (props.title === 'Forward to supervisor') {
     let data = props.data;
-    if (data[0].NeglectSupervisor.Value === "Y" && data[0].Docno.Value === "") {
+    if (data[0].NeglectSupervisor.Value === 'Y' && data[0].Docno.Value === '') {
       return null;
     } else {
       return (
@@ -335,7 +343,7 @@ export const WorkRow = (props) => {
 export const Iniitian = (props) => {
   let data = props.data;
   if (props.isSupervisor && data && data[0]) {
-    if (data[0].NeglectSupervisor.Value === "Y" && data[0].Docno.Value === "") {
+    if (data[0].NeglectSupervisor.Value === 'Y' && data[0].Docno.Value === '') {
       return null;
     } else {
       return (
@@ -345,7 +353,7 @@ export const Iniitian = (props) => {
               <TextInput
                 autoCapitalize="none"
                 autoCorrect={false}
-                autoCompleteType={false}
+                autoCompleteType="off"
                 editable={false}
                 multiline={false}
                 style={styles.textInputStyle}
@@ -357,7 +365,7 @@ export const Iniitian = (props) => {
               <TextInput
                 autoCapitalize="none"
                 autoCorrect={false}
-                autoCompleteType={false}
+                autoCompleteType="off"
                 editable={false}
                 multiline={false}
                 style={styles.textInputStyle}
@@ -369,7 +377,7 @@ export const Iniitian = (props) => {
           <TextInput
             autoCapitalize="none"
             autoCorrect={false}
-            autoCompleteType={false}
+            autoCompleteType="off"
             placeholder="Remarks"
             multiline={false}
             style={styles.remarksStyle}
@@ -385,7 +393,7 @@ export const Iniitian = (props) => {
       <View>
         <View>
           <View style={styles.name}>
-            {props.selectedEmpName === "" ||
+            {props.selectedEmpName === '' ||
             props.selectedEmpName === undefined ? (
               <TouchableOpacity
                 onPress={() => {
@@ -404,7 +412,7 @@ export const Iniitian = (props) => {
               >
                 <Text multiline={false} style={styles.textOther2Style}>
                   {props.selectedEmpName.substring(
-                    props.selectedEmpName.lastIndexOf(":") + 2
+                    props.selectedEmpName.lastIndexOf(':') + 2
                   )}
                 </Text>
               </TouchableOpacity>
@@ -414,7 +422,7 @@ export const Iniitian = (props) => {
         <TextInput
           autoCapitalize="none"
           autoCorrect={false}
-          autoCompleteType={false}
+          autoCompleteType="off"
           placeholder="Remarks"
           multiline={false}
           style={styles.remarksStyle}
@@ -470,7 +478,7 @@ showRequestsView = (parent) => {
         renderItem={({ item, index }) =>
           this.renderEmployeeItem(item, index, parent.pickEmployee)
         }
-        keyExtractor={(item, index) => "pendingRequest_" + index.toString()}
+        keyExtractor={(item, index) => 'pendingRequest_' + index.toString()}
         // ItemSeparatorComponent={() => (
         //   <View style={{ backgroundColor: "white" }}>
         //     <Text></Text>
@@ -521,8 +529,8 @@ export const EmployeeSearchView = (parent) => {
   );
 };
 let radio_props = [
-  { label: "1st Half", value: 0 },
-  { label: "2nd Half", value: 1 },
+  { label: '1st Half', value: 0 },
+  { label: '2nd Half', value: 1 },
 ];
 export const RadioForms = (props) => {
   return (
@@ -548,7 +556,7 @@ export const OtherReason = (props) => {
       <TextInput
         autoCapitalize="none"
         autoCorrect={false}
-        autoCompleteType={false}
+        autoCompleteType="off"
         placeholder="Other Reason"
         multiline={false}
         style={styles.textInputStyle}
@@ -560,37 +568,37 @@ export const OtherReason = (props) => {
 
 export const ShowResultDialog = (parent) => {
   let messageToShow;
-  let title = "";
+  let title = '';
   if (
     parent &&
     parent.submittedAction &&
     parent.submittedAction[0] &&
     parent.submittedAction[0].msgTxt !== undefined
   ) {
-    title = "Success";
+    title = 'Success';
     messageToShow =
-      "Your leave document " +
+      'Your leave document ' +
       parent.submittedAction[0].msgTxt +
-      " has been submitted successfully.";
+      ' has been submitted successfully.';
   } else if (
     parent &&
     parent.submittedAction &&
-    parent.submittedAction.includes("Error Message")
+    parent.submittedAction.includes('Error Message')
   ) {
-    title = "Error";
+    title = 'Error';
     messageToShow = parent.submittedAction.substring(
-      parent.submittedAction.indexOf(":") + 1
+      parent.submittedAction.indexOf(':') + 1
     );
   }
   let Message = (props) => (
     <View>
       <Text
         style={{
-          marginHorizontal: "4.3%",
+          marginHorizontal: '4.3%',
           fontSize: moderateScale(14),
           color: appConfig.GUN_METAL_COLOR,
           letterSpacing: moderateScale(0.7),
-          textAlign: "center",
+          textAlign: 'center',
         }}
       >
         {messageToShow}

@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 import { DashBoardItem } from '../../../GlobalComponent/DashBoardItem/DashBoardItem';
 import SubHeader from '../../../GlobalComponent/SubHeader';
 import images from '../../../images';
-import { APPROVAL_ONLY, ListData, TIMESHEET_MENU } from './constants';
+import { APPROVAL_ONLY,TIMESHEET_MENU,MY_TIMESHEET_LABEL,MY_TIMESHEET_APPROVAL } from './constants';
+
 let globalConstants = require('../../../GlobalConstants');
 
 class TimesheetDashboardScreen extends Component {
@@ -23,23 +24,19 @@ class TimesheetDashboardScreen extends Component {
 	}
 
   timeSheetDashboardItemClick = (item, index) => {
-    console.log('Item clicked ', item, index);
-    switch (index) {
-      case 0:
-        this.props.navigation.navigate('MyTimesheet4');
+    
+    let routeName = "MyTimesheet4"
+    switch (item) {
+      case MY_TIMESHEET_LABEL:
+        routeName = "MyTimesheet4"
         break;
-      case 1:
-        this.props.navigation.navigate('TimeSheetApproval');
+      case MY_TIMESHEET_APPROVAL:
+          routeName ='TimeSheetApproval'
         break;
-      case 2:
-        {
-          // this.props.navigation.navigate("MyTimesheet2", {})
-        }
-        break;
-      case 3:
-        // this.props.navigation.navigate("MyTimesheet6")
-      break;
+       default:""
     }
+    console.log('Item clicked ', item, routeName);
+    this.props.navigation.navigate(routeName);
   }
 
   handleBack = () => {
@@ -60,7 +57,7 @@ class TimesheetDashboardScreen extends Component {
           navigation={this.props.navigation}
         />
         <DashBoardItem
-          data={this.props.loginData?.IsTimesheetValid == 'Y' ? TIMESHEET_MENU : APPROVAL_ONLY}
+          data={this.props.loginData?.IsTimesheetValid === 'Y' ? TIMESHEET_MENU : APPROVAL_ONLY}
           dashBoardItemClick={(item, index) => {
             this.timeSheetDashboardItemClick(item, index);
           }}

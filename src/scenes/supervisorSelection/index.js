@@ -1,41 +1,34 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import {
   View,
   Text,
   FlatList,
   TouchableOpacity,
-  ImageBackground,
   Image,
   TextInput,
   StyleSheet,
-  Keyboard,
-  Dimensions,
-  ScrollView,
-} from 'react-native';
-import { SearchBar } from 'react-native-elements';
-import { moderateScale } from '../../components/fontScaling.js';
-import { fetchGETMethod, fetchPOSTMethod } from '../../utilities/fetchService';
-import { DismissKeyboardView } from '../../components/DismissKeyboardView';
-import UserMessage from '../../components/userMessage';
-import CustomButton from '../../components/customButton';
-import SubHeader from '../../GlobalComponent/SubHeader';
-import GlobalData from '../../utilities/globalData';
-import ActivityIndicatorView from '../../GlobalComponent/myActivityIndicator';
-import style from './style.js';
-import properties from '../../resource/properties';
-import { netInfo } from '../../utilities/NetworkInfo.js';
-import { NO_INTERNET, SEARCH_PLACEHOLDER_TEXT } from '../../GlobalConstants.js';
-import { globalFontStyle } from '../../components/globalFontStyle.js';
-import { writeLog } from '../../utilities/logger';
-import images from '../../images';
-import Seperator from '../../components/Seperator.js';
-const _ = require('lodash');
-let globalData = new GlobalData();
-let constant = require('./constants');
-let globalConstants = require('../../GlobalConstants');
-let appConfig = require('../../../appconfig');
-let employeeId = '';
-let authenticationKey = '';
+} from "react-native";
+import { SearchBar } from "react-native-elements";
+import { moderateScale } from "../../components/fontScaling.js";
+import { fetchGETMethod, fetchPOSTMethod } from "../../utilities/fetchService";
+import { DismissKeyboardView } from "../../components/DismissKeyboardView";
+import UserMessage from "../../components/userMessage";
+import SubHeader from "../../GlobalComponent/SubHeader";
+import ActivityIndicatorView from "../../GlobalComponent/myActivityIndicator";
+import style from "./style.js";
+import properties from "../../resource/properties";
+import { netInfo } from "../../utilities/NetworkInfo.js";
+import { NO_INTERNET, SEARCH_PLACEHOLDER_TEXT } from "../../GlobalConstants.js";
+import { writeLog } from "../../utilities/logger";
+import images from "../../images";
+import Seperator from "../../components/Seperator.js";
+import { RenderUserItem } from "./renderUserItem.js";
+const _ = require("lodash");
+let constant = require("./constants");
+let globalConstants = require("../../GlobalConstants");
+let appConfig = require("../../../appconfig");
+let employeeId = "";
+let authenticationKey = "";
 let vdhSelectedItemData = {};
 let isComingFromUSVoucher, isComingFromVoucher, myPageTitle, checkAction;
 
@@ -43,10 +36,10 @@ export default class SupervisorSelection extends Component {
   constructor(props) {
     super(props);
     this.state = {
-       voucherValue:this.props.navigation.state.params.voucherType,
-       voucherStatus:this.props.navigation.state.params.statusCode,
-       voucherBand:this.props.navigation.state.params.band_5,
-       isIndianCompany:this.props.navigation.state.params.isIndianCompany,
+      voucherValue: this.props.navigation.state.params.voucherType,
+      voucherStatus: this.props.navigation.state.params.statusCode,
+      voucherBand: this.props.navigation.state.params.band_5,
+      isIndianCompany: this.props.navigation.state.params.isIndianCompany,
       requestorListArray: [],
       loggingDetails: this.props.navigation.state.params.loggedInDetails,
       voucherDetail: this.props.navigation.state.params.voucher,
@@ -58,16 +51,16 @@ export default class SupervisorSelection extends Component {
       displaySelectedRequestor: false,
       selectedRequestor: null,
       error_msg: null,
-      remarks: '',
+      remarks: "",
       supervisorListArrayLength: 0,
       messageType: null,
       isVDHSelected: false,
-      query: '',
+      query: "",
       isIndicatorVisible: false,
       isErrorMsg: false,
       isKeyboardActive: false,
-      superVisorSearchText: '',
-      selectedRole: '',
+      superVisorSearchText: "",
+      selectedRole: "",
     };
     isComingFromVoucher = this.props.navigation.state.params
       .isComingFromVoucher;
@@ -75,22 +68,22 @@ export default class SupervisorSelection extends Component {
       .isComingFromUSVoucher;
     checkAction = this.props.navigation.state.params.action;
     myPageTitle = this.props.navigation.state.params.pageTitle;
-    console.log("IsIndianCompany",this.state.isIndianCompany)
+    console.log("IsIndianCompany", this.state.isIndianCompany);
   }
-  
+
   componentDidMount() {
-    console.log("requestVoucherValue",this.state.voucherValue)
-    console.log("requestVoucherStatus",this.state.voucherStatus)
-    writeLog('Landed on ' + 'SupervisorSelection');
+    console.log("requestVoucherValue", this.state.voucherValue);
+    console.log("requestVoucherStatus", this.state.voucherStatus);
+    writeLog("Landed on " + "SupervisorSelection");
   }
 
   componentDidUpdate(prevState, prevProps) {
     if (prevProps.superVisorSearchText != this.state.superVisorSearchText) {
       if (
         this.state.superVisorSearchText.length > 2 &&
-        this.state.selectedRole == 'Supervisor'
+        this.state.selectedRole == "Supervisor"
       ) {
-        console.log('Selected role : ', this.state.selectedRole);
+        console.log("Selected role : ", this.state.selectedRole);
         this.getSelectedRequestorList(this.state.selectedRole);
       } else if (this.state.superVisorSearchText.length < 1) {
         this.setState({ supervisorList: [], inMemoryList: [] });
@@ -106,30 +99,27 @@ export default class SupervisorSelection extends Component {
   }
 
   updateSearch = (searchText) => {
-    if(this.state.supervisorList =""){
-      alert("handle")
-    }
-    else{
+    if ((this.state.supervisorList = "")) {
+      alert("handle");
+    } else {
+      this.setState(
+        {
+          query: searchText,
+        },
+        () => {
+          console.log("SearchText : ", searchText);
+          console.log("InMemoryList : ", this.state.inMemoryList);
+          const filteredData = this.state.inMemoryList?.filter((element) => {
+            let elementSearched = isComingFromVoucher
+              ? element.EmpName.toLowerCase()
+              : element.Code.toLowerCase();
+            let queryLowerCase = this.state.query.toLowerCase();
+            return elementSearched.indexOf(queryLowerCase) > -1;
+          });
 
-    
-    this.setState(
-      {
-        query: searchText,
-      },
-      () => {
-        console.log('SearchText : ', searchText);
-        console.log('InMemoryList : ', this.state.inMemoryList);
-        const filteredData = this.state.inMemoryList?.filter((element) => {
-          let elementSearched = isComingFromVoucher
-            ? element.EmpName.toLowerCase()
-            : element.Code.toLowerCase();
-          let queryLowerCase = this.state.query.toLowerCase();
-          return elementSearched.indexOf(queryLowerCase) > -1;
-        });
-
-        this.setState({ supervisorList: filteredData });
-      }
-    );
+          this.setState({ supervisorList: filteredData });
+        }
+      );
     }
   };
 
@@ -137,141 +127,146 @@ export default class SupervisorSelection extends Component {
     let requestorListArray = [];
 
     if (isComingFromVoucher) {
-    //IsIndianCompany == "1"
+      //IsIndianCompany == "1"
       if (isComingFromUSVoucher) {
-        if (this.state?.voucherDetail?.VDHOption == 'YES') {
-          requestorListArray = ['VDH'];
-        } 
-        
-        else {
-          requestorListArray = ['Supervisor'];
+        if (this.state?.voucherDetail?.VDHOption == "YES") {
+          requestorListArray = ["VDH"];
+        } else {
+          requestorListArray = ["Supervisor"];
         }
       } else {
-        console.log('Voucher detail : ', this.state.voucherDetail);
-        if (this.state.voucherDetail.CompanyCode === 'N054') {
-          if (this.state?.voucherDetail?.VDHOption == 'YES') {
-            requestorListArray = ['VDH'];
+        console.log("Voucher detail : ", this.state.voucherDetail);
+        if (this.state.voucherDetail.CompanyCode === "N054") {
+          if (this.state?.voucherDetail?.VDHOption == "YES") {
+            requestorListArray = ["VDH"];
           } else if (
-            this.state?.voucherDetail?.VoucherType == 'Staff Welfare'
+            this.state?.voucherDetail?.VoucherType == "Staff Welfare"
           ) {
-            requestorListArray = ['FSO'];
+            requestorListArray = ["FSO"];
           } else {
-            requestorListArray = ['Supervisor', 'HR/FSO'];
+            requestorListArray = ["Supervisor", "HR/FSO"];
           }
         } else {
-          if (this.state?.voucherDetail?.VDHOption == 'YES') {
-            requestorListArray = ['VDH'];
-          } 
-          else if (
-            this.state?.voucherDetail?.VoucherType == 'Staff Welfare' || this.state?.voucherStatus =="16"
-          )
-           {
-            requestorListArray = ['FSO'];
+          if (this.state?.voucherDetail?.VDHOption == "YES") {
+            requestorListArray = ["VDH"];
+          } else if (
+            this.state?.voucherDetail?.VoucherType == "Staff Welfare" ||
+            this.state?.voucherStatus == "16"
+          ) {
+            requestorListArray = ["FSO"];
+          } else if (this.state?.voucherValue == "13") {
+            requestorListArray = ["VDH"];
           }
-         else if(this.state?.voucherValue == "13"){
-          requestorListArray = ['VDH'];
-         }
 
           //added LCV condition
           else if (
-            this.state?.voucherDetail?.VoucherType == 'LOCAL CONVEYANCE VOUCHER' 
-          )
-           {
-            requestorListArray = ['Supervisor'];
-          }
-          else if(this.state?.voucherValue == "0" ||this.state?.voucherValue == "7" ||this.state?.voucherValue == "14" ){
+            this.state?.voucherDetail?.VoucherType == "LOCAL CONVEYANCE VOUCHER"
+          ) {
+            requestorListArray = ["Supervisor"];
+          } else if (
+            this.state?.voucherValue == "0" ||
+            this.state?.voucherValue == "7" ||
+            this.state?.voucherValue == "14"
+          ) {
             // added
-            if(this.state.isIndianCompany =="1" && this.state.voucherDetail?.TotalAmount>10000 && this.state?.voucherBand =="5" ){
-              requestorListArray = ['Supervisor'];
-             }
-           else if( this.state.isIndianCompany =="1" && this.state.voucherDetail?.TotalAmount>50000 && this.state?.voucherBand =="6" ){
-              requestorListArray = ['Supervisor'];
-             }
-             else if( this.state.isIndianCompany =="1" &&  this.state.voucherDetail?.TotalAmount>75000 && this.state?.voucherBand =="7" ){
-              requestorListArray = ['Supervisor'];
-             }
-             else if( this.state.isIndianCompany =="1" && this.state.voucherDetail?.TotalAmount>100000 && this.state?.voucherBand =="8" ){
-              requestorListArray = ['Supervisor'];
-             }
-             else{
-              requestorListArray = ['Supervisor','FSO'];
-             }
-             
-            
+            if (
+              this.state.isIndianCompany == "1" &&
+              this.state.voucherDetail?.TotalAmount > 10000 &&
+              this.state?.voucherBand == "5"
+            ) {
+              requestorListArray = ["Supervisor"];
+            } else if (
+              this.state.isIndianCompany == "1" &&
+              this.state.voucherDetail?.TotalAmount > 50000 &&
+              this.state?.voucherBand == "6"
+            ) {
+              requestorListArray = ["Supervisor"];
+            } else if (
+              this.state.isIndianCompany == "1" &&
+              this.state.voucherDetail?.TotalAmount > 75000 &&
+              this.state?.voucherBand == "7"
+            ) {
+              requestorListArray = ["Supervisor"];
+            } else if (
+              this.state.isIndianCompany == "1" &&
+              this.state.voucherDetail?.TotalAmount > 100000 &&
+              this.state?.voucherBand == "8"
+            ) {
+              requestorListArray = ["Supervisor"];
+            } else {
+              requestorListArray = ["Supervisor", "FSO"];
+            }
+          } else if (
+            this.state.voucherDetail?.TotalAmount > 10000 &&
+            this.state?.voucherBand == "5"
+          ) {
+            requestorListArray = ["Supervisor"];
           }
-       else if(this.state.voucherDetail?.TotalAmount>10000 && this.state?.voucherBand =="5"){
-        
-            requestorListArray = ['Supervisor'];
-        
-        }
-
 
           // added payroll
           else if (
-            this.state?.voucherValue == "9" || this.state?.voucherValue =="8"
-          )
-           {
-            requestorListArray = ['Payroll'];
+            this.state?.voucherValue == "9" ||
+            this.state?.voucherValue == "8"
+          ) {
+            requestorListArray = ["Payroll"];
           }
-         // VoucherType: "CASH"
+          // VoucherType: "CASH"
           // add VDH
           // else if (this.state?.voucherValue == "13") // statuscode ==2
           //  {
           //   requestorListArray = ['VDH'];
           // }
           //
-          else if(this.state?.voucherStatus =="2"){
-            requestorListArray = ['VDH'];
-          }
-         
-           else {
-            requestorListArray = ['Supervisor', 'FSO'];
+          else if (this.state?.voucherStatus == "2") {
+            requestorListArray = ["VDH"];
+          } else {
+            requestorListArray = ["Supervisor", "FSO"];
           }
         }
       }
     } else {
       let item = this.props.navigation.state.params.employeeDetails;
-      console.log("else item",item)
-      let isOnsite = item.OnsiteRR == 'Y' ? true : false;
+      console.log("else item", item);
+      let isOnsite = item.OnsiteRR == "Y" ? true : false;
       let requestPosition = item.in_position;
       let resourceCategory = item.in_resource_cat;
       let statusForward = item.Status;
-      console.log('statusForward', statusForward);
-      console.log('requestPosition', requestPosition);
-      console.log('resourceCategory', resourceCategory);
-      console.log('isOnsite', isOnsite);
-      console.log('SLApprovalFlag', item.SLApprovalFlag);
-      console.log('item', item);
+      console.log("statusForward", statusForward);
+      console.log("requestPosition", requestPosition);
+      console.log("resourceCategory", resourceCategory);
+      console.log("isOnsite", isOnsite);
+      console.log("SLApprovalFlag", item.SLApprovalFlag);
+      console.log("item", item);
 
       if (requestPosition === 1) {
         if (resourceCategory === 1 && statusForward === 5) {
-          requestorListArray = ['Supervisor', 'RDG'];
+          requestorListArray = ["Supervisor", "RDG"];
         }
         if (resourceCategory === 2) {
           if (statusForward === 5) {
-            requestorListArray = ['Supervisor', 'Finance Controller'];
+            requestorListArray = ["Supervisor", "Finance Controller"];
           }
           if (statusForward === 8) {
-            requestorListArray = ['Approving Authority'];
+            requestorListArray = ["Approving Authority"];
           }
           if (statusForward === 9) {
-            requestorListArray = ['Approving Authority 2', 'TA'];
+            requestorListArray = ["Approving Authority 2", "TA"];
           }
           if (statusForward === 10) {
-            requestorListArray = ['TA'];
+            requestorListArray = ["TA"];
             if (isOnsite) {
-              requestorListArray = ['Onsite TA'];
+              requestorListArray = ["Onsite TA"];
             }
           }
         }
         if (resourceCategory === 3) {
           if (statusForward === 5) {
-            requestorListArray = ['Supervisor', 'Finance Controller'];
+            requestorListArray = ["Supervisor", "Finance Controller"];
           }
           if (statusForward === 8) {
-            requestorListArray = ['TA'];
+            requestorListArray = ["TA"];
             if (isOnsite) {
-              requestorListArray = ['Onsite TA'];
+              requestorListArray = ["Onsite TA"];
             }
           }
         }
@@ -279,39 +274,39 @@ export default class SupervisorSelection extends Component {
 
       if (requestPosition === 2) {
         if (resourceCategory === 1) {
-          requestorListArray = ['Supervisor'];
-          if (item.VDHApprvalFlag == 'Y') {
-            requestorListArray.push('VDH');
+          requestorListArray = ["Supervisor"];
+          if (item.VDHApprvalFlag == "Y") {
+            requestorListArray.push("VDH");
           }
-          if (item.VDHApprvalFlag == 'R' || item.VDHApprvalFlag == 'N') {
-            requestorListArray.push('RDG');
+          if (item.VDHApprvalFlag == "R" || item.VDHApprvalFlag == "N") {
+            requestorListArray.push("RDG");
           }
         }
         if (resourceCategory === 2) {
           if (statusForward === 5) {
-            requestorListArray = ['Supervisor', 'Finance Controller'];
+            requestorListArray = ["Supervisor", "Finance Controller"];
           }
           if (statusForward === 8) {
-            requestorListArray = ['Approving Authority'];
+            requestorListArray = ["Approving Authority"];
           }
           if (statusForward === 9) {
-            requestorListArray = ['Approving Authority 2', 'TA'];
+            requestorListArray = ["Approving Authority 2", "TA"];
           }
           if (statusForward === 10) {
-            requestorListArray = ['TA'];
+            requestorListArray = ["TA"];
             if (isOnsite) {
-              requestorListArray = ['Onsite TA'];
+              requestorListArray = ["Onsite TA"];
             }
           }
         }
         if (resourceCategory === 3) {
           if (statusForward === 5) {
-            requestorListArray = ['Supervisor', 'Finance Controller'];
+            requestorListArray = ["Supervisor", "Finance Controller"];
           }
           if (statusForward === 8) {
-            requestorListArray = ['TA'];
+            requestorListArray = ["TA"];
             if (isOnsite) {
-              requestorListArray = ['Onsite TA'];
+              requestorListArray = ["Onsite TA"];
             }
           }
         }
@@ -322,48 +317,46 @@ export default class SupervisorSelection extends Component {
     });
   }
 
- 
   async getSelectedRequestorList(selectedDesignation) {
-   
-    console.log('selectedDesignation', selectedDesignation);
+    console.log("selectedDesignation", selectedDesignation);
     let isNetWork = await netInfo();
     if (isNetWork) {
       try {
-        let type = '';
-        if (selectedDesignation == 'Supervisor') {
+        let type = "";
+        if (selectedDesignation == "Supervisor") {
           this.setState({ displaySupervisorList: true });
           let supervisorListData;
-          if (selectedDesignation == 'Supervisor') {
+          if (selectedDesignation == "Supervisor") {
             type = 1;
           }
-          
+
           console.log(
-            'Fetching supervisors',
+            "Fetching supervisors",
             this.state.superVisorSearchText.length
           );
-          console.log('Is coming from Voucher : ', isComingFromVoucher);
+          console.log("Is coming from Voucher : ", isComingFromVoucher);
           if (this.state.superVisorSearchText.length > 2) {
             // this.setState({ isIndicatorVisible: true });
             console.log(
-              'Fetching supervisors 2 ',
+              "Fetching supervisors 2 ",
               this.state.superVisorSearchText.length
             );
             let url = properties.getTrApproverList;
             let form = new FormData();
-            form.append('ECSerp', employeeId);
-            form.append('AuthKey', authenticationKey);
-            form.append('DocType', '');
-            form.append('DocumentNo', this.state.superVisorSearchText);
-            form.append('ListFor', isComingFromVoucher ? 'SV' : 'S');
+            form.append("ECSerp", employeeId);
+            form.append("AuthKey", authenticationKey);
+            form.append("DocType", "");
+            form.append("DocumentNo", this.state.superVisorSearchText);
+            form.append("ListFor", isComingFromVoucher ? "SV" : "S");
             supervisorListData = await fetchPOSTMethod(url, form);
-			this.setState({ isIndicatorVisible: false });
+            this.setState({ isIndicatorVisible: false });
             console.log(
-              'Approve supervisor search result : ',
+              "Approve supervisor search result : ",
               supervisorListData
             );
-            console.log('Supervisor payload : ', form);
+            console.log("Supervisor payload : ", form);
           }
-          console.log('Fetched supervisors', supervisorListData);
+          console.log("Fetched supervisors", supervisorListData);
           if (supervisorListData.length > 0) {
             this.setState({
               supervisorList: supervisorListData,
@@ -371,23 +364,22 @@ export default class SupervisorSelection extends Component {
               supervisorListArrayLength: supervisorListData.length,
               isIndicatorVisible: false,
             });
-          }
-          else {
+          } else {
             this.setState({
               isIndicatorVisible: false,
             });
           }
-        } else if (selectedDesignation == 'Finance Controller') {
+        } else if (selectedDesignation == "Finance Controller") {
           type = 3;
           let supervisorList = await fetchGETMethod(
             properties.fetchSuperVisorListUrl +
-              'ECSerp=' +
+              "ECSerp=" +
               employeeId +
-              '&AuthKey=' +
+              "&AuthKey=" +
               authenticationKey +
-              '&type=' +
+              "&type=" +
               type +
-              '&searchText=' +
+              "&searchText=" +
               this.state.superVisorSearchText
           );
           if (supervisorList.length > 0) {
@@ -400,26 +392,26 @@ export default class SupervisorSelection extends Component {
             });
           }
         } else if (
-          selectedDesignation == 'Onsite TA' ||
-          selectedDesignation == 'TA'
+          selectedDesignation == "Onsite TA" ||
+          selectedDesignation == "TA"
         ) {
           type = 15;
-          if (selectedDesignation == 'TA') {
+          if (selectedDesignation == "TA") {
             type = 5;
           }
           let data = this.props.navigation.state.params;
           let requestIDOnsiteRMG = data.employeeDetails.in_requestid;
           let supervisorList = await fetchGETMethod(
             properties.fetchSuperVisorListUrl +
-              'ECSerp=' +
+              "ECSerp=" +
               employeeId +
-              '&AuthKey=' +
+              "&AuthKey=" +
               authenticationKey +
-              '&type=' +
+              "&type=" +
               type +
-              '&Requestid=' +
+              "&Requestid=" +
               requestIDOnsiteRMG +
-              '&searchText=' +
+              "&searchText=" +
               this.state.superVisorSearchText
           );
 
@@ -446,18 +438,20 @@ export default class SupervisorSelection extends Component {
   validateApprove(action) {
     let Remarks = this.state.remarks.trim();
     if (
-      (action === 'Approved' || action === 'Escalated') &&
+      (action === "Approved" || action === "Escalated") &&
       this.state.selectedRequestorOption == null
     ) {
-      alert('Please select at least one Value.');
-    } else if (action == 'Rejected' && Remarks == '') {
-      alert('Remarks are mandatory.');
-    }
-    else if(this.state.superVisorSearchText== '' && this.state.selectedRole=="Supervisor"){
-     alert("Please choose supervisor, whom to send this document for approval.")
-    }
-   
-    else {
+      alert("Please select at least one Value.");
+    } else if (action == "Rejected" && Remarks == "") {
+      alert("Remarks are mandatory.");
+    } else if (
+      this.state.superVisorSearchText == "" &&
+      this.state.selectedRole == "Supervisor"
+    ) {
+      alert(
+        "Please choose supervisor, whom to send this document for approval."
+      );
+    } else {
       this.requestAction(action);
     }
   }
@@ -465,21 +459,21 @@ export default class SupervisorSelection extends Component {
   async requestAction(action) {
     let isNetwork = await netInfo();
     writeLog(
-      'Invoked ' +
-        'requestAction' +
-        ' of ' +
-        'SupervisorSelection' +
-        ' for ' +
+      "Invoked " +
+        "requestAction" +
+        " of " +
+        "SupervisorSelection" +
+        " for " +
         action
     );
-    
+
     if (isNetwork) {
       try {
-        console.log("checking")
-          this.setState({ isIndicatorVisible: true });
+        console.log("checking");
+        this.setState({ isIndicatorVisible: true });
         // alert("Please choose supervisor, whom to send this document for approval.")
         if (isComingFromVoucher) {
-          console.log("isComingFromVoucher",isComingFromVoucher)
+          console.log("isComingFromVoucher", isComingFromVoucher);
           if (isComingFromUSVoucher) {
             let expenseIdValue = this.state.voucherDetail.DocumentNo;
             let loginIdValue = employeeId;
@@ -487,8 +481,8 @@ export default class SupervisorSelection extends Component {
               ? this.state.selectedRequestor?.EmployeeId
               : this.state.selectedRequestor.EmpCode;
             let remarksValue = this.state.remarks;
-            let actionValue = 'E';
-            let selectStatusValue = '';
+            let actionValue = "E";
+            let selectStatusValue = "";
 
             let dataObj = {
               ExpenseId: expenseIdValue,
@@ -498,17 +492,17 @@ export default class SupervisorSelection extends Component {
               Action: actionValue,
               StrUserInput: selectStatusValue,
             };
-// show form data
+            // show form data
             let form = new FormData();
-            form.append('ECSerp', this.state.loggingDetails.SmCode);
-            form.append('AuthKey', this.state.loggingDetails.Authkey);
-            form.append('Data', JSON.stringify(dataObj));
+            form.append("ECSerp", this.state.loggingDetails.SmCode);
+            form.append("AuthKey", this.state.loggingDetails.Authkey);
+            form.append("Data", JSON.stringify(dataObj));
             let url = properties.usVoucherActionUrl;
             let usVoucherUpdateStatus = await fetchPOSTMethod(url, form);
             this.setState({ isIndicatorVisible: false });
             if (
               usVoucherUpdateStatus.length > 0 &&
-              usVoucherUpdateStatus[0].msgTxt === 'Success'
+              usVoucherUpdateStatus[0].msgTxt === "Success"
             ) {
               this.setState(
                 {
@@ -525,9 +519,7 @@ export default class SupervisorSelection extends Component {
                   );
                 }
               );
-            } else if (
-				usVoucherUpdateStatus[0].hasOwnProperty('Exception')
-            ) {
+            } else if (usVoucherUpdateStatus[0].hasOwnProperty("Exception")) {
               this.setState(
                 {
                   isIndicatorVisible: false,
@@ -547,8 +539,8 @@ export default class SupervisorSelection extends Component {
             }
           } else {
             let documentNoValue = this.state.voucherDetail.DocumentNo;
-            let pendingWithValue = '';
-            let submitButtonValue = '';
+            let pendingWithValue = "";
+            let submitButtonValue = "";
             let remarksValue = this.state.remarks;
             let companyCodeValue = this.state.voucherDetail.CompanyCode;
             let companyNameValue = this.state.voucherDetail.CompanyName;
@@ -558,39 +550,38 @@ export default class SupervisorSelection extends Component {
             let costCenterDescValue = this.state.voucherDetail.CostCenterDesc;
             let intActionValue = 0;
 
-            if (this.state.selectedRequestorOption === 'FSO') {
-              pendingWithValue = '';
-              submitButtonValue = 'FSO';
-            } else if (this.state.selectedRequestorOption === 'HR/FSO') {
-              pendingWithValue = '';
-              submitButtonValue = 'HRO';
-            } else if (this.state.selectedRequestorOption === 'Supervisor') {
+            if (this.state.selectedRequestorOption === "FSO") {
+              pendingWithValue = "";
+              submitButtonValue = "FSO";
+            } else if (this.state.selectedRequestorOption === "HR/FSO") {
+              pendingWithValue = "";
+              submitButtonValue = "HRO";
+            } else if (this.state.selectedRequestorOption === "Supervisor") {
               pendingWithValue = this.state.selectedRequestor.EmpCode;
-              submitButtonValue = 'Supervisor';
-            } else if (this.state.selectedRequestorOption === 'VDH') {
-              pendingWithValue = '';
-              submitButtonValue = 'VDH';
+              submitButtonValue = "Supervisor";
+            } else if (this.state.selectedRequestorOption === "VDH") {
+              pendingWithValue = "";
+              submitButtonValue = "VDH";
             }
             // added here also payroll
-            else if(this.state.selectedRequestorOption === 'Payroll') {
-              pendingWithValue = '';
-              submitButtonValue = 'Payroll';
+            else if (this.state.selectedRequestorOption === "Payroll") {
+              pendingWithValue = "";
+              submitButtonValue = "Payroll";
+            } else if (this.state.selectedRequestorOption === "VDH") {
+              pendingWithValue = "";
+              submitButtonValue = "VDH";
             }
-            else if(this.state.selectedRequestorOption === 'VDH') {
-              pendingWithValue = '';
-              submitButtonValue = 'VDH';
-            }
-            if (action == 'Rejected') {
-              pendingWithValue = '';
-              submitButtonValue = 'Reject';
+            if (action == "Rejected") {
+              pendingWithValue = "";
+              submitButtonValue = "Reject";
             }
 
-            if (this.state.voucherDetail.DocumentType === 'LCV') {
+            if (this.state.voucherDetail.DocumentType === "LCV") {
               intActionValue = 1;
             } else {
               intActionValue = 2;
             }
-// onApprove
+            // onApprove
             let dataObj = {
               DocumentNo: documentNoValue,
               PendingWith: pendingWithValue,
@@ -607,16 +598,16 @@ export default class SupervisorSelection extends Component {
             };
 
             let form = new FormData();
-            form.append('ECSerp', this.state.loggingDetails.SmCode);
-            form.append('AuthKey', this.state.loggingDetails.Authkey);
-            form.append('Data', JSON.stringify(dataObj));
+            form.append("ECSerp", this.state.loggingDetails.SmCode);
+            form.append("AuthKey", this.state.loggingDetails.Authkey);
+            form.append("Data", JSON.stringify(dataObj));
             let url = properties.cancelActionUrl;
             let voucherUpdateStatus = await fetchPOSTMethod(url, form);
-			// this.setState({isIndicatorVisible: false});
-            console.log('Response : ', voucherUpdateStatus);
+            // this.setState({isIndicatorVisible: false});
+            console.log("Response : ", voucherUpdateStatus);
             if (
               voucherUpdateStatus.length > 0 &&
-              voucherUpdateStatus[0].msgTxt === 'Success'
+              voucherUpdateStatus[0].msgTxt === "Success"
             ) {
               this.setState(
                 {
@@ -633,7 +624,7 @@ export default class SupervisorSelection extends Component {
                   );
                 }
               );
-            } else if (voucherUpdateStatus[0].hasOwnProperty('Exception')) {
+            } else if (voucherUpdateStatus[0].hasOwnProperty("Exception")) {
               this.setState(
                 {
                   isIndicatorVisible: false,
@@ -650,7 +641,7 @@ export default class SupervisorSelection extends Component {
                   );
                 }
               );
-            } else if (voucherUpdateStatus[0].hasOwnProperty('Exception')) {
+            } else if (voucherUpdateStatus[0].hasOwnProperty("Exception")) {
               this.setState(
                 {
                   isIndicatorVisible: false,
@@ -690,25 +681,25 @@ export default class SupervisorSelection extends Component {
           let requestId = data.employeeDetails.in_requestid;
           let action = data.action;
           let remarks = this.state.remarks;
-          if (action == 'Rejected') {
+          if (action == "Rejected") {
             let form = new FormData();
-            form.append('ECSerp', employeeId);
-            form.append('AuthKey', authenticationKey);
-            form.append('Requestid', requestId);
-            form.append('Click', action);
-            form.append('ch_fc_code', '');
-            form.append('Statustobeupdate', 0);
-            form.append('Slxstage', 0);
+            form.append("ECSerp", employeeId);
+            form.append("AuthKey", authenticationKey);
+            form.append("Requestid", requestId);
+            form.append("Click", action);
+            form.append("ch_fc_code", "");
+            form.append("Statustobeupdate", 0);
+            form.append("Slxstage", 0);
 
-            if (remarks != '') {
-              form.append('vc_remarks', remarks);
+            if (remarks != "") {
+              form.append("vc_remarks", remarks);
             } else {
-              form.append('vc_remarks', '');
+              form.append("vc_remarks", "");
             }
 
             let url = properties.approveActionUrl;
             let requestUpdateStatus = await fetchPOSTMethod(url, form);
-			this.setState({isIndicatorVisible: false});
+            this.setState({ isIndicatorVisible: false });
             if (requestUpdateStatus.length > 0) {
               this.setState(
                 {
@@ -746,52 +737,52 @@ export default class SupervisorSelection extends Component {
           else {
             let fcCode = null;
             let item = this.props.navigation.state.params.employeeDetails;
-            let isOnsite = item.OnsiteRR == 'Y' ? true : false;
+            let isOnsite = item.OnsiteRR == "Y" ? true : false;
             let requestPosition = item.in_position;
             let resourceCategory = item.in_resource_cat;
             let statusForward = item.Status;
             let role = null;
             let status = null;
             console.log(
-              'this.state.selectedRequestorOption',
+              "this.state.selectedRequestorOption",
               this.state.selectedRequestorOption
             );
-            console.log('item', item);
-            console.log('data.employeeDetails', data.employeeDetails);
+            console.log("item", item);
+            console.log("data.employeeDetails", data.employeeDetails);
 
             if (
               this.state.isVDHSelected &&
-              data.employeeDetails.VDHApprvalFlag != '' &&
-              data.employeeDetails.VDHApprvalFlag != 'N' &&
-              data.employeeDetails.VDHApprvalFlag == 'Y'
+              data.employeeDetails.VDHApprvalFlag != "" &&
+              data.employeeDetails.VDHApprvalFlag != "N" &&
+              data.employeeDetails.VDHApprvalFlag == "Y"
             ) {
-              console.log('aaaaaaa');
+              console.log("aaaaaaa");
               let vdhfcCodeValue = data.employeeDetails.VDH;
-              let vdhfcCodeSeperateArray = vdhfcCodeValue.split(':');
+              let vdhfcCodeSeperateArray = vdhfcCodeValue.split(":");
               fcCode = vdhfcCodeSeperateArray[0].trim();
               isIndicatorVisible = false;
             } else if (this.state.selectedRequestorOption == item.VDH) {
-              console.log('bbbbbbb');
+              console.log("bbbbbbb");
               let ap2fcCodeValue = data.employeeDetails.VDH;
-              let rdgfcCodeSeparateArray = ap2fcCodeValue.split(':');
+              let rdgfcCodeSeparateArray = ap2fcCodeValue.split(":");
               fcCode = rdgfcCodeSeparateArray[0].trim();
               isIndicatorVisible = false;
             } else if (
               this.state.isVDHSelected &&
-              data.employeeDetails.VDHApprvalFlag != ''
+              data.employeeDetails.VDHApprvalFlag != ""
             ) {
-              console.log('cccccccc');
+              console.log("cccccccc");
               let rdgfcCodeValue = data.employeeDetails.RDG;
-              let rdgfcCodeSeparateArray = rdgfcCodeValue.split(':');
+              let rdgfcCodeSeparateArray = rdgfcCodeValue.split(":");
               fcCode = rdgfcCodeSeparateArray[0].trim();
               // console.log("RDG 44444 fccode",fcCode)
               isIndicatorVisible = false;
-            } else if (this.state.requestorListArray == 'Approving Authority') {
-              console.log('dddddddd');
+            } else if (this.state.requestorListArray == "Approving Authority") {
+              console.log("dddddddd");
               isIndicatorVisible = false;
               fcCode = null;
             } else {
-              console.log('eeeeeee');
+              console.log("eeeeeee");
               fcCode = this.state.selectedRequestor.EmployeeId;
             }
 
@@ -801,54 +792,54 @@ export default class SupervisorSelection extends Component {
             // else
             if (
               this.state.isVDHSelected &&
-              data.employeeDetails.VDHApprvalFlag != '' &&
-              data.employeeDetails.VDHApprvalFlag != 'N' &&
-              data.employeeDetails.VDHApprvalFlag == 'Y'
+              data.employeeDetails.VDHApprvalFlag != "" &&
+              data.employeeDetails.VDHApprvalFlag != "N" &&
+              data.employeeDetails.VDHApprvalFlag == "Y"
             ) {
-              role = 'VDH';
+              role = "VDH";
             } else if (
               this.state.isVDHSelected &&
-              data.employeeDetails.VDHApprvalFlag != '' &&
-              data.employeeDetails.VDHApprvalFlag != 'N'
+              data.employeeDetails.VDHApprvalFlag != "" &&
+              data.employeeDetails.VDHApprvalFlag != "N"
             ) {
-              role = 'RDG';
+              role = "RDG";
             } else if (
               (requestPosition == 1 || requestPosition == 2) &&
               resourceCategory == 3 &&
               statusForward == 8
             ) {
-              console.log('ggggggg');
-              role = 'TA';
+              console.log("ggggggg");
+              role = "TA";
               if (isOnsite) {
-                console.log('Onsite TA');
-                role = 'Onsite TA';
+                console.log("Onsite TA");
+                role = "Onsite TA";
               } // sales both cases done
             } else if (
               requestPosition == 2 &&
               resourceCategory == 1 &&
               statusForward == 13
             ) {
-              console.log('hhhhhhh');
-              role = 'RDG';
+              console.log("hhhhhhh");
+              role = "RDG";
             } else if (
               (requestPosition == 1 || requestPosition == 2) &&
               resourceCategory == 2 &&
               statusForward == 8
             ) {
-              console.log('iiiiiii');
-              role = 'Approving Authority';
+              console.log("iiiiiii");
+              role = "Approving Authority";
             } else if (
               (requestPosition == 1 || requestPosition == 2) &&
               resourceCategory == 2 &&
               statusForward == 9
             ) {
-              console.log('mmmmmmmm');
+              console.log("mmmmmmmm");
               if (this.state.selectedRequestorOption == item.VDH) {
-                role = 'Approving Authority 2';
+                role = "Approving Authority 2";
               } else {
-                role = 'TA';
+                role = "TA";
                 if (isOnsite) {
-                  role = 'Onsite TA';
+                  role = "Onsite TA";
                 }
               }
             } else if (
@@ -856,21 +847,21 @@ export default class SupervisorSelection extends Component {
               resourceCategory == 2 &&
               statusForward == 10
             ) {
-              console.log('jjjjjjj');
-              role = 'TA';
+              console.log("jjjjjjj");
+              role = "TA";
               if (isOnsite) {
-                role = 'Onsite TA';
+                role = "Onsite TA";
               } //diss here
             } else {
-              console.log('kkkkkkkk');
+              console.log("kkkkkkkk");
               role = this.state.selectedRequestorOption;
             }
 
-            if (action == 'Rejected') {
+            if (action == "Rejected") {
               status = 0;
             } else {
-              console.log('new role', role);
-              if (role == 'Supervisor') {
+              console.log("new role", role);
+              if (role == "Supervisor") {
                 status = 5;
               }
               // else if (role == "Requestor Service line") {
@@ -880,41 +871,41 @@ export default class SupervisorSelection extends Component {
               // else if(role == "Releasing Service line") {
               // 	status = 19;
               // } //RR new changes
-              else if (role == 'Finance Controller') {
+              else if (role == "Finance Controller") {
                 status = 8; // Finance Controller(8)
-              } else if (role == 'Onsite TA') {
+              } else if (role == "Onsite TA") {
                 status = 15;
-              } else if (role == 'RDG') {
+              } else if (role == "RDG") {
                 status = 12;
-              } else if (role == 'VDH') {
+              } else if (role == "VDH") {
                 // console.log("VDH13")
                 status = 13;
-              } else if (role == 'TA') {
+              } else if (role == "TA") {
                 status = 2;
-              } else if (role == 'Approving Authority') {
+              } else if (role == "Approving Authority") {
                 status = 9;
-              } else if (role == 'Approving Authority 2') {
+              } else if (role == "Approving Authority 2") {
                 status = 10;
               }
             }
             let form = new FormData();
 
-            form.append('ECSerp', employeeId);
-            form.append('AuthKey', authenticationKey);
-            form.append('Requestid', requestId);
-            form.append('Click', action);
-            form.append('ch_fc_code', fcCode);
-            form.append('Statustobeupdate', status);
-            form.append('Slxstage', 0);
-            console.log('final form data', form);
-            if (remarks != '') {
-              form.append('vc_remarks', remarks);
+            form.append("ECSerp", employeeId);
+            form.append("AuthKey", authenticationKey);
+            form.append("Requestid", requestId);
+            form.append("Click", action);
+            form.append("ch_fc_code", fcCode);
+            form.append("Statustobeupdate", status);
+            form.append("Slxstage", 0);
+            console.log("final form data", form);
+            if (remarks != "") {
+              form.append("vc_remarks", remarks);
             } else {
-              form.append('vc_remarks', '');
+              form.append("vc_remarks", "");
             }
             let url = properties.approveActionUrl;
             let requestUpdateStatus = await fetchPOSTMethod(url, form);
-			this.setState({isIndicatorVisible: false});
+            this.setState({ isIndicatorVisible: false });
             // console.log(requestUpdateStatus);
             if (requestUpdateStatus.length > 0) {
               this.setState(
@@ -952,21 +943,21 @@ export default class SupervisorSelection extends Component {
           }
           let form = new FormData();
 
-          form.append('ECSerp', employeeId);
-          form.append('AuthKey', authenticationKey);
-          form.append('Requestid', requestId);
-          form.append('Click', action);
-          form.append('ch_fc_code', fcCode);
-          form.append('Statustobeupdate', status);
-          form.append('Slxstage', 0);
-          if (remarks != '') {
-            form.append('vc_remarks', remarks);
+          form.append("ECSerp", employeeId);
+          form.append("AuthKey", authenticationKey);
+          form.append("Requestid", requestId);
+          form.append("Click", action);
+          form.append("ch_fc_code", fcCode);
+          form.append("Statustobeupdate", status);
+          form.append("Slxstage", 0);
+          if (remarks != "") {
+            form.append("vc_remarks", remarks);
           } else {
-            form.append('vc_remarks', '');
+            form.append("vc_remarks", "");
           }
           let url = properties.RRActionUrl;
           let requestUpdateStatus = await fetchPOSTMethod(url, form);
-		  this.setState({isIndicatorVisible: false});
+          this.setState({ isIndicatorVisible: false });
           // console.log(requestUpdateStatus);
           if (requestUpdateStatus.length > 0) {
             this.setState(
@@ -1038,30 +1029,28 @@ export default class SupervisorSelection extends Component {
         }
       } catch (error) {}
     } else {
-      
       alert(NO_INTERNET);
     }
   }
 
   getData(item, parameter) {
-    
     if (_.isString(item.item)) {
       this.setState({ selectedRole: item.item }, () => {
-        if (this.state.selectedRole == 'Supervisor') {
+        if (this.state.selectedRole == "Supervisor") {
           this.setState({ inMemoryList: [], supervisorList: [] });
         }
       });
     }
-    console.log('Selected Parameter : ', parameter);
-    if (parameter == 'requestorOptionList') {
+    console.log("Selected Parameter : ", parameter);
+    if (parameter == "requestorOptionList") {
       if (isComingFromVoucher) {
         this.setState({
           selectedRequestorOption: item.item,
           requestorOptionList: false,
         });
-        
+
         if (isComingFromUSVoucher) {
-          if (item.item == 'Supervisor') {
+          if (item.item == "Supervisor") {
             this.setState({
               displaySupervisorList: false,
               selectedRequestor: null,
@@ -1069,20 +1058,20 @@ export default class SupervisorSelection extends Component {
             this.getSelectedRequestorList(item.item);
           }
         } else {
-          if (item.item == 'FSO') {
+          if (item.item == "FSO") {
             this.setState({
               isIndicatorVisible: false,
               displaySupervisorList: false,
               displaySelectedRequestor: false,
             });
-          } else if (item.item == 'Supervisor') {
+          } else if (item.item == "Supervisor") {
             this.setState({
               displaySupervisorList: false,
               selectedRequestor: null,
             });
-            
+
             this.getSelectedRequestorList(item.item);
-          } else if (item.item == 'HR/FSO') {
+          } else if (item.item == "HR/FSO") {
             this.setState({
               isIndicatorVisible: false,
               displaySupervisorList: false,
@@ -1093,7 +1082,7 @@ export default class SupervisorSelection extends Component {
       } else {
         vdhSelectedItemData = this.props.navigation.state.params
           .employeeDetails;
-        if (item.item == 'VDH') {
+        if (item.item == "VDH") {
           this.setState({
             selectedRequestorOption: vdhSelectedItemData.VDH, //VDH name with code ex:   00012345 : Ajay dixit
             requestorOptionList: false,
@@ -1103,7 +1092,7 @@ export default class SupervisorSelection extends Component {
             isIndicatorVisible: false,
           });
           vdhApproveFlag = vdhSelectedItemData.VDHApprvalFlag;
-        } else if (item.item == 'RDG' || item.item == 'TA') {
+        } else if (item.item == "RDG" || item.item == "TA") {
           //need to diss with kirti
           this.setState({
             selectedRequestorOption: vdhSelectedItemData.RDG,
@@ -1114,7 +1103,7 @@ export default class SupervisorSelection extends Component {
             isIndicatorVisible: false,
           });
           vdhApproveFlag = vdhSelectedItemData.VDHApprvalFlag;
-        } else if (item.item == 'Approving Authority 2') {
+        } else if (item.item == "Approving Authority 2") {
           this.setState({
             selectedRequestorOption: vdhSelectedItemData.VDH,
             requestorOptionList: false,
@@ -1124,7 +1113,7 @@ export default class SupervisorSelection extends Component {
             isIndicatorVisible: false,
           });
           vdhApproveFlag = vdhSelectedItemData.VDHApprvalFlag;
-        } else if (item.item == 'Approving Authority') {
+        } else if (item.item == "Approving Authority") {
           this.setState({
             isIndicatorVisible: false,
             selectedRequestorOption: item.item, // designation like supervisor,finance controller etc and replace 'select' label value.
@@ -1147,9 +1136,9 @@ export default class SupervisorSelection extends Component {
           this.getSelectedRequestorList(item.item);
         }
       }
-    } else if (parameter == 'supervisorList') {
+    } else if (parameter == "supervisorList") {
       // after selecting supervisor/finance controller from dropdown(who have multiple option to select further)
-      console.log('Selected Item : ', item.item);
+      console.log("Selected Item : ", item.item);
       this.setState({
         selectedRequestor: item.item, // content of one supervisor
         displaySelectedRequestor: true, // flag to show 2nd box with selected supervisor value
@@ -1160,7 +1149,7 @@ export default class SupervisorSelection extends Component {
   }
 
   backNavigate() {
-    writeLog('Clicked on ' + 'backNavigate' + ' of ' + 'SupervisorSelection');
+    writeLog("Clicked on " + "backNavigate" + " of " + "SupervisorSelection");
     this.setState({
       requestorListArray: [],
       requestorOptionList: false,
@@ -1169,43 +1158,43 @@ export default class SupervisorSelection extends Component {
       supervisorList: [],
       displaySelectedRequestor: false,
       selectedRequestor: null,
-      remarks: '',
-      vdhApproveFlag: '',
+      remarks: "",
+      vdhApproveFlag: "",
       vdhSelectedItemData: {},
       messageType: null,
       isVDHSelected: false,
     });
     if (isComingFromUSVoucher) {
-      this.props.navigation.navigate('DashBoard');
+      this.props.navigation.navigate("DashBoard");
     } else if (isComingFromVoucher) {
-      this.props.navigation.navigate('Home');
+      this.props.navigation.navigate("Home");
     } else {
       this.props.navigation.pop();
     }
   }
   renderListView(item, parameter) {
-    console.log("item",item) 
-    console.log("parameter",parameter)
+    console.log("item", item);
+    console.log("parameter", parameter);
     let dataToDisplay = null;
-    if (parameter == 'requestorOptionList') {
+    if (parameter == "requestorOptionList") {
       dataToDisplay = item.item;
-      console.log("dataTos",item.item)
-    } else if (parameter == 'supervisorList') {
+      console.log("dataTos", item.item);
+    } else if (parameter == "supervisorList") {
       dataToDisplay = item.item.EmpName;
     }
- 
+
     return (
       <View
         style={{
           flex: 1,
-          width: '100%',
+          width: "100%",
           height: moderateScale(40),
-          justifyContent: 'center',
+          justifyContent: "center",
         }}
       >
         <TouchableOpacity
           onPress={() => this.getData(item, parameter)}
-          style={{ paddingLeft: 10, justifyContent: 'center' }}
+          style={{ paddingLeft: 10, justifyContent: "center" }}
         >
           <Text>{dataToDisplay}</Text>
         </TouchableOpacity>
@@ -1213,37 +1202,33 @@ export default class SupervisorSelection extends Component {
     );
   }
   renderList(parameter) {
-    console.log('Inside render list parameters : ', parameter);
+    console.log("Inside render list parameters : ", parameter);
     let data = [];
-    if (parameter == 'requestorOptionList') {
-        console.log("DocumentType",this.state.voucherDetail.DocumentType) 
+    if (parameter == "requestorOptionList") {
+      console.log("DocumentType", this.state.voucherDetail.DocumentType);
       console.log(
-        'this.state.requestorListArray',
+        "this.state.requestorListArray",
         this.state.requestorListArray //  ['Supervisor', 'FSO']
       );
       data = this.state.requestorListArray;
-      
-      }
-
-     else if (parameter == 'supervisorList') {
+    } else if (parameter == "supervisorList") {
       data = this.state.supervisorList;
       data = data.sort((a, b) => a.EmpCode - b.EmpCode);
-      console.log("getData",data)
+      console.log("getData", data);
     }
-   
-    console.log(' data : ', data);
-console.log("this.state.voucherDetail",this.state.voucherDetail)
+
+    console.log(" data : ", data);
+    console.log("this.state.voucherDetail", this.state.voucherDetail);
     return (
       <View
         style={{
-          width: parameter == 'supervisorList' ? '100%' : '90%',
-          overflow: 'hidden',
+          width: parameter == "supervisorList" ? "100%" : "90%",
+          overflow: "hidden",
         }}
       >
-        
         <FlatList
-          contentContainerStyle={{ width: '100%' }}
-           data={data}
+          contentContainerStyle={{ width: "100%" }}
+          data={data}
           // data={this.state.voucherDetail.DocumentType =="LCV" ?['Supervisor'] :data}
           //data={this.state.voucherDetail?.DocumentType =="LCV" ||this.state.voucherDetail.TotalAmount>10000 ?data.filter((item)=>item =="Supervisor") :data}
 
@@ -1254,7 +1239,7 @@ console.log("this.state.voucherDetail",this.state.voucherDetail)
               style={{
                 backgroundColor: appConfig.DARK_BLUISH_COLOR,
                 height: moderateScale(1),
-                width: '100%',
+                width: "100%",
               }}
             />
           )}
@@ -1266,27 +1251,27 @@ console.log("this.state.voucherDetail",this.state.voucherDetail)
   renderRequestorOptionList() {
     //check once for top space
     if (this.state.requestorOptionList) {
-      return this.renderList('requestorOptionList');
+      return this.renderList("requestorOptionList");
     }
   }
 
   // to show 2nd selected list item chosen from 1st list output dropdown list
-  
+
   displaySelectedRequestorField() {
     if (this.state.displaySupervisorList) {
       const { query } = this.state;
-      
+
       return (
         <SearchBar
           lightTheme
           placeholder={SEARCH_PLACEHOLDER_TEXT}
           onChangeText={(text) => {
-            this.state.selectedRole == 'Supervisor'
+            this.state.selectedRole == "Supervisor"
               ? this.setState({ superVisorSearchText: text })
               : this.updateSearch(text);
           }}
           value={
-            this.state.selectedRole == 'Supervisor'
+            this.state.selectedRole == "Supervisor"
               ? this.state.superVisorSearchText
               : this.state.query
           }
@@ -1317,10 +1302,9 @@ console.log("this.state.voucherDetail",this.state.voucherDetail)
             borderColor: appConfig.LIST_BORDER_COLOUR,
             borderRadius: moderateScale(5),
             height: moderateScale(40),
-            width: '90%',
-            justifyContent: 'center',
+            width: "90%",
+            justifyContent: "center",
             paddingLeft: 10,
-    
           }}
         >
           <Text>
@@ -1339,33 +1323,33 @@ console.log("this.state.voucherDetail",this.state.voucherDetail)
       this.state.supervisorList.length > 0
     ) {
       return (
-        <View style={{ height: '60%', width: '90%', marginTop: 5 }}>
-          {this.renderList('supervisorList')}
+        <View style={{ height: "60%", width: "90%", marginTop: 5 }}>
+          {this.renderList("supervisorList")}
         </View>
       );
     }
   }
   showDialogBox() {
-    let message = '';
-    let heading = '';
+    let message = "";
+    let heading = "";
     if (this.state.showModal) {
       if (this.state.messageType == 0) {
         // console.log("111111 test")
-        message = 'Your request has been ';
+        message = "Your request has been ";
         message =
           this.props.navigation.state.params.action != undefined
             ? message + this.props.navigation.state.params.action.toLowerCase()
-            : '';
-        heading = 'successful';
+            : "";
+        heading = "successful";
       } else if (this.state.messageType == 2) {
         message = this.state.error_msg;
-        heading = 'Error';
+        heading = "Error";
       } else if (this.state.messageType == 3) {
         message = this.state.error_msg;
-        heading = 'Pending Info';
+        heading = "Pending Info";
       } else {
         message = constant.SLOW_RESPONSE;
-        heading = 'sorry';
+        heading = "sorry";
       }
       return (
         <UserMessage
@@ -1373,7 +1357,10 @@ console.log("this.state.voucherDetail",this.state.voucherDetail)
           message={message}
           okAction={() => {
             this.setState({ showModal: false });
-            this.state.messageType == 0 || this.state.messageType == 1 || this.state.messageType == 2 || this.state.messageType == 3
+            this.state.messageType == 0 ||
+            this.state.messageType == 1 ||
+            this.state.messageType == 2 ||
+            this.state.messageType == 3
               ? this.backNavigate()
               : this.handleLogoutConfirm();
           }}
@@ -1394,78 +1381,22 @@ console.log("this.state.voucherDetail",this.state.voucherDetail)
                 paddingTop: moderateScale(2),
               }}
             >
-              <View style={{ flexDirection: 'row' }}>
-                <Text
-                  style={[
-                    globalFontStyle.imageBackgroundLayout,
-                    style.displayItemTextTwo,
-                  ]}
-                >
-                  {'Req#'}{' '}
-                </Text>
-                <Text
-                  style={[
-                    globalFontStyle.imageBackgroundLayout,
-                    style.displayItemTextTwo,
-                  ]}
-                >
-                  {this.state.requestDetails.in_requestid}{' '}BOLD
-                </Text>
-              </View>
-              <View style={{ flexDirection: 'row' }}>
-                <Text
-                  style={[
-                    globalFontStyle.imageBackgroundLayout,
-                    style.displayItemTextTwo,
-                  ]}
-                >
-                  {constant.REQUESTER_NAME}{' '}
-                </Text>
-                <Text
-                  style={[
-                    globalFontStyle.imageBackgroundLayout,
-                    style.displayItemTextTwo,
-                  ]}
-                >
-                  {this.state.requestDetails.vc_name}{' '}
-                </Text>
-              </View>
-              <View style={{ flexDirection: 'row' }}>
-                <Text
-                  style={[
-                    globalFontStyle.imageBackgroundLayout,
-                    style.displayItemTextTwo,
-                  ]}
-                >
-                  {constant.PENDING_SINCE}{' '}
-                </Text>
-                <Text
-                  style={[
-                    globalFontStyle.imageBackgroundLayout,
-                    style.displayItemTextTwo,
-                  ]}
-                >
-                  {this.state.requestDetails.dt_updated}
-                </Text>
-              </View>
-              <View style={{ flexDirection: 'row' }}>
-                <Text
-                  style={[
-                    globalFontStyle.imageBackgroundLayout,
-                    style.displayItemTextTwo,
-                  ]}
-                >
-                  {'Pending As'}{' '}
-                </Text>
-                <Text
-                  style={[
-                    globalFontStyle.imageBackgroundLayout,
-                    style.displayItemTextTwo,
-                  ]}
-                >
-                  {this.state.requestDetails.vc_status}{' '}
-                </Text>
-              </View>
+              <RenderUserItem
+                label="Req#"
+                value={`${this.state.requestDetails.in_requestid} BOLD`}
+              />
+              <RenderUserItem
+                label={constant.REQUESTER_NAME}
+                value={this.state.requestDetails.vc_name}
+              />
+              <RenderUserItem
+                label={constant.PENDING_SINCE}
+                value={this.state.requestDetails.dt_updated}
+              />
+              <RenderUserItem
+                label={"Pending As"}
+                value={this.state.requestDetails.vc_status}
+              />
             </View>
             <Seperator />
           </View>
@@ -1477,11 +1408,10 @@ console.log("this.state.voucherDetail",this.state.voucherDetail)
     this.setState({
       showLogoutModal: false,
     });
-    this.props.navigation.navigate('Login');
+    this.props.navigation.navigate("Login");
   }
 
   activityIndicator() {
-   
     if (this.state.isIndicatorVisible) {
       return <ActivityIndicatorView loader={this.state.isIndicatorVisible} />;
     } else {
@@ -1489,7 +1419,7 @@ console.log("this.state.voucherDetail",this.state.voucherDetail)
     }
   }
   handleBack() {
-    writeLog('Clicked on ' + 'handleBack' + ' of ' + 'SupervisorSelection');
+    writeLog("Clicked on " + "handleBack" + " of " + "SupervisorSelection");
     this.props.navigation.pop();
   }
 
@@ -1503,7 +1433,7 @@ console.log("this.state.voucherDetail",this.state.voucherDetail)
           );
     let label =
       this.state.selectedRequestorOption == null
-        ? 'Select'
+        ? "Select"
         : this.state.selectedRequestorOption;
     let action = checkAction;
     // console.log("action mohit:::::", action)
@@ -1512,7 +1442,7 @@ console.log("this.state.voucherDetail",this.state.voucherDetail)
       <DismissKeyboardView
         style={{
           flex: 1,
-          backgroundColor: 'white',
+          backgroundColor: "white",
           paddingVertical: 10,
         }}
       >
@@ -1535,20 +1465,20 @@ console.log("this.state.voucherDetail",this.state.voucherDetail)
           >
             {this.activityIndicator()}
             {this.showUserDetails()}
-            {action === 'Approved' || action === 'Escalated' ? (
+            {action === "Approved" || action === "Escalated" ? (
               <View
                 style={{
-                  alignItems: 'center',
+                  alignItems: "center",
                   // justifyContent: "center",
                   marginTop: moderateScale(15),
-                  width: '100%',
+                  width: "100%",
                 }}
               >
                 <Text
                   style={{
-                    width: '90%',
+                    width: "90%",
                     marginBottom: 5,
-                    color: '#06141F',
+                    color: "#06141F",
                   }}
                 >
                   Submit to:
@@ -1556,7 +1486,7 @@ console.log("this.state.voucherDetail",this.state.voucherDetail)
                 <TouchableOpacity
                   onPress={() => {
                     console.log(
-                      'this.state.requestorOptionList',
+                      "this.state.requestorOptionList",
                       this.state.requestorOptionList
                     );
                     this.setState({
@@ -1567,14 +1497,14 @@ console.log("this.state.voucherDetail",this.state.voucherDetail)
                     borderBottomColor: appConfig.DARK_BLUISH_COLOR,
                     borderBottomWidth: 1,
                     height: moderateScale(40),
-                    width: '90%',
+                    width: "90%",
                     paddingLeft: 10,
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
+                    flexDirection: "row",
+                    alignItems: "center",
+                    justifyContent: "space-between",
                   }}
                 >
-                  <Text style={{ color: '#06141F' }}>{label}</Text>
+                  <Text style={{ color: "#06141F" }}>{label}</Text>
                   {this.state.requestorOptionList ? (
                     <Image
                       style={{ marginRight: 10 }}
@@ -1598,12 +1528,12 @@ console.log("this.state.voucherDetail",this.state.voucherDetail)
                 style={{
                   borderBottomWidth: 1,
                   borderBottomColor: appConfig.DARK_BLUISH_COLOR,
-                  width: '90%',
-                  alignItems: 'center',
-                  alignSelf: 'center',
+                  width: "90%",
+                  alignItems: "center",
+                  alignSelf: "center",
                   marginTop: moderateScale(10),
-                  flexDirection: 'row',
-                  justifyContent: 'space-between',
+                  flexDirection: "row",
+                  justifyContent: "space-between",
                 }}
               >
                 <TextInput
@@ -1613,7 +1543,7 @@ console.log("this.state.voucherDetail",this.state.voucherDetail)
                   value={this.state.remarks}
                   placeholder="Remarks"
                   style={{
-                    width: '90%',
+                    width: "90%",
                     paddingLeft: 10,
                     paddingTop: 10,
                     paddingBottom: 10,
@@ -1624,16 +1554,16 @@ console.log("this.state.voucherDetail",this.state.voucherDetail)
             ) : null}
             <View
               style={{
-                width: '40%',
+                width: "40%",
                 marginTop: 20,
-                marginBottom:5,
-                alignSelf: 'center',
+                marginBottom: 5,
+                alignSelf: "center",
               }}
             >
               <TouchableOpacity onPress={() => this.validateApprove(action)}>
                 <Image
                   source={
-                    action == 'Approved'
+                    action == "Approved"
                       ? images.approveButton
                       : images.submitButton
                   }
@@ -1650,16 +1580,16 @@ console.log("this.state.voucherDetail",this.state.voucherDetail)
 
 const styles = StyleSheet.create({
   searchBar: {
-    backgroundColor: '#FFFFFF',
-    width: '90%',
+    backgroundColor: "#FFFFFF",
+    width: "90%",
   },
   customeSearchBar: {
     borderWidth: 1,
     borderColor: appConfig.LIST_BORDER_COLOUR,
     borderRadius: moderateScale(5),
     height: moderateScale(40),
-    width: '90%',
-    justifyContent: 'center',
+    width: "90%",
+    justifyContent: "center",
     paddingLeft: 10,
     marginTop: 5,
   },
