@@ -8,11 +8,12 @@ import {
   ScrollView,
   SafeAreaView,
   TouchableOpacity,
+  Linking,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
 import { storeData } from '../../utilities/asyncStorage';
 import { setHeight, setWidth } from '../../components/fontScaling';
-import { text } from './PrivacyText';
+import PrivacyText from './PrivacyText';
 
 const PrivacyFile = (props) => {
   const { privacyModalFunc, navigation, loginUser } = props;
@@ -50,10 +51,11 @@ const PrivacyFile = (props) => {
     >
       <SafeAreaView style={styles.modalContainer}>
         <View style={styles.modalView}>
-          <Text style={{ paddingBottom: 10 }}>Privacy Policy</Text>
-          <ScrollView style={{ flex: 1, backgroundColor: '#fff' }}>
-            <Text style={styles.modalTextStyle}>{text}</Text>
-          </ScrollView>
+          <Text style={{ fontSize: 16, fontWeight: '600', paddingBottom: 20 }}>
+            Privacy Policy
+          </Text>
+          <PrivacyText />
+
           <View style={styles.checkBoxContainer}>
             <TouchableOpacity onPress={checkStatus} style={styles.checkBox}>
               {checkVisible ? (
@@ -170,5 +172,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#FF7F50',
     marginTop: 10,
     borderRadius: 40,
+  },
+  renderTextViewStyle: {
+    marginBottom: 15,
+  },
+  rendetTextStyle: {
+    textAlign: 'justify',
+    marginVertical: 10,
   },
 });
